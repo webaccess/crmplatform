@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "contacts",
+  "info": {
+    "name": "contact"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    },
+    "phone_other": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "email_other": {
+      "type": "email"
+    },
+    "address_1": {
+      "type": "text"
+    },
+    "address_2": {
+      "type": "text"
+    },
+    "city": {
+      "type": "string"
+    },
+    "pincode": {
+      "type": "string"
+    },
+    "contact_type": {
+      "type": "string"
+    },
+    "organization": {
+      "plugin": "crm-plugin",
+      "model": "organization",
+      "via": "contact"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "contact"
+    },
+    "country": {
+      "plugin": "crm-plugin",
+      "model": "country"
+    },
+    "villages": {
+      "plugin": "crm-plugin",
+      "collection": "village",
+      "via": "contacts",
+      "dominant": true
+    },
+    "state": {
+      "plugin": "crm-plugin",
+      "model": "state"
+    },
+    "district": {
+      "plugin": "crm-plugin",
+      "model": "district"
+    },
+    "individual": {
+      "via": "contact",
+      "plugin": "crm-plugin",
+      "model": "individual"
+    }
+  }
+}

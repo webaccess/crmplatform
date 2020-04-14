@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "villages",
+  "info": {
+    "name": "village"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "abbreviation": {
+      "type": "string",
+      "unique": true
+    },
+    "identifier": {
+      "type": "string",
+      "unique": true
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "state": {
+      "via": "villages",
+      "plugin": "crm-plugin",
+      "model": "state"
+    },
+    "district": {
+      "via": "villages",
+      "plugin": "crm-plugin",
+      "model": "district"
+    },
+    "contacts": {
+      "via": "villages",
+      "plugin": "crm-plugin",
+      "collection": "contact"
+    }
+  }
+}

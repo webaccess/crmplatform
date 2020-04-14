@@ -1,0 +1,44 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/",
+      "handler": "crm-plugin.index",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/contact",
+      "handler": "crm-plugin.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/contact",
+      "handler": "crm-plugin.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/contact/:id",
+      "handler": "crm-plugin.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/contact/:id",
+      "handler": "crm-plugin.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

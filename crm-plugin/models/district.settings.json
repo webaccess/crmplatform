@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "districts",
+  "info": {
+    "name": "district"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "is_active": {
+      "type": "boolean",
+      "default": true
+    },
+    "abbreviation": {
+      "type": "string",
+      "unique": true
+    },
+    "identifier": {
+      "type": "string",
+      "unique": true
+    },
+    "state": {
+      "plugin": "crm-plugin",
+      "model": "state",
+      "via": "districts"
+    },
+    "villages": {
+      "plugin": "crm-plugin",
+      "collection": "village",
+      "via": "district"
+    }
+  }
+}
