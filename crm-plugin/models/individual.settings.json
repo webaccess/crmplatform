@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "individuals",
+  "info": {
+    "name": "Individual"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "first_name": {
+      "type": "string"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "contact": {
+      "plugin": "crm-plugin",
+      "model": "contact",
+      "via": "individual"
+    }
+  }
+}
