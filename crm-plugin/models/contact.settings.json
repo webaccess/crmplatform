@@ -46,11 +46,6 @@
       "model": "organization",
       "via": "contact"
     },
-    "user": {
-      "plugin": "users-permissions",
-      "model": "user",
-      "via": "contact"
-    },
     "country": {
       "plugin": "crm-plugin",
       "model": "country"
@@ -70,9 +65,13 @@
       "model": "district"
     },
     "individual": {
-      "via": "contact",
       "plugin": "crm-plugin",
-      "model": "individual"
+      "model": "individual",
+      "via": "contact"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user"
     }
   }
 }
