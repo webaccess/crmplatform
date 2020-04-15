@@ -18,10 +18,10 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
 ## Installation
 * create new strapi project using below command
 
-```yarn create strapi-app CRM-strapi-plugin```
+   ```yarn create strapi-app CRM-strapi-plugin```
 * then run below command
 
-```cd CRM-strapi-plugin/plugins```
+   ```cd CRM-strapi-plugin/plugins```
 * then clone project using below command
 
-```git clone https://github.com/webaccess/crmplatform.git ."
+   ```git clone https://github.com/webaccess/crmplatform.git ."
