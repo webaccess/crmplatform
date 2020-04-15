@@ -24,4 +24,4 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
    ```cd CRM-strapi-plugin/plugins```
 * then clone project using below command
 
-   ```git clone https://github.com/webaccess/crmplatform.git ."
+   ```git clone https://github.com/webaccess/crmplatform.git .```
