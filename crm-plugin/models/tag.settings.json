@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
   "connection": "default",
-  "collectionName": "tag",
+  "collectionName": "tags",
   "info": {
-    "name": "country"
+    "name": "tag"
   },
   "options": {
     "increments": true,
@@ -18,11 +18,6 @@
       "type": "boolean",
       "default": false,
       "required": true
-    },
-    "contact": {
-      "via": "organization",
-      "plugin": "crm-plugin",
-      "model": "contact"
     }
   }
 }
