@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/states",
-      "handler": "generic.find",
+      "handler": "state.find",
       "config": {
         "policies": []
       }
