@@ -24,6 +24,14 @@
         "policies": []
       }
     },
+     {
+      "method": "GET",
+      "path": "/tag",
+      "handler": "tag.find",
+      "config": {
+        "policies": []
+      }
+    },
     {
       "method": "POST",
       "path": "/contact",

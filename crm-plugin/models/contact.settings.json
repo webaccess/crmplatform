@@ -72,6 +72,10 @@
     "user": {
       "plugin": "users-permissions",
       "model": "user"
+    },
+    "tags": {
+      "via": "contacts",
+      "collection": "tag"
     }
   }
 }
