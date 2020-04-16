@@ -17,14 +17,6 @@
       }
     },
     {
-      "method": "GET",
-      "path": "/states",
-      "handler": "state.find",
-      "config": {
-        "policies": []
-      }
-    },
-    {
       "method": "POST",
       "path": "/contact",
       "handler": "crm-plugin.create",
@@ -44,6 +36,198 @@
       "method": "DELETE",
       "path": "/contact/:id",
       "handler": "crm-plugin.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/states",
+      "handler": "state.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/states/count",
+      "handler": "state.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/states/:id",
+      "handler": "state.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/states",
+      "handler": "state.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/states/:id",
+      "handler": "state.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/states/:id",
+      "handler": "state.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/districts",
+      "handler": "district.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/districts/count",
+      "handler": "district.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/districts/:id",
+      "handler": "district.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/districts",
+      "handler": "district.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/districts/:id",
+      "handler": "district.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/districts/:id",
+      "handler": "district.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/countries",
+      "handler": "country.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/countries/count",
+      "handler": "country.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/countries/:id",
+      "handler": "country.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/countries",
+      "handler": "country.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/countries/:id",
+      "handler": "country.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/countries/:id",
+      "handler": "country.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/villages",
+      "handler": "village.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/villages/count",
+      "handler": "village.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/villages/:id",
+      "handler": "village.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/villages",
+      "handler": "village.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/villages/:id",
+      "handler": "village.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/villages/:id",
+      "handler": "village.delete",
       "config": {
         "policies": []
       }
