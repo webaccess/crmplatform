@@ -39,6 +39,38 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/activity-type",
+      "handler": "activity-type.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/activity-type",
+      "handler": "activity-type.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/activity-type/:id",
+      "handler": "activity-type.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/activity-type/:id",
+      "handler": "activity-type.delete",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
