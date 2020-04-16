@@ -23,6 +23,8 @@ module.exports = {
   },
 
   find: async (ctx) => {
+    // let x = await strapi.query("state", "crm-plugin").find(ctx.query);
+    // console.log("x", x);
     let contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
 
     return contact.map((entity) =>

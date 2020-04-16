@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/states",
+      "handler": "generic.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/contact",
       "handler": "crm-plugin.create",
