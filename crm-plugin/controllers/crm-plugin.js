@@ -6,8 +6,13 @@
  * @description: A set of functions called "actions" of the `crm-plugin` plugin.
  */
 const { sanitizeEntity } = require("strapi-utils");
+const emptyParm = require("../test/emptyParms");
+
+// console.log("emptyParm", emptyParm);
+// findData = emptyParams.findData();
 module.exports = {
   /**
+   *
    * Default action.
    *
    * @return {Object}
@@ -24,7 +29,8 @@ module.exports = {
 
   find: async (ctx) => {
     let contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
-
+    let model = "contact";
+    emptyParams(ctx, model);
     return contact.map((entity) =>
       sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["contact"],
