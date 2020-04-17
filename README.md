@@ -37,6 +37,6 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
 
   `strapi console`
 
-- then run below code for example to run test case for state
+- then run below code for example to run test case for contact
 
   `strapi.plugins["crm-plugin"].testcases.contact.test.emptyTestcase("find")`
