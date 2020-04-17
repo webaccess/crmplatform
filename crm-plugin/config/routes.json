@@ -234,48 +234,48 @@
     },
     {
       "method": "GET",
-      "path": "/activity-types",
-      "handler": "activity-type.find",
+      "path": "/activitytypes",
+      "handler": "activitytype.find",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/activity-types/count",
-      "handler": "activity-type.count",
+      "path": "/activitytypes/count",
+      "handler": "activitytype.count",
       "config": {
         "policies": []
       }
     },
     {
       "method": "GET",
-      "path": "/activity-types/:id",
-      "handler": "activity-type.findOne",
+      "path": "/activitytypes/:id",
+      "handler": "activitytype.findOne",
       "config": {
         "policies": []
       }
     },
     {
       "method": "POST",
-      "path": "/activity-types",
-      "handler": "activity-type.create",
+      "path": "/activitytypes",
+      "handler": "activitytype.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "PUT",
-      "path": "/activity-types/:id",
-      "handler": "activity-type.create",
+      "path": "/activitytypes/:id",
+      "handler": "activitytype.create",
       "config": {
         "policies": []
       }
     },
     {
       "method": "DELETE",
-      "path": "/activity-types/:id",
-      "handler": "activity-type.delete",
+      "path": "/activitytypes/:id",
+      "handler": "activitytype.delete",
       "config": {
         "policies": []
       }

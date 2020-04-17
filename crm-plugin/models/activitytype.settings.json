@@ -1,9 +1,9 @@
 {
   "kind": "collectionType",
   "connection": "default",
-  "collectionName": "activity_types",
+  "collectionName": "activitytypes",
   "info": {
-    "name": "ActivityType"
+    "name": "activitytype"
   },
   "options": {
     "increments": true,
