@@ -1,18 +1,17 @@
 "use strict";
-
+// import checkRequiredParams from "../utils/utils.js";
 /**
  * crm-plugin.js controller
  *
  * @description: A set of functions called "actions" of the `crm-plugin` plugin.
  */
 const { sanitizeEntity } = require("strapi-utils");
-const emptyParm = require("../test/emptyParms");
+const _utils = require("../services/utils.js");
 
-// console.log("emptyParm", emptyParm);
-// findData = emptyParams.findData();
+const _checkParams = _utils.checkParams;
+
 module.exports = {
   /**
-   *
    * Default action.
    *
    * @return {Object}
@@ -29,8 +28,7 @@ module.exports = {
 
   find: async (ctx) => {
     let contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
-    let model = "contact";
-    emptyParams(ctx, model);
+
     return contact.map((entity) =>
       sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["contact"],
