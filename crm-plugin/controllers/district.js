@@ -3,5 +3,5 @@
 
 var Base = require("./common/base");
 
-var activityType = new Base();
-module.exports = activityType;
+var district = new Base();
+module.exports = district;
