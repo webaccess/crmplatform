@@ -5,9 +5,6 @@
  * @description: A set of functions called "actions" of the `crm-plugin` plugin.
  */
 const { sanitizeEntity } = require("strapi-utils");
-const _utils = require("../services/utils.js");
-
-const _checkParams = _utils.checkParams;
 
 module.exports = {
   /**
@@ -26,6 +23,13 @@ module.exports = {
   },
 
   find: async (ctx) => {
+    const val = [];
+    const reqVal = ["name", "phone", "contact"];
+
+    let params = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      val,
+      reqVal
+    );
     // let x = strapi.plugins["crm-plugin"].controllers["state"].find(ctx.query);
     // console.log("x", x);
     let contact;
