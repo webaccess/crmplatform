@@ -1,9 +1,9 @@
 "use strict";
 
 /**
- * crm-plugin.js controller
+ * Base file
  *
- * @description: A set of functions called "actions" of the `crm-plugin` plugin.
+ * @description: Parent class for all generic models.
  */
 const { sanitizeEntity } = require("strapi-utils");
 

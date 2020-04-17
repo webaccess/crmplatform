@@ -23,8 +23,12 @@ module.exports = {
   },
 
   find: async (ctx) => {
+<<<<<<< HEAD:crm-plugin/controllers/crm-plugin.js
     //calls service function to validate Params
     //strapi.plugins["crm-plugin"].services.utils.checkParams(param,reqParam);
+
+    //  let x = strapi.plugins["crm-plugin"].controllers["state"].find(ctx.query);
+    console.log("ctx", ctx.query);
 
     let contact;
     if (ctx.query._q) {

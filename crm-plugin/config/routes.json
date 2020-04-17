@@ -3,7 +3,7 @@
     {
       "method": "GET",
       "path": "/",
-      "handler": "crm-plugin.index",
+      "handler": "contact.index",
       "config": {
         "policies": []
       }
@@ -11,7 +11,7 @@
     {
       "method": "GET",
       "path": "/contact",
-      "handler": "crm-plugin.find",
+      "handler": "contact.find",
       "config": {
         "policies": []
       }
@@ -19,7 +19,7 @@
     {
       "method": "POST",
       "path": "/contact",
-      "handler": "crm-plugin.create",
+      "handler": "contact.create",
       "config": {
         "policies": []
       }
@@ -27,7 +27,7 @@
     {
       "method": "PUT",
       "path": "/contact/:id",
-      "handler": "crm-plugin.create",
+      "handler": "contact.create",
       "config": {
         "policies": []
       }
@@ -35,7 +35,7 @@
     {
       "method": "DELETE",
       "path": "/contact/:id",
-      "handler": "crm-plugin.delete",
+      "handler": "contact.delete",
       "config": {
         "policies": []
       }
@@ -228,6 +228,54 @@
       "method": "DELETE",
       "path": "/villages/:id",
       "handler": "village.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activitytypes",
+      "handler": "activitytype.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activitytypes/count",
+      "handler": "activitytype.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activitytypes/:id",
+      "handler": "activitytype.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/activitytypes",
+      "handler": "activitytype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/activitytypes/:id",
+      "handler": "activitytype.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/activitytypes/:id",
+      "handler": "activitytype.delete",
       "config": {
         "policies": []
       }
