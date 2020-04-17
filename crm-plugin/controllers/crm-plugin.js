@@ -1,5 +1,4 @@
 "use strict";
-// import checkRequiredParams from "../utils/utils.js";
 /**
  * crm-plugin.js controller
  *
