@@ -23,7 +23,6 @@ module.exports = {
   },
 
   find: async (ctx) => {
-<<<<<<< HEAD:crm-plugin/controllers/crm-plugin.js
     //calls service function to validate Params
     //strapi.plugins["crm-plugin"].services.utils.checkParams(param,reqParam);
 
