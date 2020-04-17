@@ -24,7 +24,7 @@ module.exports = {
 
   find: async (ctx) => {
     //  let x = strapi.plugins["crm-plugin"].controllers["state"].find(ctx.query);
-    // console.log("x", x);
+    console.log("ctx", ctx.query);
     let contact;
     if (ctx.query._q) {
       contact = await strapi.query("contact", "crm-plugin").search(ctx.query);
