@@ -11,10 +11,12 @@
   },
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "is_active": {
       "type": "boolean",
+      "required": true,
       "default": true
     },
     "abbreviation": {
