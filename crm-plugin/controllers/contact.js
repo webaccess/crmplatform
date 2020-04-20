@@ -24,7 +24,10 @@ module.exports = {
 
   find: async (ctx) => {
     //calls service function to validate Params
-    //strapi.plugins["crm-plugin"].services.utils.checkParams(param,reqParam);
+    // const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+    //   param,
+    //   reqParam
+    // );
 
     //  let x = strapi.plugins["crm-plugin"].controllers["state"].find(ctx.query);
     console.log("ctx", ctx.query);
