@@ -1,15 +1,14 @@
 "use strict";
 
 /**
- * crm-plugin.js controller
+ * Base file
  *
- * @description: A set of functions called "actions" of the `crm-plugin` plugin.
+ * @description: Parent class for all generic models.
  */
 const { sanitizeEntity } = require("strapi-utils");
 
 function getTable(url) {
   let urlArr = url.split("/");
-  console.log("ctx", urlArr);
   let table = "";
   if (urlArr.length >= 3) table = urlArr[2];
   table = table == "countries" ? "country" : table.slice(0, table.length - 1);
