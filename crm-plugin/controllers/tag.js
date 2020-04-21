@@ -24,7 +24,6 @@ module.exports = {
 
   find: async (ctx) => {
     let tag = await strapi.query("tag", "crm-plugin").find(ctx.query);
-    console.log("hjsdhjsdhj",strapi.query)
     return tag.map((entity) =>
       sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["tag"],
@@ -33,41 +32,48 @@ module.exports = {
   },
 
   create: async (ctx) => {
-    let org;
-    let contact;
-    if (ctx.request.body.contact_type) {
+    let entity;
+    let contacttagEntry;
+    let contactID;
+    try {
       if (ctx.params.id) {
-        let contactDetails = {};
-        contactDetails["contact"] = ctx.params.id;
-        org = await strapi
-          .query(ctx.request.body.contact_type, "crm-plugin")
-          .update(contactDetails, ctx.request.body);
-
-        // update contact
-        contact = await strapi
-          .query("contact", "crm-plugin")
-          .update(ctx.params, ctx.request.body);
+        const { id } = ctx.params;
+        entity = await strapi
+          .query("tag", "crm-plugin")
+          .update({ id }, ctx.request.body);
+        return sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models["tag"],
+        });
       } else {
-        //create org
-        org = await strapi
-          .query(ctx.request.body.contact_type, "crm-plugin")
+        entity = await strapi
+          .query("tag", "crm-plugin")
           .create(ctx.request.body);
+          if(ctx.request.body.contact){
+            let tagID = {tag: entity.id}
+            let contactID = {contact: 1}
+            console.log("Results aya",contactID)
+           contacttagEntry = await strapi
+          .query("contacttag", "crm-plugin")
+          .create(contactID);  
+          console.log("contacttag entry", contacttagEntry)
+          }
+        
+          // console.log("Results aya",entity)
+        return sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models["contacttag"],
 
-        let orgOtherDetails = {};
-        orgOtherDetails[ctx.request.body.contact_type] = org.id;
+        });
 
-        //create org
-        let orgDetails = Object.assign(orgOtherDetails, ctx.request.body);
-        // create contact
-        contact = await strapi
-          .query("contact", "crm-plugin")
-          .create(orgDetails);
       }
-    } else return { error: "contact_type parameter not found" };
 
-    return sanitizeEntity(contact, {
-      model: strapi.plugins["crm-plugin"].models.contact,
-    });
+    } catch (error) {
+      console.error(error);
+      return { error: error.message };
+    }
+
+    // if(){
+
+    // }  
   },
 
   delete: async (ctx) => {
