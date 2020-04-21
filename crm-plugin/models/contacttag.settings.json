@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contacttags",
+  "info": {
+    "name": "contacttag"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "contact": {
+      "plugin": "crm-plugin",
+      "model": "contact"
+    },
+    "tag": {
+      "plugin": "crm-plugin",
+      "model": "tag"
+    }
+  }
+}
