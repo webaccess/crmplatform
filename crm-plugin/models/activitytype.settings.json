@@ -18,6 +18,11 @@
       "type": "boolean",
       "required": true,
       "default": true
+    },
+    "activity": {
+      "via": "activitytype",
+      "plugin": "crm-plugin",
+      "model": "activity"
     }
   }
 }
