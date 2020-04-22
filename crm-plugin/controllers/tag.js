@@ -65,16 +65,14 @@ module.exports = {
   },
 
   delete: async (ctx) => {
+    let entity;
     let orgId = ctx.params;
-    let tag ={tag: orgId}
     console.log("orgId", ctx.params);
-      // await strapi
-      //   .query("contacttag", "crm-plugin")
-      //   .delete(tag);
+       entity = await strapi.query("contacttag", "crm-plugin").delete({ tag:ctx.params.id });
         
-    // return sanitizeEntity(contact, {
-    //   model: strapi.plugins["crm-plugin"].models.contact,
-    // });
+    return sanitizeEntity(entity,{
+      model: strapi.plugins["crm-plugin"].models["contacttag"],
+    });
     const { id } = ctx.params;
     try {
       const entity = await strapi.query("tag", "crm-plugin").delete({ id });
