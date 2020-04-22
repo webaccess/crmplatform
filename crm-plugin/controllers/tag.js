@@ -47,46 +47,34 @@ module.exports = {
         entity = await strapi
           .query("tag", "crm-plugin")
           .create(ctx.request.body);
-           console.log()
+           console.log("Body",ctx.request.body);
           if(ctx.request.body.contact){
-            let contacttagDetails = {tag: entity.id, contact: 1}
-            // let tagID = {}
-            // let contactID = {}
-            console.log("Results aya",contacttagDetails)
+            let contacttagDetails = {tag: entity.id, contact: ctx.request.body.contact}
            contacttagEntry = await strapi
           .query("contacttag", "crm-plugin")
           .create(contacttagDetails);  
-          console.log("contacttag entry", contacttagEntry)
           }
-        
-          // console.log("Results aya",entity)
         return sanitizeEntity(entity, {
           model: strapi.plugins["crm-plugin"].models["tag"],
         });
-
       }
-
     } catch (error) {
       console.error(error);
       return { error: error.message };
     }
-
-    // if(){
-
-    // }  
   },
 
   delete: async (ctx) => {
     let orgId = ctx.params;
     let tag ={tag: orgId}
     console.log("orgId", ctx.params);
-      await strapi
-        .query("contacttag", "crm-plugin")
-        .delete(tag);
+      // await strapi
+      //   .query("contacttag", "crm-plugin")
+      //   .delete(tag);
         
-    return sanitizeEntity(contact, {
-      model: strapi.plugins["crm-plugin"].models.contact,
-    });
+    // return sanitizeEntity(contact, {
+    //   model: strapi.plugins["crm-plugin"].models.contact,
+    // });
     const { id } = ctx.params;
     try {
       const entity = await strapi.query("tag", "crm-plugin").delete({ id });

@@ -7,7 +7,6 @@
     "icon": "plug",
     "description": "Description of CRM-plugin plugin."
   },
-  "dependencies": {},
   "author": {
     "name": "A Strapi developer",
     "email": "",

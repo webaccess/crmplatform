@@ -23,10 +23,15 @@ module.exports = {
   },
 
   find: async (ctx) => {
-    // let x = await strapi.query("state", "crm-plugin").find(ctx.query);
-    // console.log("x", x);
-    let contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
-    console.log("contact",ctx)
+    //  let x = strapi.plugins["crm-plugin"].controllers["state"].find(ctx.query);
+    console.log("ctx", ctx.query);
+    let contact;
+    if (ctx.query._q) {
+      contact = await strapi.query("contact", "crm-plugin").search(ctx.query);
+    } else {
+      contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
+    }
+
     return contact.map((entity) =>
       sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["contact"],
