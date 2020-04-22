@@ -41,34 +41,25 @@ module.exports = {
 
   create: async (ctx) => {
     let actType;
+    let activityassignee;
     let activity;
       if (ctx.params.id) {
-        let activityDetails = {};
-        activityDetails["activity"] = ctx.params.id;
-        actType = await strapi
-          .query(ctx.request.body.activitytype, "crm-plugin")
-          .update(activityDetails, ctx.request.body);
-
-        // update activity
+        const { id } = ctx.params;
         activity = await strapi
           .query("activity", "crm-plugin")
-          .update(ctx.params, ctx.request.body);
+          .update({ id }, ctx.request.body);
+// for table activity assignee update
+          // if(ctx.request.body.contact){
+          //    activityassignee = await strapi .query("activityassignee", "crm-plugin")
+          //   .update({ id }, ctx.request.body.contact);
+          // }
+
       } else {
-        //create activitytype
-        actType = await strapi
-          .query(ctx.request.body.activitytype, "crm-plugin")
-          .create(ctx.request.body);
-
-        let actOtherDetails = {};
-        actOtherDetails[ctx.request.body.activitytype] = actType.id;
-
-        // //create org
-        let actDetails = Object.assign(actOtherDetails, ctx.request.body);
-        // create contact
         activity = await strapi
         .query("activity", "crm-plugin")
-        .create(actDetails);
+        .create(ctx.request.body);
     }
+    console.log("ctx",ctx.request.body)
     return sanitizeEntity(activity, {
       model: strapi.plugins["crm-plugin"].models.activity,
     });

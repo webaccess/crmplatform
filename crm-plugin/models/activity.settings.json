@@ -27,6 +27,11 @@
       "plugin": "crm-plugin",
       "model": "activitytype",
       "via": "activity"
+    },
+    "activityassignee": {
+      "plugin": "crm-plugin",
+      "via": "activity",
+      "model": "activityassignee"
     }
   }
 }

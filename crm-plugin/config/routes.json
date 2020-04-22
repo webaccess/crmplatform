@@ -327,6 +327,54 @@
       "config": {
         "policies": []
       }
+    },
+    {
+      "method": "GET",
+      "path": "/activityassignees",
+      "handler": "activityassignee.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activityassignees/count",
+      "handler": "activityassignee.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/activityassignees/:id",
+      "handler": "activityassignee.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/activityassignees",
+      "handler": "activityassignee.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/activityassignees/:id",
+      "handler": "activityassignee.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/activityassignees/:id",
+      "handler": "activityassignee.delete",
+      "config": {
+        "policies": []
+      }
     }
   ]
 }
