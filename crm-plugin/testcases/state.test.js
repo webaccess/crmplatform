@@ -41,6 +41,44 @@ function State() {
     }
     return await testcase.test("state", method, methodParams);
   };
+
+  this.index = async () => {
+    var reqStateParamsfind = await this.reqParamsTestcase("find");
+    var reqStateParamscreate = await this.reqParamsTestcase("create");
+    // var reqStateParamsupdate = await this.reqParamsTestcase("update");
+    var reqParamsdelete = await this.reqParamsTestcase("delete");
+  };
+
+  /* this method calls all testcases for empty params check */
+  this.reqParamsTestcase = async (method) => {
+    console.log("----In State reqParamsTestcase------");
+    let methodParams = {};
+    //this switch case needs to handle all methods of contact controller
+    switch (method) {
+      case "find":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          query: {},
+        };
+        break;
+      case "create":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          request: {
+            body: { is_active: "false" },
+          },
+          params: {},
+        };
+        break;
+      case "delete":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          params: { id: 9 },
+        };
+        break;
+    }
+    return await testcase.test("state", method, methodParams);
+  };
 }
 
 module.exports = State;
