@@ -34,7 +34,6 @@ module.exports = {
   create: async (ctx) => {
     let entity;
     let contacttagEntry;
-    let contactID;
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
@@ -48,20 +47,21 @@ module.exports = {
         entity = await strapi
           .query("tag", "crm-plugin")
           .create(ctx.request.body);
+           console.log()
           if(ctx.request.body.contact){
-            let tagID = {tag: entity.id}
-            let contactID = {contact: 1}
-            console.log("Results aya",contactID)
+            let contacttagDetails = {tag: entity.id, contact: 1}
+            // let tagID = {}
+            // let contactID = {}
+            console.log("Results aya",contacttagDetails)
            contacttagEntry = await strapi
           .query("contacttag", "crm-plugin")
-          .create(contactID);  
+          .create(contacttagDetails);  
           console.log("contacttag entry", contacttagEntry)
           }
         
           // console.log("Results aya",entity)
         return sanitizeEntity(entity, {
-          model: strapi.plugins["crm-plugin"].models["contacttag"],
-
+          model: strapi.plugins["crm-plugin"].models["tag"],
         });
 
       }
@@ -77,22 +77,26 @@ module.exports = {
   },
 
   delete: async (ctx) => {
-    const contact = await strapi
-      .query("contact", "crm-plugin")
-      .delete(ctx.params);
-
-    let orgId = contact.individual
-      ? contact.individual.id
-      : contact.organization
-      ? contact.organization.id
-      : "";
-    console.log("orgId", orgId);
-    if (orgId)
+    let orgId = ctx.params;
+    let tag ={tag: orgId}
+    console.log("orgId", ctx.params);
       await strapi
-        .query(contact.contact_type, "crm-plugin")
-        .delete({ id: orgId });
+        .query("contacttag", "crm-plugin")
+        .delete(tag);
+        
     return sanitizeEntity(contact, {
       model: strapi.plugins["crm-plugin"].models.contact,
     });
-  },
+    const { id } = ctx.params;
+    try {
+      const entity = await strapi.query("tag", "crm-plugin").delete({ id });
+      return sanitizeEntity(entity, {
+        model: strapi.plugins["crm-plugin"].models["tag"],
+      });
+    } catch (error) {
+      console.error(error);
+      return { error: error.message };
+    }
+    
+  }
 };

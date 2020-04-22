@@ -282,7 +282,7 @@
     },
     {
       "method": "GET",
-      "path": "/tag",
+      "path": "/tags",
       "handler": "tag.find",
       "config": {
         "policies": []
@@ -290,7 +290,7 @@
     },
     {
       "method": "POST",
-      "path": "/tag",
+      "path": "/tags",
       "handler": "tag.create",
       "config": {
         "policies": []
@@ -298,7 +298,7 @@
     },
     {
       "method": "PUT",
-      "path": "/tag/:id",
+      "path": "/tags/:id",
       "handler": "tag.create",
       "config": {
         "policies": []
@@ -306,7 +306,7 @@
     },
     {
       "method": "DELETE",
-      "path": "/tag/:id",
+      "path": "/tags/:id",
       "handler": "tag.delete",
       "config": {
         "policies": []
@@ -316,6 +316,22 @@
       "method": "GET",
       "path": "/contacttags",
       "handler": "contacttag.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/contacttags/:id",
+      "handler": "contacttag.delete",
+      "config": {
+        "policies": []
+      }
+     },
+    {
+      "method": "POST",
+      "path": "/contacttags",
+      "handler": "contacttag.create",
       "config": {
         "policies": []
       }
