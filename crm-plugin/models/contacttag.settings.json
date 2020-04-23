@@ -11,11 +11,13 @@
   "attributes": {
     "contact": {
       "plugin": "crm-plugin",
-      "model": "contact"
+      "model": "contact",
+      "via": "contacttag"
     },
     "tag": {
       "plugin": "crm-plugin",
-      "model": "tag"
+      "model": "tag",
+      "via": "contacttag"
     }
   }
 }

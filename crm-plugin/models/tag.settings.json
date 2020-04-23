@@ -19,6 +19,11 @@
     },
     "is_active": {
       "type": "boolean"
+    },
+    "contacttag": {
+      "via": "tag",
+      "plugin": "crm-plugin",
+      "model": "contacttag"
     }
   }
 }
