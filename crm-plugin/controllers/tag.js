@@ -68,8 +68,7 @@ module.exports = {
     let entity;
     let orgId = ctx.params;
     console.log("orgId", ctx.params);
-       entity = await strapi.query("contacttag", "crm-plugin").delete({ tag:ctx.params.id });
-        
+      entity = await strapi.query("contacttag", "crm-plugin").delete({ tag:ctx.params.id });
     return sanitizeEntity(entity,{
       model: strapi.plugins["crm-plugin"].models["contacttag"],
     });
@@ -82,7 +81,6 @@ module.exports = {
     } catch (error) {
       console.error(error);
       return { error: error.message };
-    }
-    
+    } 
   }
 };
