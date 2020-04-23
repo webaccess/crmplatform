@@ -24,6 +24,13 @@ function Contacttag() {
           query: {},
         };
         break;
+        case "create":
+        methodParams = {
+          originalUrl: "/crm-plugin/contacttags",
+          request: { body: {} },
+          params: {},
+        };
+        break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/contacttags",

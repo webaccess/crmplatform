@@ -9,6 +9,14 @@
       }
     },
     {
+      "method": "PUT",
+      "path": "/contacttags/:id",
+      "handler": "contacttag.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "DELETE",
       "path": "/contacttags/:id",
       "handler": "contacttag.delete",

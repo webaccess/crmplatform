@@ -40,6 +40,13 @@ module.exports = {
         entity = await strapi
           .query("tag", "crm-plugin")
           .update({ id }, ctx.request.body);
+          if(ctx.request.body.contact){
+            let contacttagDetails = {tag: entity.id, contact: ctx.request.body.contact}
+            console.log("Update", contacttagDetails)
+           contacttagEntry = await strapi
+          .query("contacttag", "crm-plugin")
+          .update({ tag:ctx.params.id },contacttagDetails);  
+          }
         return sanitizeEntity(entity, {
           model: strapi.plugins["crm-plugin"].models["tag"],
         });
