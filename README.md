@@ -30,6 +30,20 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
 - then clone project using below command
 
   `git clone https://github.com/webaccess/crmplatform.git .`
+  
+- in strapi main project in file /config/hook.json add below data in the root json object
+    
+    ```"crm-plugin-routes-load": { "enabled": true }```
+
+- start script should have environment variable AUTORELOAD set to false in the package.json file of the main project which uses this plugin.sample code below:
+
+  `"scripts": { "develop": "strapi develop", "start": "AUTORELOAD=false strapi start", "build": "strapi build", "strapi": "strapi" },`
+  
+- also, run command
+  `yarn start`
+  before running command
+  `yarn develop`
+  in order to generate routes the crm-plugin.
 
 ## Test case
 
@@ -37,6 +51,11 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
 
   `strapi console`
 
-- then run below code for example to run test case for contact
+- then run below code
+  -- for example to run test case for state
 
-  `strapi.plugins["crm-plugin"].testcases.contact.test.emptyTestcase("find")`
+  `strapi.plugins["crm-plugin"].testcases.state.test.emptyTestcase("find")`
+
+  -- to run all testcases
+
+  `strapi.plugins["crm-plugin"].testcases.index.index()`
