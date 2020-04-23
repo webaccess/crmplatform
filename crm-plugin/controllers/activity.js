@@ -15,7 +15,6 @@ module.exports = {
 
   index: async (ctx) => {
     // Add your own logic here.
-
     // Send 200 `ok`
     ctx.send({
       message: "ok",
@@ -48,8 +47,6 @@ module.exports = {
         activity = await strapi
           .query("activity", "crm-plugin")
           .update({ id }, ctx.request.body);
-          console.log("visha",ctx.request.body)
-
           if(ctx.request.body.contact){
             let activityDetail = {
               activity: activity.id,
@@ -59,7 +56,6 @@ module.exports = {
           .query("activityassignee", "crm-plugin")
           .update({ activity:ctx.params.id },activityDetail);  
           }
-          
         return sanitizeEntity(activity, {
           model: strapi.plugins["crm-plugin"].models["activity"],
         });
