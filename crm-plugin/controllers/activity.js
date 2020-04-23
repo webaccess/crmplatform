@@ -23,10 +23,9 @@ module.exports = {
   },
 
   find: async (ctx) => {
-    // let x = strapi.plugins["crm-plugin"].controllers["state"].find(ctx.query);
-    // console.log("x", x);
     let activity;
     if (ctx.query._q) {
+      console.log("sdfhjdsfhjfdshj", ctx.query._q);
       activity = await strapi.query("activity", "crm-plugin").search(ctx.query);
     } else {
       activity = await strapi.query("activity", "crm-plugin").find(ctx.query);
@@ -49,6 +48,18 @@ module.exports = {
         activity = await strapi
           .query("activity", "crm-plugin")
           .update({ id }, ctx.request.body);
+          console.log("visha",ctx.request.body)
+
+          if(ctx.request.body.contact){
+            let activityDetail = {
+              activity: activity.id,
+              contact: ctx.request.body.contact,
+            };
+            activityassignee = await strapi
+          .query("activityassignee", "crm-plugin")
+          .update({ activity:ctx.params.id },activityDetail);  
+          }
+          
         return sanitizeEntity(activity, {
           model: strapi.plugins["crm-plugin"].models["activity"],
         });
@@ -79,7 +90,6 @@ module.exports = {
     const activity = await strapi
       .query("activity", "crm-plugin")
       .delete(ctx.params);
-
     let actTypeId = activity.activitytype ? activity.activitytype.id : "";
     console.log("orgId", actTypeId);
     if (actTypeId) {
@@ -87,20 +97,14 @@ module.exports = {
         .query(activity.activitytype, "crm-plugin")
         .delete({ id: actTypeId });
       return sanitizeEntity(activity, {
-        model: strapi.plugins["crm-plugin"].models.activity,
+        model: strapi.plugins["crm-plugin"].models["activity"],
       });
     }
-    // const { id } = ctx.params;
-    // try {
-    //   const entity = await strapi
-    //     .query("activity", "crm-plugin")
-    //     .delete({ id });
-    //   return sanitizeEntity(entity, {
-    //     model: strapi.plugins["crm-plugin"].models["activity"],
-    //   });
-    // } catch (error) {
-    //   console.error(error);
-    //   return { error: error.message };
-    // }
+    let entity;
+      entity = await strapi.query("activityassignee", "crm-plugin").delete({ activity:ctx.params.id });
+    return sanitizeEntity(entity,{
+      model: strapi.plugins["crm-plugin"].models["activityassignee"],
+    });
+ b 
   },
 };
