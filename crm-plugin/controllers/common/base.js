@@ -31,7 +31,6 @@ function Base() {
       } else {
         entity = await strapi.query(table, "crm-plugin").find(ctx.query);
       }
-
       return entity.map((ent) =>
         sanitizeEntity(ent, {
           model: strapi.plugins["crm-plugin"].models[table],
@@ -74,6 +73,30 @@ function Base() {
   this.create = async (ctx) => {
     let entity;
     let table = getTable(ctx.originalUrl);
+    var arr = [];
+    let reqVal = [];
+    // console.log("ctx.request.body--------", ctx.request.body);
+    console.log("table-------", table);
+    if (
+      table == "district" ||
+      table == "state" ||
+      table == "activitytype" ||
+      table == "village" ||
+      table == "tag"
+    )
+      reqVal = ["name", "is_active"];
+    if (table == "contact") {
+      reqVal = ["name", "contact_type"];
+    }
+    if (table == "country") {
+      reqVal = ["name", "abbreviation"];
+    }
+     const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      ctx.request.body,
+      reqVal
+    );
+     console.log("result.error",result);
+      if (result.error == "false") {
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
@@ -95,6 +118,9 @@ function Base() {
       console.error(error);
       return { error: error.message };
     }
+  }else{
+    return result.message;
+  }
   };
 
   this.delete = async (ctx) => {
