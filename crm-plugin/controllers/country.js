@@ -4,5 +4,7 @@
 var Base = require("./common/base");
 
 const requiredParams = ["name", "abbreviation"];
-var country = new Base(requiredParams);
+const findOneParams = ["id"];
+
+var country = new Base(requiredParams, findOneParams);
 module.exports = country;

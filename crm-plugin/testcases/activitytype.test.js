@@ -10,12 +10,18 @@ function ActivityType() {
   */
   this.index = async () => {
     var find = await this.emptyTestcase("find");
+    var findOne = await this.reqParamsTestcase("findOne");
+    var count = await this.reqParamsTestcase("count");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqParamsfind = await this.reqParamsTestcase("find");
+    var reqParamsfindOne = await this.reqParamsTestcase("findOne");
+    var reqParamsCount = await this.reqParamsTestcase("count");
     var reqParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
+    var correctParamsfindOne = await this.correctParams("findOne");
+    var correctParamscount = await this.correctParams("count");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
   };
@@ -33,8 +39,26 @@ function ActivityType() {
             return { error: message };
           },
         };
-        break;
 
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/activitytypes",
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
+        methodParams = {
+          originalUrl: "/crm-plugin/activitytypes",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
       case "create":
         methodParams = {
           originalUrl: "/crm-plugin/activitytypes",
@@ -72,6 +96,28 @@ function ActivityType() {
             return { error: message };
           },
         };
+        console.log("Required params test not applicable for find method");
+        console.log("-------------");
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/activitytypes",
+          params: { name: "Volunteering" },
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
+        methodParams = {
+          originalUrl: "/crm-plugin/activitytypes",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        console.log("Required params test not applicable for count method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {
@@ -112,6 +158,28 @@ function ActivityType() {
             return { error: message };
           },
         };
+        console.log("Correct params test not applicable for find method");
+        console.log("-------------");
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/activitytypes",
+          params: { id: 11 },
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
+        methodParams = {
+          originalUrl: "/crm-plugin/activitytypes",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        console.log("Correct params test not applicable for count method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {

@@ -43,14 +43,25 @@ module.exports = {
   },
 
   findOne: async (ctx) => {
-    const { id } = ctx.params;
+    const findOneParams = ["id"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      ctx.params,
+      findOneParams
+    );
     try {
-      const entity = await strapi
-        .query("contact", "crm-plugin")
-        .findOne({ id });
-      return sanitizeEntity(entity, {
-        model: strapi.plugins["crm-plugin"].models["contact"],
-      });
+      if (!result.error) {
+        const { id } = ctx.params;
+        const entity = await strapi
+          .query("contact", "crm-plugin")
+          .findOne({ id });
+        return sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models["contact"],
+        });
+      } else {
+        if (result.error) {
+          return ctx.badRequest(null, result.message);
+        }
+      }
     } catch (error) {
       console.error(error);
       return ctx.badRequest(null, error.message);
@@ -60,11 +71,6 @@ module.exports = {
   create: async (ctx) => {
     let org;
     let contact;
-    const requiredValues = ["name", "contact_type"];
-    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-      ctx.request.body,
-      requiredValues
-    );
     try {
       if (ctx.params.id) {
         let contactDetails = {};
@@ -78,11 +84,11 @@ module.exports = {
           .query("contact", "crm-plugin")
           .update(ctx.params, ctx.request.body);
       } else {
-        // const requiredValues = ["name", "contact_type"];
-        // const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-        //   ctx.request.body,
-        //   requiredValues
-        // );
+        const requiredValues = ["name", "contact_type"];
+        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+          ctx.request.body,
+          requiredValues
+        );
         if (result.error == true) {
           return ctx.badRequest(null, result.message);
         }

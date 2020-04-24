@@ -10,12 +10,18 @@ function Country() {
   */
   this.index = async () => {
     var find = await this.emptyTestcase("find");
+    var findOne = await this.emptyTestcase("findOne");
+    var count = await this.emptyTestcase("count");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
-    var reqStateParamsfind = await this.reqParamsTestcase("find");
-    var reqStateParamscreate = await this.reqParamsTestcase("create");
+    var reqParamsfind = await this.reqParamsTestcase("find");
+    var reqParamsfindOne = await this.emptyTestcase("findOne");
+    var reqParamscount = await this.emptyTestcase("count");
+    var reqParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
+    var correctParamsfindOne = await this.emptyTestcase("findOne");
+    var correctParamscount = await this.emptyTestcase("count");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
   };
@@ -23,9 +29,27 @@ function Country() {
   /* this method calls all testcases for empty params check */
   this.emptyTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of country controller
     switch (method) {
       case "find":
+        methodParams = {
+          originalUrl: "/crm-plugin/countries",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/countries",
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           query: {},
@@ -71,12 +95,34 @@ function Country() {
             return { error: message };
           },
         };
+        console.log("Required params test not applicable for find method");
+        console.log("-------------");
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/countries",
+          params: { name: "Maharashtra" },
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
+        methodParams = {
+          originalUrl: "/crm-plugin/countries",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        console.log("Required params test not applicable for count method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           request: {
-            body: { name: "England", is_active: false },
+            body: { is_active: false },
           },
           params: {},
           badRequest: (error, message) => {
@@ -96,8 +142,10 @@ function Country() {
     }
     return await testcase.test("country", method, methodParams);
   };
+
   /* this method calls all testcases for correct params check */
   this.correctParams = async (method) => {
+    console.log("----In country CorrectParamsTestcase------");
     let methodParams = {};
     //this switch case needs to handle all methods of country controller
     switch (method) {
@@ -109,6 +157,28 @@ function Country() {
             return { error: message };
           },
         };
+        console.log("Correct params test not applicable for find method");
+        console.log("-------------");
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/countries",
+          params: { id: 11 },
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
+        methodParams = {
+          originalUrl: "/crm-plugin/countries",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        console.log("Correct params test not applicable for count method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {

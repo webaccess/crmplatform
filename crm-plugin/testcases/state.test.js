@@ -14,10 +14,10 @@ function State() {
     var count = await this.emptyTestcase("count");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
-    var reqStateParamsfind = await this.reqParamsTestcase("find");
-    var reqStateParamsfindOne = await this.reqParamsTestcase("findOne");
-    var reqStateParamsCount = await this.reqParamsTestcase("count");
-    var reqStateParamscreate = await this.reqParamsTestcase("create");
+    var reqParamsfind = await this.reqParamsTestcase("find");
+    var reqParamsfindOne = await this.reqParamsTestcase("findOne");
+    var reqParamsCount = await this.reqParamsTestcase("count");
+    var reqParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
     var correctParamsfindOne = await this.correctParams("findOne");
@@ -95,7 +95,7 @@ function State() {
             return { error: message };
           },
         };
-        console.log("Reqired params test not applicable for find method");
+        console.log("Required params test not applicable for find method");
         console.log("-------------");
         break;
       case "findOne":
@@ -115,7 +115,7 @@ function State() {
             return { error: message };
           },
         };
-        console.log("Reqired params test not applicable for count method");
+        console.log("Required params test not applicable for count method");
         console.log("-------------");
         break;
       case "create":
@@ -157,6 +157,8 @@ function State() {
             return { error: message };
           },
         };
+        console.log("Correct params test not applicable for find method");
+        console.log("-------------");
         break;
       case "findOne":
         methodParams = {
