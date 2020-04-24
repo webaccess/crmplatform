@@ -26,6 +26,9 @@ function State() {
         methodParams = {
           originalUrl: "/crm-plugin/states",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -33,12 +36,18 @@ function State() {
           originalUrl: "/crm-plugin/states",
           request: { body: {} },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/states",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
