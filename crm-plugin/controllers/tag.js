@@ -60,7 +60,6 @@ module.exports = {
   create: async (ctx) => {
     let entity;
     let contacttagEntry;
-    if (result.error == "false") {
     try {
       if (ctx.params.id) {
          if(ctx.request.body.contact){
@@ -105,9 +104,7 @@ module.exports = {
       console.error(error);
        return ctx.badRequest(null, error.message);
     }
-  }else{
-    return result.message
-  }
+  
   },
 
   delete: async (ctx) => {

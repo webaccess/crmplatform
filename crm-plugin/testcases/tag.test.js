@@ -12,25 +12,26 @@ function Tag() {
     var find = await this.emptyTestcase("find");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
-    var reqParamsfind = await this.reqParamsTestcase("find");
-    var reqParamscreate = await this.reqParamsTestcase("create");
+    var reqStateParamsfind = await this.reqParamsTestcase("find");
+    var reqStateParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
   };
 
-    console.log("----In Tags emptyParamsTestcase------");
-    let testCase = "emptyparams"
   /* this method calls all testcases for empty params check */
-  this.emptyTestcase = async (method,testCase) => {
+  this.emptyTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of tag controller
+    //this switch case needs to handle all methods of state controller
     switch (method) {
       case "find":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -38,60 +39,77 @@ function Tag() {
           originalUrl: "/crm-plugin/tags",
           request: { body: {} },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
     return await testcase.test("tag", method, methodParams);
   };
-   testCase = "requiredParams"
+
   /* this method calls all testcases for required params check */
-  this.reqParamsTestcase = async (method,testCase) => {
-    console.log("----In Tags reqParamsTestcase------");
+  this.reqParamsTestcase = async (method) => {
+    console.log("----In Tag reqParamsTestcase------");
     let methodParams = {};
-    //this switch case needs to handle all methods of contact controller
+    //this switch case needs to handle all methods of state controller
     switch (method) {
       case "find":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
-        console.log("Find is not applicable for required parameters.");
         break;
       case "create":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           request: {
-            body: { is_active: "false" },
+            body: { is_active: false },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
-          params: { },
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
-        console.log("Delete is not applicable for required parameters.");
         break;
     }
     return await testcase.test("tag", method, methodParams);
   };
-   testCase = "Correctparams";
-  this.correctParams = async (method,testCase) => {
+
+  /* this method calls all testcases for correct params check */
+  this.correctParams = async (method) => {
     console.log("----In Tags CorrectParamsTestcase------");
     let methodParams = {};
-    //this switch case needs to handle all methods of district controller
+    //this switch case needs to handle all methods of states controller
     switch (method) {
       case "find":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -99,19 +117,25 @@ function Tag() {
           originalUrl: "/crm-plugin/tags",
           request: {
             body: {
-              name: "Sangli",
-              is_active: "true",
-              description: "Test description",
-              contact: "5"
+              name: "Maharashtra",
+              is_active: true,
+              abbreviation: "MH",
+              identifier: "MH",
             },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
