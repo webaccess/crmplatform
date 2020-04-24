@@ -15,6 +15,9 @@ function State() {
     var reqStateParamsfind = await this.reqParamsTestcase("find");
     var reqStateParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
+    var correctParamsfind = await this.correctParams("find");
+    var correctParamscreate = await this.correctParams("create");
+    var correctParamsdelete = await this.correctParams("delete");
   };
 
   /* this method calls all testcases for empty params check */
@@ -74,6 +77,51 @@ function State() {
           originalUrl: "/crm-plugin/states",
           request: {
             body: { is_active: false },
+          },
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "delete":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+    }
+    return await testcase.test("state", method, methodParams);
+  };
+
+  /* this method calls all testcases for correct params check */
+  this.correctParams = async (method) => {
+    console.log("----In states CorrectParamsTestcase------");
+    let methodParams = {};
+    //this switch case needs to handle all methods of states controller
+    switch (method) {
+      case "find":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "create":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          request: {
+            body: {
+              name: "Maharashtra",
+              is_active: true,
+              abbreviation: "MH",
+              identifier: "MH",
+            },
           },
           params: {},
           badRequest: (error, message) => {

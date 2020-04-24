@@ -77,7 +77,7 @@ function District() {
         methodParams = {
           originalUrl: "/crm-plugin/districts",
           request: {
-            body: { name: "Ankita", is_active: "false" },
+            body: { is_active: false },
           },
           params: {},
           badRequest: (error, message) => {

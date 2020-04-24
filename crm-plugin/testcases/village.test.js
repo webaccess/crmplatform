@@ -15,6 +15,9 @@ function Village() {
     var reqParamsfind = await this.reqParamsTestcase("find");
     var reqParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
+    var correctParamsfind = await this.correctParams("find");
+    var correctParamscreate = await this.correctParams("create");
+    var correctParamsdelete = await this.correctParams("delete");
   };
 
   /* this method calls all testcases for empty params check */
@@ -74,6 +77,52 @@ function Village() {
           originalUrl: "/crm-plugin/villages",
           request: {
             body: { is_active: false },
+          },
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "delete":
+        methodParams = {
+          originalUrl: "/crm-plugin/villages",
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+    }
+
+    return await testcase.test("village", method, methodParams);
+  };
+
+  /* this method calls all testcases for correct params check */
+  this.correctParams = async (method) => {
+    console.log("----In Village CorrectParamsTestcase------");
+    let methodParams = {};
+    //this switch case needs to handle all methods of villages controller
+    switch (method) {
+      case "find":
+        methodParams = {
+          originalUrl: "/crm-plugin/villages",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "create":
+        methodParams = {
+          originalUrl: "/crm-plugin/villages",
+          request: {
+            body: {
+              name: "Hivre",
+              abbreviation: "Hivre",
+              identifier: "Hivre",
+              is_active: true,
+            },
           },
           params: {},
           badRequest: (error, message) => {
