@@ -91,14 +91,12 @@ module.exports = {
         entity = await strapi
           .query("tag", "crm-plugin")
           .create(ctx.request.body);
-           console.log("Body",ctx.request.body);
           if(ctx.request.body.contact){
             let contacttagDetails = {tag: entity.id, contact: ctx.request.body.contact}
            contacttagEntry = await strapi
           .query("contacttag", "crm-plugin")
           .create(contacttagDetails);  
           }
-          console.log("jhsdhjdsfdhfj",contacttagEntry)
         return sanitizeEntity(entity, {
           model: strapi.plugins["crm-plugin"].models["tag"],
         });
