@@ -18,12 +18,14 @@
       "type": "text"
     },
     "is_active": {
-      "type": "boolean"
+      "type": "boolean",
+      "required": true,
+      "default": false
     },
     "contacttag": {
-      "via": "tag",
       "plugin": "crm-plugin",
-      "model": "contacttag"
+      "model": "contacttag",
+      "via": "tag"
     }
   }
 }

@@ -15,9 +15,9 @@
       "via": "contacttag"
     },
     "tag": {
+      "via": "contacttag",
       "plugin": "crm-plugin",
-      "model": "tag",
-      "via": "contacttag"
+      "model": "tag"
     }
   }
 }
