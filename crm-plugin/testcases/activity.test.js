@@ -4,7 +4,7 @@
 var Testcase = require("./common/testcase");
 
 var testcase = new Testcase();
-function State() {
+function Activity() {
   /*this method calls all testcases
    this method calls all testcase methods
   */
@@ -23,6 +23,9 @@ function State() {
         methodParams = {
           originalUrl: "/crm-plugin/activities",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -30,12 +33,18 @@ function State() {
           originalUrl: "/crm-plugin/activities",
           request: { body: {} },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/activities",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
@@ -43,4 +52,4 @@ function State() {
   };
 }
 
-module.exports = State;
+module.exports = Activity;
