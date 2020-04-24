@@ -5,15 +5,24 @@
  *
  */
 
-import React from 'react';
-import { Switch, Route } from 'react-router-dom';
-import { NotFound } from 'strapi-helper-plugin';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import { NotFound } from "strapi-helper-plugin";
 // Utils
-import pluginId from '../../pluginId';
+import pluginId from "../../pluginId";
 // Containers
-import HomePage from '../HomePage';
+import HomePage from "../HomePage";
 
+import routeSaga from "../HomePage/saga";
+import { sagaMiddleware, store } from "../../utils/store";
+
+console.log("in app");
 const App = () => {
+  // then run the saga
+  sagaMiddleware.run(routeSaga);
+  store.dispatch({
+    type: "ROUTE_FETCH_REQUESTED",
+  });
   return (
     <div>
       <Switch>

@@ -27,7 +27,7 @@ function checkParams(values, requiredValues) {
           errrorType: "RequiredParamsMissing",
           message: "Required Parameters are missing",
         };
-        return result;
+        return;
       }
     });
     return result;
