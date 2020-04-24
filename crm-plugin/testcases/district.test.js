@@ -50,7 +50,7 @@ function District() {
 
   /* this method calls all testcases for required params check */
   this.reqParamsTestcase = async (method) => {
-    console.log("----In Village reqParamsTestcase------");
+    console.log("----In district reqParamsTestcase------");
     let methodParams = {};
     //this switch case needs to handle all methods of district controller
     switch (method) {

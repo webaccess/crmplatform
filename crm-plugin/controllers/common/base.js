@@ -15,7 +15,8 @@ function getTable(url) {
   return table;
 }
 
-function Base() {
+function Base(requiredValues = []) {
+  this.requiredValues = requiredValues;
   /**
    * Default action.
    *
@@ -26,6 +27,7 @@ function Base() {
     let table = getTable(ctx.originalUrl);
     try {
       let entity;
+
       if (ctx.query._q) {
         entity = await strapi.query(table, "crm-plugin").search(ctx.query);
       } else {
@@ -39,7 +41,7 @@ function Base() {
       );
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 
@@ -53,7 +55,7 @@ function Base() {
       });
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 
@@ -67,64 +69,42 @@ function Base() {
       return strapi.query(table, "crm-plugin").count(ctx.query);
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 
   this.create = async (ctx) => {
     let entity;
     let table = getTable(ctx.originalUrl);
-    var arr = [];
-    for (var i = 0; i < ctx.request.body.length; i++) {
-      arr.push(ctx.request.body.length[i]);
-    }
-    console.log("array-----", arr);
-    let reqVal = [];
-    // console.log("ctx.request.body--------", ctx.request.body);
-    console.log("table-------", table);
-    if (
-      table == "district" ||
-      table == "state" ||
-      table == "activitytype" ||
-      table == "village"
-    )
-      reqVal = ["name"];
-    if (table == "contact") {
-      reqVal = ["name", "contact_type"];
-    }
-    if (table == "country") {
-      reqVal = ["name", "abbreviation"];
-    }
-    //calls service function to validate Params
-    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-      ctx.request.body,
-      reqVal
-    );
-    // console.log("result------", result);
-    if (result.error == "false") {
-      try {
-        if (ctx.params.id) {
-          const { id } = ctx.params;
-          entity = await strapi
-            .query(table, "crm-plugin")
-            .update({ id }, ctx.request.body);
-          return sanitizeEntity(entity, {
-            model: strapi.plugins["crm-plugin"].models[table],
-          });
-        } else {
-          entity = await strapi
-            .query(table, "crm-plugin")
-            .create(ctx.request.body);
-          return sanitizeEntity(entity, {
-            model: strapi.plugins["crm-plugin"].models[table],
-          });
+
+    try {
+      if (ctx.params.id) {
+        const { id } = ctx.params;
+        entity = await strapi
+          .query(table, "crm-plugin")
+          .update({ id }, ctx.request.body);
+        return sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models[table],
+        });
+      } else {
+        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+          ctx.request.body,
+          this.requiredValues
+        );
+        if (result.error) {
+          return ctx.badRequest(null, result.message);
         }
-      } catch (error) {
-        console.error(error);
-        return { error: error.message };
+
+        entity = await strapi
+          .query(table, "crm-plugin")
+          .create(ctx.request.body);
+        return sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models[table],
+        });
       }
-    } else {
-      return result.errorType, result.message;
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
     }
   };
 
@@ -138,7 +118,7 @@ function Base() {
       });
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 }

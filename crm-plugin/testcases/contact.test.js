@@ -46,7 +46,7 @@ function Contact() {
   this.index = async () => {
     var reqParamsfind = await this.reqParamsTestcase("find");
     var reqParamscreate = await this.reqParamsTestcase("create");
-    // var reqParamsdelete = await this.reqParamsTestcase("delete");
+    var reqParamsdelete = await this.reqParamsTestcase("delete");
   };
 
   /* this method calls all testcases for empty params check */

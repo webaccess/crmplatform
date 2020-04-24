@@ -3,5 +3,6 @@
 
 var Base = require("./common/base");
 
-var country = new Base();
+const requiredParams = ["name", "abbreviation"];
+var country = new Base(requiredParams);
 module.exports = country;

@@ -45,7 +45,7 @@ function Village() {
     return await testcase.test("village", method, methodParams);
   };
 
-  /* this method calls all testcases for empty params check */
+  /* this method calls all testcases for required params check */
   this.reqParamsTestcase = async (method) => {
     console.log("----In Village reqParamsTestcase------");
     let methodParams = {};
@@ -69,7 +69,7 @@ function Village() {
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/villages",
-          params: { id: 9 },
+          params: {},
         };
         break;
     }
