@@ -1,0 +1,12 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/generateRoutes",
+      "handler": "crmplugin.generateRoutes",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}
