@@ -13,6 +13,9 @@ function Contact() {
     var find = await this.emptyTestcase("find");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
+    var reqParamsfind = await this.reqParamsTestcase("find");
+    var reqParamscreate = await this.reqParamsTestcase("create");
+    var reqParamsdelete = await this.reqParamsTestcase("delete");
   };
 
   /* this method calls all testcases for empty params check */
@@ -31,6 +34,45 @@ function Contact() {
       case "create":
         methodParams = {
           request: { body: {} },
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "delete":
+        methodParams = {
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+    }
+    return await testcase.test("contact", method, methodParams);
+  };
+
+  /* this method calls all testcases for required params check */
+  this.reqParamsTestcase = async (method) => {
+    let methodParams = {};
+    //this switch case needs to handle all methods of contact controller
+    switch (method) {
+      case "find":
+        methodParams = {
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        console.log("Required params test not applicable for find method");
+        console.log("-------------");
+        return;
+        break;
+      case "create":
+        methodParams = {
+          request: {
+            body: { contact_type: "Individual" },
+          },
           params: {},
           badRequest: (error, message) => {
             return { error: message };

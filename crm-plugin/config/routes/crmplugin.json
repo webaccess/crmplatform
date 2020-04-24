@@ -5,7 +5,7 @@
       "path": "/generateRoutes",
       "handler": "crmplugin.generateRoutes",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     }
   ]
