@@ -18,12 +18,12 @@ module.exports = {
     try {
       strapi.plugins["crm-plugin"].services.routes.generateRoutes(false);
       // Send 200 `ok`
-      ctx.send({
+      return ctx.send({
         error: false,
         message: "ok",
       });
     } catch (error) {
-      ctx.badRequest(null, err);
+      return ctx.badRequest(null, error.message);
     }
   },
 };
