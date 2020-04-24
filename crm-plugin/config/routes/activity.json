@@ -19,7 +19,7 @@
     {
       "method": "GET",
       "path": "/activities/:id",
-      "handler": "activity.find",
+      "handler": "activity.findOne",
       "config": {
         "policies": []
       }

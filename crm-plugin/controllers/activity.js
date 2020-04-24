@@ -23,95 +23,125 @@ module.exports = {
 
   find: async (ctx) => {
     let activity;
-    if (ctx.query._q) {
-      console.log("sdfhjdsfhjfdshj", ctx.query._q);
-      activity = await strapi.query("activity", "crm-plugin").search(ctx.query);
-    } else {
-      activity = await strapi.query("activity", "crm-plugin").find(ctx.query);
+    try {
+      if (ctx.query._q) {
+        activity = await strapi
+          .query("activity", "crm-plugin")
+          .search(ctx.query);
+      } else {
+        activity = await strapi.query("activity", "crm-plugin").find(ctx.query);
+      }
+      return activity.map((entity) =>
+        sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models["activity"],
+        })
+      );
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
     }
+  },
 
-    return activity.map((entity) =>
-      sanitizeEntity(entity, {
+  findOne: async (ctx) => {
+    const { id } = ctx.params;
+    try {
+      const entity = await strapi
+        .query("activity", "crm-plugin")
+        .findOne({ id });
+      return sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["activity"],
-      })
-    );
+      });
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
+    }
   },
 
   create: async (ctx) => {
     let actType;
     let activityassignee;
     let activity;
-    const demoParams = {"name":"name","is_active": "true"}
-    const reqVal = ["name","is_active"];
+    const demoParams = {
+      title: "name",
+      start_datetime: "2020-04-14T06:30:00.000Z",
+      end_datetime: "2020-04-10T06:30:00.000Z",
+    };
+    const reqVal = ["title"];
     const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
       ctx.request.body,
-      reqVal,
+      reqVal
     );
     // console.log("result------", result);
     if (result.error == "false") {
-    try {
-      if (ctx.params.id) {
-        const { id } = ctx.params;
-        activity = await strapi
-          .query("activity", "crm-plugin")
-          .update({ id }, ctx.request.body);
-          if(ctx.request.body.contact){
+      try {
+        if (ctx.params.id) {
+          const { id } = ctx.params;
+          activity = await strapi
+            .query("activity", "crm-plugin")
+            .update({ id }, ctx.request.body);
+          if (ctx.request.body.contact) {
             let activityDetail = {
               activity: activity.id,
               contact: ctx.request.body.contact,
             };
             activityassignee = await strapi
-          .query("activityassignee", "crm-plugin")
-          .update({ activity:ctx.params.id },activityDetail);  
+              .query("activityassignee", "crm-plugin")
+              .update({ activity: ctx.params.id }, activityDetail);
           }
-        return sanitizeEntity(activity, {
-          model: strapi.plugins["crm-plugin"].models["activity"],
-        });
-      } else {
-        activity = await strapi
-          .query("activity", "crm-plugin")
-          .create(ctx.request.body);
-        if (ctx.request.body.contact) {
-          let activityDetail = {
-            activity: activity.id,
-            contact: ctx.request.body.contact,
-          };
-          activityassignee = await strapi
-            .query("activityassignee", "crm-plugin")
-            .create(activityDetail);
+          return sanitizeEntity(activity, {
+            model: strapi.plugins["crm-plugin"].models["activity"],
+          });
+        } else {
+          activity = await strapi
+            .query("activity", "crm-plugin")
+            .create(ctx.request.body);
+          if (ctx.request.body.contact) {
+            let activityDetail = {
+              activity: activity.id,
+              contact: ctx.request.body.contact,
+            };
+            activityassignee = await strapi
+              .query("activityassignee", "crm-plugin")
+              .create(activityDetail);
+          }
+          return sanitizeEntity(activity, {
+            model: strapi.plugins["crm-plugin"].models["activity"],
+          });
         }
-        return sanitizeEntity(activity, {
-          model: strapi.plugins["crm-plugin"].models["activity"],
-        });
+      } catch (error) {
+        console.error(error);
+        return ctx.badRequest(null, error.message);
       }
-    } catch (error) {
-      console.error(error);
-      return { error: error.message };
+    } else {
+      return result.message;
     }
-  }else{
-    return result.message
-  }
   },
 
   delete: async (ctx) => {
-    const activity = await strapi
-      .query("activity", "crm-plugin")
-      .delete(ctx.params);
-    let actTypeId = activity.activitytype ? activity.activitytype.id : "";
-    console.log("orgId", actTypeId);
-    if (actTypeId) {
-      await strapi
-        .query(activity.activitytype, "crm-plugin")
-        .delete({ id: actTypeId });
-      return sanitizeEntity(activity, {
-        model: strapi.plugins["crm-plugin"].models["activity"],
+    try {
+      const activity = await strapi
+        .query("activity", "crm-plugin")
+        .delete(ctx.params);
+      // let actTypeId = activity.activitytype ? activity.activitytype.id : "";
+      // console.log("orgId", actTypeId);
+      // if (actTypeId) {
+      //   await strapi
+      //     .query(activity.activitytype, "crm-plugin")
+      //     .delete({ id: actTypeId });
+      //   return sanitizeEntity(activity, {
+      //     model: strapi.plugins["crm-plugin"].models["activity"],
+      //   });
+      // }
+      let entity;
+      entity = await strapi
+        .query("activityassignee", "crm-plugin")
+        .delete({ activity: ctx.params.id });
+      return sanitizeEntity(entity, {
+        model: strapi.plugins["crm-plugin"].models["activityassignee"],
       });
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
     }
-    let entity;
-      entity = await strapi.query("activityassignee", "crm-plugin").delete({ activity:ctx.params.id });
-    return sanitizeEntity(entity,{
-      model: strapi.plugins["crm-plugin"].models["activityassignee"],
-    });
- b 
   },
 };
