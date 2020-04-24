@@ -5,7 +5,7 @@ function checkParams(values, requiredValues) {
   let result = {
     error: false,
     errrorType: "",
-    message: "",
+    message: "No errors found",
   };
   const keys = Object.keys(values);
   //Checks if params are empty

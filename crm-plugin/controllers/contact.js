@@ -60,6 +60,11 @@ module.exports = {
   create: async (ctx) => {
     let org;
     let contact;
+    const requiredValues = ["name", "contact_type"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      ctx.request.body,
+      requiredValues
+    );
     try {
       if (ctx.params.id) {
         let contactDetails = {};
@@ -73,12 +78,12 @@ module.exports = {
           .query("contact", "crm-plugin")
           .update(ctx.params, ctx.request.body);
       } else {
-        const requiredValues = ["name", "contact_type"];
-        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-          ctx.request.body,
-          requiredValues
-        );
-        if (result.error) {
+        // const requiredValues = ["name", "contact_type"];
+        // const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+        //   ctx.request.body,
+        //   requiredValues
+        // );
+        if (result.error == true) {
           return ctx.badRequest(null, result.message);
         }
         //create org

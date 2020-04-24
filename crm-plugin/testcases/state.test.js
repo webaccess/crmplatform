@@ -10,12 +10,18 @@ function State() {
   */
   this.index = async () => {
     var find = await this.emptyTestcase("find");
+    var findOne = await this.emptyTestcase("findOne");
+    var count = await this.emptyTestcase("count");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqStateParamsfind = await this.reqParamsTestcase("find");
+    var reqStateParamsfindOne = await this.reqParamsTestcase("findOne");
+    var reqStateParamsCount = await this.reqParamsTestcase("count");
     var reqStateParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
+    var correctParamsfindOne = await this.correctParams("findOne");
+    var correctParamsCount = await this.correctParams("count");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
   };
@@ -26,6 +32,24 @@ function State() {
     //this switch case needs to handle all methods of state controller
     switch (method) {
       case "find":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
         methodParams = {
           originalUrl: "/crm-plugin/states",
           query: {},
@@ -71,6 +95,28 @@ function State() {
             return { error: message };
           },
         };
+        console.log("Reqired params test not applicable for find method");
+        console.log("-------------");
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          params: { name: "Maharashtra" },
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        console.log("Reqired params test not applicable for count method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {
@@ -111,6 +157,26 @@ function State() {
             return { error: message };
           },
         };
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          params: { id: 11 },
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "count":
+        methodParams = {
+          originalUrl: "/crm-plugin/states",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        console.log("Correct params test not applicable for count method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {

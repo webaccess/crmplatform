@@ -63,8 +63,12 @@ function Contact() {
       case "find":
         methodParams = {
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
-        return "FIND NOT FOUND!!!";
+        console.log("Required params test not applicable for find method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {
@@ -72,12 +76,20 @@ function Contact() {
             body: { contact_type: "Individual" },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
+        console.log("Required params test not applicable for delete method");
+        console.log("-------------");
         break;
     }
     return await testcase.test("contact", method, methodParams);
@@ -91,27 +103,37 @@ function Contact() {
       case "find":
         methodParams = {
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
+        console.log("Correct params test not applicable for find method");
+        console.log("-------------");
         break;
       case "create":
         methodParams = {
           request: {
             body: {
-              name: "Ankita",
+              name: "AnkitaS",
               contact_type: "Individual",
-              individual: {
-                first_name: "Ankita",
-                last_name: "Shinde",
-              },
+              individual: 11,
             },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
+        console.log("Correct params test not applicable for find method");
+        console.log("-------------");
         break;
     }
     return await testcase.test("contact", method, methodParams);

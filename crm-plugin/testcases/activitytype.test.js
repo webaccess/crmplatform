@@ -34,6 +34,7 @@ function ActivityType() {
           },
         };
         break;
+
       case "create":
         methodParams = {
           originalUrl: "/crm-plugin/activitytypes",
