@@ -1,11 +1,11 @@
 "use strict";
-
 /**
  * crm-plugin.js controller
  *
  * @description: A set of functions called "actions" of the `crm-plugin` plugin.
  */
 const { sanitizeEntity } = require("strapi-utils");
+
 module.exports = {
   /**
    * Default action.
@@ -23,8 +23,15 @@ module.exports = {
   },
 
   find: async (ctx) => {
+    //calls service function to validate Params
+    // const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+    //   param,
+    //   reqParam
+    // );
+
     //  let x = strapi.plugins["crm-plugin"].controllers["state"].find(ctx.query);
     console.log("ctx", ctx.query);
+
     let contact;
     if (ctx.query._q) {
       contact = await strapi.query("contact", "crm-plugin").search(ctx.query);
