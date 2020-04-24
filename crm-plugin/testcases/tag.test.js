@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 "use strict";
 /* jshint node:true */
 
@@ -18,12 +17,12 @@ function Tag() {
   /* this method calls all testcases for empty params check */
   this.emptyTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of contact controller
+    //this switch case needs to handle all methods of tag controller
     switch (method) {
       case "find":
         methodParams = {
-        	originalUrl: "/crm-plugin/tags",
-        	query: {},
+          originalUrl: "/crm-plugin/tags",
+          query: {},
         };
         break;
       case "create":
@@ -35,8 +34,45 @@ function Tag() {
         break;
       case "delete":
         methodParams = {
-        	  originalUrl: "/crm-plugin/tags",
+          originalUrl: "/crm-plugin/tags",
           params: {},
+        };
+        break;
+    }
+    return await testcase.test("tag", method, methodParams);
+  };
+
+  this.index = async () => {
+    var reqParamsfind = await this.reqParamsTestcase("find");
+    var reqParamscreate = await this.reqParamsTestcase("create");
+    var reqParamsdelete = await this.reqParamsTestcase("delete");
+  };
+
+  /* this method calls all testcases for empty params check */
+  this.reqParamsTestcase = async (method) => {
+    console.log("----In Tags reqParamsTestcase------");
+    let methodParams = {};
+    //this switch case needs to handle all methods of contact controller
+    switch (method) {
+      case "find":
+        methodParams = {
+          originalUrl: "/crm-plugin/tags",
+          query: {},
+        };
+        break;
+      case "create":
+        methodParams = {
+          originalUrl: "/crm-plugin/tags",
+          request: {
+            body: { is_active: "false" },
+          },
+          params: {},
+        };
+        break;
+      case "delete":
+        methodParams = {
+          originalUrl: "/crm-plugin/tags",
+          params: { id: 10 },
         };
         break;
     }
