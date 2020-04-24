@@ -33,6 +33,7 @@ function Base(requiredValues = []) {
       } else {
         entity = await strapi.query(table, "crm-plugin").find(ctx.query);
       }
+      
       return entity.map((ent) =>
         sanitizeEntity(ent, {
           model: strapi.plugins["crm-plugin"].models[table],

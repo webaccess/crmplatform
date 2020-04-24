@@ -23,17 +23,51 @@ module.exports = {
   },
 
   find: async (ctx) => {
-    let tag = await strapi.query("tag", "crm-plugin").find(ctx.query);
+  try {
+     let tag;
+     if (ctx.query._q) {
+        tag = await strapi.query("tag", "crm-plugin").search(ctx.query);
+      } else {
+        tag = await strapi.query("tag", "crm-plugin").find(ctx.query);
+      }
+      
     return tag.map((entity) =>
       sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["tag"],
       })
     );
+      } catch (error) {
+      console.error(error);
+     return ctx.badRequest(null, error.message);
+    }
+  },
+
+   findOne: async (ctx) => {
+    const { id } = ctx.params;
+    try {
+      const entity = await strapi
+        .query("tag", "crm-plugin")
+        .findOne({ id });
+      return sanitizeEntity(entity, {
+        model: strapi.plugins["crm-plugin"].models["tag"],
+      });
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
+    }
   },
 
   create: async (ctx) => {
     let entity;
     let contacttagEntry;
+    const demoParams = {"name":"name","is_active": "true"}
+    const reqVal = ["name","is_active"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      ctx.request.body,
+      reqVal,
+    );
+    // console.log("result------", result);
+    if (result.error == "false") {
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
@@ -67,8 +101,11 @@ module.exports = {
       }
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+       return ctx.badRequest(null, error.message);
     }
+  }else{
+    return result.message
+  }
   },
 
   delete: async (ctx) => {
@@ -87,7 +124,7 @@ module.exports = {
       });
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+     return ctx.badRequest(null, error.message);
     } 
   }
 };
