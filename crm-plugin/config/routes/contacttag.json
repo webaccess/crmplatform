@@ -9,6 +9,30 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/contacttags/count",
+      "handler": "contacttag.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/contacttags/:id",
+      "handler": "contacttag.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/contacttags",
+      "handler": "contacttag.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/contacttags/:id",
       "handler": "contacttag.create",
