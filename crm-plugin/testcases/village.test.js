@@ -12,6 +12,9 @@ function Village() {
     var find = await this.emptyTestcase("find");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
+    var reqParamsfind = await this.reqParamsTestcase("find");
+    var reqParamscreate = await this.reqParamsTestcase("create");
+    var reqParamsdelete = await this.reqParamsTestcase("delete");
   };
 
   /* this method calls all testcases for empty params check */
@@ -40,12 +43,6 @@ function Village() {
         break;
     }
     return await testcase.test("village", method, methodParams);
-  };
-
-  this.index = async () => {
-    var reqParamsfind = await this.reqParamsTestcase("find");
-    var reqParamscreate = await this.reqParamsTestcase("create");
-    var reqParamsdelete = await this.reqParamsTestcase("delete");
   };
 
   /* this method calls all testcases for empty params check */

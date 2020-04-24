@@ -74,15 +74,33 @@ function Base() {
   this.create = async (ctx) => {
     let entity;
     let table = getTable(ctx.originalUrl);
-    console.log("ctx.request.body--------", ctx.request.body);
-    // const param = ctx.request.body;
-    const reqVal = ["name"];
+    var arr = [];
+    for (var i = 0; i < ctx.request.body.length; i++) {
+      arr.push(ctx.request.body.length[i]);
+    }
+    console.log("array-----", arr);
+    let reqVal = [];
+    // console.log("ctx.request.body--------", ctx.request.body);
+    console.log("table-------", table);
+    if (
+      table == "district" ||
+      table == "state" ||
+      table == "activitytype" ||
+      table == "village"
+    )
+      reqVal = ["name"];
+    if (table == "contact") {
+      reqVal = ["name", "contact_type"];
+    }
+    if (table == "country") {
+      reqVal = ["name", "abbreviation"];
+    }
     //calls service function to validate Params
     const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
       ctx.request.body,
       reqVal
     );
-    console.log("result------", result);
+    // console.log("result------", result);
     if (result.error == "false") {
       try {
         if (ctx.params.id) {
