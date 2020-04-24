@@ -20,9 +20,6 @@ console.log("in app");
 const App = () => {
   // then run the saga
   sagaMiddleware.run(routeSaga);
-  store.dispatch({
-    type: "ROUTE_FETCH_REQUESTED",
-  });
   return (
     <div>
       <Switch>

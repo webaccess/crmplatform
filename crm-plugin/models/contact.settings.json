@@ -39,7 +39,8 @@
       "type": "string"
     },
     "contact_type": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "organization": {
       "plugin": "crm-plugin",

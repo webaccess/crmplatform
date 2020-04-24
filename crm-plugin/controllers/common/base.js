@@ -15,7 +15,8 @@ function getTable(url) {
   return table;
 }
 
-function Base() {
+function Base(requiredValues = []) {
+  this.requiredValues = requiredValues;
   /**
    * Default action.
    *
@@ -26,6 +27,7 @@ function Base() {
     let table = getTable(ctx.originalUrl);
     try {
       let entity;
+
       if (ctx.query._q) {
         entity = await strapi.query(table, "crm-plugin").search(ctx.query);
       } else {
@@ -39,7 +41,7 @@ function Base() {
       );
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 
@@ -53,7 +55,7 @@ function Base() {
       });
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 
@@ -67,7 +69,7 @@ function Base() {
       return strapi.query(table, "crm-plugin").count(ctx.query);
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 
@@ -84,6 +86,14 @@ function Base() {
           model: strapi.plugins["crm-plugin"].models[table],
         });
       } else {
+        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+          ctx.request.body,
+          this.requiredValues
+        );
+        if (result.error) {
+          return ctx.badRequest(null, result.message);
+        }
+
         entity = await strapi
           .query(table, "crm-plugin")
           .create(ctx.request.body);
@@ -93,7 +103,7 @@ function Base() {
       }
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 
@@ -107,7 +117,7 @@ function Base() {
       });
     } catch (error) {
       console.error(error);
-      return { error: error.message };
+      return ctx.badRequest(null, error.message);
     }
   };
 }
