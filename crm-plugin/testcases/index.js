@@ -7,7 +7,7 @@ var Activity = require("./activity.test.js");
 
 var state = new State();
 var contact = new Contact();
-var activity = new Actibvity();
+var activity = new Activity();
 module.exports = {
   index: async () => {
     var s = await state.index();

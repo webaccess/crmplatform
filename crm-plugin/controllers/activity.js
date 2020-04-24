@@ -41,6 +41,14 @@ module.exports = {
     let actType;
     let activityassignee;
     let activity;
+    const demoParams = {"name":"name","is_active": "true"}
+    const reqVal = ["name","is_active"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      ctx.request.body,
+      reqVal,
+    );
+    // console.log("result------", result);
+    if (result.error == "false") {
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
@@ -80,6 +88,9 @@ module.exports = {
       console.error(error);
       return { error: error.message };
     }
+  }else{
+    return result.message
+  }
   },
 
   delete: async (ctx) => {
