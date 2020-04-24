@@ -5,7 +5,7 @@
       "path": "/districts",
       "handler": "district.find",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/districts/count",
       "handler": "district.count",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/districts/:id",
       "handler": "district.findOne",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/districts",
       "handler": "district.create",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/districts/:id",
       "handler": "district.create",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/districts/:id",
       "handler": "district.delete",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     }
   ]
