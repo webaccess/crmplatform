@@ -64,7 +64,7 @@ function Country() {
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           request: {
-            body: { name: "England", is_active: "false" },
+            body: { name: "England", is_active: false },
           },
           params: {},
         };

@@ -45,7 +45,7 @@ function ActivityType() {
     return await testcase.test("activitytype", method, methodParams);
   };
 
-  /* this method calls all testcases for empty params check */
+  /* this method calls all testcases for correct params check */
   this.reqParamsTestcase = async (method) => {
     console.log("----In Activity type reqParamsTestcase------");
     let methodParams = {};
@@ -61,7 +61,7 @@ function ActivityType() {
         methodParams = {
           originalUrl: "/crm-plugin/activitytypes",
           request: {
-            body: { is_active: "false" },
+            body: { is_active: false },
           },
           params: {},
         };

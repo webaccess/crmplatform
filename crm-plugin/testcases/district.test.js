@@ -99,7 +99,7 @@ function District() {
           request: {
             body: {
               name: "Sangli",
-              is_active: "true",
+              is_active: true,
               abbreviation: "SA",
               identifier: "SA",
             },

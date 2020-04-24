@@ -70,7 +70,7 @@ function State() {
         methodParams = {
           originalUrl: "/crm-plugin/states",
           request: {
-            body: { is_active: "false" },
+            body: { is_active: false },
           },
           params: {},
         };
