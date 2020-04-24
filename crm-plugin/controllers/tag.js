@@ -118,7 +118,7 @@ module.exports = {
     console.log("orgId", ctx.params);
       entity = await strapi.query("contacttag", "crm-plugin").delete({ tag:ctx.params.id });
     return sanitizeEntity(entity,{
-      model: strapi.plugins["crm-plugin"].models["contacttag"],
+      model: strapi.plugins["crm-plugin"].models["tag"],
     });
     const { id } = ctx.params;
     try {

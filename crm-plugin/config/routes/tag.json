@@ -17,6 +17,14 @@
       }
     },
     {
+      "method": "GET",
+      "path": "/tags/:id",
+      "handler": "tag.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "POST",
       "path": "/tags",
       "handler": "tag.create",
