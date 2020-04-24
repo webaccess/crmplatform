@@ -29,6 +29,9 @@ function District() {
         methodParams = {
           originalUrl: "/crm-plugin/districts",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -36,12 +39,18 @@ function District() {
           originalUrl: "/crm-plugin/districts",
           request: { body: {} },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/districts",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
@@ -58,6 +67,9 @@ function District() {
         methodParams = {
           originalUrl: "/crm-plugin/districts",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         console.log("Required params test not applicable for find method");
         break;
@@ -68,12 +80,18 @@ function District() {
             body: { name: "Ankita", is_active: "false" },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/districts",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         console.log("Required params test not applicable for delete method");
         break;
@@ -91,6 +109,9 @@ function District() {
         methodParams = {
           originalUrl: "/crm-plugin/districts",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -105,12 +126,18 @@ function District() {
             },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/districts",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }

@@ -20,12 +20,15 @@ function Village() {
   /* this method calls all testcases for empty params check */
   this.emptyTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of village controller
     switch (method) {
       case "find":
         methodParams = {
           originalUrl: "/crm-plugin/villages",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -33,12 +36,18 @@ function Village() {
           originalUrl: "/crm-plugin/villages",
           request: { body: {} },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/villages",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
@@ -49,12 +58,15 @@ function Village() {
   this.reqParamsTestcase = async (method) => {
     console.log("----In Village reqParamsTestcase------");
     let methodParams = {};
-    //this switch case needs to handle all methods of contact controller
+    //this switch case needs to handle all methods of village controller
     switch (method) {
       case "find":
         methodParams = {
           originalUrl: "/crm-plugin/villages",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -64,12 +76,18 @@ function Village() {
             body: { is_active: false },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/villages",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }

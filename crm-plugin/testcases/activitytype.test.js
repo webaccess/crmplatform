@@ -20,12 +20,15 @@ function ActivityType() {
   /* this method calls all testcases for empty params check */
   this.emptyTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of activitytype controller
     switch (method) {
       case "find":
         methodParams = {
           originalUrl: "/crm-plugin/activitytypes",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -33,28 +36,37 @@ function ActivityType() {
           originalUrl: "/crm-plugin/activitytypes",
           request: { body: {} },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/activitytypes",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
     return await testcase.test("activitytype", method, methodParams);
   };
 
-  /* this method calls all testcases for correct params check */
+  /* this method calls all testcases for required params check */
   this.reqParamsTestcase = async (method) => {
     console.log("----In Activity type reqParamsTestcase------");
     let methodParams = {};
-    //this switch case needs to handle all methods of contact controller
+    //this switch case needs to handle all methods of activitytype controller
     switch (method) {
       case "find":
         methodParams = {
           originalUrl: "/crm-plugin/activitytypes",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -64,12 +76,18 @@ function ActivityType() {
             body: { is_active: false },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/activitytypes",
-          params: { id: 10 },
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }

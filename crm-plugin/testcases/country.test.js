@@ -29,6 +29,9 @@ function Country() {
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -36,16 +39,22 @@ function Country() {
           originalUrl: "/crm-plugin/countries",
           request: { body: {} },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("country", method, methodParams);
   };
 
   /* this method calls all testcases for required params check */
@@ -58,6 +67,9 @@ function Country() {
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -67,12 +79,18 @@ function Country() {
             body: { name: "England", is_active: false },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
@@ -87,6 +105,9 @@ function Country() {
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "create":
@@ -96,12 +117,18 @@ function Country() {
             body: { name: "England", is_active: "false", abbreviation: "EN" },
           },
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
       case "delete":
         methodParams = {
           originalUrl: "/crm-plugin/countries",
           params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
         };
         break;
     }
