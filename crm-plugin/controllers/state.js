@@ -3,5 +3,6 @@
 
 var Base = require("./common/base");
 
-var state = new Base();
+const requiredParams = ["name"];
+var state = new Base(requiredParams);
 module.exports = state;
