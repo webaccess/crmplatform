@@ -10,6 +10,7 @@ function Tag() {
   */
   this.index = async () => {
     var find = await this.emptyTestcase("find");
+    var findOne = await this.emptyTestcase("findOne");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqStateParamsfind = await this.reqParamsTestcase("find");
@@ -32,6 +33,12 @@ function Tag() {
           badRequest: (error, message) => {
             return { error: message };
           },
+        };
+        break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/tags",
+          query: {},
         };
         break;
       case "create":
@@ -72,6 +79,15 @@ function Tag() {
           },
         };
         break;
+      case "findOne":
+        methodParams = {
+          originalUrl: "/crm-plugin/tags",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
       case "create":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
@@ -104,6 +120,15 @@ function Tag() {
     //this switch case needs to handle all methods of states controller
     switch (method) {
       case "find":
+        methodParams = {
+          originalUrl: "/crm-plugin/tags",
+          query: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+      case "findOne":
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           query: {},

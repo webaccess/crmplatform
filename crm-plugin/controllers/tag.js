@@ -64,7 +64,6 @@ module.exports = {
       if (ctx.params.id) {
          if(ctx.request.body.contact){
             let contacttagDetails = {tag: ctx.params.id, contact: ctx.request.body.contact}
-             console.log("contacttagDetails",contacttagDetails)
             contacttagEntry = await strapi
             .query("contacttag", "crm-plugin")
             .update({ tag:ctx.params.id },contacttagDetails);  
@@ -108,17 +107,12 @@ module.exports = {
   },
 
   delete: async (ctx) => {
-    let entity;
-    let orgId = ctx.params;
-    console.log("orgId", ctx.params);
-      entity = await strapi.query("contacttag", "crm-plugin").delete({ tag:ctx.params.id });
-    return sanitizeEntity(entity,{
-      model: strapi.plugins["crm-plugin"].models["tag"],
-    });
-    const { id } = ctx.params;
     try {
-      const entity = await strapi.query("tag", "crm-plugin").delete({ id });
-      return sanitizeEntity(entity, {
+    let orgId = ctx.params;
+    const entity = await strapi.query("contacttag", "crm-plugin").delete({ tag:ctx.params.id });
+    const { id } = ctx.params;
+      const deleteTag = await strapi.query("tag", "crm-plugin").delete(ctx.params);
+      return sanitizeEntity(deleteTag, {
         model: strapi.plugins["crm-plugin"].models["tag"],
       });
     } catch (error) {
