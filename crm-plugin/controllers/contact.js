@@ -5,7 +5,7 @@
  * @description: A set of functions called "actions" of the `crm-plugin` plugin.
  */
 const { sanitizeEntity } = require("strapi-utils");
-
+const vm = require("vm");
 module.exports = {
   /**
    * Default action.
