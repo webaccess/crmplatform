@@ -3,5 +3,6 @@
 
 var Base = require("./common/base");
 
-var district = new Base();
+const requiredParams = ["name"];
+var district = new Base(requiredParams);
 module.exports = district;

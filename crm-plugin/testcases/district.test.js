@@ -4,17 +4,17 @@
 var Testcase = require("./common/testcase");
 
 var testcase = new Testcase();
-function State() {
+function District() {
   /*this method calls all testcases
    this method calls all testcase methods
   */
   this.index = async () => {
-    console.log("\n\nState Module Test Case");
+    console.log("\n\nDistrict Module Test Case");
     console.log("=============");
     var find = await this.emptyTestcase("find");
+    var create = await this.emptyTestcase("create");
     var findOne = await this.emptyTestcase("findOne");
     var count = await this.emptyTestcase("count");
-    var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqParamsfind = await this.reqParamsTestcase("find");
     var reqParamsfindOne = await this.reqParamsTestcase("findOne");
@@ -35,11 +35,11 @@ function State() {
     let methodParams = {};
     console.log("\nEmpty Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of district controller
     switch (method) {
       case "find":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           query: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -55,7 +55,7 @@ function State() {
         break;
       case "count":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           query: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -64,7 +64,7 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           request: { body: {} },
           params: {},
           badRequest: (error, message) => {
@@ -74,7 +74,7 @@ function State() {
         break;
       case "delete":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           params: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -82,7 +82,7 @@ function State() {
         };
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("district", method, methodParams);
   };
 
   /* this method calls all testcases for required params check */
@@ -90,7 +90,7 @@ function State() {
     let methodParams = {};
     console.log("\nRequired Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of district controller
     switch (method) {
       case "find":
         console.log(
@@ -101,7 +101,7 @@ function State() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
@@ -117,7 +117,7 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           request: {
             body: { is_active: false },
           },
@@ -135,7 +135,7 @@ function State() {
         return;
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("district", method, methodParams);
   };
 
   /* this method calls all testcases for correct params check */
@@ -143,7 +143,7 @@ function State() {
     let methodParams = {};
     console.log("\nCorrect Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of district controller
     switch (method) {
       case "find":
         console.log(
@@ -154,7 +154,7 @@ function State() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
@@ -170,13 +170,13 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/districts",
           request: {
             body: {
-              name: "Maharashtra",
+              name: "Thane",
               is_active: true,
-              abbreviation: "MH",
-              identifier: "MH",
+              abbreviation: "TH",
+              identifier: "TH",
             },
           },
           params: {},
@@ -193,8 +193,8 @@ function State() {
         return;
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("district", method, methodParams);
   };
 }
 
-module.exports = State;
+module.exports = District;
