@@ -43,14 +43,25 @@ module.exports = {
   },
 
   findOne: async (ctx) => {
-    const { id } = ctx.params;
+    const findOneParams = ["id"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      ctx.params,
+      findOneParams
+    );
     try {
-      const entity = await strapi
-        .query("activity", "crm-plugin")
-        .findOne({ id });
-      return sanitizeEntity(entity, {
-        model: strapi.plugins["crm-plugin"].models["activity"],
-      });
+      if (!result.error) {
+        const { id } = ctx.params;
+        const entity = await strapi
+          .query("activity", "crm-plugin")
+          .findOne({ id });
+        return sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models["activity"],
+        });
+      } else {
+        if (result.error) {
+          return ctx.badRequest(null, result.message);
+        }
+      }
     } catch (error) {
       console.error(error);
       return ctx.badRequest(null, error.message);

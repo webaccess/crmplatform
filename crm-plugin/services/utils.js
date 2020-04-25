@@ -1,11 +1,13 @@
 const { isEmpty } = require("lodash");
-result = {
-  error: false,
-  errrorType: "",
-  message: "",
-};
+// var includes = require("lodash.includes");
 
 function checkParams(values, requiredValues) {
+  let result = {
+    error: false,
+    errrorType: "",
+    message: "No errors found",
+  };
+  const keys = Object.keys(values);
   //Checks if params are empty
   if (isEmpty(values)) {
     result = {
