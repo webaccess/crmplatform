@@ -83,11 +83,14 @@ module.exports = {
           activityassignee = await strapi
             .query("activityassignee", "crm-plugin")
             .update({ activity: ctx.params.id }, activityDetail);
+          console.log("Activityassignee", activityassignee);
         }
-        const id = activityassignee.id;
+        const { id } = ctx.params;
+        console.log("{ id }", ctx.params);
         activity = await strapi
           .query("activity", "crm-plugin")
-          .update(id, ctx.request.body);
+          .update({ id }, ctx.request.body);
+        console.log("Activityassignee", activity);
         return sanitizeEntity(activity, {
           model: strapi.plugins["crm-plugin"].models["activity"],
         });
