@@ -10,6 +10,7 @@ function Tag() {
   */
   this.index = async () => {
     var find = await this.emptyTestcase("find");
+    var findOne = await this.emptyTestcase("findOne");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqStateParamsfind = await this.reqParamsTestcase("find");

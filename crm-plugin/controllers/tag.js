@@ -93,7 +93,7 @@ module.exports = {
           model: strapi.plugins["crm-plugin"].models["tag"],
         });
       } else {
-        const reqVal = ["name","is_active"];
+        const reqVal = ["name"];
         const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
           ctx.request.body,
           reqVal
