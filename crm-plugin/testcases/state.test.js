@@ -12,12 +12,6 @@ function State() {
     console.log("\n\nState Module Test Case");
     console.log("=============");
     var find = await this.emptyTestcase("find");
-<<<<<<< HEAD
-    var findOne = await this.emptyTestcase("findOne");
-    var count = await this.emptyTestcase("count");
-    var create = await this.emptyTestcase("create");
-=======
->>>>>>> 2f3f3b5b4c9480b83cf1a50638d15c33ea792eb8
     var findOne = await this.emptyTestcase("findOne");
     var count = await this.emptyTestcase("count");
     var create = await this.emptyTestcase("create");
