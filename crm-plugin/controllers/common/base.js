@@ -47,26 +47,16 @@ function Base(requiredValues = [], findOneParams = []) {
   };
 
   this.findOne = async (ctx) => {
+    const { id } = ctx.params;
     let table = getTable(ctx.originalUrl);
-    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-      ctx.params,
-      findOneParams
-    );
     try {
-      if (!result.error) {
-        const { id } = ctx.params;
-        const entity = await strapi.query(table, "crm-plugin").findOne({ id });
-        return sanitizeEntity(entity, {
-          model: strapi.plugins["crm-plugin"].models[table],
-        });
-      } else {
-        if (result.error) {
-          return ctx.badRequest(null, result.message);
-        }
-      }
+      const entity = await strapi.query(table, "crm-plugin").findOne({ id });
+      return sanitizeEntity(entity, {
+        model: strapi.plugins["crm-plugin"].models[table],
+      });
     } catch (error) {
       console.error(error);
-      return ctx.badRequest(null, result.message);
+      return ctx.badRequest(null, error.message);
     }
   };
 

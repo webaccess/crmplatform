@@ -9,6 +9,8 @@ function Village() {
    this method calls all testcase methods
   */
   this.index = async () => {
+    console.log("\n\nVillage Module Test Case");
+    console.log("=============");
     var find = await this.emptyTestcase("find");
     var findOne = await this.emptyTestcase("findOne");
     var count = await this.emptyTestcase("count");
@@ -24,11 +26,15 @@ function Village() {
     var correctParamsCount = await this.correctParams("count");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
+
+    console.log("=====END=====\n\n");
   };
 
   /* this method calls all testcases for empty params check */
   this.emptyTestcase = async (method) => {
     let methodParams = {};
+    console.log("\nEmpty Params Test Case");
+    console.log("-------------");
     //this switch case needs to handle all methods of village controller
     switch (method) {
       case "find":
@@ -41,13 +47,11 @@ function Village() {
         };
         break;
       case "findOne":
-        methodParams = {
-          originalUrl: "/crm-plugin/villages",
-          params: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
+        console.log(
+          "Empty params test not applicable for method " + method + "!!"
+        );
+        console.log("-------------");
+        return;
         break;
       case "count":
         methodParams = {
@@ -83,40 +87,33 @@ function Village() {
 
   /* this method calls all testcases for required params check */
   this.reqParamsTestcase = async (method) => {
-    console.log("----In Village reqParamsTestcase------");
     let methodParams = {};
+    console.log("\nRequired Params Test Case");
+    console.log("-------------");
     //this switch case needs to handle all methods of village controller
     switch (method) {
       case "find":
-        methodParams = {
-          originalUrl: "/crm-plugin/villages",
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Required params test not applicable for find method");
+        console.log(
+          "Required params test not applicable for method " + method + "!!"
+        );
         console.log("-------------");
+        return;
         break;
       case "findOne":
         methodParams = {
           originalUrl: "/crm-plugin/villages",
-          params: { name: "Maharashtra" },
+          params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
           },
         };
         break;
       case "count":
-        methodParams = {
-          originalUrl: "/crm-plugin/villages",
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Required params test not applicable for count method");
+        console.log(
+          "Required params test not applicable for method " + method + "!!"
+        );
         console.log("-------------");
+        return;
         break;
       case "create":
         methodParams = {
@@ -131,13 +128,11 @@ function Village() {
         };
         break;
       case "delete":
-        methodParams = {
-          originalUrl: "/crm-plugin/villages",
-          params: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
+        console.log(
+          "Required params test not applicable for method " + method + "!!"
+        );
+        console.log("-------------");
+        return;
         break;
     }
     return await testcase.test("village", method, methodParams);
@@ -145,39 +140,32 @@ function Village() {
 
   /* this method calls all testcases for correct params check */
   this.correctParams = async (method) => {
-    console.log("----In Village CorrectParamsTestcase------");
     let methodParams = {};
+    console.log("\nCorrect Params Test Case");
+    console.log("-------------");
     //this switch case needs to handle all methods of villages controller
     switch (method) {
       case "find":
-        methodParams = {
-          originalUrl: "/crm-plugin/villages",
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Correct params test not applicable for find method");
+        console.log(
+          "Correct params test not applicable for method " + method + "!!"
+        );
         console.log("-------------");
+        return;
         break;
       case "findOne":
         methodParams = {
           originalUrl: "/crm-plugin/villages",
-          params: { id: 11 },
+          params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
           },
         };
         break;
       case "count":
-        methodParams = {
-          originalUrl: "/crm-plugin/villages",
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Correct params test not applicable for count method");
+        console.log(
+          "Correct params test not applicable for method " + method + "!!"
+        );
+        return;
         console.log("-------------");
         break;
       case "create":
@@ -198,13 +186,11 @@ function Village() {
         };
         break;
       case "delete":
-        methodParams = {
-          originalUrl: "/crm-plugin/villages",
-          params: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
+        console.log(
+          "Correct params test not applicable for method " + method + "!!"
+        );
+        console.log("-------------");
+        return;
         break;
     }
     return await testcase.test("village", method, methodParams);
