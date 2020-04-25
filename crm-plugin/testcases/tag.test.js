@@ -143,8 +143,7 @@ function Tag() {
             body: {
               name: "Test Tag",
               is_active: true,
-              description: "Creating a Test Tag",
-              contact: 26
+              description: "Creating a Test Tag"
             },
           },
           params: {},
