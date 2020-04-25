@@ -43,14 +43,25 @@ module.exports = {
   },
 
   findOne: async (ctx) => {
-    const { id } = ctx.params;
+    const findOneParams = ["id"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+      ctx.params,
+      findOneParams
+    );
     try {
-      const entity = await strapi
-        .query("contact", "crm-plugin")
-        .findOne({ id });
-      return sanitizeEntity(entity, {
-        model: strapi.plugins["crm-plugin"].models["contact"],
-      });
+      if (!result.error) {
+        const { id } = ctx.params;
+        const entity = await strapi
+          .query("contact", "crm-plugin")
+          .findOne({ id });
+        return sanitizeEntity(entity, {
+          model: strapi.plugins["crm-plugin"].models["contact"],
+        });
+      } else {
+        if (result.error) {
+          return ctx.badRequest(null, result.message);
+        }
+      }
     } catch (error) {
       console.error(error);
       return ctx.badRequest(null, error.message);
@@ -78,7 +89,7 @@ module.exports = {
           ctx.request.body,
           requiredValues
         );
-        if (result.error) {
+        if (result.error == true) {
           return ctx.badRequest(null, result.message);
         }
         //create org

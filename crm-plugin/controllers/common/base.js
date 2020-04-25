@@ -60,7 +60,6 @@ function Base(requiredValues = []) {
   };
 
   this.count = async (ctx) => {
-    const { id } = ctx.params;
     let table = getTable(ctx.originalUrl);
     try {
       if (ctx.query._q) {
