@@ -10,7 +10,10 @@ function Contact() {
    this method calls all testcase methods
   */
   this.index = async () => {
+    console.log("\n\nContact Module Test Case");
+    console.log("=============");
     var find = await this.emptyTestcase("find");
+    var findOne = await this.emptyTestcase("findOne");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqParamsfind = await this.reqParamsTestcase("find");
@@ -27,6 +30,8 @@ function Contact() {
   this.emptyTestcase = async (method) => {
     let methodParams = {};
     //this switch case needs to handle all methods of contact controller
+    console.log("\nEmpty Params Test Case");
+    console.log("-------------");
     switch (method) {
       case "find":
         methodParams = {
@@ -69,21 +74,20 @@ function Contact() {
   /* this method calls all testcases for required params check */
   this.reqParamsTestcase = async (method) => {
     let methodParams = {};
+    console.log("\nRequired Params Test Case");
+    console.log("-------------");
     //this switch case needs to handle all methods of contact controller
     switch (method) {
       case "find":
-        methodParams = {
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Required params test not applicable for find method");
+        console.log(
+          "Required params test not applicable for method " + method + "!!"
+        );
         console.log("-------------");
+        return;
         break;
       case "findOne":
         methodParams = {
-          params: { name: "Maharashtra" },
+          params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
           },
@@ -102,12 +106,11 @@ function Contact() {
         };
         break;
       case "delete":
-        methodParams = {
-          params: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
+        console.log(
+          "Required params test not applicable for method " + method + "!!"
+        );
+        console.log("-------------");
+        return;
         break;
     }
     return await testcase.test("contact", method, methodParams);
@@ -116,21 +119,20 @@ function Contact() {
   /* this method calls all testcases for correct params check */
   this.correctParams = async (method) => {
     let methodParams = {};
+    console.log("\nCorrect Params Test Case");
+    console.log("-------------");
     //this switch case needs to handle all methods of contact controller
     switch (method) {
       case "find":
-        methodParams = {
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Correct params test not applicable for find method");
+        console.log(
+          "Correct params test not applicable for method " + method + "!!"
+        );
         console.log("-------------");
+        return;
         break;
       case "findOne":
         methodParams = {
-          params: { id: 11 },
+          params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
           },
@@ -152,12 +154,11 @@ function Contact() {
         };
         break;
       case "delete":
-        methodParams = {
-          params: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
+        console.log(
+          "Correct params test not applicable for method " + method + "!!"
+        );
+        console.log("-------------");
+        return;
         break;
     }
     return await testcase.test("contact", method, methodParams);

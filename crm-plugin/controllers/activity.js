@@ -69,7 +69,6 @@ module.exports = {
   },
 
   create: async (ctx) => {
-    let actType;
     let activityassignee;
     let activity;
 
@@ -95,11 +94,6 @@ module.exports = {
           model: strapi.plugins["crm-plugin"].models["activity"],
         });
       } else {
-        const demoParams = {
-          title: "name",
-          start_datetime: "2020-04-14T06:30:00.000Z",
-          end_datetime: "2020-04-10T06:30:00.000Z",
-        };
         const reqVal = ["title"];
         const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
           ctx.request.body,
@@ -108,9 +102,6 @@ module.exports = {
         if (result.error == true) {
           return ctx.badRequest(null, result.message);
         }
-        activity = await strapi
-          .query("activity", "crm-plugin")
-          .create(ctx.request.body);
         if (ctx.request.body.contact) {
           let activityDetail = {
             activity: activity.id,
@@ -120,7 +111,9 @@ module.exports = {
             .query("activityassignee", "crm-plugin")
             .create(activityDetail);
         }
-
+        activity = await strapi
+          .query("activity", "crm-plugin")
+          .create(ctx.request.body);
         return sanitizeEntity(activity, {
           model: strapi.plugins["crm-plugin"].models["activity"],
         });
@@ -133,15 +126,14 @@ module.exports = {
 
   delete: async (ctx) => {
     try {
-      let ids = ctx.params;
-      const activityass = await strapi
+      const activityassign = await strapi
         .query("activityassignee", "crm-plugin")
         .delete({ activity: ctx.params.id });
       const activity = await strapi
         .query("activity", "crm-plugin")
         .delete(ctx.params);
       return sanitizeEntity(activity, {
-        model: strapi.plugins["crm-plugin"].models["activityassignee"],
+        model: strapi.plugins["crm-plugin"].models["activity"],
       });
     } catch (error) {
       console.error(error);

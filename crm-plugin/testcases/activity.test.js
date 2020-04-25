@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 "use strict";
 /* jshint node:true */
 
@@ -9,7 +10,10 @@ function Activity() {
    this method calls all testcase methods
   */
   this.index = async () => {
+    console.log("\n\nActivity Module Test Case");
+    console.log("=============");
     var find = await this.emptyTestcase("find");
+    var findOne = await this.emptyTestcase("findOne");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqParamsfind = await this.reqParamsTestcase("find");
@@ -25,20 +29,29 @@ function Activity() {
   /* this method calls all testcases for empty params check */
   this.emptyTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of activity controller
+    console.log("\nEmpty Params Test Case");
+    console.log("-------------");
     switch (method) {
       case "find":
         methodParams = {
-          originalUrl: "/crm-plugin/activities",
           query: {},
           badRequest: (error, message) => {
             return { error: message };
           },
         };
         break;
+      case "findOne":
+        methodParams = {
+          params: {},
+          badRequest: (error, message) => {
+            return { error: message };
+          },
+        };
+        break;
+
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/activities",
           request: { body: {} },
           params: {},
           badRequest: (error, message) => {
@@ -48,7 +61,6 @@ function Activity() {
         break;
       case "delete":
         methodParams = {
-          originalUrl: "/crm-plugin/activities",
           params: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -58,24 +70,24 @@ function Activity() {
     }
     return await testcase.test("activity", method, methodParams);
   };
+
   /* this method calls all testcases for required params check */
   this.reqParamsTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of contact controller
+    console.log("\nRequired Params Test Case");
+    console.log("-------------");
+    //this switch case needs to handle all methods of activity controller
     switch (method) {
       case "find":
-        methodParams = {
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Required params test not applicable for find method");
+        console.log(
+          "Required params test not applicable for method " + method + "!!"
+        );
         console.log("-------------");
+        return;
         break;
       case "findOne":
         methodParams = {
-          params: { title: "Maharashtra" },
+          params: { id: 44 },
           badRequest: (error, message) => {
             return { error: message };
           },
@@ -85,7 +97,7 @@ function Activity() {
       case "create":
         methodParams = {
           request: {
-            body: { title: "Individual" },
+            body: { description: "activity type" },
           },
           params: {},
           badRequest: (error, message) => {
@@ -94,12 +106,11 @@ function Activity() {
         };
         break;
       case "delete":
-        methodParams = {
-          params: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
+        console.log(
+          "Required params test not applicable for method " + method + "!!"
+        );
+        console.log("-------------");
+        return;
         break;
     }
     return await testcase.test("activity", method, methodParams);
@@ -108,21 +119,20 @@ function Activity() {
   /* this method calls all testcases for correct params check */
   this.correctParams = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of contact controller
+    console.log("\nCorrect Params Test Case");
+    console.log("-------------");
+    //this switch case needs to handle all methods of activity controller
     switch (method) {
       case "find":
-        methodParams = {
-          query: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
-        console.log("Correct params test not applicable for find method");
+        console.log(
+          "Correct params test not applicable for method " + method + "!!"
+        );
         console.log("-------------");
+        return;
         break;
       case "findOne":
         methodParams = {
-          params: { id: 32 },
+          params: { id: 44 },
           badRequest: (error, message) => {
             return { error: message };
           },
@@ -134,10 +144,7 @@ function Activity() {
           request: {
             body: {
               title: "Tech Providers",
-              start_datetime: "2020-04-17T11:08:18.991Z",
-              end_datetime:"2020-04-17T11:08:18.991Z",
-              description: "vishal tambe",
-              contact:5
+              description: "organization",
             },
           },
           params: {},
@@ -147,12 +154,11 @@ function Activity() {
         };
         break;
       case "delete":
-        methodParams = {
-          params: {},
-          badRequest: (error, message) => {
-            return { error: message };
-          },
-        };
+        console.log(
+          "Correct params test not applicable for method " + method + "!!"
+        );
+        console.log("-------------");
+        return;
         break;
     }
     return await testcase.test("activity", method, methodParams);
