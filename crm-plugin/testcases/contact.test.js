@@ -24,6 +24,7 @@ function Contact() {
     var correctParamsfindOne = await this.correctParams("findOne");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
+
     console.log("=====END=====\n\n");
   };
 
@@ -73,6 +74,7 @@ function Contact() {
   /* this method calls all testcases for required params check */
   this.reqParamsTestcase = async (method) => {
     let methodParams = {};
+
     console.log("\nRequired Params Test Case");
     console.log("-------------");
     //this switch case needs to handle all methods of contact controller
@@ -92,6 +94,7 @@ function Contact() {
           },
         };
         break;
+
       case "create":
         methodParams = {
           request: {
@@ -117,6 +120,7 @@ function Contact() {
   /* this method calls all testcases for correct params check */
   this.correctParams = async (method) => {
     let methodParams = {};
+
     console.log("\nCorrect Params Test Case");
     console.log("-------------");
     //this switch case needs to handle all methods of contact controller

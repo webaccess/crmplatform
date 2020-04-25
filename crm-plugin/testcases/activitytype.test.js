@@ -4,16 +4,16 @@
 var Testcase = require("./common/testcase");
 
 var testcase = new Testcase();
-function State() {
+function ActivityType() {
   /*this method calls all testcases
    this method calls all testcase methods
   */
   this.index = async () => {
-    console.log("\n\nState Module Test Case");
+    console.log("\n\nActivity type Module Test Case");
     console.log("=============");
     var find = await this.emptyTestcase("find");
-    var findOne = await this.emptyTestcase("findOne");
-    var count = await this.emptyTestcase("count");
+    var findOne = await this.reqParamsTestcase("findOne");
+    var count = await this.reqParamsTestcase("count");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqParamsfind = await this.reqParamsTestcase("find");
@@ -23,7 +23,7 @@ function State() {
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
     var correctParamsfindOne = await this.correctParams("findOne");
-    var correctParamsCount = await this.correctParams("count");
+    var correctParamscount = await this.correctParams("count");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
 
@@ -35,11 +35,11 @@ function State() {
     let methodParams = {};
     console.log("\nEmpty Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of activitytype controller
     switch (method) {
       case "find":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/activitytypes",
           query: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -55,7 +55,7 @@ function State() {
         break;
       case "count":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/activitytypes",
           query: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -64,7 +64,7 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/activitytypes",
           request: { body: {} },
           params: {},
           badRequest: (error, message) => {
@@ -74,7 +74,7 @@ function State() {
         break;
       case "delete":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/activitytypes",
           params: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -82,7 +82,7 @@ function State() {
         };
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("activitytype", method, methodParams);
   };
 
   /* this method calls all testcases for required params check */
@@ -90,7 +90,7 @@ function State() {
     let methodParams = {};
     console.log("\nRequired Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of activitytype controller
     switch (method) {
       case "find":
         console.log(
@@ -101,7 +101,7 @@ function State() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/activitytypes",
           params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
@@ -117,7 +117,7 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/activitytypes",
           request: {
             body: { is_active: false },
           },
@@ -135,7 +135,7 @@ function State() {
         return;
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("activitytype", method, methodParams);
   };
 
   /* this method calls all testcases for correct params check */
@@ -143,7 +143,7 @@ function State() {
     let methodParams = {};
     console.log("\nCorrect Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of activitytypes controller
     switch (method) {
       case "find":
         console.log(
@@ -154,8 +154,8 @@ function State() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
-          params: { id: 1 },
+          originalUrl: "/crm-plugin/activitytypes",
+          params: { id: 11 },
           badRequest: (error, message) => {
             return { error: message };
           },
@@ -170,13 +170,11 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/activitytypes",
           request: {
             body: {
-              name: "Maharashtra",
+              name: "Type 1",
               is_active: true,
-              abbreviation: "MH",
-              identifier: "MH",
             },
           },
           params: {},
@@ -193,8 +191,8 @@ function State() {
         return;
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("activitytype", method, methodParams);
   };
 }
 
-module.exports = State;
+module.exports = ActivityType;

@@ -4,12 +4,12 @@
 var Testcase = require("./common/testcase");
 
 var testcase = new Testcase();
-function State() {
+function Country() {
   /*this method calls all testcases
    this method calls all testcase methods
   */
   this.index = async () => {
-    console.log("\n\nState Module Test Case");
+    console.log("\n\nCountry Module Test Case");
     console.log("=============");
     var find = await this.emptyTestcase("find");
     var findOne = await this.emptyTestcase("findOne");
@@ -17,13 +17,13 @@ function State() {
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqParamsfind = await this.reqParamsTestcase("find");
-    var reqParamsfindOne = await this.reqParamsTestcase("findOne");
-    var reqParamsCount = await this.reqParamsTestcase("count");
+    var reqParamsfindOne = await this.emptyTestcase("findOne");
+    var reqParamscount = await this.emptyTestcase("count");
     var reqParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
-    var correctParamsfindOne = await this.correctParams("findOne");
-    var correctParamsCount = await this.correctParams("count");
+    var correctParamsfindOne = await this.emptyTestcase("findOne");
+    var correctParamscount = await this.emptyTestcase("count");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
 
@@ -35,11 +35,11 @@ function State() {
     let methodParams = {};
     console.log("\nEmpty Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of country controller
     switch (method) {
       case "find":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           query: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -55,7 +55,7 @@ function State() {
         break;
       case "count":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           query: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -64,7 +64,7 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           request: { body: {} },
           params: {},
           badRequest: (error, message) => {
@@ -74,7 +74,7 @@ function State() {
         break;
       case "delete":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           params: {},
           badRequest: (error, message) => {
             return { error: message };
@@ -82,7 +82,7 @@ function State() {
         };
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("country", method, methodParams);
   };
 
   /* this method calls all testcases for required params check */
@@ -90,7 +90,7 @@ function State() {
     let methodParams = {};
     console.log("\nRequired Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of country controller
     switch (method) {
       case "find":
         console.log(
@@ -101,7 +101,7 @@ function State() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
@@ -117,7 +117,7 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           request: {
             body: { is_active: false },
           },
@@ -135,7 +135,7 @@ function State() {
         return;
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("country", method, methodParams);
   };
 
   /* this method calls all testcases for correct params check */
@@ -143,7 +143,7 @@ function State() {
     let methodParams = {};
     console.log("\nCorrect Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of state controller
+    //this switch case needs to handle all methods of country controller
     switch (method) {
       case "find":
         console.log(
@@ -154,7 +154,7 @@ function State() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           params: { id: 1 },
           badRequest: (error, message) => {
             return { error: message };
@@ -170,14 +170,9 @@ function State() {
         break;
       case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/states",
+          originalUrl: "/crm-plugin/countries",
           request: {
-            body: {
-              name: "Maharashtra",
-              is_active: true,
-              abbreviation: "MH",
-              identifier: "MH",
-            },
+            body: { name: "England", is_active: "false", abbreviation: "EN" },
           },
           params: {},
           badRequest: (error, message) => {
@@ -193,8 +188,8 @@ function State() {
         return;
         break;
     }
-    return await testcase.test("state", method, methodParams);
+    return await testcase.test("country", method, methodParams);
   };
 }
 
-module.exports = State;
+module.exports = Country;

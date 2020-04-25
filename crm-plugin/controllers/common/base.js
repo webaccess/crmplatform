@@ -75,6 +75,7 @@ function Base(requiredValues = []) {
   this.create = async (ctx) => {
     let entity;
     let table = getTable(ctx.originalUrl);
+
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
