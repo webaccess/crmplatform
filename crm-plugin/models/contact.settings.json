@@ -74,10 +74,10 @@
       "plugin": "users-permissions",
       "model": "user"
     },
-    "contacttag": {
+    "contacttags": {
       "via": "contact",
       "plugin": "crm-plugin",
-      "model": "contacttag"
+      "collection": "contacttag"
     }
   }
 }

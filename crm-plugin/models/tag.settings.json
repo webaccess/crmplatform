@@ -20,12 +20,12 @@
     "is_active": {
       "type": "boolean",
       "required": true,
-      "default": false
+      "default": true
     },
-    "contacttag": {
+    "contacttags": {
+      "via": "tag",
       "plugin": "crm-plugin",
-      "model": "contacttag",
-      "via": "tag"
+      "collection": "contacttag"
     }
   }
 }

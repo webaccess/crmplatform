@@ -12,12 +12,12 @@
     "contact": {
       "plugin": "crm-plugin",
       "model": "contact",
-      "via": "contacttag"
+      "via": "contacttags"
     },
     "tag": {
-      "via": "contacttag",
       "plugin": "crm-plugin",
-      "model": "tag"
+      "model": "tag",
+      "via": "contacttags"
     }
   }
 }

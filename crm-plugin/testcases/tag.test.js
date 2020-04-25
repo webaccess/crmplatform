@@ -30,7 +30,7 @@ function Tag() {
   /* this method calls all testcases for empty params check */
   this.emptyTestcase = async (method) => {
     let methodParams = {};
-    //this switch case needs to handle all methods of contact controller
+    //this switch case needs to handle all methods of tag controller
     console.log("\nEmpty Params Test Case");
     console.log("-------------");
     switch (method) {
@@ -75,7 +75,7 @@ function Tag() {
     let methodParams = {};
     console.log("\nRequired Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of contact controller
+    //this switch case needs to handle all methods of tag controller
     switch (method) {
       case "find":
         console.log(
@@ -95,9 +95,7 @@ function Tag() {
       case "create":
         methodParams = {
           request: {
-            body: { name: "Test Tag" ,
-                    is_active: false
-                  },
+            body: { name: "Test Tag", is_active: false },
           },
           params: {},
           badRequest: (error, message) => {
@@ -121,7 +119,7 @@ function Tag() {
     let methodParams = {};
     console.log("\nCorrect Params Test Case");
     console.log("-------------");
-    //this switch case needs to handle all methods of contact controller
+    //this switch case needs to handle all methods of tag controller
     switch (method) {
       case "find":
         console.log(
@@ -138,14 +136,13 @@ function Tag() {
           },
         };
         break;
-       case "create":
+      case "create":
         methodParams = {
-          originalUrl: "/crm-plugin/tags",
           request: {
             body: {
               name: "Test Tag",
               is_active: true,
-              description: "Creating a Test Tag"
+              description: "Creating a Test Tag",
             },
           },
           params: {},

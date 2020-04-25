@@ -117,11 +117,13 @@ module.exports = {
         : contact.organization
         ? contact.organization.id
         : "";
-      console.log("orgId", orgId);
       if (orgId)
         await strapi
           .query(contact.contact_type, "crm-plugin")
           .delete({ id: orgId });
+      await strapi
+        .query("contacttag", "crm-plugin")
+        .delete({ contact: ctx.params.id });
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
       });
