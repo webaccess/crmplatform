@@ -1,11 +1,13 @@
 const { isEmpty } = require("lodash");
-result = {
-  error: false,
-  errrorType: "",
-  message: "",
-};
+// var includes = require("lodash.includes");
 
 function checkParams(values, requiredValues) {
+  let result = {
+    error: false,
+    errrorType: "",
+    message: "No errors found",
+  };
+  const keys = Object.keys(values);
   //Checks if params are empty
   if (isEmpty(values)) {
     result = {
@@ -17,7 +19,6 @@ function checkParams(values, requiredValues) {
   }
   if ((values, requiredValues)) {
     requiredValues.map((r) => {
-      console.log("Keys",keys)
       //checks whether API params contain required params
       if (!Object.keys(values).includes(r)) {
         result = {

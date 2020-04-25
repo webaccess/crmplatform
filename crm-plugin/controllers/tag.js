@@ -42,15 +42,26 @@ module.exports = {
     }
   },
 
-   findOne: async (ctx) => {
-    const { id } = ctx.params;
+  findOne: async (ctx) => {
+    const findOneParams = ["id"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+    ctx.params,
+    findOneParams
+    );
     try {
+      if (!result.error) {
+      const { id } = ctx.params;
       const entity = await strapi
         .query("tag", "crm-plugin")
         .findOne({ id });
       return sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["tag"],
       });
+   } else {
+        if (result.error) {
+          return ctx.badRequest(null, result.message);
+        }
+      }
     } catch (error) {
       console.error(error);
       return ctx.badRequest(null, error.message);
@@ -58,6 +69,11 @@ module.exports = {
   },
 
   create: async (ctx) => {
+    const createParams = ["contact"];
+    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+    ctx.params,
+    createParams
+    );
     let entity;
     let contacttagEntry;
     try {
@@ -108,7 +124,6 @@ module.exports = {
 
   delete: async (ctx) => {
     try {
-    let orgId = ctx.params;
     const entity = await strapi.query("contacttag", "crm-plugin").delete({ tag:ctx.params.id });
     const { id } = ctx.params;
       const deleteTag = await strapi.query("tag", "crm-plugin").delete(ctx.params);

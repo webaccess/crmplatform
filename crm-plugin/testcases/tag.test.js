@@ -10,13 +10,14 @@ function Tag() {
   */
   this.index = async () => {
     var find = await this.emptyTestcase("find");
-    var findOne = await this.emptyTestcase("findOne");
     var create = await this.emptyTestcase("create");
     var deleteMethod = await this.emptyTestcase("delete");
     var reqStateParamsfind = await this.reqParamsTestcase("find");
+    var reqParamsfindOne = await this.reqParamsTestcase("findOne");
     var reqStateParamscreate = await this.reqParamsTestcase("create");
     var reqParamsdelete = await this.reqParamsTestcase("delete");
     var correctParamsfind = await this.correctParams("find");
+    var correctParamsfindOne = await this.correctParams("findOne");
     var correctParamscreate = await this.correctParams("create");
     var correctParamsdelete = await this.correctParams("delete");
   };
@@ -81,8 +82,7 @@ function Tag() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/tags",
-          query: {},
+          params: { name: "Test Tag" },
           badRequest: (error, message) => {
             return { error: message };
           },
@@ -92,7 +92,7 @@ function Tag() {
         methodParams = {
           originalUrl: "/crm-plugin/tags",
           request: {
-            body: { is_active: false },
+            body: { name: "Test Tag", is_active: false },
           },
           params: {},
           badRequest: (error, message) => {
@@ -130,8 +130,7 @@ function Tag() {
         break;
       case "findOne":
         methodParams = {
-          originalUrl: "/crm-plugin/tags",
-          query: {},
+          params: { id: 11 },
           badRequest: (error, message) => {
             return { error: message };
           },
@@ -142,10 +141,10 @@ function Tag() {
           originalUrl: "/crm-plugin/tags",
           request: {
             body: {
-              name: "Maharashtra",
+              name: "Test Tag",
               is_active: true,
-              abbreviation: "MH",
-              identifier: "MH",
+              description: "Creating a Test Tag",
+              contact: 26
             },
           },
           params: {},
