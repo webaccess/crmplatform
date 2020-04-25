@@ -5,7 +5,7 @@
       "path": "/activities",
       "handler": "activity.find",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -13,7 +13,7 @@
       "path": "/",
       "handler": "activity.index",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -21,7 +21,7 @@
       "path": "/activities/:id",
       "handler": "activity.findOne",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -29,7 +29,7 @@
       "path": "/activities",
       "handler": "activity.create",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -37,7 +37,7 @@
       "path": "/activities/:id",
       "handler": "activity.create",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -45,7 +45,7 @@
       "path": "/activities/:id",
       "handler": "activity.delete",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     }
   ]
