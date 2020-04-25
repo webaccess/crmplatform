@@ -3,7 +3,6 @@
 
 var Base = require("./common/base");
 
-const findOneParams = ["id"];
 const requiredParams = ["name"];
-var village = new Base(requiredParams, findOneParams);
+var village = new Base(requiredParams);
 module.exports = village;

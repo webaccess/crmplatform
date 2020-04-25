@@ -3,7 +3,6 @@
 
 var Base = require("./common/base");
 
-const findOneParams = ["id"];
 const requiredParams = ["name"];
-var activityType = new Base(requiredParams, findOneParams);
+var activityType = new Base(requiredParams);
 module.exports = activityType;
