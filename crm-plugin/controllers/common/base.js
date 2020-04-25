@@ -15,7 +15,7 @@ function getTable(url) {
   return table;
 }
 
-function Base(requiredValues = [], findOneParams = []) {
+function Base(requiredValues = []) {
   this.requiredValues = requiredValues;
   /**
    * Default action.
