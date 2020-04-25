@@ -7,6 +7,7 @@ var Village = require("./village.test.js");
 var ActivityType = require("./activitytype.test.js");
 var District = require("./district.test.js");
 var Country = require("./country.test.js");
+var Tag = require("./tag.test.js");
 
 var state = new State();
 var contact = new Contact();
@@ -14,6 +15,7 @@ var activityType = new ActivityType();
 var village = new Village();
 var district = new District();
 var country = new Country();
+var tag = new Tag();
 
 module.exports = {
   index: async () => {
@@ -23,5 +25,6 @@ module.exports = {
     var a = await activityType.index();
     var d = await district.index();
     var c = await country.index();
+    var t = await tag.index();
   },
 };
