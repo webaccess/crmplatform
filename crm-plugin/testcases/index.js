@@ -14,8 +14,9 @@ var contact = new Contact();
 var activityType = new ActivityType();
 var village = new Village();
 var district = new District();
-var country = new Country
+var country = new Country();
 var tag = new Tag();
+
 module.exports = {
   index: async () => {
     var s = await state.index();

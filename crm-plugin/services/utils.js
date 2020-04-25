@@ -1,5 +1,4 @@
 const { isEmpty } = require("lodash");
-// var includes = require("lodash.includes");
 
 function checkParams(values, requiredValues) {
   let result = {

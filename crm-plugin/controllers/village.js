@@ -3,5 +3,6 @@
 
 var Base = require("./common/base");
 
-var village = new Base();
+const requiredParams = ["name"];
+var village = new Base(requiredParams);
 module.exports = village;
