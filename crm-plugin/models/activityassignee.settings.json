@@ -13,12 +13,12 @@
     "activity": {
       "plugin": "crm-plugin",
       "model": "activity",
-      "via": "activityassignee"
+      "via": "activityassignees"
     },
     "contact": {
       "plugin": "crm-plugin",
       "model": "contact",
-      "via": "activityassignee"
+      "via": "activityassignees"
     }
   }
 }

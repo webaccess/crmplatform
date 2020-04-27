@@ -28,10 +28,10 @@
       "model": "activitytype",
       "via": "activity"
     },
-    "activityassignee": {
+    "activityassignees": {
       "plugin": "crm-plugin",
       "via": "activity",
-      "model": "activityassignee"
+      "collection": "activityassignee"
     }
   }
 }
