@@ -10,14 +10,6 @@
     },
     {
       "method": "GET",
-      "path": "/",
-      "handler": "activitytype.index",
-      "config": {
-        "policies": ["plugins::users-permissions.isAuthenticated"]
-      }
-    },
-    {
-      "method": "GET",
       "path": "/activitytypes/:id",
       "handler": "activitytype.findOne",
       "config": {

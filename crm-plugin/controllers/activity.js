@@ -79,13 +79,20 @@ module.exports = {
             activity: ctx.params.id,
             contact: ctx.request.body.contact,
           };
+
+          // if (ctx.request.body.activityassignee) {
+          //   const actAssignId = ctx.request.body.activityassignee;
+          //   activityassignee = await strapi
+          //     .query("activityassignee", "crm-plugin")
+          //     .update({ id:actAssignId }, activityDetail);
+          // }
           activityassignee = await strapi
             .query("activityassignee", "crm-plugin")
             .update({ activity: ctx.params.id }, activityDetail);
+
           console.log("Activityassignee", activityassignee);
         }
         const { id } = ctx.params;
-        console.log("{ id }", ctx.params);
         activity = await strapi
           .query("activity", "crm-plugin")
           .update({ id }, ctx.request.body);
@@ -104,7 +111,7 @@ module.exports = {
         }
         if (ctx.request.body.contact) {
           let activityDetail = {
-            activity: activity.id,
+            activity: ctx.request.body.activity,
             contact: ctx.request.body.contact,
           };
           activityassignee = await strapi
