@@ -78,6 +78,11 @@
       "plugin": "crm-plugin",
       "via": "contact",
       "model": "activityassignee"
+    },
+    "contacttags": {
+      "via": "contact",
+      "plugin": "crm-plugin",
+      "collection": "contacttag"
     }
   }
 }
