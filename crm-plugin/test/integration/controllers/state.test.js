@@ -3,7 +3,6 @@ const request = require("co-supertest");
 const { JWT, SERVER_URL } = require("../config/config");
 
 describe("States Module Endpoint", function () {
-  //Empty params test case
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/states", function () {
@@ -12,37 +11,6 @@ describe("States Module Endpoint", function () {
           .get("/crm-plugin/states")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
-            done(err);
-          });
-      });
-    });
-  });
-  describe("Create Method", function () {
-    // case for empty params done here
-    describe("POST /crm-plugin/states/", function () {
-      it("Empty params test case", function (done) {
-        request(SERVER_URL)
-          .post("/crm-plugin/states")
-          .send({})
-          .set("Authorization", "Bearer " + JWT)
-          .expect(400)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
-            done(err);
-          });
-      });
-    });
-  });
-  describe("Delete Method", function () {
-    // case for empty params done here
-    describe("DELETE /crm-plugin/states/", function () {
-      it("Empty params test case", function (done) {
-        request(SERVER_URL)
-          .delete("/crm-plugin/states/")
-          .set("Authorization", "Bearer " + JWT)
-          .expect(404)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
             done(err);
@@ -68,10 +36,22 @@ describe("States Module Endpoint", function () {
       });
     });
   });
-  //Required params test case
   describe("Create Method", function () {
-    // case for required params done here
+    // case for empty params done here
     describe("POST /crm-plugin/states/", function () {
+      it("Empty params test case", function (done) {
+        request(SERVER_URL)
+          .post("/crm-plugin/states")
+          .send({})
+          .set("Authorization", "Bearer " + JWT)
+          .expect(400)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            done(err);
+          });
+      });
+
+      //required params testcase
       it("Required params test case", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/states")
@@ -85,18 +65,63 @@ describe("States Module Endpoint", function () {
             done(err);
           });
       });
-    });
-  });
 
-  //Correct params testcase
-  describe("Create Method", function () {
-    describe("POST /crm-plugin/states/", function () {
+      //correct params testcase
       it("Correct params test case", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/states")
           .send({
             name: "Gujarat",
           })
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            done(err);
+          });
+      });
+    });
+  });
+
+  describe("Update Method", function () {
+    // case for correct params done here
+    describe("PUT /crm-plugin/states/:id", function () {
+      const id = 67;
+      it("Updating params test case", function (done) {
+        request(SERVER_URL)
+          .put("/crm-plugin/states/" + id)
+          .send({
+            name: "Goa",
+          })
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            done(err);
+          });
+      });
+    });
+  });
+
+  describe("Delete Method", function () {
+    // case for empty params done here
+    describe("DELETE /crm-plugin/states/:id", function () {
+      it("Empty params test case", function (done) {
+        request(SERVER_URL)
+          .delete("/crm-plugin/states/")
+          .set("Authorization", "Bearer " + JWT)
+          .expect(404)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            done(err);
+          });
+      });
+
+      //correct params testcase
+      it("Correct params test case", function (done) {
+        const id = 69;
+        request(SERVER_URL)
+          .delete("/crm-plugin/states/" + id)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
