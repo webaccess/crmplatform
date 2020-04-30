@@ -108,6 +108,7 @@ function Base(requiredValues = []) {
   };
 
   this.delete = async (ctx) => {
+    console.log("ctx---", ctx);
     const { id } = ctx.params;
     let table = getTable(ctx.originalUrl);
     try {
