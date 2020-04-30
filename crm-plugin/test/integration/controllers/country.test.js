@@ -72,6 +72,7 @@ describe("Country Module Endpoint", function () {
           .post("/crm-plugin/countries")
           .send({
             name: "India",
+            is_active: true,
             abbreviation: "IN",
           })
           .set("Authorization", "Bearer " + JWT)
@@ -88,7 +89,7 @@ describe("Country Module Endpoint", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/countries/:id", function () {
       it("Updating params test case", function (done) {
-        const id = 31;
+        const id = 1;
         request(SERVER_URL)
           .put("/crm-plugin/countries/" + id)
           .send({
@@ -124,7 +125,7 @@ describe("Country Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/countries/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 31;
+        const id = 2;
         request(SERVER_URL)
           .delete("/crm-plugin/countries/" + id)
           .set("Authorization", "Bearer " + JWT)

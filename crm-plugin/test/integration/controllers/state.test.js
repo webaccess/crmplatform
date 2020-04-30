@@ -87,7 +87,7 @@ describe("States Module Endpoint", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/states/:id", function () {
       it("Updating params test case", function (done) {
-        const id = 67;
+        const id = 2;
         request(SERVER_URL)
           .put("/crm-plugin/states/" + id)
           .send({
@@ -123,7 +123,7 @@ describe("States Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/states/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 84;
+        const id = 1;
         request(SERVER_URL)
           .delete("/crm-plugin/states/" + id)
           .set("Authorization", "Bearer " + JWT)
