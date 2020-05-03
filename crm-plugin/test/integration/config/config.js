@@ -1,6 +1,5 @@
-const JWT =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNTg4MTM5NDQ4LCJleHAiOjE1OTA3MzE0NDh9.2OUZUH7jiMu0T9ldHnM0jE6CtzFfZJOyTiFJTqQVHWQ";
-const SERVER_URL = "http://localhost:1337";
+const JWT = "";
+const SERVER_URL = "";
 module.exports = {
   JWT,
   SERVER_URL,
