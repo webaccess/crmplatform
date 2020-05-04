@@ -2,13 +2,13 @@ const request = require("co-supertest");
 
 const { JWT, SERVER_URL } = require("../config/config");
 
-describe("States Module Endpoint", function () {
+describe("Village Module Endpoint", function () {
   describe("Find Method", function () {
     // case for empty params done here
-    describe("GET /crm-plugin/states", function () {
+    describe("GET /crm-plugin/villages", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/states")
+          .get("/crm-plugin/villages")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
@@ -21,10 +21,10 @@ describe("States Module Endpoint", function () {
 
   describe("FindOne Method", function () {
     // case for empty params done here
-    describe("GET /crm-plugin/states/:id", function () {
+    describe("GET /crm-plugin/villages/:id", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/states")
+          .get("/crm-plugin/villages")
           .send({
             id: 1,
           })
@@ -39,11 +39,11 @@ describe("States Module Endpoint", function () {
   });
 
   describe("Create Method", function () {
-    // case for empty,required and correct params for Create method done here
-    describe("POST /crm-plugin/states/", function () {
+    // case for empty,required and correct params for Create method done
+    describe("POST /crm-plugin/villages/", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/states")
+          .post("/crm-plugin/villages")
           .send({})
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
@@ -55,7 +55,7 @@ describe("States Module Endpoint", function () {
 
       it("Required params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/states")
+          .post("/crm-plugin/villages")
           .send({
             is_Active: true,
           })
@@ -69,9 +69,9 @@ describe("States Module Endpoint", function () {
 
       it("Correct params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/states")
+          .post("/crm-plugin/villages")
           .send({
-            name: "Gujarat",
+            name: "Hivre",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -85,13 +85,13 @@ describe("States Module Endpoint", function () {
 
   describe("Update Method", function () {
     // case for correct params done for update method
-    describe("PUT /crm-plugin/states/:id", function () {
+    describe("PUT /crm-plugin/villages/:id", function () {
       it("Updating params test case", function (done) {
-        const id = 2;
+        const id = 1;
         request(SERVER_URL)
-          .put("/crm-plugin/states/" + id)
+          .put("/crm-plugin/villages/" + id)
           .send({
-            name: "Goa",
+            name: "Narodi",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -105,10 +105,10 @@ describe("States Module Endpoint", function () {
 
   describe("Count Method", function () {
     // case for count done here
-    describe("GET /crm-plugin/states/count", function () {
+    describe("GET /crm-plugin/villages/count", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/states/count")
+          .get("/crm-plugin/villages/count")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
@@ -121,11 +121,11 @@ describe("States Module Endpoint", function () {
 
   describe("Delete Method", function () {
     // case for correct params done here
-    describe("DELETE /crm-plugin/states/:id", function () {
+    describe("DELETE /crm-plugin/villages/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 1;
+        const id = 2;
         request(SERVER_URL)
-          .delete("/crm-plugin/states/" + id)
+          .delete("/crm-plugin/villages/" + id)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)

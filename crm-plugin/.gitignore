@@ -4,6 +4,7 @@ node_modules
 config/routes.json
 stats.json
 package-lock.json
+test/integration/config/config.js
 
 # Cruft
 .DS_Store
