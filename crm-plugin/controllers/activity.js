@@ -108,14 +108,14 @@ module.exports = {
               const assigneeQuery = await strapi
                 .query("activityassignee", "crm-plugin")
                 .findOne({ activity: ctx.params.id });
-              if (assigneeQuery) {
-                activityassignee = await strapi
-                  .query("activityassignee", "crm-plugin")
-                  .update({ activity: ctx.params.id }, activityDetail);
-              } else {
+              if (assigneeQuery == null) {
                 activityassignee = await strapi
                   .query("activityassignee", "crm-plugin")
                   .create({ activity: ctx.params.id }, activityDetail);
+              } else {
+                activityassignee = await strapi
+                  .query("activityassignee", "crm-plugin")
+                  .update({ activity: ctx.params.id }, activityDetail);
               }
             })
           );

@@ -3,6 +3,6 @@
 
 var Base = require("./common/base");
 
-const demoParams = ["name"];
+
 var activityassignee = new Base();
 module.exports = activityassignee;
