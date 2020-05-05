@@ -72,4 +72,4 @@ npm install supertest --save-dev
 
 - then run below command to run test cases
 
-  `npm test`
+  `yarn test`
