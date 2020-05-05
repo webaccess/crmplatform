@@ -57,7 +57,7 @@ describe("District Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/districts")
           .send({
-            is_Active: true,
+            is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)

@@ -57,7 +57,7 @@ describe("Activitytype Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/activitytypes")
           .send({
-            is_Active: true,
+            is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)

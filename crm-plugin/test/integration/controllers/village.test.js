@@ -57,7 +57,7 @@ describe("Village Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/villages")
           .send({
-            is_Active: true,
+            is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
@@ -123,7 +123,7 @@ describe("Village Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/villages/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 2;
+        const id = 1;
         request(SERVER_URL)
           .delete("/crm-plugin/villages/" + id)
           .set("Authorization", "Bearer " + JWT)
