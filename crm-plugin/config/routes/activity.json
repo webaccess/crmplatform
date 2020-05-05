@@ -2,40 +2,40 @@
   "routes": [
     {
       "method": "GET",
-      "path": "/contact",
-      "handler": "contact.find",
+      "path": "/activities",
+      "handler": "activity.find",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
       "method": "GET",
-      "path": "/contact/:id",
-      "handler": "contact.findOne",
+      "path": "/activities/:id",
+      "handler": "activity.findOne",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
       "method": "POST",
-      "path": "/contact",
-      "handler": "contact.create",
+      "path": "/activities",
+      "handler": "activity.create",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
       "method": "PUT",
-      "path": "/contact/:id",
-      "handler": "contact.create",
+      "path": "/activities/:id",
+      "handler": "activity.create",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
       "method": "DELETE",
-      "path": "/contact/:id",
-      "handler": "contact.delete",
+      "path": "/activities/:id",
+      "handler": "activity.delete",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }

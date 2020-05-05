@@ -5,15 +5,7 @@
       "path": "/activitytypes",
       "handler": "activitytype.find",
       "config": {
-        "policies": []
-      }
-    },
-    {
-      "method": "GET",
-      "path": "/activitytypes/count",
-      "handler": "activitytype.count",
-      "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -21,7 +13,7 @@
       "path": "/activitytypes/:id",
       "handler": "activitytype.findOne",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -29,7 +21,7 @@
       "path": "/activitytypes",
       "handler": "activitytype.create",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -37,7 +29,7 @@
       "path": "/activitytypes/:id",
       "handler": "activitytype.create",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     },
     {
@@ -45,7 +37,7 @@
       "path": "/activitytypes/:id",
       "handler": "activitytype.delete",
       "config": {
-        "policies": []
+        "policies": ["plugins::users-permissions.isAuthenticated"]
       }
     }
   ]

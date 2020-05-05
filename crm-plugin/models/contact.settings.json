@@ -74,6 +74,11 @@
       "plugin": "users-permissions",
       "model": "user"
     },
+    "activityassignees": {
+      "plugin": "crm-plugin",
+      "via": "contact",
+      "collection": "activityassignee"
+    },
     "contacttags": {
       "via": "contact",
       "plugin": "crm-plugin",

@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "connection": "default",
+  "collectionName": "activityassignees",
+  "info": {
+    "name": "activityassignee"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "activity": {
+      "plugin": "crm-plugin",
+      "model": "activity",
+      "via": "activityassignees"
+    },
+    "contact": {
+      "plugin": "crm-plugin",
+      "model": "contact",
+      "via": "activityassignees"
+    }
+  }
+}
