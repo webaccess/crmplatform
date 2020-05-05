@@ -3,11 +3,10 @@ const path = require("path");
 const directory = "../config/routes/";
 
 async function generateRoutes(autoreload) {
-  console.log("genrate routes");
+  console.log("Generating Routes...");
   if (autoreload === false) {
     let allObj = { routes: [] };
     fs.readdirSync(path.resolve(__dirname, directory)).forEach((file) => {
-      console.log("file", file);
       let rawdata = fs.readFileSync(path.resolve(__dirname, directory + file));
       let data = JSON.parse(rawdata);
       allObj.routes = allObj.routes.concat(data.routes);

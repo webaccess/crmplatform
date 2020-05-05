@@ -19,40 +19,57 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
 
 ## Installation
 
-- create new strapi project using below command
+1. Create new strapi project using the below command
 
-  `yarn create strapi-app <your-project-name>`
+   `yarn create strapi-app <your-project-name>`
 
-- then run below command
+2. Install this plugin
+   `cd <your-project-name>`
+   `mkdir plugins`
+   `cd plugins`
 
-  `cd <your-project-name>/plugins`
+- Clone project using below command
 
-- then clone project using below command
+  `git clone https://github.com/webaccess/crmplatform.git crm-plugin`
 
-  `git clone https://github.com/webaccess/crmplatform.git .`
-  
-- in strapi main project in file /config/hook.json add below data in the root json object
-    
-    ```"crm-plugin-routes-load": { "enabled": true }```
+3. Run strapi project
 
-- start script should have environment variable AUTORELOAD set to false in the package.json file of the main project which uses this plugin.sample code below:
+   `yarn develop`
 
-  `"scripts": { "develop": "strapi develop", "start": "AUTORELOAD=false strapi start", "build": "strapi build", "strapi": "strapi" },`
-  
-- also, run command
+## Plugin Development
+
+You would need to add below settings to your strapi project if you are extending or contributing to this project.
+
+- Navigate to strapi root folder and modify the file /config/hook.json to add below code
+
+  `"crm-plugin-routes-load": { "enabled": true }`
+
+- Modify package.json and prepend start script with AUTORELOAD=false
+
+  `""start": "AUTORELOAD=false strapi start","`
+
+- When you make the changes run
+
   `yarn start`
-  before running command
-  `yarn develop`
-  in order to generate routes the crm-plugin.
 
-## Test cases
-- install mocha, co-supertest and supertest npm packages 
+  this will generates new routes
+
+  then run
+
+  `yarn develop`
+
+## Run Test cases
+
+- You would need to install following node packages in your strapi instance
+
+npm install mocha --save-dev
+npm install co-supertest --save-dev
+npm install supertest --save-dev
 
 - In the main project package.json file add below command to the scripts section
 
-  `"test": "mocha plugins/crm-plugin/test/**/*.test.js"`
+  `"test": "mocha plugins/crm-plugin/tests/**/*.test.js"`
 
 - then run below command to run test cases
 
   `npm test`
-
