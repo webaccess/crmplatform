@@ -45,17 +45,14 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
   `yarn develop`
   in order to generate routes the crm-plugin.
 
-## Test case
+## Test cases
+- install mocha, co-supertest and supertest npm packages 
 
-- In the project directory run below command
+- In the main project package.json file add below command to the scripts section
 
-  `strapi console`
+  `"test": "mocha plugins/crm-plugin/test/**/*.test.js"`
 
-- then run below code
-  -- for example to run test case for state
+- then run below command to run test cases
 
-  `strapi.plugins["crm-plugin"].testcases.state.test.emptyTestcase("find")`
+  `npm test`
 
-  -- to run all testcases
-
-  `strapi.plugins["crm-plugin"].testcases.index.index()`
