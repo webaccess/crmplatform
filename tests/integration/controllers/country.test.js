@@ -71,9 +71,9 @@ describe("Country Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/countries")
           .send({
-            name: "India",
+            name: "Algeria",
             is_active: true,
-            abbreviation: "IN",
+            abbreviation: "DZ",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -113,7 +113,7 @@ describe("Country Module Endpoint", function () {
           .get("/crm-plugin/countries/count")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
+          .expect("Content-Type", "application/json; charset=utf-8")
           .end(function (err, res) {
             done(err);
           });
@@ -125,7 +125,7 @@ describe("Country Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/countries/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 2;
+        const id = 3;
         request(SERVER_URL)
           .delete("/crm-plugin/countries/" + id)
           .set("Authorization", "Bearer " + JWT)

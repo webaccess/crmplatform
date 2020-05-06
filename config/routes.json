@@ -66,6 +66,12 @@
       "handler": "activitytype.find",
       "config": { "policies": ["plugins::users-permissions.isAuthenticated"] }
     },
+	{
+      "method": "GET",
+      "path": "/activitytypes/count",
+      "handler": "activitytype.count",
+      "config": { "policies": ["plugins::users-permissions.isAuthenticated"] }
+    },
     {
       "method": "GET",
       "path": "/activitytypes/:id",
