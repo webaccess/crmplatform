@@ -23,9 +23,12 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
 
    `yarn create strapi-app <your-project-name>`
 
-2. Install this plugin
+2. Install the plugin
+
    `cd <your-project-name>`
+   
    `mkdir plugins`
+   
    `cd plugins`
 
 - Clone project using below command
