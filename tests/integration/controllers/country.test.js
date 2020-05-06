@@ -57,7 +57,7 @@ describe("Country Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/countries")
           .send({
-            is_Active: true,
+            is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
@@ -93,7 +93,9 @@ describe("Country Module Endpoint", function () {
         request(SERVER_URL)
           .put("/crm-plugin/countries/" + id)
           .send({
-            name: "US",
+            name: "United States",
+            abbreviation: "US",
+            is_active: false,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
