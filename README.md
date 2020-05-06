@@ -37,7 +37,7 @@ Primary aim of this project to have a simple and extendable base for the CRMish 
 
 3. Run strapi project
 
-   `yarn develop`
+   `yarn start`
 
 ## Plugin Development
 
