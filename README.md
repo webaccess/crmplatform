@@ -15,7 +15,7 @@ This is CRM platform backend based on the Strapi. It comes with basic model for 
 
 ## Goal
 
-Primary aim of this project to have a simple and extendable base for the CRMish projects.
+The primary aim of this project is to have a simple and extendable base for the CRMish projects.
 
 ## Installation
 
