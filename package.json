@@ -1,27 +1,33 @@
 {
-  "name": "strapi-plugin-CRM-plugin",
-  "version": "0.0.0",
-  "description": "This is the description of the plugin.",
+  "name": "CRM-Plugin",
+  "version": "1.0.0",
+  "description": "This is a base CRM plugin",
   "strapi": {
-    "name": "CRM-plugin",
+    "name": "CRM-Plugin",
     "icon": "plug",
-    "description": "Description of CRM-plugin plugin."
+    "description": "CRM plugin for the basic contact management."
+  },
+  "scripts": {
+    "test": "mocha tests/**/*.test.js"
   },
   "author": {
-    "name": "A Strapi developer",
-    "email": "",
-    "url": ""
+    "name": "Web Access",
+    "url": "https://github.com/webaccess/crmplatform"
   },
   "maintainers": [
     {
-      "name": "A Strapi developer",
-      "email": "",
-      "url": ""
+      "name": "Web Access",
+      "url": "https://github.com/webaccess/crmplatform"
     }
   ],
   "engines": {
     "node": ">=10.0.0",
     "npm": ">=6.0.0"
   },
-  "license": "MIT"
+  "license": "AGPL-3.0",
+  "devDependencies": {
+    "co-supertest": "^0.0.10",
+    "mocha": "^7.1.2",
+    "supertest": "^4.0.2"
+  }
 }
