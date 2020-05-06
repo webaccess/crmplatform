@@ -63,16 +63,15 @@ You would need to add below settings to your strapi project if you are extending
 
 ## Run Test cases
 
-- You would need to install following node packages in your strapi instance
+- Install testing dependencies
 
-npm install mocha --save-dev
-npm install co-supertest --save-dev
-npm install supertest --save-dev
+  `cd <your-project-name>/plugins/crm-plugin/`
 
-- In the main project package.json file add below command to the scripts section
+  `yarn install`
 
-  `"test": "mocha plugins/crm-plugin/tests/**/*.test.js"`
+- Create and update the test configuration file
+  `cp tests/integration/config/config.js.sample tests/integration/config/config.js`
 
-- then run below command to run test cases
+- Run test cases
 
   `yarn test`

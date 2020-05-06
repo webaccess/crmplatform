@@ -3,7 +3,8 @@ coverage
 node_modules
 stats.json
 package-lock.json
-test/integration/config/config.js
+yarn.lock
+tests/integration/config/config.js
 
 # Cruft
 .DS_Store
