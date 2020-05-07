@@ -99,11 +99,11 @@ module.exports = {
     try {
       if (ctx.params.id) {
         if (ctx.request.body.contacts) {
-          // var promise = await Promise.all(
-          //   ctx.request.body.contacts.map(async (contact) => {
+          var promise = await Promise.all(
+            ctx.request.body.contacts.map(async (contact) => {
           let activityDetail = {
             activity: ctx.params.id,
-            contact: ctx.request.body.contacts,
+            contact: contact,
           };
           const assigneeQuery = await strapi
             .query("activityassignee", "crm-plugin")
@@ -111,15 +111,14 @@ module.exports = {
           if (assigneeQuery == null) {
             activityassignee = await strapi
               .query("activityassignee", "crm-plugin")
-              // .create({ activity: ctx.params.id }, activityDetail);
               .create(activityDetail);
           } else {
             activityassignee = await strapi
               .query("activityassignee", "crm-plugin")
               .update({ activity: ctx.params.id }, activityDetail);
           }
-          //   })
-          // );
+            })
+          );
         }
         const { id } = ctx.params;
         activity = await strapi
@@ -142,18 +141,18 @@ module.exports = {
           .create(ctx.request.body);
         if (ctx.request.body.contacts) {
           let activityassignees = [];
-          // var promise = await Promise.all(
-          //   ctx.request.body.contacts.map(async (contact) => {
+          var promise = await Promise.all(
+            ctx.request.body.contacts.map(async (contact) => {
           let activityDetail = {
             activity: activity.id,
-            contact: ctx.request.body.contacts,
+            contact: contact,
           };
           activityassignee = await strapi
             .query("activityassignee", "crm-plugin")
             .create(activityDetail);
           activityassignees.push(activityassignee);
-          //   })
-          // );
+            })
+          );
           activity.activityassignees = activityassignees;
         }
       }

@@ -94,7 +94,7 @@ module.exports = {
             ctx.request.body.contacts.map(async (contact) => {
               let contacttagDetails = {
                 tag: ctx.params.id,
-                contact: ctx.request.body.contacts,
+                contact:contact,
               };
               const contacttagEntity = await strapi
                 .query("contacttag", "crm-plugin")
@@ -131,18 +131,18 @@ module.exports = {
           .create(ctx.request.body);
         if (ctx.request.body.contacts) {
           let contacttags = [];
-          // var promise = await Promise.all(
-          //   ctx.request.body.contacts.map(async (contact) => {
+          var promise = await Promise.all(
+            ctx.request.body.contacts.map(async (contact) => {
           let contacttagDetails = {
             tag: entity.id,
-            contact: ctx.request.body.contacts,
+            contact: contact,
           };
           contacttagEntry = await strapi
             .query("contacttag", "crm-plugin")
             .create(contacttagDetails);
           contacttags.push(contacttagEntry);
-          //   })
-          // );
+            })
+          );
           entity.contacttags = contacttags;
         }
       }
