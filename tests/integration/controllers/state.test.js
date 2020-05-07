@@ -57,7 +57,7 @@ describe("States Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/states")
           .send({
-            is_Active: true,
+            is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
@@ -87,7 +87,7 @@ describe("States Module Endpoint", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/states/:id", function () {
       it("Updating params test case", function (done) {
-        const id = 2;
+        const id = 1;
         request(SERVER_URL)
           .put("/crm-plugin/states/" + id)
           .send({
@@ -111,7 +111,7 @@ describe("States Module Endpoint", function () {
           .get("/crm-plugin/states/count")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
+          .expect("Content-Type", "application/json; charset=utf-8")
           .end(function (err, res) {
             done(err);
           });

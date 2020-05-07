@@ -57,7 +57,7 @@ describe("Activitytype Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/activitytypes")
           .send({
-            is_Active: true,
+            is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
@@ -111,7 +111,7 @@ describe("Activitytype Module Endpoint", function () {
           .get("/crm-plugin/activitytypes/count")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
+          .expect("Content-Type", "application/json; charset=utf-8")
           .end(function (err, res) {
             done(err);
           });

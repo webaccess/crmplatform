@@ -57,7 +57,7 @@ describe("Tags Module Endpoint", function () {
         request(SERVER_URL)
           .post("/crm-plugin/tags")
           .send({
-            is_Active: true,
+            is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
@@ -92,7 +92,6 @@ describe("Tags Module Endpoint", function () {
           .put("/crm-plugin/tags/" + id)
           .send({
             name: "Tag 2",
-            is_Active: false,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
