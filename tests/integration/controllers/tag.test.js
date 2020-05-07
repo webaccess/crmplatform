@@ -107,7 +107,7 @@ describe("Tags Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/tags/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 2;
+        const id = 1;
         request(SERVER_URL)
           .delete("/crm-plugin/tags/" + id)
           .set("Authorization", "Bearer " + JWT)

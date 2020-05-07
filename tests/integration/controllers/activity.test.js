@@ -2,13 +2,13 @@ const request = require("co-supertest");
 
 const { JWT, SERVER_URL } = require("../config/config");
 
-describe("Country Module Endpoint", function () {
+describe("Activity Module Endpoint", function () {
   describe("Find Method", function () {
     // case for empty params done here
-    describe("GET /crm-plugin/countries", function () {
+    describe("GET /crm-plugin/activities", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/countries")
+          .get("/crm-plugin/activities")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
@@ -21,10 +21,10 @@ describe("Country Module Endpoint", function () {
 
   describe("FindOne Method", function () {
     // case for empty params done here
-    describe("GET /crm-plugin/countries/:id", function () {
+    describe("GET /crm-plugin/activities/:id", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/countries")
+          .get("/crm-plugin/activities")
           .send({
             id: 1,
           })
@@ -40,10 +40,10 @@ describe("Country Module Endpoint", function () {
 
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
-    describe("POST /crm-plugin/countries/", function () {
+    describe("POST /crm-plugin/activities/", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/countries")
+          .post("/crm-plugin/activities")
           .send({})
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
@@ -55,7 +55,7 @@ describe("Country Module Endpoint", function () {
 
       it("Required params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/countries")
+          .post("/crm-plugin/activities")
           .send({
             is_active: true,
           })
@@ -69,11 +69,9 @@ describe("Country Module Endpoint", function () {
 
       it("Correct params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/countries")
+          .post("/crm-plugin/activities")
           .send({
-            name: "Algeria",
-            is_active: true,
-            abbreviation: "DZ",
+            title: "Activity 1",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -87,15 +85,13 @@ describe("Country Module Endpoint", function () {
 
   describe("Update Method", function () {
     // case for correct params done for update method
-    describe("PUT /crm-plugin/countries/:id", function () {
+    describe("PUT /crm-plugin/activities/:id", function () {
       it("Updating params test case", function (done) {
         const id = 1;
         request(SERVER_URL)
-          .put("/crm-plugin/countries/" + id)
+          .put("/crm-plugin/activities/" + id)
           .send({
-            name: "United States",
-            abbreviation: "US",
-            is_active: false,
+            title: "Activity 2",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -107,29 +103,13 @@ describe("Country Module Endpoint", function () {
     });
   });
 
-  describe("Count Method", function () {
-    // case for count done here
-    describe("GET /crm-plugin/countries/count", function () {
-      it("Empty params test case", function (done) {
-        request(SERVER_URL)
-          .get("/crm-plugin/countries/count")
-          .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", "application/json; charset=utf-8")
-          .end(function (err, res) {
-            done(err);
-          });
-      });
-    });
-  });
-
   describe("Delete Method", function () {
     // case for correct params done here
-    describe("DELETE /crm-plugin/countries/:id", function () {
+    describe("DELETE /crm-plugin/activities/:id", function () {
       it("Correct params test case", function (done) {
         const id = 1;
         request(SERVER_URL)
-          .delete("/crm-plugin/countries/" + id)
+          .delete("/crm-plugin/activities/" + id)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)

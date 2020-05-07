@@ -123,7 +123,7 @@ describe("Activitytype Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/activitytypes/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 2;
+        const id = 1;
         request(SERVER_URL)
           .delete("/crm-plugin/activitytypes/" + id)
           .set("Authorization", "Bearer " + JWT)

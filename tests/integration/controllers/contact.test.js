@@ -93,7 +93,7 @@ describe("Contact Module Endpoint", function () {
           .put("/crm-plugin/contact/" + id)
           .send({
             name: "NewTech",
-			contact_type:"organization"
+            contact_type: "organization",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
