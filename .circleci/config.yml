@@ -7,14 +7,11 @@ jobs:
       name: node/default
     steps:
       - run:
-          name: install-strapi
-          command: yarn create strapi-app crm-project --quickstart
+          name: Install Strapi Project
+          command: yarn create strapi-app crm-project --quickstart --no-run
       - run:
-          name: create-plugin-directory
-          command: mkdir -p crm-project/plugins
-      - run:
-          name: plugin-directory
-          command: cd crm-project/plugins
+          name: Install Plugin
+          command: mkdir -p crm-project/plugins && cd crm-project/plugins
       - checkout
       - run:
           name: back-to-root
