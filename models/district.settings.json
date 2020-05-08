@@ -28,9 +28,8 @@
       "unique": true
     },
     "state": {
-      "plugin": "crm-plugin",
       "model": "state",
-      "via": "districts"
+      "plugin": "crm-plugin"
     },
     "villages": {
       "plugin": "crm-plugin",
