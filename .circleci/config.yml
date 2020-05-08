@@ -8,7 +8,7 @@ jobs:
     steps:
       - run:
           name: install-strapi
-          command: yarn create strapi-app crm-project
+          command: yarn create strapi-app crm-project --quickstart
       - run:
           name: create-plugin-directory
           command: mkdir -p crm-project/plugins
