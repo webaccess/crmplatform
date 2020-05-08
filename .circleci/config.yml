@@ -8,10 +8,7 @@ jobs:
     steps:
       - run:
           name: Create Strapi project
-          command: yarn create strapi-app crm-project --quickstart --no-run
-      - run:
-          name: Install CRM plugin
-          command: mkdir -p crm-project/plugins && cd crm-project/plugins
+          command: yarn create strapi-app crm-project --quickstart --no-run && mkdir -p crm-project/plugins && cd crm-project/plugins
   build-and-test:
     executor:
       name: node/default
@@ -35,4 +32,6 @@ workflows:
   build-and-test:
     jobs:
       - setup-strapi
-      - build-and-test
+      - build-and-test:
+          requires:
+            - setup-strapi
