@@ -12,7 +12,7 @@ jobs:
       - run:
           name: Install CRM plugin
           command: mkdir -p crm-project/plugins && cd crm-project/plugins
-      working_directory: ~/project/crm-project/plugins
+      - working_directory: ~/project/crm-project/plugins
       - checkout
       - run:
           name: Rename the plugin folder
