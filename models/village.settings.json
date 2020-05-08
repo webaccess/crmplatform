@@ -27,14 +27,12 @@
       "default": true
     },
     "state": {
-      "via": "villages",
-      "plugin": "crm-plugin",
-      "model": "state"
+      "model": "state",
+      "plugin": "crm-plugin"
     },
     "district": {
-      "via": "villages",
-      "plugin": "crm-plugin",
-      "model": "district"
+      "model": "district",
+      "plugin": "crm-plugin"
     },
     "contacts": {
       "via": "villages",
