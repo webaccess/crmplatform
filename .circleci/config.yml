@@ -5,6 +5,7 @@ jobs:
   build-and-test:
     executor:
       name: node/default
+    working_directory: ~/project/crm-project/plugins
     steps:
       - run:
           name: Create Strapi project
@@ -12,7 +13,6 @@ jobs:
       - run:
           name: Install CRM plugin
           command: mkdir -p crm-project/plugins && cd crm-project/plugins
-      - working_directory: ~/project/crm-project/plugins
       - checkout
       - run:
           name: Rename the plugin folder
