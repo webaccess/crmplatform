@@ -51,9 +51,11 @@
       "plugin": "crm-plugin",
       "model": "country"
     },
-    "village": {
+    "villages": {
       "plugin": "crm-plugin",
-      "model": "village"
+      "collection": "village",
+      "via": "contacts",
+      "dominant": true
     },
     "state": {
       "plugin": "crm-plugin",
@@ -70,18 +72,17 @@
     },
     "user": {
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "contact"
+      "model": "user"
     },
     "activityassignees": {
       "plugin": "crm-plugin",
-      "collection": "activityassignee",
-      "via": "contact"
+      "via": "contact",
+      "collection": "activityassignee"
     },
     "contacttags": {
+      "via": "contact",
       "plugin": "crm-plugin",
-      "collection": "contacttag",
-      "via": "contact"
+      "collection": "contacttag"
     }
   }
 }
