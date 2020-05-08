@@ -38,8 +38,9 @@
       "via": "state"
     },
     "country": {
-      "model": "country",
-      "plugin": "crm-plugin"
+      "via": "states",
+      "plugin": "crm-plugin",
+      "model": "country"
     }
   }
 }
