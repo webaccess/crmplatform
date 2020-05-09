@@ -14,14 +14,14 @@ jobs:
       - run:
           name: Install CRM plugin
           command: mkdir -p ~/project/crm-project/plugins && mv ~/project/crm-plugin ~/project/crm-project/plugins/
-      - run:
-          name: Start Strapi project
-          # need to auto create admin user in strapi via command line before yarn start
-          #command: cd ~/project/crm-project && yarn start
-      - run:
-          name: Configure the plugin
-          # need to update config file with correct credentials
-          #command: cp plugins/crm-plugin/tests/integration/config/config.js.sample plugins/crm-plugin/tests/integration/config/config.js
+      #- run:
+      #name: Start Strapi project
+      # need to auto create admin user in strapi via command line before yarn start
+      #command: cd ~/project/crm-project && yarn start
+      #- run:
+      #name: Configure the plugin
+      # need to update config file with correct credentials
+      #command: cp plugins/crm-plugin/tests/integration/config/config.js.sample plugins/crm-plugin/tests/integration/config/config.js
       - node/with-cache:
           steps:
             - run: yarn install
