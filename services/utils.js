@@ -33,6 +33,16 @@ function checkParams(values, requiredValues) {
   return result;
 }
 
+//helper function
+function getID(module, field, value) {
+  console.log("module", module, "field", field, "value", value);
+  const id = await strapi
+  .query(module, "crm-plugin")
+  .find({ field: value });
+  console.log('id----',id)
+}
+
 module.exports = {
   checkParams,
+  getID,
 };
