@@ -101,22 +101,22 @@ module.exports = {
         if (ctx.request.body.contacts) {
           var promise = await Promise.all(
             ctx.request.body.contacts.map(async (contact) => {
-          let activityDetail = {
-            activity: ctx.params.id,
-            contact: contact,
-          };
-          const assigneeQuery = await strapi
-            .query("activityassignee", "crm-plugin")
-            .findOne({ activity: ctx.params.id });
-          if (assigneeQuery == null) {
-            activityassignee = await strapi
-              .query("activityassignee", "crm-plugin")
-              .create(activityDetail);
-          } else {
-            activityassignee = await strapi
-              .query("activityassignee", "crm-plugin")
-              .update({ activity: ctx.params.id }, activityDetail);
-          }
+              let activityDetail = {
+                activity: ctx.params.id,
+                contact: contact,
+              };
+              const assigneeQuery = await strapi
+                .query("activityassignee", "crm-plugin")
+                .findOne({ activity: ctx.params.id });
+              if (assigneeQuery == null) {
+                activityassignee = await strapi
+                  .query("activityassignee", "crm-plugin")
+                  .create(activityDetail);
+              } else {
+                activityassignee = await strapi
+                  .query("activityassignee", "crm-plugin")
+                  .update({ activity: ctx.params.id }, activityDetail);
+              }
             })
           );
         }
@@ -143,14 +143,14 @@ module.exports = {
           let activityassignees = [];
           var promise = await Promise.all(
             ctx.request.body.contacts.map(async (contact) => {
-          let activityDetail = {
-            activity: activity.id,
-            contact: contact,
-          };
-          activityassignee = await strapi
-            .query("activityassignee", "crm-plugin")
-            .create(activityDetail);
-          activityassignees.push(activityassignee);
+              let activityDetail = {
+                activity: activity.id,
+                contact: contact,
+              };
+              activityassignee = await strapi
+                .query("activityassignee", "crm-plugin")
+                .create(activityDetail);
+              activityassignees.push(activityassignee);
             })
           );
           activity.activityassignees = activityassignees;
