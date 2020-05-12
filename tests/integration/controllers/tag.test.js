@@ -1,6 +1,10 @@
 const request = require("co-supertest");
 
 const { JWT, SERVER_URL } = require("../config/config");
+// const helperFunction = require("../utils/getId");
+const helperFunction = require("../../../services/utils");
+console.log("getId---", helperFunction);
+// const {}
 
 describe("Tags Module Endpoint", function () {
   describe("Find Method", function () {
@@ -68,6 +72,9 @@ describe("Tags Module Endpoint", function () {
       });
 
       it("Correct params test case", function (done) {
+        console.log("getId---", helperFunction);
+        const result = helperFunction.getID("tag", "name", "Tag 1");
+        console.log("result in tag test case", result);
         request(SERVER_URL)
           .post("/crm-plugin/tags")
           .send({
@@ -83,6 +90,7 @@ describe("Tags Module Endpoint", function () {
     });
   });
 
+  // "name": "Tag 1",
   describe("Update Method", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/tags/:id", function () {

@@ -91,9 +91,7 @@ function Base(requiredValues = []) {
           ctx.request.body,
           this.requiredValues
         );
-        // const result = strapi.plugins["crm-plugin"].services.utils.getId(
 
-        // );
         console.log("table---", table);
         if (result.error) {
           return ctx.badRequest(null, result.message);
