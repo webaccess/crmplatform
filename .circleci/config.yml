@@ -14,9 +14,6 @@ jobs:
       - run:
           name: Reload the demo DB
           command: cd ~/project/crm-project || cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
-      # - run:
-      #     name: Update configuration
-      #     command: cp -R ~/project/crm-plugin/tests/integration/testing_db/config/* ~/project/crm-project/config/
       - run:
           name: Install CRM plugin
           command: mkdir -p ~/project/crm-project/plugins && mv ~/project/crm-plugin ~/project/crm-project/plugins/
@@ -27,7 +24,7 @@ jobs:
       - run:
           name: Configure the plugin
           #need to update config file with correct credentials
-          command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js
+          command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js
       - node/with-cache:
           steps:
             - run: yarn install
