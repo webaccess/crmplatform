@@ -8,15 +8,10 @@ const knex = require("knex")({
   client: "pg",
   connection: {
     host: "127.0.0.1",
-    port: "5432",
-    user: "postgres",
-    password: "root",
-    database: "newcrm",
-    // host: "${process.env.DATABASE_HOST || '127.0.0.1'}",
-    // port: "${process.env.DATABASE_PORT || 5432}",
-    // user: "${process.env.DATABASE_USERNAME || ''}",
-    // password: "${process.env.DATABASE_PASSWORD || ''}",
-    // database: "${process.env.DATABASE_NAME || 'strapi'}"
+    port: "database_port",
+    user: "your_database_user",
+    password: "your_database_password",
+    database: "your_database_name",
   },
 });
 
