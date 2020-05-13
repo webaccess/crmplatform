@@ -19,10 +19,10 @@
       "required": true,
       "default": true
     },
-    "activity": {
+    "activities": {
       "via": "activitytype",
       "plugin": "crm-plugin",
-      "model": "activity"
+      "collection": "activity"
     }
   }
 }
