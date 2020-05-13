@@ -25,7 +25,7 @@ jobs:
           command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js
       - run:
           name: Install required packages and run the test
-          command: cd ~/project/crm-project/plugins/crm-plugin/ || yarn install || yarn test
+          command: cd ~/project/crm-project/plugins/crm-plugin/ && yarn install && yarn test
 
 workflows:
   build-and-test:
