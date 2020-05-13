@@ -27,7 +27,7 @@ jobs:
       - run:
           name: Configure the plugin
           #need to update config file with correct credentials
-          command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample plugins/crm-plugin/tests/integration/config/config.js
+          command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js
       - node/with-cache:
           steps:
             - run: yarn install
