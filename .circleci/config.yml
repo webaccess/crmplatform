@@ -23,7 +23,7 @@ jobs:
       - run:
           name: Start Strapi project
           #need to auto create admin user in strapi via command line before yarn start
-          command: cd ~/project/crm-project && yarn start
+          command: cd ~/project/crm-project && yarn start &
       - run:
           name: Configure the plugin
           #need to update config file with correct credentials
