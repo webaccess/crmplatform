@@ -25,7 +25,6 @@ function Base(requiredValues = []) {
 
   this.find = async (ctx) => {
     let table = getTable(ctx.originalUrl);
-    console.log("table---", table);
     try {
       let entity;
 
@@ -34,7 +33,6 @@ function Base(requiredValues = []) {
       } else {
         entity = await strapi.query(table, "crm-plugin").find(ctx.query);
       }
-      console.log("table---", table);
       return entity.map((ent) =>
         sanitizeEntity(ent, {
           model: strapi.plugins["crm-plugin"].models[table],
@@ -76,7 +74,6 @@ function Base(requiredValues = []) {
   this.create = async (ctx) => {
     let entity;
     let table = getTable(ctx.originalUrl);
-    console.log("table---", table);
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
@@ -92,7 +89,6 @@ function Base(requiredValues = []) {
           this.requiredValues
         );
 
-        console.log("table---", table);
         if (result.error) {
           return ctx.badRequest(null, result.message);
         }

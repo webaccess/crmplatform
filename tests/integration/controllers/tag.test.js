@@ -1,7 +1,7 @@
 const request = require("co-supertest");
 
 const { JWT, SERVER_URL } = require("../config/config");
-const { getID } = require("../utils/getId");
+const { getID } = require("../utils");
 
 describe("Tags Module Endpoint", function () {
   describe("Find Method", function () {
@@ -40,9 +40,9 @@ describe("Tags Module Endpoint", function () {
   });
 
   describe("Create Method", function () {
+    //call helper function to get id of passed value
     var value = "Brand new";
     const result = getID(value);
-    console.log("result ", result);
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/tags/", function () {
       it("Empty params test case", function (done) {
@@ -72,7 +72,6 @@ describe("Tags Module Endpoint", function () {
       });
 
       it("Correct params test case", function (done) {
-        console.log("new result in tag test case----", result);
         request(SERVER_URL)
           .post("/crm-plugin/tags")
           .send({

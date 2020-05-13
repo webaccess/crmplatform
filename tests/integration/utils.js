@@ -1,5 +1,4 @@
-const data = require("../config/config");
-const bookshelf = data.bookshelf;
+const { bookshelf } = require("./config/config");
 
 //helper function
 async function getID(value) {
