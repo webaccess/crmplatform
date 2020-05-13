@@ -135,6 +135,9 @@ module.exports = {
       await strapi
         .query("contacttag", "crm-plugin")
         .delete({ contact: ctx.params.id });
+      await strapi
+        .query("activityassignee", "crm-plugin")
+        .delete({ contact: ctx.params.id });
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
       });

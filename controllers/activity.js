@@ -61,11 +61,6 @@ module.exports = {
   },
 
   findOne: async (ctx) => {
-    const findOneParams = ["id"];
-    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-      ctx.params,
-      findOneParams
-    );
     const { id } = ctx.params;
     try {
       const entity = await strapi
@@ -107,11 +102,11 @@ module.exports = {
               };
               const assigneeQuery = await strapi
                 .query("activityassignee", "crm-plugin")
-                .findOne({ activity: ctx.params.id });
+                .findOne(activityDetail);
               if (assigneeQuery == null) {
                 activityassignee = await strapi
                   .query("activityassignee", "crm-plugin")
-                  .create({ activity: ctx.params.id }, activityDetail);
+                  .create(activityDetail);
               } else {
                 activityassignee = await strapi
                   .query("activityassignee", "crm-plugin")
@@ -124,9 +119,6 @@ module.exports = {
         activity = await strapi
           .query("activity", "crm-plugin")
           .update({ id }, ctx.request.body);
-        return sanitizeEntity(activity, {
-          model: strapi.plugins["crm-plugin"].models["activity"],
-        });
       } else {
         const reqVal = ["title"];
         const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
