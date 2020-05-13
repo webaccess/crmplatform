@@ -12,11 +12,12 @@ jobs:
           name: Create Strapi project
           command: cd ~/project && yarn create strapi-app crm-project --quickstart --no-run
       - run:
+          name: Reload the demo DB
+          command: cp -R ~/project/crm-plugin/test/integration/testing_db/.tmp ~/project/crm-project/
+          command: cp -R ~/project/crm-plugin/test/integration/testing_db/config/* ~/project/crm-project/config/
+      - run:
           name: Install CRM plugin
           command: mkdir -p ~/project/crm-project/plugins && mv ~/project/crm-plugin ~/project/crm-project/plugins/
-      - run:
-          name: Reload the demo DB
-          command: pwd #need to fix this code
       - run:
           name: Start Strapi project
           #need to auto create admin user in strapi via command line before yarn start
