@@ -14,6 +14,8 @@ jobs:
       - run:
           name: Reload the demo DB
           command: cp -R ~/project/crm-plugin/test/integration/testing_db/.tmp ~/project/crm-project/
+      - run:
+          name: Update configuration
           command: cp -R ~/project/crm-plugin/test/integration/testing_db/config/* ~/project/crm-project/config/
       - run:
           name: Install CRM plugin
