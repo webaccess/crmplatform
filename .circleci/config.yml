@@ -13,10 +13,10 @@ jobs:
           command: cd ~/project && yarn create strapi-app crm-project --quickstart --no-run
       - run:
           name: Reload the demo DB
-          command: cp -R ~/project/crm-plugin/test/integration/testing_db/.tmp ~/project/crm-project/
+          command: cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp ~/project/crm-project/
       - run:
           name: Update configuration
-          command: cp -R ~/project/crm-plugin/test/integration/testing_db/config/* ~/project/crm-project/config/
+          command: cp -R ~/project/crm-plugin/tests/integration/testing_db/config/* ~/project/crm-project/config/
       - run:
           name: Install CRM plugin
           command: mkdir -p ~/project/crm-project/plugins && mv ~/project/crm-plugin ~/project/crm-project/plugins/
