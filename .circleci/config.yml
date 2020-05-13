@@ -25,9 +25,7 @@ jobs:
           command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js
       - node/with-cache:
           steps:
-            - run: cd ~/project/crm-project/plugins/crm-plugin/
-            - run: yarn install
-            - run: yarn test
+            - run: cd ~/project/crm-project/plugins/crm-plugin/ || yarn install || yarn test
 workflows:
   build-and-test:
     jobs:
