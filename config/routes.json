@@ -38,6 +38,12 @@
     },
     {
       "method": "GET",
+      "path": "/activityassignees/count",
+      "handler": "activityassignee.count",
+      "config": { "policies": ["plugins::users-permissions.isAuthenticated"] }
+    },
+    {
+      "method": "GET",
       "path": "/activityassignees/:id",
       "handler": "activityassignee.findOne",
       "config": { "policies": ["plugins::users-permissions.isAuthenticated"] }
