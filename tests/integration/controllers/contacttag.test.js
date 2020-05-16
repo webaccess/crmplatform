@@ -3,13 +3,13 @@ const request = require("co-supertest");
 const { JWT, SERVER_URL } = require("../config/config");
 let dataId;
 
-describe("District Module Endpoint", function () {
+describe("Contacttag Module Endpoint", function () {
   describe("Find Method", function () {
     // case for empty params done here
-    describe("GET /crm-plugin/districts", function () {
+    describe("GET /crm-plugin/contacttags", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/districts")
+          .get("/crm-plugin/contacttags")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
@@ -21,26 +21,12 @@ describe("District Module Endpoint", function () {
   });
 
   describe("Create Method", function () {
-    // case for empty,required and correct params for Create method done
-    describe("POST /crm-plugin/districts/", function () {
+    // case for empty,required and correct params for Create method done here
+    describe("POST /crm-plugin/contacttags/", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/districts")
+          .post("/crm-plugin/contacttags")
           .send({})
-          .set("Authorization", "Bearer " + JWT)
-          .expect(400)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
-            done(err);
-          });
-      });
-
-      it("Required params test case", function (done) {
-        request(SERVER_URL)
-          .post("/crm-plugin/districts")
-          .send({
-            is_active: true,
-          })
           .set("Authorization", "Bearer " + JWT)
           .expect(400)
           .expect("Content-Type", /json/)
@@ -51,9 +37,11 @@ describe("District Module Endpoint", function () {
 
       it("Correct params test case", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/districts")
+          .post("/crm-plugin/contacttags")
           .send({
-            name: "Thane",
+            contact: {
+              id: 6,
+            },
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -66,31 +54,12 @@ describe("District Module Endpoint", function () {
     });
   });
 
-  describe("Update Method", function () {
-    // case for correct params done for update method
-    describe("PUT /crm-plugin/districts/:id", function () {
-      it("Updating params test case", function (done) {
-        request(SERVER_URL)
-          .put("/crm-plugin/districts/" + dataId)
-          .send({
-            name: "Sangli",
-          })
-          .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
-            done(err);
-          });
-      });
-    });
-  });
-
   describe("FindOne Method", function () {
     // case for empty params done here
-    describe("GET /crm-plugin/districts/:id", function () {
+    describe("GET /crm-plugin/contacttags/:id", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/districts")
+          .get("/crm-plugin/contacttags")
           .send({
             id: 1,
           })
@@ -104,12 +73,33 @@ describe("District Module Endpoint", function () {
     });
   });
 
+  describe("Update Method", function () {
+    // case for correct params done for update method
+    describe("PUT /crm-plugin/contacttags/:id", function () {
+      it("Updating params test case", function (done) {
+        request(SERVER_URL)
+          .put("/crm-plugin/contacttags/" + dataId)
+          .send({
+            contact: {
+              id: 6,
+            },
+          })
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            done(err);
+          });
+      });
+    });
+  });
+
   describe("Count Method", function () {
     // case for count done here
-    describe("GET /crm-plugin/districts/count", function () {
+    describe("GET /crm-plugin/contacttags/count", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/districts/count")
+          .get("/crm-plugin/contacttags/count")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", "application/json; charset=utf-8")
@@ -122,10 +112,10 @@ describe("District Module Endpoint", function () {
 
   describe("Delete Method", function () {
     // case for correct params done here
-    describe("DELETE /crm-plugin/districts/:id", function () {
+    describe("DELETE /crm-plugin/contacttags/:id", function () {
       it("Correct params test case", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/districts/" + dataId)
+          .delete("/crm-plugin/contacttags/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
