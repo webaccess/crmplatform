@@ -1,6 +1,7 @@
 const request = require("co-supertest");
 
 const { JWT, SERVER_URL } = require("../config/config");
+let dataId;
 
 describe("Country Module Endpoint", function () {
   describe("Find Method", function () {
@@ -9,25 +10,6 @@ describe("Country Module Endpoint", function () {
       it("Empty params test case", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/countries")
-          .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
-            done(err);
-          });
-      });
-    });
-  });
-
-  describe("FindOne Method", function () {
-    // case for empty params done here
-    describe("GET /crm-plugin/countries/:id", function () {
-      it("Empty params test case", function (done) {
-        request(SERVER_URL)
-          .get("/crm-plugin/countries")
-          .send({
-            id: 1,
-          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
@@ -79,6 +61,7 @@ describe("Country Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            dataId = res.body.id;
             done(err);
           });
       });
@@ -89,13 +72,31 @@ describe("Country Module Endpoint", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/countries/:id", function () {
       it("Updating params test case", function (done) {
-        const id = 1;
         request(SERVER_URL)
-          .put("/crm-plugin/countries/" + id)
+          .put("/crm-plugin/countries/" + dataId)
           .send({
             name: "United States",
             abbreviation: "US",
             is_active: false,
+          })
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            done(err);
+          });
+      });
+    });
+  });
+
+  describe("FindOne Method", function () {
+    // case for empty params done here
+    describe("GET /crm-plugin/countries/:id", function () {
+      it("Empty params test case", function (done) {
+        request(SERVER_URL)
+          .get("/crm-plugin/countries")
+          .send({
+            id: dataId,
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -127,9 +128,8 @@ describe("Country Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/countries/:id", function () {
       it("Correct params test case", function (done) {
-        const id = 1;
         request(SERVER_URL)
-          .delete("/crm-plugin/countries/" + id)
+          .delete("/crm-plugin/countries/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
