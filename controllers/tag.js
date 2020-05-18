@@ -125,6 +125,7 @@ module.exports = {
         if (result.error == true) {
           return ctx.badRequest(null, result.message);
         }
+
         entity = await strapi
           .query("tag", "crm-plugin")
           .create(ctx.request.body);

@@ -21,12 +21,12 @@
       "type": "datetime"
     },
     "description": {
-      "type": "text"
+      "type": "richtext"
     },
     "activitytype": {
-      "plugin": "crm-plugin",
       "model": "activitytype",
-      "via": "activity"
+      "via": "activities",
+      "plugin": "crm-plugin"
     },
     "activityassignees": {
       "plugin": "crm-plugin",

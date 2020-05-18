@@ -1,28 +1,29 @@
-const JWT = "";
 const SERVER_URL = "http://localhost:1337";
-module.exports = {
-  JWT,
-  SERVER_URL,
-};
-const knex = require("knex")({
-  client: "pg",
-  connection: {
-    host: "127.0.0.1",
-    port: "database_port",
-    user: "your_database_user",
-    password: "your_database_password",
-    database: "your_database_name",
-  },
-});
 
-const bookshelf = require("bookshelf")(knex);
+const request = require("request");
 
-bookshelf.model("contact", {
-  requireFetch: false,
-  tableName: "contacts",
-});
+function getJWTToken() {
+  return new Promise(function (resolve, reject) {
+    request.post(
+      SERVER_URL + "/auth/local",
+      {
+        json: {
+          identifier: "demo",
+          password: "demo123",
+        },
+      },
+      (err, res, body) => {
+        if (err) {
+          reject(err);
+        }
+        var token = body.jwt;
+        resolve(token);
+      }
+    );
+  });
+}
+
 module.exports = {
-  JWT,
   SERVER_URL,
-  bookshelf,
+  getJWTToken,
 };
