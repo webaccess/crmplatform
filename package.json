@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "mocha tests/**/*.test.js",
-    "coverage": "nyc --all yarn test"
+    "coverage": "nyc --all --reporter=lcov yarn test"
   },
   "author": {
     "name": "Web Access",
