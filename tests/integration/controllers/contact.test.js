@@ -1,8 +1,8 @@
 const request = require("co-supertest");
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
-let dataId;
 let JWT;
+let dataId;
 
 describe("Contact Module Endpoint", function () {
   before(function (done) {
