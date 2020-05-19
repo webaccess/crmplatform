@@ -22,7 +22,6 @@ describe("Contact Module Endpoint", function () {
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/contact", function () {
-      console.log("JWT", JWT);
       it("Empty params test case", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/contact")
