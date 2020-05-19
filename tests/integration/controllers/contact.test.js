@@ -1,12 +1,28 @@
 const request = require("co-supertest");
 
-const { JWT, SERVER_URL } = require("../config/config");
+const { SERVER_URL, PAYLOAD } = require("../config/config");
 let dataId;
+let JWT;
 
 describe("Contact Module Endpoint", function () {
+  before(function (done) {
+    request(SERVER_URL)
+      .post("/auth/local")
+      .send(PAYLOAD)
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .end(function (err, res) {
+        if (err) return done(err);
+        const response = res.body;
+        JWT = response["jwt"];
+        done();
+      });
+  });
+
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/contact", function () {
+      console.log("JWT", JWT);
       it("Empty params test case", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/contact")
@@ -14,7 +30,8 @@ describe("Contact Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            done(err);
+            if (err) return done(err);
+            done();
           });
       });
     });
