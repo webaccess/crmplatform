@@ -1,5 +1,6 @@
 # Don't check auto-generated stuff into git
 coverage
+.nyc_output
 node_modules
 stats.json
 package-lock.json
