@@ -126,7 +126,7 @@ module.exports = {
           reqVal
         );
         if (result.error == true) {
-          return ctx.badRequest(null, result.message);
+          return ctx.send(result.message);
         }
         activity = await strapi
           .query("activity", "crm-plugin")
