@@ -2,6 +2,8 @@
 
 This is CRM platform backend based on the Strapi. It comes with basic model for contact management along with the API's.
 
+[![webaccess](https://circleci.com/gh/webaccess/crmplatform.svg?style=shield)](https://circleci.com/gh/webaccess/crmplatform)
+
 ## Primary Models include
 
 - Contact
