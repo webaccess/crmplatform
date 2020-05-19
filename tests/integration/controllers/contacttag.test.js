@@ -1,9 +1,24 @@
 const request = require("co-supertest");
 
-const { JWT, SERVER_URL } = require("../config/config");
+const { SERVER_URL, PAYLOAD } = require("../config/config");
+let JWT;
 let dataId;
 
 describe("Contacttag Module Endpoint", function () {
+  before(function (done) {
+    request(SERVER_URL)
+      .post("/auth/local")
+      .send(PAYLOAD)
+      .expect(200)
+      .expect("Content-Type", /json/)
+      .end(function (err, res) {
+        if (err) return done(err);
+        const response = res.body;
+        JWT = response["jwt"];
+        done();
+      });
+  });
+
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/contacttags", function () {

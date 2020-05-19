@@ -1,6 +1,10 @@
-const JWT = "";
 const SERVER_URL = "http://localhost:1337";
+const PAYLOAD = {
+  identifier: "demo",
+  password: "demo123",
+};
+
 module.exports = {
-  JWT,
   SERVER_URL,
+  PAYLOAD,
 };
