@@ -90,7 +90,7 @@ module.exports = {
           requiredValues
         );
         if (result.error == true) {
-          return ctx.badRequest(null, result.message);
+          return ctx.send(result.message);
         }
         //create org
         org = await strapi

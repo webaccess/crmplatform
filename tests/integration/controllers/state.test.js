@@ -29,7 +29,8 @@ describe("States Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
     });
@@ -43,10 +44,11 @@ describe("States Module Endpoint", function () {
           .post("/crm-plugin/states")
           .send({})
           .set("Authorization", "Bearer " + JWT)
-          .expect(400)
-          .expect("Content-Type", /json/)
+          .expect(200)
+          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
 
@@ -57,10 +59,11 @@ describe("States Module Endpoint", function () {
             is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
-          .expect(400)
-          .expect("Content-Type", /json/)
+          .expect(200)
+          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
 
@@ -75,7 +78,8 @@ describe("States Module Endpoint", function () {
           .expect("Content-Type", /json/)
           .end(function (err, res) {
             dataId = res.body.id;
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
     });
@@ -94,7 +98,8 @@ describe("States Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
     });
@@ -113,7 +118,8 @@ describe("States Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
     });
@@ -129,7 +135,8 @@ describe("States Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", "application/json; charset=utf-8")
           .end(function (err, res) {
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
     });
@@ -145,7 +152,8 @@ describe("States Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            done(err);
+            if (err) done(err);
+            else done();
           });
       });
     });

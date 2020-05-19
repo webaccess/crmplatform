@@ -123,7 +123,7 @@ module.exports = {
         );
 
         if (result.error == true) {
-          return ctx.badRequest(null, result.message);
+          return ctx.send(result.message);
         }
 
         entity = await strapi

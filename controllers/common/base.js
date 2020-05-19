@@ -91,7 +91,7 @@ function Base(requiredValues = []) {
           this.requiredValues
         );
         if (result.error) {
-          return ctx.badRequest(null, result.message);
+          return ctx.send(result.message);
         }
 
         entity = await strapi
