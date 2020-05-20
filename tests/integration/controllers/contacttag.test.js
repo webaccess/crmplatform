@@ -19,10 +19,11 @@ describe("Contacttag Module Endpoint", function () {
       });
   });
 
+
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/contacttags", function () {
-      it("Empty params test case", function (done) {
+      it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/contacttags")
           .set("Authorization", "Bearer " + JWT)
@@ -39,7 +40,7 @@ describe("Contacttag Module Endpoint", function () {
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/contacttags/", function () {
-      it("Empty params test case", function (done) {
+      it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/contacttags")
           .send({})
@@ -52,7 +53,7 @@ describe("Contacttag Module Endpoint", function () {
           });
       });
 
-      it("Correct params test case", function (done) {
+      it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/contacttags")
           .send({
@@ -75,7 +76,7 @@ describe("Contacttag Module Endpoint", function () {
   describe("FindOne Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/contacttags/:id", function () {
-      it("Empty params test case", function (done) {
+      it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/contacttags")
           .send({
@@ -95,7 +96,7 @@ describe("Contacttag Module Endpoint", function () {
   describe("Update Method", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/contacttags/:id", function () {
-      it("Updating params test case", function (done) {
+      it("should update the data when correct params test case is excuted", function (done) {
         request(SERVER_URL)
           .put("/crm-plugin/contacttags/" + dataId)
           .send({
@@ -117,7 +118,7 @@ describe("Contacttag Module Endpoint", function () {
   describe("Count Method", function () {
     // case for count done here
     describe("GET /crm-plugin/contacttags/count", function () {
-      it("Empty params test case", function (done) {
+      it("should return data count when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/contacttags/count")
           .set("Authorization", "Bearer " + JWT)
@@ -134,7 +135,7 @@ describe("Contacttag Module Endpoint", function () {
   describe("Delete Method", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/contacttags/:id", function () {
-      it("Correct params test case", function (done) {
+      it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .delete("/crm-plugin/contacttags/" + dataId)
           .set("Authorization", "Bearer " + JWT)
