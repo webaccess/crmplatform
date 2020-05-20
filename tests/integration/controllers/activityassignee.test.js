@@ -22,7 +22,7 @@ describe("Activityassignee Module Endpoint", function () {
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/activityassignees", function () {
-      it("Empty params test case", function (done) {
+      it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/activityassignees")
           .set("Authorization", "Bearer " + JWT)
@@ -39,7 +39,7 @@ describe("Activityassignee Module Endpoint", function () {
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/activityassignees/", function () {
-      it("Empty params test case", function (done) {
+      it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/activityassignees")
           .send({})
@@ -52,7 +52,7 @@ describe("Activityassignee Module Endpoint", function () {
           });
       });
 
-      it("Correct params test case", function (done) {
+      it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/activityassignees")
           .send({
@@ -73,9 +73,9 @@ describe("Activityassignee Module Endpoint", function () {
   });
 
   describe("FindOne Method", function () {
-    // case for empty params done here
+    // case for correct params done here
     describe("GET /crm-plugin/activityassignees/:id", function () {
-      it("Empty params test case", function (done) {
+      it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/activityassignees")
           .send({
@@ -95,7 +95,7 @@ describe("Activityassignee Module Endpoint", function () {
   describe("Update Method", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/activityassignees/:id", function () {
-      it("Updating params test case", function (done) {
+      it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .put("/crm-plugin/activityassignees/" + dataId)
           .send({
@@ -117,7 +117,7 @@ describe("Activityassignee Module Endpoint", function () {
   describe("Count Method", function () {
     // case for count done here
     describe("GET /crm-plugin/activityassignees/count", function () {
-      it("Empty params test case", function (done) {
+      it("should return data count when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/activityassignees/count")
           .set("Authorization", "Bearer " + JWT)
@@ -133,7 +133,7 @@ describe("Activityassignee Module Endpoint", function () {
   describe("Delete Method", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/activityassignees/:id", function () {
-      it("Correct params test case", function (done) {
+      it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .delete("/crm-plugin/activityassignees/" + dataId)
           .set("Authorization", "Bearer " + JWT)
