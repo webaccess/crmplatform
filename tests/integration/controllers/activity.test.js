@@ -31,7 +31,8 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            assert.isNotNull(res,"hello");
+            //to check res is returning true value 
+            assert(res);
             if (err) done(err);
             else done();
           });
@@ -50,6 +51,7 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
+            assert.isNotOk(res);
             if (err) done(err);
             else done();
           });
@@ -102,6 +104,8 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            //to check res is returning true value 
+            assert(res);
             if (err) done(err);
             else done();
           });
@@ -122,6 +126,7 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            //to check whether title is posted or not.
             assert.ok("Activity 2",res);
             if (err) done(err);
             else done();
