@@ -1,4 +1,6 @@
 const request = require("co-supertest");
+const assert = require('assert').strict;
+
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
 let JWT;
@@ -29,6 +31,7 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.isNotNull(res,"hello");
             if (err) done(err);
             else done();
           });
@@ -119,6 +122,7 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.ok("Activity 2",res);
             if (err) done(err);
             else done();
           });
