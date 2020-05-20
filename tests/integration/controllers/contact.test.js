@@ -22,7 +22,7 @@ describe("Contact Module Endpoint", function () {
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/contact", function () {
-      it("Empty params test case", function (done) {
+      it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/contact")
           .set("Authorization", "Bearer " + JWT)
@@ -39,7 +39,7 @@ describe("Contact Module Endpoint", function () {
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/contact/", function () {
-      it("Empty params test case", function (done) {
+      it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/contact")
           .send({})
@@ -52,7 +52,7 @@ describe("Contact Module Endpoint", function () {
           });
       });
 
-      it("Required params test case", function (done) {
+      it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/contact")
           .send({
@@ -67,7 +67,7 @@ describe("Contact Module Endpoint", function () {
           });
       });
 
-      it("Correct params test case", function (done) {
+      it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/contact")
           .send({
@@ -89,7 +89,7 @@ describe("Contact Module Endpoint", function () {
   describe("Update Method", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/contact/:id", function () {
-      it("Updating params test case", function (done) {
+      it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .put("/crm-plugin/contact/" + dataId)
           .send({
@@ -107,9 +107,9 @@ describe("Contact Module Endpoint", function () {
   });
 
   describe("FindOne Method", function () {
-    // case for empty params done here
+    // case for correct params done here
     describe("GET /crm-plugin/contact/:id", function () {
-      it("Empty params test case", function (done) {
+      it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/contact")
           .send({
@@ -129,7 +129,7 @@ describe("Contact Module Endpoint", function () {
   describe("Delete Method", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/contact/:id", function () {
-      it("Correct params test case", function (done) {
+      it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .delete("/crm-plugin/contact/" + dataId)
           .set("Authorization", "Bearer " + JWT)
