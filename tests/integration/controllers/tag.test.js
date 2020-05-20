@@ -88,7 +88,7 @@ describe("Tags Module Endpoint", function () {
   describe("Update Method", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/tags/:id", function () {
-     it("should update the data when correct params test case is excuted", function (done) {
+     it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .put("/crm-plugin/tags/" + dataId)
           .send({
@@ -106,7 +106,7 @@ describe("Tags Module Endpoint", function () {
   });
 
   describe("FindOne Method", function () {
-    // case for empty params done here
+    // case for correct params done here
     describe("GET /crm-plugin/tags/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
