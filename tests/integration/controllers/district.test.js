@@ -22,7 +22,7 @@ describe("District Module Endpoint", function () {
   describe("Find Method", function () {
     // case for empty params done here
     describe("GET /crm-plugin/districts", function () {
-      it("Empty params test case", function (done) {
+      it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/districts")
           .set("Authorization", "Bearer " + JWT)
@@ -39,7 +39,7 @@ describe("District Module Endpoint", function () {
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done
     describe("POST /crm-plugin/districts/", function () {
-      it("Empty params test case", function (done) {
+      it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/districts")
           .send({})
@@ -52,7 +52,7 @@ describe("District Module Endpoint", function () {
           });
       });
 
-      it("Required params test case", function (done) {
+      it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/districts")
           .send({
@@ -67,7 +67,7 @@ describe("District Module Endpoint", function () {
           });
       });
 
-      it("Correct params test case", function (done) {
+      it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .post("/crm-plugin/districts")
           .send({
@@ -88,7 +88,7 @@ describe("District Module Endpoint", function () {
   describe("Update Method", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/districts/:id", function () {
-      it("Updating params test case", function (done) {
+      it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .put("/crm-plugin/districts/" + dataId)
           .send({
@@ -106,9 +106,9 @@ describe("District Module Endpoint", function () {
   });
 
   describe("FindOne Method", function () {
-    // case for empty params done here
+    // case for correct params done here
     describe("GET /crm-plugin/districts/:id", function () {
-      it("Empty params test case", function (done) {
+      it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/districts")
           .send({
@@ -128,7 +128,7 @@ describe("District Module Endpoint", function () {
   describe("Count Method", function () {
     // case for count done here
     describe("GET /crm-plugin/districts/count", function () {
-      it("Empty params test case", function (done) {
+      it("should return data count when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .get("/crm-plugin/districts/count")
           .set("Authorization", "Bearer " + JWT)
@@ -145,7 +145,7 @@ describe("District Module Endpoint", function () {
   describe("Delete Method", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/districts/:id", function () {
-      it("Correct params test case", function (done) {
+      it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
           .delete("/crm-plugin/districts/" + dataId)
           .set("Authorization", "Bearer " + JWT)
