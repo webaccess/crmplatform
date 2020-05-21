@@ -1,6 +1,10 @@
 const request = require("co-supertest");
-const assert = require('assert').strict;
+var assert = require("chai").assert;
+var expect = require("chai").expect;
+var chai = require("chai"),
+  chaiHttp = require("chai-http");
 
+chai.use(chaiHttp);
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
 let JWT;
@@ -8,12 +12,17 @@ let dataId;
 
 describe("Activity Module Endpoint", function () {
   before(function (done) {
-    request(SERVER_URL)
+    chai
+      .request(SERVER_URL)
       .post("/auth/local")
       .send(PAYLOAD)
-      .expect(200)
-      .expect("Content-Type", /json/)
       .end(function (err, res) {
+        assert.equal(res.statusCode, 200, "Status code do not match!");
+        assert.equal(
+          res.headers["content-type"],
+          "application/json; charset=utf-8",
+          "Content-type do not match!"
+        );
         if (err) return done(err);
         const response = res.body;
         JWT = response["jwt"];
@@ -25,14 +34,17 @@ describe("Activity Module Endpoint", function () {
     // case for empty params done here
     describe("GET /crm-plugin/activities", function () {
       it("responds with all records when empty params test case is executed", function (done) {
-        request(SERVER_URL)
+        chai
+          .request(SERVER_URL)
           .get("/crm-plugin/activities")
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            //to check res is returning true value 
-            assert(res);
+            assert.equal(res.statusCode, 200, "Status code do not match!");
+            assert.equal(
+              res.headers["content-type"],
+              "application/json; charset=utf-8",
+              "Content-type do not match!"
+            );
             if (err) done(err);
             else done();
           });
@@ -44,46 +56,60 @@ describe("Activity Module Endpoint", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/activities/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
-        request(SERVER_URL)
+        chai
+          .request(SERVER_URL)
           .post("/crm-plugin/activities")
           .send({})
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
-            assert.isNotOk(res);
+            assert.equal(res.statusCode, 200, "Status code do not match!");
+            assert.equal(
+              res.headers["content-type"],
+              "text/plain; charset=utf-8",
+              "Content-type do not match!"
+            );
             if (err) done(err);
             else done();
           });
       });
 
       it("should not create an entry when required params test case is executed", function (done) {
-        request(SERVER_URL)
+        chai
+          .request(SERVER_URL)
           .post("/crm-plugin/activities")
           .send({
             is_active: true,
           })
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
+            assert.equal(res.statusCode, 200, "Status code do not match!");
+            assert.equal(
+              res.headers["content-type"],
+              "text/plain; charset=utf-8",
+              "Content-type do not match!"
+            );
             if (err) done(err);
             else done();
           });
       });
 
       it("should create an entry when correct params test case is executed", function (done) {
-        request(SERVER_URL)
+        chai
+          .request(SERVER_URL)
           .post("/crm-plugin/activities")
           .send({
             title: "Activity 1",
             activitytype: 5,
           })
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
             dataId = res.body.id;
+            assert.equal(res.statusCode, 200, "Status code do not match!");
+            assert.equal(
+              res.headers["content-type"],
+              "application/json; charset=utf-8",
+              "Content-type do not match!"
+            );
             if (err) done(err);
             else done();
           });
@@ -95,17 +121,20 @@ describe("Activity Module Endpoint", function () {
     //case for correct params done here
     describe("GET /crm-plugin/activities/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
-        request(SERVER_URL)
+        chai
+          .request(SERVER_URL)
           .get("/crm-plugin/activities")
           .send({
             id: dataId,
           })
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            //to check res is returning true value 
-            assert(res);
+            assert.equal(res.statusCode, 200, "Status code do not match!");
+            assert.equal(
+              res.headers["content-type"],
+              "application/json; charset=utf-8",
+              "Content-type do not match!"
+            );
             if (err) done(err);
             else done();
           });
@@ -117,17 +146,20 @@ describe("Activity Module Endpoint", function () {
     // case for correct params done for update method
     describe("PUT /crm-plugin/activities/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
-        request(SERVER_URL)
+        chai
+          .request(SERVER_URL)
           .put("/crm-plugin/activities/" + dataId)
           .send({
             title: "Activity 2",
           })
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            //to check whether title is posted or not.
-            assert.ok("Activity 2",res);
+            assert.equal(res.statusCode, 200, "Status code do not match!");
+            assert.equal(
+              res.headers["content-type"],
+              "application/json; charset=utf-8",
+              "Content-type do not match!"
+            );
             if (err) done(err);
             else done();
           });
@@ -139,12 +171,17 @@ describe("Activity Module Endpoint", function () {
     // case for correct params done here
     describe("DELETE /crm-plugin/activities/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
-        request(SERVER_URL)
+        chai
+          .request(SERVER_URL)
           .delete("/crm-plugin/activities/" + dataId)
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.equal(res.statusCode, 200, "Status code do not match!");
+            assert.equal(
+              res.headers["content-type"],
+              "application/json; charset=utf-8",
+              "Content-type do not match!"
+            );
             if (err) done(err);
             else done();
           });
