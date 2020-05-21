@@ -1,4 +1,6 @@
 const request = require("co-supertest");
+var assert = require("chai").assert;
+// var assert = require("chai").expect;
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
 let JWT;
@@ -26,9 +28,13 @@ describe("Country Module Endpoint", function () {
         request(SERVER_URL)
           .get("/crm-plugin/countries")
           .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.equal(res.statusCode, 200, "Status code ");
+            assert.typeOf(
+              res.headers["content-type"],
+              "application/json; charset=utf-8",
+              "Content Type"
+            );
             if (err) done(err);
             else done();
           });
