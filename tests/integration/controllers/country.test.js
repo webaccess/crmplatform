@@ -142,7 +142,7 @@ describe("Country Module Endpoint", function () {
             assert.strictEqual(
               res.body.name,
               "United States",
-              "FindOne Method should return only one response"
+              "FindOne Method should return response with same name"
             );
             if (err) done(err);
             else done();
