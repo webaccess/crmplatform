@@ -20,27 +20,6 @@ describe("Country Module Endpoint", function () {
       });
   });
 
-  describe("Find Method", function () {
-    // case for empty params done here
-    describe("GET /crm-plugin/countries", function () {
-      it("responds with all records when empty params test case is executed", function (done) {
-        request(SERVER_URL)
-          .get("/crm-plugin/countries")
-          .set("Authorization", "Bearer " + JWT)
-          .end(function (err, res) {
-            assert.equal(res.statusCode, 200, "Status code ");
-            assert.typeOf(
-              res.headers["content-type"],
-              "application/json; charset=utf-8",
-              "Content Type"
-            );
-            if (err) done(err);
-            else done();
-          });
-      });
-    });
-  });
-
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/countries/", function () {
@@ -50,8 +29,11 @@ describe("Country Module Endpoint", function () {
           .send({})
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
+            assert.isEmpty(
+              res.body,
+              "Empty response is expected when no params are passed"
+            );
             if (err) done(err);
             else done();
           });
@@ -65,8 +47,11 @@ describe("Country Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
+            assert.isEmpty(
+              res.body,
+              "Empty response is expected when reqired params are not passed"
+            );
             if (err) done(err);
             else done();
           });
@@ -82,8 +67,12 @@ describe("Country Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.strictEqual(
+              res.body.name,
+              "Algeria",
+              "Object in response should not differ"
+            );
             dataId = res.body.id;
             if (err) done(err);
             else done();
@@ -105,8 +94,34 @@ describe("Country Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
+          .end(function (err, res) {
+            assert.strictEqual(
+              res.body.name,
+              "United States",
+              "Object in response should not differ"
+            );
+            if (err) done(err);
+            else done();
+          });
+      });
+    });
+  });
+
+  describe("Find Method", function () {
+    // case for empty params done here
+    describe("GET /crm-plugin/countries", function () {
+      it("responds with all records when empty params test case is executed", function (done) {
+        let result = request(SERVER_URL)
+          .get("/crm-plugin/countries")
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.isAtLeast(
+              res.body.length,
+              1,
+              "Find method should return atleast one response."
+            );
             if (err) done(err);
             else done();
           });
@@ -127,6 +142,11 @@ describe("Country Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.lengthOf(
+              res.body,
+              1,
+              "FindOne Method should return only one response"
+            );
             if (err) done(err);
             else done();
           });
@@ -142,8 +162,12 @@ describe("Country Module Endpoint", function () {
           .get("/crm-plugin/countries/count")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "application/json; charset=utf-8")
           .end(function (err, res) {
+            assert.isAtLeast(
+              res.body,
+              1,
+              "Count returned should be more than one"
+            );
             if (err) done(err);
             else done();
           });
@@ -161,6 +185,11 @@ describe("Country Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.strictEqual(
+              res.body.name,
+              "United States",
+              "Object in response should not differ"
+            );
             if (err) done(err);
             else done();
           });
