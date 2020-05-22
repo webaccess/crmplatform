@@ -30,12 +30,12 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
+            if (err) done(err);
             assert.isEmpty(
               res.body,
               "Empty response is expected when no params are passed"
             );
-            if (err) done(err);
-            else done();
+            done();
           });
       });
 
@@ -48,12 +48,12 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
+            if (err) done(err);
             assert.isEmpty(
               res.body,
               "Empty response is expected when reqired params are not passed"
             );
-            if (err) done(err);
-            else done();
+            done();
           });
       });
 
@@ -68,14 +68,14 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
+            if (err) done(err);
             assert.strictEqual(
               res.body.name,
               "Algeria",
               "Object in response should not differ"
             );
             dataId = res.body.id;
-            if (err) done(err);
-            else done();
+            done();
           });
       });
     });
@@ -95,13 +95,13 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
+            if (err) done(err);
             assert.strictEqual(
               res.body.name,
               "United States",
               "Object in response should not differ"
             );
-            if (err) done(err);
-            else done();
+            done();
           });
       });
     });
@@ -117,13 +117,13 @@ describe("Country Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            if (err) done(err);
             assert.isAtLeast(
               res.body.length,
               1,
               "Find method should return atleast one response."
             );
-            if (err) done(err);
-            else done();
+            done();
           });
       });
     });
@@ -139,13 +139,13 @@ describe("Country Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            if (err) done(err);
             assert.strictEqual(
               res.body.name,
               "United States",
               "FindOne Method should return response with same name"
             );
-            if (err) done(err);
-            else done();
+            done();
           });
       });
     });
@@ -160,13 +160,13 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
+            if (err) done(err);
             assert.isAtLeast(
               res.body,
               1,
               "Count returned should be more than one"
             );
-            if (err) done(err);
-            else done();
+            done();
           });
       });
     });
@@ -182,13 +182,13 @@ describe("Country Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            if (err) done(err);
             assert.strictEqual(
               res.body.name,
               "United States",
               "Object in response should not differ"
             );
-            if (err) done(err);
-            else done();
+            done();
           });
       });
     });
