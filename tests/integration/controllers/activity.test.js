@@ -31,12 +31,14 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
-            assert.isEmpty(
-              res.body,
-              "Expected empty response as params are empty"
-            );
             if (err) done(err);
-            else done();
+            else {
+              done();
+              assert.isEmpty(
+                res.body,
+                "Expected empty response as params are empty"
+              );
+            }
           });
       });
 
@@ -50,12 +52,14 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
-            assert.isEmpty(
-              res.body,
-              "Expected empty response as required params are missing"
-            );
             if (err) done(err);
-            else done();
+            else {
+              assert.isEmpty(
+                res.body,
+                "Expected empty response as required params are missing"
+              );
+              done();
+            }
           });
       });
 
@@ -70,14 +74,16 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            assert.include(
-              res.body,
-              { title: "Activity 1" },
-              "Expected params not found"
-            );
             dataId = res.body.id;
             if (err) done(err);
-            else done();
+            else {
+              assert.include(
+                res.body,
+                { title: "Activity 1" },
+                "Expected params not found"
+              );
+              done();
+            }
           });
       });
     });
@@ -96,13 +102,15 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            assert.include(
-              res.body,
-              { title: "Activity 2" },
-              "Expected params not found"
-            );
             if (err) done(err);
-            else done();
+            else {
+              assert.include(
+                res.body,
+                { title: "Activity 2" },
+                "Expected params not found"
+              );
+              done();
+            }
           });
       });
     });
@@ -118,13 +126,15 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            assert.isAtLeast(
-              res.body.length,
-              1,
-              "Expected length do not match"
-            );
             if (err) done(err);
-            else done();
+            else {
+              assert.isAtLeast(
+                res.body.length,
+                1,
+                "Expected length do not match"
+              );
+              done();
+            }
           });
       });
     });
@@ -140,13 +150,15 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            assert.include(
-              res.body,
-              { title: "Activity 2" },
-              "Expected params not found"
-            );
             if (err) done(err);
-            else done();
+            else {
+              assert.include(
+                res.body,
+                { title: "Activity 2" },
+                "Expected params not found"
+              );
+              done();
+            }
           });
       });
     });
@@ -162,13 +174,15 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            assert.include(
-              res.body,
-              { title: "Activity 2" },
-              "Expected params not found"
-            );
             if (err) done(err);
-            else done();
+            else {
+              assert.include(
+                res.body,
+                { title: "Activity 2" },
+                "Expected params not found"
+              );
+              done();
+            }
           });
       });
     });
