@@ -1,4 +1,5 @@
 const request = require("co-supertest");
+var assert = require("chai").assert;
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
 let JWT;
@@ -19,23 +20,6 @@ describe("Activitytype Module Endpoint", function () {
       });
   });
 
-  describe("Find Method", function () {
-    // case for empty params done here
-    describe("GET /crm-plugin/activitytypes", function () {
-      it("responds with all records when empty params test case is executed", function (done) {
-        request(SERVER_URL)
-          .get("/crm-plugin/activitytypes")
-          .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
-            if (err) done(err);
-            else done();
-          });
-      });
-    });
-  });
-
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/activitytypes/", function () {
@@ -45,10 +29,13 @@ describe("Activitytype Module Endpoint", function () {
           .send({})
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
-            if (err) done(err);
-            else done();
+            if (err) return done(err);
+            assert.isEmpty(
+              res.body,
+              "Empty response is expected when params are empty"
+            );
+            done();
           });
       });
 
@@ -60,10 +47,13 @@ describe("Activitytype Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
-            if (err) done(err);
-            else done();
+            if (err) return done(err);
+            assert.isEmpty(
+              res.body,
+              "Empty response is expected when required params are missing"
+            );
+            done();
           });
       });
 
@@ -75,11 +65,15 @@ describe("Activitytype Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
+            if (err) return done(err);
+            assert.strictEqual(
+              res.body.name,
+              "Fishery",
+              "Object in response should not differ"
+            );
             dataId = res.body.id;
-            if (err) done(err);
-            else done();
+            done();
           });
       });
     });
@@ -96,10 +90,35 @@ describe("Activitytype Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            if (err) done(err);
-            else done();
+            if (err) return done(err);
+            assert.strictEqual(
+              res.body.name,
+              "Agriculture",
+              "Object in response should not differ"
+            );
+            done();
+          });
+      });
+    });
+  });
+
+  describe("Find Method", function () {
+    // case for empty params done here
+    describe("GET /crm-plugin/activitytypes", function () {
+      it("responds with all records when empty params test case is executed", function (done) {
+        request(SERVER_URL)
+          .get("/crm-plugin/activitytypes")
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
+          .end(function (err, res) {
+            if (err) return done(err);
+            assert.isAtLeast(
+              res.body.length,
+              1,
+              "Find method should return atleast one response"
+            );
+            done();
           });
       });
     });
@@ -110,16 +129,17 @@ describe("Activitytype Module Endpoint", function () {
     describe("GET /crm-plugin/activitytypes/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activitytypes")
-          .send({
-            id: dataId,
-          })
+          .get("/crm-plugin/activitytypes/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            if (err) done(err);
-            else done();
+            if (err) return done(err);
+            assert.strictEqual(
+              res.body.name,
+              "Agriculture",
+              "FindOne Method should return response with same name"
+            );
+            done();
           });
       });
     });
@@ -133,10 +153,10 @@ describe("Activitytype Module Endpoint", function () {
           .get("/crm-plugin/activitytypes/count")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "application/json; charset=utf-8")
           .end(function (err, res) {
-            if (err) done(err);
-            else done();
+            if (err) return done(err);
+            assert.isAtLeast(res.body, 1, "Count expected to be atleast 1");
+            done();
           });
       });
     });
@@ -150,10 +170,14 @@ describe("Activitytype Module Endpoint", function () {
           .delete("/crm-plugin/activitytypes/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            if (err) done(err);
-            else done();
+            if (err) return done(err);
+            assert.strictEqual(
+              res.body.name,
+              "Agriculture",
+              "Object in response should not differ"
+            );
+            done();
           });
       });
     });

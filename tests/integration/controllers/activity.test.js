@@ -29,12 +29,11 @@ describe("Activity Module Endpoint", function () {
           .send({})
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
             if (err) return done(err);
             assert.isEmpty(
               res.body,
-              "Expected empty response as params are empty"
+              "Empty response is expected when params are empty"
             );
             done();
           });
@@ -53,7 +52,7 @@ describe("Activity Module Endpoint", function () {
             if (err) return done(err);
             assert.isEmpty(
               res.body,
-              "Expected empty response as required params are missing"
+              "Empty response is expected when params are empty"
             );
             done();
           });
@@ -68,15 +67,14 @@ describe("Activity Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            dataId = res.body.id;
             if (err) return done(err);
-            assert.include(
-              res.body,
-              { title: "Activity 1" },
-              "Expected params not found"
+            assert.strictEqual(
+              res.body.title,
+              "Activity 1",
+              "Object in response should not differ"
             );
+            dataId = res.body.id;
             done();
           });
       });
@@ -94,13 +92,12 @@ describe("Activity Module Endpoint", function () {
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
             if (err) return done(err);
-            assert.include(
-              res.body,
-              { title: "Activity 2" },
-              "Expected params not found"
+            assert.strictEqual(
+              res.body.title,
+              "Activity 2",
+              "Object in response should not differ"
             );
             done();
           });
@@ -116,13 +113,12 @@ describe("Activity Module Endpoint", function () {
           .get("/crm-plugin/activities")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
               res.body.length,
               1,
-              "Expected length do not match"
+              "Find method should return atleast one response"
             );
             done();
           });
@@ -138,13 +134,12 @@ describe("Activity Module Endpoint", function () {
           .get("/crm-plugin/activities/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
             if (err) return done(err);
-            assert.include(
-              res.body,
-              { title: "Activity 2" },
-              "Expected params not found"
+            assert.strictEqual(
+              res.body.title,
+              "Activity 2",
+              "FindOne Method should return response with same name"
             );
             done();
           });
@@ -160,13 +155,12 @@ describe("Activity Module Endpoint", function () {
           .delete("/crm-plugin/activities/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
             if (err) return done(err);
-            assert.include(
-              res.body,
-              { title: "Activity 2" },
-              "Expected params not found"
+            assert.strictEqual(
+              res.body.title,
+              "Activity 2",
+              "Object in response should not differ"
             );
             done();
           });
