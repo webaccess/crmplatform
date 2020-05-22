@@ -134,17 +134,14 @@ describe("Country Module Endpoint", function () {
     describe("GET /crm-plugin/countries/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/countries")
-          .send({
-            id: dataId,
-          })
+          .get("/crm-plugin/countries/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
-            assert.lengthOf(
-              res.body,
-              1,
+            assert.strictEqual(
+              res.body.name,
+              "United States",
               "FindOne Method should return only one response"
             );
             if (err) done(err);
