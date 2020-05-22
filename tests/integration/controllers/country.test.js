@@ -30,10 +30,10 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
-            if (err) done(err);
+            if (err) return done(err);
             assert.isEmpty(
               res.body,
-              "Empty response is expected when no params are passed"
+              "Empty response is expected when params are empty"
             );
             done();
           });
@@ -48,10 +48,10 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
-            if (err) done(err);
+            if (err) return done(err);
             assert.isEmpty(
               res.body,
-              "Empty response is expected when reqired params are not passed"
+              "Empty response is expected when required params are missing"
             );
             done();
           });
@@ -68,7 +68,7 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
-            if (err) done(err);
+            if (err) return done(err);
             assert.strictEqual(
               res.body.name,
               "Algeria",
@@ -95,7 +95,7 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
-            if (err) done(err);
+            if (err) return done(err);
             assert.strictEqual(
               res.body.name,
               "United States",
@@ -115,9 +115,8 @@ describe("Country Module Endpoint", function () {
           .get("/crm-plugin/countries")
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            if (err) done(err);
+            if (err) return done(err);
             assert.isAtLeast(
               res.body.length,
               1,
@@ -137,9 +136,8 @@ describe("Country Module Endpoint", function () {
           .get("/crm-plugin/countries/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            if (err) done(err);
+            if (err) return done(err);
             assert.strictEqual(
               res.body.name,
               "United States",
@@ -160,12 +158,8 @@ describe("Country Module Endpoint", function () {
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
-            if (err) done(err);
-            assert.isAtLeast(
-              res.body,
-              1,
-              "Count returned should be more than one"
-            );
+            if (err) return done(err);
+            assert.isAtLeast(res.body, 1, "Count expected to be atleast 1");
             done();
           });
       });
@@ -180,9 +174,8 @@ describe("Country Module Endpoint", function () {
           .delete("/crm-plugin/countries/" + dataId)
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
-          .expect("Content-Type", /json/)
           .end(function (err, res) {
-            if (err) done(err);
+            if (err) return done(err);
             assert.strictEqual(
               res.body.name,
               "United States",
