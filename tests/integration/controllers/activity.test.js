@@ -1,4 +1,5 @@
 const request = require("co-supertest");
+var assert = require("chai").assert;
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
 let JWT;
@@ -19,23 +20,6 @@ describe("Activity Module Endpoint", function () {
       });
   });
 
-  describe("Find Method", function () {
-    // case for empty params done here
-    describe("GET /crm-plugin/activities", function () {
-      it("responds with all records when empty params test case is executed", function (done) {
-        request(SERVER_URL)
-          .get("/crm-plugin/activities")
-          .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
-            if (err) done(err);
-            else done();
-          });
-      });
-    });
-  });
-
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/activities/", function () {
@@ -47,6 +31,7 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
+            assert.isEmpty(res.body);
             if (err) done(err);
             else done();
           });
@@ -62,6 +47,7 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
           .end(function (err, res) {
+            assert.isEmpty(res.body);
             if (err) done(err);
             else done();
           });
@@ -78,27 +64,12 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.include(
+              res.body,
+              { title: "Activity 1" },
+              "Expected params not found."
+            );
             dataId = res.body.id;
-            if (err) done(err);
-            else done();
-          });
-      });
-    });
-  });
-
-  describe("FindOne Method", function () {
-    //case for correct params done here
-    describe("GET /crm-plugin/activities/:id", function () {
-      it("responds with matching records when correct params test case is executed", function (done) {
-        request(SERVER_URL)
-          .get("/crm-plugin/activities")
-          .send({
-            id: dataId,
-          })
-          .set("Authorization", "Bearer " + JWT)
-          .expect(200)
-          .expect("Content-Type", /json/)
-          .end(function (err, res) {
             if (err) done(err);
             else done();
           });
@@ -119,6 +90,55 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.include(
+              res.body,
+              { title: "Activity 2" },
+              "Expected params not found."
+            );
+            if (err) done(err);
+            else done();
+          });
+      });
+    });
+  });
+
+  describe("Find Method", function () {
+    // case for empty params done here
+    describe("GET /crm-plugin/activities", function () {
+      it("responds with all records when empty params test case is executed", function (done) {
+        request(SERVER_URL)
+          .get("/crm-plugin/activities")
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            assert.isAtLeast(
+              res.body.length,
+              1,
+              "Expected length do not match"
+            );
+            if (err) done(err);
+            else done();
+          });
+      });
+    });
+  });
+
+  describe("FindOne Method", function () {
+    //case for correct params done here
+    describe("GET /crm-plugin/activities/:id", function () {
+      it("responds with matching records when correct params test case is executed", function (done) {
+        request(SERVER_URL)
+          .get("/crm-plugin/activities/" + dataId)
+          .set("Authorization", "Bearer " + JWT)
+          .expect(200)
+          .expect("Content-Type", /json/)
+          .end(function (err, res) {
+            assert.include(
+              res.body,
+              { title: "Activity 2" },
+              "Expected params not found."
+            );
             if (err) done(err);
             else done();
           });
@@ -136,6 +156,11 @@ describe("Activity Module Endpoint", function () {
           .expect(200)
           .expect("Content-Type", /json/)
           .end(function (err, res) {
+            assert.include(
+              res.body,
+              { title: "Activity 2" },
+              "Expected params not found."
+            );
             if (err) done(err);
             else done();
           });
