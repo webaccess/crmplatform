@@ -1,27 +1,20 @@
 "use strict";
 /**
- * crm-plugin.js controller
+ * Controller: Contact
  *
- * @description: A set of functions called "actions" of the `crm-plugin` plugin.
+ * @description: Contact content type stores contact details like address, email, phone, etc of an individual or an organization or a user in the system.
  */
+
 const { sanitizeEntity } = require("strapi-utils");
 const vm = require("vm");
 module.exports = {
   /**
-   * Default action.
-   *
-   * @return {Object}
+   * Method: find
+   * Parameters:
+   *    - Request object
+   *      - Filters / Column attributes (Optional)
+   * @description: This method returns all the contact details by default or specific contact details with certain conditions based on the filters passed to the method.
    */
-
-  index: async (ctx) => {
-    // Add your own logic here.
-
-    // Send 200 `ok`
-    ctx.send({
-      message: "ok",
-    });
-  },
-
   find: async (ctx) => {
     try {
       let contact;
@@ -42,6 +35,13 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: findOne
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of contact table
+   * @description: This method returns specific contact details by id.
+   */
   findOne: async (ctx) => {
     const findOneParams = ["id"];
     const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
@@ -68,6 +68,16 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: create
+   * Parameters:
+   *    - Request object
+   *      - name - name of the individual or organization or user in the system
+   *      - contact_type - type of contact (values : organization/individual)
+   *      - id - identifier of contact table (Optional)
+   *      - Column attributes (Optional)
+   * @description: This method creates a contact with the parameters and other table column attributes passed to this method by default. If the id parameter is passed to this method, it updates the specific contact by id with attribute parameters passed to it.It returns details of created/updated contact.
+   */
   create: async (ctx) => {
     let org;
     let contact;
@@ -117,6 +127,13 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: delete
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of contact table
+   * @description: This method deletes specific contact by id and returns details of deleted contact.
+   */
   delete: async (ctx) => {
     try {
       const contact = await strapi
