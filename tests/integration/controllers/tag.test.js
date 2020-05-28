@@ -1,5 +1,6 @@
 const request = require("co-supertest");
 var assert = require("chai").assert;
+const tag = require("../../../controllers/tag.js");
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
 let JWT;
@@ -19,7 +20,6 @@ describe("Tags Module Endpoint", function () {
         done();
       });
   });
-
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/tags/", function () {
