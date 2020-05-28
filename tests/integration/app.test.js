@@ -8,20 +8,6 @@ before((done) => {
   return setupStrapi();
 });
 
-/** this code is called once before all the tested are finished */
-// after(async (done) => {
-//   // const dbSettings = strapi.config.get("database.connections.default.settings");
-
-//   //delete test database after all tests
-//   // if (dbSettings && dbSettings.filename) {
-//   //   const tmpDbFile = `${__dirname}/../${dbSettings.filename}`;
-//   //   if (fs.existsSync(tmpDbFile)) {
-//   //     fs.unlinkSync(tmpDbFile);
-//   //   }
-//   // }
-//   done();
-// });
-
 it("strapi is defined", async (done) => {
   console.log("strapi is defined");
   done();

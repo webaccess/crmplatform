@@ -5,8 +5,12 @@ let instance;
 
 async function setupStrapi() {
   if (!instance) {
+    console.log("process.cwd()",process.cwd());
+    let Dir = process.cwd();
+    let directory = Dir.splice
+    console.log("directory", directory);
     /** the follwing code in copied from `./node_modules/strapi/lib/Strapi.js` */
-    await Strapi({dir:"../../../CRM-Platform"}).load()
+    await Strapi({dir:"../../"}).load()
     .then(async function(response) {
       instance = strapi; // strapi is global now
       // console.log("Instance of Strapi -----",instance)
