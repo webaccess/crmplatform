@@ -27,7 +27,7 @@
     {
       "method": "PUT",
       "path": "/contact/:id",
-      "handler": "contact.create",
+      "handler": "contact.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }

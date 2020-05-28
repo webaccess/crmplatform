@@ -82,42 +82,49 @@ module.exports = {
     let org;
     let contact;
     try {
-      if (ctx.params.id) {
-        let contactDetails = {};
-        contactDetails["contact"] = ctx.params.id;
-        org = await strapi
-          .query(ctx.request.body.contact_type, "crm-plugin")
-          .update(contactDetails, ctx.request.body);
-
-        // update contact
-        contact = await strapi
-          .query("contact", "crm-plugin")
-          .update(ctx.params, ctx.request.body);
-      } else {
-        const requiredValues = ["name", "contact_type"];
-        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-          ctx.request.body,
-          requiredValues
-        );
-        if (result.error == true) {
-          return ctx.send(result.message);
-        }
-        //create org
-        org = await strapi
-          .query(ctx.request.body.contact_type, "crm-plugin")
-          .create(ctx.request.body);
-
-        let orgOtherDetails = {};
-        orgOtherDetails[ctx.request.body.contact_type] = org.id;
-
-        //create org
-        let orgDetails = Object.assign(orgOtherDetails, ctx.request.body);
-        // create contact
-        contact = await strapi
-          .query("contact", "crm-plugin")
-          .create(orgDetails);
+      const requiredValues = ["name", "contact_type"];
+      const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+        ctx.request.body,
+        requiredValues
+      );
+      if (result.error == true) {
+        return ctx.send(result.message);
       }
+      //create org
+      org = await strapi
+        .query(ctx.request.body.contact_type, "crm-plugin")
+        .create(ctx.request.body);
 
+      let orgOtherDetails = {};
+      orgOtherDetails[ctx.request.body.contact_type] = org.id;
+
+      //create org
+      let orgDetails = Object.assign(orgOtherDetails, ctx.request.body);
+      // create contact
+      contact = await strapi.query("contact", "crm-plugin").create(orgDetails);
+      return sanitizeEntity(contact, {
+        model: strapi.plugins["crm-plugin"].models.contact,
+      });
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
+    }
+  },
+
+  update: async (ctx) => {
+    let org;
+    let contact;
+    try {
+      let contactDetails = {};
+      contactDetails["contact"] = ctx.params.id;
+      org = await strapi
+        .query(ctx.request.body.contact_type, "crm-plugin")
+        .update(contactDetails, ctx.request.body);
+
+      // update contact
+      contact = await strapi
+        .query("contact", "crm-plugin")
+        .update(ctx.params, ctx.request.body);
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
       });
