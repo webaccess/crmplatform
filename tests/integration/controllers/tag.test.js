@@ -1,6 +1,5 @@
 const request = require("co-supertest");
 var assert = require("chai").assert;
-const tag = require("../../../controllers/tag.js");
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
 let JWT;
