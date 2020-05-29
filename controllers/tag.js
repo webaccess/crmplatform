@@ -88,64 +88,84 @@ module.exports = {
     let entity;
     let contacttagEntry;
     try {
-      if (ctx.params.id) {
-        if (ctx.request.body.contacts) {
-          var promise = await Promise.all(
-            ctx.request.body.contacts.map(async (contact) => {
-              let contacttagDetails = {
-                tag: ctx.params.id,
-                contact: contact,
-              };
-              const contacttagEntity = await strapi
-                .query("contacttag", "crm-plugin")
-                .findOne(contacttagDetails);
-              if (contacttagEntity == null) {
-                contacttagEntry = await strapi
-                  .query("contacttag", "crm-plugin")
-                  .create(contacttagDetails);
-              } else {
-                contacttagEntry = await strapi
-                  .query("contacttag", "crm-plugin")
-                  .update({ tag: ctx.params.id }, contacttagDetails);
-              }
-            })
-          );
-        }
-        const { id } = ctx.params;
-        entity = await strapi
-          .query("tag", "crm-plugin")
-          .update({ id }, ctx.request.body);
-      } else {
-        const reqVal = ["name"];
-        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-          ctx.request.body,
-          reqVal
+      const reqVal = ["name"];
+      const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+        ctx.request.body,
+        reqVal
+      );
+
+      if (result.error == true) {
+        return ctx.send(result.message);
+      }
+
+      entity = await strapi.query("tag", "crm-plugin").create(ctx.request.body);
+      if (ctx.request.body.contacts) {
+        let contacttags = [];
+        var promise = await Promise.all(
+          ctx.request.body.contacts.map(async (contact) => {
+            let contacttagDetails = {
+              tag: entity.id,
+              contact: contact,
+            };
+            contacttagEntry = await strapi
+              .query("contacttag", "crm-plugin")
+              .create(contacttagDetails);
+            contacttags.push(contacttagEntry);
+          })
         );
+        entity.contacttags = contacttags;
+      }
+      if (entity.contacttags.length) {
+        let contacttags = [];
+        let contacts = [];
+        contacttags = entity.contacttags.map((contacttag) => {
+          return contacttag.id;
+        });
+        if (contacttags.length)
+          contacts = await strapi
+            .query("contact", "crm-plugin")
+            .find({ contacttags: contacttags });
+        entity.contacts = contacts;
+      }
+      return sanitizeEntity(entity, {
+        model: strapi.plugins["crm-plugin"].models["tag"],
+      });
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
+    }
+  },
 
-        if (result.error == true) {
-          return ctx.send(result.message);
-        }
-
-        entity = await strapi
-          .query("tag", "crm-plugin")
-          .create(ctx.request.body);
-        if (ctx.request.body.contacts) {
-          let contacttags = [];
-          var promise = await Promise.all(
-            ctx.request.body.contacts.map(async (contact) => {
-              let contacttagDetails = {
-                tag: entity.id,
-                contact: contact,
-              };
+  update: async (ctx) => {
+    let entity;
+    let contacttagEntry;
+    try {
+      if (ctx.request.body.contacts) {
+        var promise = await Promise.all(
+          ctx.request.body.contacts.map(async (contact) => {
+            let contacttagDetails = {
+              tag: ctx.params.id,
+              contact: contact,
+            };
+            const contacttagEntity = await strapi
+              .query("contacttag", "crm-plugin")
+              .findOne(contacttagDetails);
+            if (contacttagEntity == null) {
               contacttagEntry = await strapi
                 .query("contacttag", "crm-plugin")
                 .create(contacttagDetails);
-              contacttags.push(contacttagEntry);
-            })
-          );
-          entity.contacttags = contacttags;
-        }
+            } else {
+              contacttagEntry = await strapi
+                .query("contacttag", "crm-plugin")
+                .update({ tag: ctx.params.id }, contacttagDetails);
+            }
+          })
+        );
       }
+      const { id } = ctx.params;
+      entity = await strapi
+        .query("tag", "crm-plugin")
+        .update({ id }, ctx.request.body);
       if (entity.contacttags.length) {
         let contacttags = [];
         let contacts = [];

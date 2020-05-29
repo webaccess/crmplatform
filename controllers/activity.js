@@ -92,62 +92,86 @@ module.exports = {
     let activity;
 
     try {
-      if (ctx.params.id) {
-        if (ctx.request.body.contacts) {
-          var promise = await Promise.all(
-            ctx.request.body.contacts.map(async (contact) => {
-              let activityDetail = {
-                activity: ctx.params.id,
-                contact: contact,
-              };
-              const assigneeQuery = await strapi
-                .query("activityassignee", "crm-plugin")
-                .findOne(activityDetail);
-              if (assigneeQuery == null) {
-                activityassignee = await strapi
-                  .query("activityassignee", "crm-plugin")
-                  .create(activityDetail);
-              } else {
-                activityassignee = await strapi
-                  .query("activityassignee", "crm-plugin")
-                  .update({ activity: ctx.params.id }, activityDetail);
-              }
-            })
-          );
-        }
-        const { id } = ctx.params;
-        activity = await strapi
-          .query("activity", "crm-plugin")
-          .update({ id }, ctx.request.body);
-      } else {
-        const reqVal = ["title"];
-        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-          ctx.request.body,
-          reqVal
+      const reqVal = ["title"];
+      const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+        ctx.request.body,
+        reqVal
+      );
+      if (result.error == true) {
+        return ctx.send(result.message);
+      }
+      activity = await strapi
+        .query("activity", "crm-plugin")
+        .create(ctx.request.body);
+      if (ctx.request.body.contacts) {
+        let activityassignees = [];
+        var promise = await Promise.all(
+          ctx.request.body.contacts.map(async (contact) => {
+            let activityDetail = {
+              activity: activity.id,
+              contact: contact,
+            };
+            activityassignee = await strapi
+              .query("activityassignee", "crm-plugin")
+              .create(activityDetail);
+            activityassignees.push(activityassignee);
+          })
         );
-        if (result.error == true) {
-          return ctx.send(result.message);
-        }
-        activity = await strapi
-          .query("activity", "crm-plugin")
-          .create(ctx.request.body);
-        if (ctx.request.body.contacts) {
-          let activityassignees = [];
-          var promise = await Promise.all(
-            ctx.request.body.contacts.map(async (contact) => {
-              let activityDetail = {
-                activity: activity.id,
-                contact: contact,
-              };
+        activity.activityassignees = activityassignees;
+      }
+      if (activity.activityassignees.length) {
+        let activityassignees = [];
+        let contacts = [];
+        activityassignees = activity.activityassignees.map(
+          (activityassignee) => {
+            return activityassignee.id;
+          }
+        );
+        if (activityassignees.length)
+          contacts = await strapi
+            .query("contact", "crm-plugin")
+            .find({ activityassignees: activityassignees });
+        activity.contacts = contacts;
+      }
+      return sanitizeEntity(activity, {
+        model: strapi.plugins["crm-plugin"].models["activity"],
+      });
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
+    }
+  },
+
+  update: async (ctx) => {
+    let activityassignee;
+    let activity;
+    try {
+      if (ctx.request.body.contacts) {
+        var promise = await Promise.all(
+          ctx.request.body.contacts.map(async (contact) => {
+            let activityDetail = {
+              activity: ctx.params.id,
+              contact: contact,
+            };
+            const assigneeQuery = await strapi
+              .query("activityassignee", "crm-plugin")
+              .findOne(activityDetail);
+            if (assigneeQuery == null) {
               activityassignee = await strapi
                 .query("activityassignee", "crm-plugin")
                 .create(activityDetail);
-              activityassignees.push(activityassignee);
-            })
-          );
-          activity.activityassignees = activityassignees;
-        }
+            } else {
+              activityassignee = await strapi
+                .query("activityassignee", "crm-plugin")
+                .update({ activity: ctx.params.id }, activityDetail);
+            }
+          })
+        );
       }
+      const { id } = ctx.params;
+      activity = await strapi
+        .query("activity", "crm-plugin")
+        .update({ id }, ctx.request.body);
       if (activity.activityassignees.length) {
         let activityassignees = [];
         let contacts = [];

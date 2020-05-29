@@ -35,7 +35,7 @@
     {
       "method": "PUT",
       "path": "/districts/:id",
-      "handler": "district.create",
+      "handler": "district.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }

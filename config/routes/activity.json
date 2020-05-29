@@ -27,7 +27,7 @@
     {
       "method": "PUT",
       "path": "/activities/:id",
-      "handler": "activity.create",
+      "handler": "activity.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }

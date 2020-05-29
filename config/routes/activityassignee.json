@@ -27,7 +27,7 @@
     {
       "method": "PUT",
       "path": "/activityassignees/:id",
-      "handler": "activityassignee.create",
+      "handler": "activityassignee.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }
