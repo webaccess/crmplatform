@@ -35,7 +35,7 @@
     {
       "method": "PUT",
       "path": "/villages/:id",
-      "handler": "village.create",
+      "handler": "village.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }

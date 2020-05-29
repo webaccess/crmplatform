@@ -77,26 +77,34 @@ function Base(requiredValues = []) {
     let table = getTable(ctx.originalUrl);
 
     try {
+      const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
+        ctx.request.body,
+        this.requiredValues
+      );
+      if (result.error) {
+        return ctx.send(result.message);
+      }
+
+      entity = await strapi.query(table, "crm-plugin").create(ctx.request.body);
+      return sanitizeEntity(entity, {
+        model: strapi.plugins["crm-plugin"].models[table],
+      });
+    } catch (error) {
+      console.error(error);
+      return ctx.badRequest(null, error.message);
+    }
+  };
+
+  this.update = async (ctx) => {
+    let entity;
+    let table = getTable(ctx.originalUrl);
+
+    try {
       if (ctx.params.id) {
         const { id } = ctx.params;
         entity = await strapi
           .query(table, "crm-plugin")
           .update({ id }, ctx.request.body);
-        return sanitizeEntity(entity, {
-          model: strapi.plugins["crm-plugin"].models[table],
-        });
-      } else {
-        const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-          ctx.request.body,
-          this.requiredValues
-        );
-        if (result.error) {
-          return ctx.send(result.message);
-        }
-
-        entity = await strapi
-          .query(table, "crm-plugin")
-          .create(ctx.request.body);
         return sanitizeEntity(entity, {
           model: strapi.plugins["crm-plugin"].models[table],
         });

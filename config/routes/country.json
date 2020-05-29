@@ -35,7 +35,7 @@
     {
       "method": "PUT",
       "path": "/countries/:id",
-      "handler": "country.create",
+      "handler": "country.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }

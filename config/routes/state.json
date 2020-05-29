@@ -35,7 +35,7 @@
     {
       "method": "PUT",
       "path": "/states/:id",
-      "handler": "state.create",
+      "handler": "state.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }

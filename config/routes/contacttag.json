@@ -35,7 +35,7 @@
     {
       "method": "PUT",
       "path": "/contacttags/:id",
-      "handler": "contacttag.create",
+      "handler": "contacttag.update",
       "config": {
         "policies": ["plugins::users-permissions.isAuthenticated"]
       }
