@@ -27,7 +27,6 @@ module.exports = {
       } else {
         contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
       }
-
       return contact.map((entity) =>
         sanitizeEntity(entity, {
           model: strapi.plugins["crm-plugin"].models["contact"],
@@ -80,7 +79,7 @@ module.exports = {
    *      - name - name of the individual or organization or user in the system
    *      - contact_type - type of contact (values : organization/individual)
    *      - Column attributes (Optional)
-   * @description: This method creates a contact with the attribute parameters passed to this method by default.
+   * @description: This method creates a contact with the attribute parameters passed to this method by default. It returns details of created contact.
    */
 
   create: async (ctx) => {

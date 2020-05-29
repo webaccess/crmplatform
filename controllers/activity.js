@@ -119,7 +119,7 @@ module.exports = {
         .create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let activityassignees = [];
-        // create activityassignee table
+        // create activityassignee
         var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let activityDetail = {
