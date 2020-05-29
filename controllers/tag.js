@@ -7,7 +7,6 @@
  *
  * @description: Tag allows you to categorize the contacts.
  */
-
 const { sanitizeEntity } = require("strapi-utils");
 
 module.exports = {
@@ -18,7 +17,6 @@ module.exports = {
    *      - Filters / Column attributes (Optional)
    * @description: This method returns all the tag details by default or specific tag details with certain conditions based on the filters passed to the method.
    */
-
   find: async (ctx) => {
     try {
       let tag;
@@ -62,7 +60,6 @@ module.exports = {
    *      - id - identifier of tag table
    * @description: This method returns specific tag details by id.
    */
-
   findOne: async (ctx) => {
     const { id } = ctx.params;
     try {
@@ -97,7 +94,6 @@ module.exports = {
    *      - Column attributes (Optional)
    * @description: This method creates a tag with the attribute parameters passed to this method by default.
    */
-
   create: async (ctx) => {
     let entity;
     let contacttagEntry;
@@ -158,7 +154,6 @@ module.exports = {
    *      - Column attributes
    * @description: This method updates the specific tag by id with attribute parameters passed to it.It returns details of updated tag.
    */
-
   update: async (ctx) => {
     let entity;
     let contacttagEntry;
@@ -219,7 +214,6 @@ module.exports = {
    *      - id - identifier of tag table
    * @description: This method deletes specific tag by id and returns details of deleted tag.
    */
-
   delete: async (ctx) => {
     try {
       // delete contacttag

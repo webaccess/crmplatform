@@ -7,7 +7,6 @@
  *
  * @description: Contact stores contact details like address, email, phone, etc of an individual or an organization or a user in the system.
  */
-
 const { sanitizeEntity } = require("strapi-utils");
 const vm = require("vm");
 module.exports = {
@@ -18,7 +17,6 @@ module.exports = {
    *      - Filters / Column attributes (Optional)
    * @description: This method returns all the contact details by default or specific contact details with certain conditions based on the filters passed to the method.
    */
-
   find: async (ctx) => {
     try {
       let contact;
@@ -45,7 +43,6 @@ module.exports = {
    *      - id - identifier of contact table
    * @description: This method returns specific contact details by id.
    */
-
   findOne: async (ctx) => {
     const findOneParams = ["id"];
     const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
@@ -81,7 +78,6 @@ module.exports = {
    *      - Column attributes (Optional)
    * @description: This method creates a contact with the attribute parameters passed to this method by default. It returns details of created contact.
    */
-
   create: async (ctx) => {
     let org;
     let contact;
@@ -122,7 +118,6 @@ module.exports = {
    *      - Column attributes
    * @description: This method updates the specific contact by id with attribute parameters passed to it.It returns details of updated contact.
    */
-
   update: async (ctx) => {
     let org;
     let contact;
@@ -153,7 +148,6 @@ module.exports = {
    *      - id - identifier of contact table
    * @description: This method deletes specific contact by id and returns details of deleted contact.
    */
-
   delete: async (ctx) => {
     try {
       const contact = await strapi

@@ -16,7 +16,6 @@ module.exports = {
    *      - Filters / Column attributes (Optional)
    * @description: This method returns all the activity details by default or specific activity details with certain conditions based on the filters passed to the method.
    */
-
   find: async (ctx) => {
     let activity;
     try {
@@ -63,7 +62,6 @@ module.exports = {
    *      - id - identifier of activity table
    * @description: This method returns specific activity details by id.
    */
-
   findOne: async (ctx) => {
     const { id } = ctx.params;
     try {
@@ -99,7 +97,6 @@ module.exports = {
    *      - Column attributes (Optional)
    * @description: This method creates an activity with the attribute parameters passed to this method by default. It returns details of created activity.
    */
-
   create: async (ctx) => {
     let activityassignee;
     let activity;
@@ -165,7 +162,6 @@ module.exports = {
    *      - Column attributes
    * @description: This method updates the specific activity by id with attribute parameters passed to it.It returns details of updated activity.
    */
-
   update: async (ctx) => {
     let activityassignee;
     let activity;
@@ -228,7 +224,6 @@ module.exports = {
    *      - id - identifier of activity table
    * @description: This method deletes specific activity by id and returns details of deleted activity.
    */
-
   delete: async (ctx) => {
     try {
       // delete activityassignee
