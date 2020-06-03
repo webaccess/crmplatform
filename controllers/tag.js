@@ -106,11 +106,11 @@ module.exports = {
       if (result.error == true) {
         return ctx.send(result.message);
       }
-      // create tag
+      // creates an entry into tag table when required params are passed
       entity = await strapi.query("tag", "crm-plugin").create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let contacttags = [];
-        // create contacttag
+        // creates an entry into contacttag table with tag and contact id
         var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let contacttagDetails = {
@@ -165,7 +165,7 @@ module.exports = {
               tag: ctx.params.id,
               contact: contact,
             };
-            // update contacttag
+            // updates contacttag table according to passed id
             const contacttagEntity = await strapi
               .query("contacttag", "crm-plugin")
               .findOne(contacttagDetails);
@@ -181,7 +181,7 @@ module.exports = {
           })
         );
       }
-      // update tag
+      // updates activity details according to parameters passed for particular id
       const { id } = ctx.params;
       entity = await strapi
         .query("tag", "crm-plugin")
@@ -216,12 +216,12 @@ module.exports = {
    */
   delete: async (ctx) => {
     try {
-      // delete contacttag
+      // delete tag details from contacttag
       const entity = await strapi
         .query("contacttag", "crm-plugin")
         .delete({ tag: ctx.params.id });
       const { id } = ctx.params;
-      // delete tag
+      // delete tag details of passed id
       const deleteTag = await strapi
         .query("tag", "crm-plugin")
         .delete(ctx.params);

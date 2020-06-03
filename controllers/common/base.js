@@ -24,7 +24,7 @@ function Base(requiredValues = []) {
    * Parameters:
    *    - Request object
    *      - Filters / Column attributes (Optional)
-   * @description: This method returns all the generic model details by default or specific details with certain conditions based on the filters passed to the method.
+   * @description: This method returns all the generic table details by default or specific details with certain conditions based on the filters passed to the method.
    */
   this.find = async (ctx) => {
     let table = getTable(ctx.originalUrl);

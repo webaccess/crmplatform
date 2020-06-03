@@ -110,14 +110,14 @@ module.exports = {
       if (result.error == true) {
         return ctx.send(result.message);
       }
-      // create activity
+      // creates an entry into activity table when required params are passed
       activity = await strapi
         .query("activity", "crm-plugin")
         .create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let activityassignees = [];
-        // create activityassignee
-        var promise = await Promise.all(
+      // creates an entry into activityassignee table with activity and contact id
+      var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let activityDetail = {
               activity: activity.id,
@@ -173,7 +173,7 @@ module.exports = {
               activity: ctx.params.id,
               contact: contact,
             };
-            // update activityassignee
+            // updates activityassignee table according to passed id
             const assigneeQuery = await strapi
               .query("activityassignee", "crm-plugin")
               .findOne(activityDetail);
@@ -189,7 +189,7 @@ module.exports = {
           })
         );
       }
-      // update activity
+       // updates activity details according to parameters passed for particular id
       const { id } = ctx.params;
       activity = await strapi
         .query("activity", "crm-plugin")
@@ -226,11 +226,11 @@ module.exports = {
    */
   delete: async (ctx) => {
     try {
-      // delete activityassignee
+      // delete activity details from activityassignee
       const activityassign = await strapi
         .query("activityassignee", "crm-plugin")
         .delete({ activity: ctx.params.id });
-      // delete activity
+      // delete activity details of passed id
       const activity = await strapi
         .query("activity", "crm-plugin")
         .delete(ctx.params);

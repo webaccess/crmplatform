@@ -90,16 +90,16 @@ module.exports = {
       if (result.error == true) {
         return ctx.send(result.message);
       }
-      // organization details
+      // store organization details into a variable
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .create(ctx.request.body);
 
       let orgOtherDetails = {};
       orgOtherDetails[ctx.request.body.contact_type] = org.id;
-      // create organization
+      // creates an entry into organization table with organization details
       let orgDetails = Object.assign(orgOtherDetails, ctx.request.body);
-      // create contact
+      // creates an entry in contact table when required parameters are passed
       contact = await strapi.query("contact", "crm-plugin").create(orgDetails);
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
@@ -124,11 +124,11 @@ module.exports = {
     try {
       let contactDetails = {};
       contactDetails["contact"] = ctx.params.id;
-      // update organizaion
+      // updates organization details according to passed id
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .update(contactDetails, ctx.request.body);
-      // update contact
+      // updates contact details according to parameters passed for particular id
       contact = await strapi
         .query("contact", "crm-plugin")
         .update(ctx.params, ctx.request.body);
@@ -159,7 +159,7 @@ module.exports = {
         : contact.organization
         ? contact.organization.id
         : "";
-      // delete contact
+      // delete contact details of passed id.
       if (orgId)
         await strapi
           .query(contact.contact_type, "crm-plugin")
