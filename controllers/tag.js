@@ -110,7 +110,7 @@ module.exports = {
       entity = await strapi.query("tag", "crm-plugin").create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let contacttags = [];
-        // creates an entry into contacttag table with tag and contact id
+        // Links contacttag with the tag
         var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let contacttagDetails = {
@@ -181,7 +181,7 @@ module.exports = {
           })
         );
       }
-      // updates activity details according to parameters passed for particular id
+      // updates activity details for particular id according to parameters passed
       const { id } = ctx.params;
       entity = await strapi
         .query("tag", "crm-plugin")

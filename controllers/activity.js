@@ -116,8 +116,8 @@ module.exports = {
         .create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let activityassignees = [];
-      // creates an entry into activityassignee table with activity and contact id
-      var promise = await Promise.all(
+        // links activityassignee with the activity
+        var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let activityDetail = {
               activity: activity.id,
@@ -189,7 +189,7 @@ module.exports = {
           })
         );
       }
-       // updates activity details according to parameters passed for particular id
+      // updates activity details for particular id according to parameters passed
       const { id } = ctx.params;
       activity = await strapi
         .query("activity", "crm-plugin")
