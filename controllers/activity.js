@@ -1,26 +1,21 @@
 "use strict";
 
 /**
- * crm-plugin.js controller
+ * Activity
  *
- * @description: A set of functions called "actions" of the `crm-plugin` plugin.
+ * API: Activity
+ *
+ * @description: Activity stores details about what the activity is and also tracks when the activity took place as well as information about that activity.
  */
 const { sanitizeEntity } = require("strapi-utils");
 module.exports = {
   /**
-   * Default action.
-   *
-   * @return {Object}
+   * Method: find
+   * Parameters:
+   *    - Request object
+   *      - Filters / Column attributes (Optional)
+   * @description: This method returns all the activity details by default or specific activity details with certain conditions based on the filters passed to the method.
    */
-
-  index: async (ctx) => {
-    // Add your own logic here.
-    // Send 200 `ok`
-    ctx.send({
-      message: "ok",
-    });
-  },
-
   find: async (ctx) => {
     let activity;
     try {
@@ -60,6 +55,13 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: findOne
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of activity table
+   * @description: This method returns specific activity details by id.
+   */
   findOne: async (ctx) => {
     const { id } = ctx.params;
     try {
@@ -87,6 +89,14 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: create
+   * Parameters:
+   *    - Request object
+   *      - title - name of the activity
+   *      - Column attributes (Optional)
+   * @description: This method creates an activity with the attribute parameters passed to this method by default. It returns details of created activity.
+   */
   create: async (ctx) => {
     let activityassignee;
     let activity;
@@ -100,11 +110,13 @@ module.exports = {
       if (result.error == true) {
         return ctx.send(result.message);
       }
+      // creates an entry into activity table when required params are passed
       activity = await strapi
         .query("activity", "crm-plugin")
         .create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let activityassignees = [];
+        // links activityassignee with the activity
         var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let activityDetail = {
@@ -142,6 +154,14 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: update
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of activity table
+   *      - Column attributes
+   * @description: This method updates the specific activity by id with attribute parameters passed to it.It returns details of updated activity.
+   */
   update: async (ctx) => {
     let activityassignee;
     let activity;
@@ -153,6 +173,7 @@ module.exports = {
               activity: ctx.params.id,
               contact: contact,
             };
+            // updates activityassignee table according to passed id
             const assigneeQuery = await strapi
               .query("activityassignee", "crm-plugin")
               .findOne(activityDetail);
@@ -168,6 +189,7 @@ module.exports = {
           })
         );
       }
+      // updates activity details for particular id according to parameters passed
       const { id } = ctx.params;
       activity = await strapi
         .query("activity", "crm-plugin")
@@ -195,11 +217,20 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: delete
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of activity table
+   * @description: This method deletes specific activity by id and returns details of deleted activity.
+   */
   delete: async (ctx) => {
     try {
+      // delete activity details from activityassignee
       const activityassign = await strapi
         .query("activityassignee", "crm-plugin")
         .delete({ activity: ctx.params.id });
+      // delete activity details of passed id
       const activity = await strapi
         .query("activity", "crm-plugin")
         .delete(ctx.params);

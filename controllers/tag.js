@@ -1,28 +1,22 @@
 "use strict";
 
 /**
- * crm-plugin.js controller
+ * Tag
  *
- * @description: A set of functions called "actions" of the `crm-plugin` plugin.
+ * API: Tag
+ *
+ * @description: Tag allows you to categorize the contacts.
  */
 const { sanitizeEntity } = require("strapi-utils");
 
 module.exports = {
   /**
-   * Default action.
-   *
-   * @return {Object}
+   * Method: find
+   * Parameters:
+   *    - Request object
+   *      - Filters / Column attributes (Optional)
+   * @description: This method returns all the tag details by default or specific tag details with certain conditions based on the filters passed to the method.
    */
-
-  index: async (ctx) => {
-    // Add your own logic here.
-
-    // Send 200 `ok`
-    ctx.send({
-      message: "ok",
-    });
-  },
-
   find: async (ctx) => {
     try {
       let tag;
@@ -59,6 +53,13 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: findOne
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of tag table
+   * @description: This method returns specific tag details by id.
+   */
   findOne: async (ctx) => {
     const { id } = ctx.params;
     try {
@@ -84,6 +85,15 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: create
+   * Parameters:
+   *    - Request object
+   *      - name - name of the tag
+   *      - is_active - active status of tag (Boolean value : true or false)
+   *      - Column attributes (Optional)
+   * @description: This method creates a tag with the attribute parameters passed to this method by default.
+   */
   create: async (ctx) => {
     let entity;
     let contacttagEntry;
@@ -93,14 +103,14 @@ module.exports = {
         ctx.request.body,
         reqVal
       );
-
       if (result.error == true) {
         return ctx.send(result.message);
       }
-
+      // creates an entry into tag table when required params are passed
       entity = await strapi.query("tag", "crm-plugin").create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let contacttags = [];
+        // Links contacttag with the tag
         var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let contacttagDetails = {
@@ -136,6 +146,14 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: update
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of tag table
+   *      - Column attributes
+   * @description: This method updates the specific tag by id with attribute parameters passed to it.It returns details of updated tag.
+   */
   update: async (ctx) => {
     let entity;
     let contacttagEntry;
@@ -147,6 +165,7 @@ module.exports = {
               tag: ctx.params.id,
               contact: contact,
             };
+            // updates contacttag table according to passed id
             const contacttagEntity = await strapi
               .query("contacttag", "crm-plugin")
               .findOne(contacttagDetails);
@@ -162,6 +181,7 @@ module.exports = {
           })
         );
       }
+      // updates activity details for particular id according to parameters passed
       const { id } = ctx.params;
       entity = await strapi
         .query("tag", "crm-plugin")
@@ -187,12 +207,21 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: delete
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of tag table
+   * @description: This method deletes specific tag by id and returns details of deleted tag.
+   */
   delete: async (ctx) => {
     try {
+      // delete tag details from contacttag
       const entity = await strapi
         .query("contacttag", "crm-plugin")
         .delete({ tag: ctx.params.id });
       const { id } = ctx.params;
+      // delete tag details of passed id
       const deleteTag = await strapi
         .query("tag", "crm-plugin")
         .delete(ctx.params);

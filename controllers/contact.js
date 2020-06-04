@@ -1,10 +1,12 @@
 "use strict";
-/**
- * Controller: Contact
- *
- * @description: Contact content type stores contact details like address, email, phone, etc of an individual or an organization or a user in the system.
- */
 
+/**
+ * Contact
+ *
+ * API: Contact
+ *
+ * @description: Contact stores contact details like address, email, phone, etc of an individual or an organization or a user in the system.
+ */
 const { sanitizeEntity } = require("strapi-utils");
 const vm = require("vm");
 module.exports = {
@@ -23,7 +25,6 @@ module.exports = {
       } else {
         contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
       }
-
       return contact.map((entity) =>
         sanitizeEntity(entity, {
           model: strapi.plugins["crm-plugin"].models["contact"],
@@ -74,9 +75,8 @@ module.exports = {
    *    - Request object
    *      - name - name of the individual or organization or user in the system
    *      - contact_type - type of contact (values : organization/individual)
-   *      - id - identifier of contact table (Optional)
    *      - Column attributes (Optional)
-   * @description: This method creates a contact with the parameters and other table column attributes passed to this method by default. If the id parameter is passed to this method, it updates the specific contact by id with attribute parameters passed to it.It returns details of created/updated contact.
+   * @description: This method creates a contact with the attribute parameters passed to this method by default. It returns details of created contact.
    */
   create: async (ctx) => {
     let org;
@@ -90,17 +90,16 @@ module.exports = {
       if (result.error == true) {
         return ctx.send(result.message);
       }
-      //create org
+      // store organization details into a variable
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .create(ctx.request.body);
 
       let orgOtherDetails = {};
       orgOtherDetails[ctx.request.body.contact_type] = org.id;
-
-      //create org
+      // creates an entry into organization table with organization details
       let orgDetails = Object.assign(orgOtherDetails, ctx.request.body);
-      // create contact
+      // creates an entry in contact table when required parameters are passed
       contact = await strapi.query("contact", "crm-plugin").create(orgDetails);
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
@@ -111,17 +110,25 @@ module.exports = {
     }
   },
 
+  /**
+   * Method: update
+   * Parameters:
+   *    - Request object
+   *      - id - identifier of contact table
+   *      - Column attributes
+   * @description: This method updates the specific contact by id with attribute parameters passed to it.It returns details of updated contact.
+   */
   update: async (ctx) => {
     let org;
     let contact;
     try {
       let contactDetails = {};
       contactDetails["contact"] = ctx.params.id;
+      // updates organization details according to passed id
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .update(contactDetails, ctx.request.body);
-
-      // update contact
+      // updates contact details according to parameters passed for particular id
       contact = await strapi
         .query("contact", "crm-plugin")
         .update(ctx.params, ctx.request.body);
@@ -146,12 +153,13 @@ module.exports = {
       const contact = await strapi
         .query("contact", "crm-plugin")
         .delete(ctx.params);
-
+      // get organization details
       let orgId = contact.individual
         ? contact.individual.id
         : contact.organization
         ? contact.organization.id
         : "";
+      // delete contact details of passed id.
       if (orgId)
         await strapi
           .query(contact.contact_type, "crm-plugin")
