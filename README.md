@@ -1,6 +1,6 @@
-# CRM Platform
+# CRM Platform Backend
 
-This is CRM platform backend based on the Strapi. It comes with basic model for contact management along with the API's.
+CRM platform backend is the Strapi plugin that provides a basic model for contact management along with the API's.
 
 [![webaccess](https://circleci.com/gh/webaccess/crmplatform.svg?style=shield)](https://circleci.com/gh/webaccess/crmplatform)
 [![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--beta.20.2-blue.svg)](https://github.com/strapi/strapi)
@@ -12,6 +12,8 @@ This is CRM platform backend based on the Strapi. It comes with basic model for 
 - Individual
 - Organization
 - Activity
+- Activity type
+- Tag
 - Country
 - State
 - District
@@ -19,13 +21,17 @@ This is CRM platform backend based on the Strapi. It comes with basic model for 
 
 ## Goal
 
-The primary aim of this project is to have a simple and extendable base for the CRMish projects.
+The primary aim of this project is to have a simple and extendable base for the contact management CRM projects.
+
+## Prerequisites
+
+Strapi version 3.0.0-beta.x
 
 ## Installation
 
 1. Create new strapi project using the below command
 
-   `yarn create strapi-app <your-project-name>`
+   `strapi new <your-project-name>`
 
 2. Install the plugin
 
@@ -53,7 +59,7 @@ You would need to add below settings to your strapi project if you are extending
 
 - Modify package.json and prepend start script with AUTORELOAD=false
 
-  `""start": "AUTORELOAD=false strapi start","`
+  `"start": "AUTORELOAD=false strapi start"`
 
 - When you make the changes run
 
