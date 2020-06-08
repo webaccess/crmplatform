@@ -5,7 +5,7 @@
  *
  * API: Activity
  *
- * @description: Activity stores details about what the activity is and tracks when the activity took place. It also stores additional information about that activity.
+ * @description: Activity stores the details about the activity such as title, date and time and description.
  */
 const { sanitizeEntity } = require("strapi-utils");
 module.exports = {
