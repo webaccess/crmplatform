@@ -15,7 +15,7 @@ module.exports = {
    * Parameters:
    *    - Request object
    *      - Filters / Column attributes (Optional)
-   * @description: This method returns all the tag details by default or specific tag details with certain conditions based on the filters passed to the method.
+   * @description: This method returns all the tag details by default or specific tag details based on the filters passed to the method.
    */
   find: async (ctx) => {
     try {
@@ -58,7 +58,7 @@ module.exports = {
    * Parameters:
    *    - Request object
    *      - id - identifier of tag table
-   * @description: This method returns specific tag details by id.
+   * @description: This method returns specific tag details based on the id passed.
    */
   findOne: async (ctx) => {
     const { id } = ctx.params;
@@ -91,8 +91,9 @@ module.exports = {
    *    - Request object
    *      - name - name of the tag
    *      - is_active - active status of tag (Boolean value : true or false)
+   *      - contact - Array of contact tag (an organization or individual) ids (Optional)
    *      - Column attributes (Optional)
-   * @description: This method creates a tag with the attribute parameters passed to this method by default.
+   * @description: This method creates a tag with the attribute parameters passed to this method by default. It returns details of the created tag.
    */
   create: async (ctx) => {
     let entity;
@@ -110,7 +111,7 @@ module.exports = {
       entity = await strapi.query("tag", "crm-plugin").create(ctx.request.body);
       if (ctx.request.body.contacts) {
         let contacttags = [];
-        // Links contacttag with the tag
+        // links contact tag with the tag
         var promise = await Promise.all(
           ctx.request.body.contacts.map(async (contact) => {
             let contacttagDetails = {
@@ -152,7 +153,7 @@ module.exports = {
    *    - Request object
    *      - id - identifier of tag table
    *      - Column attributes
-   * @description: This method updates the specific tag by id with attribute parameters passed to it.It returns details of updated tag.
+   * @description: This method updates the specific tag based on the id with attribute parameters passed to it. It returns details of the updated tag.
    */
   update: async (ctx) => {
     let entity;
@@ -165,7 +166,7 @@ module.exports = {
               tag: ctx.params.id,
               contact: contact,
             };
-            // updates contacttag table according to passed id
+            // updates contact tag table according to the id passed
             const contacttagEntity = await strapi
               .query("contacttag", "crm-plugin")
               .findOne(contacttagDetails);
@@ -212,16 +213,16 @@ module.exports = {
    * Parameters:
    *    - Request object
    *      - id - identifier of tag table
-   * @description: This method deletes specific tag by id and returns details of deleted tag.
+   * @description: This method deletes specific tag based on the id passed and returns details of the deleted tag.
    */
   delete: async (ctx) => {
     try {
-      // delete tag details from contacttag
+      // deletes tag details from contact tag
       const entity = await strapi
         .query("contacttag", "crm-plugin")
         .delete({ tag: ctx.params.id });
       const { id } = ctx.params;
-      // delete tag details of passed id
+      // deletes tag details based on the id passed
       const deleteTag = await strapi
         .query("tag", "crm-plugin")
         .delete(ctx.params);

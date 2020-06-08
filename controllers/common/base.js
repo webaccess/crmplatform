@@ -24,7 +24,7 @@ function Base(requiredValues = []) {
    * Parameters:
    *    - Request object
    *      - Filters / Column attributes (Optional)
-   * @description: This method returns all the generic table details by default or specific details with certain conditions based on the filters passed to the method.
+   * @description: This method returns all the generic table details by default or specific details based on the filters passed to the method.
    */
   this.find = async (ctx) => {
     let table = getTable(ctx.originalUrl);
@@ -53,7 +53,7 @@ function Base(requiredValues = []) {
    * Parameters:
    *    - Request object
    *      - id - identifier of contact table
-   * @description: This method returns specific generic table details by id.
+   * @description: This method returns specific generic table details based on the id passed.
    */
   this.findOne = async (ctx) => {
     const { id } = ctx.params;
@@ -73,7 +73,7 @@ function Base(requiredValues = []) {
    * Method: count
    * Parameters:
    *    - Request object
-   * @description:  This method returns total number of data items present in the generic table.
+   * @description:  This method returns the total number of data items present in the generic table by default or number of data items matching the criteria based on the filters passed to the method.
    */
   this.count = async (ctx) => {
     let table = getTable(ctx.originalUrl);
@@ -94,7 +94,7 @@ function Base(requiredValues = []) {
    *    - Request object
    *      - Rquired attributes
    *      - Column attributes (Optional)
-   * @description: This method creates an entry into generic table with the attribute parameters passed to this method by default. It returns details of created data.
+   * @description: This method creates an entry into the generic table with the attribute parameters passed to this method by default. It returns details of created data.
    */
   this.create = async (ctx) => {
     let entity;
@@ -108,7 +108,7 @@ function Base(requiredValues = []) {
       if (result.error) {
         return ctx.send(result.message);
       }
-      // create data entry into generic table
+      // creates data entry into the generic table
       entity = await strapi.query(table, "crm-plugin").create(ctx.request.body);
       return sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models[table],
@@ -125,12 +125,12 @@ function Base(requiredValues = []) {
    *    - Request object
    *      - id - identifier of generic table
    *      - Column attributes
-   * @description: This method updates the specific data from gneric table by id with attribute parameters passed to it.It returns details of updated data.
+   * @description: This method updates the specific data from the generic table based on the id with attribute parameters passed to it. It returns details of updated data.
    */
   this.update = async (ctx) => {
     let entity;
     let table = getTable(ctx.originalUrl);
-    // update data of generic table
+    // updates data of generic table
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
@@ -152,12 +152,12 @@ function Base(requiredValues = []) {
    * Parameters:
    *    - Request object
    *      - id - identifier of generic table
-   * @description: This method deletes specific generic table data by id and returns details of deleted data.
+   * @description: This method deletes specific generic table data based on the id passed and returns details of the deleted data.
    */
   this.delete = async (ctx) => {
     const { id } = ctx.params;
     let table = getTable(ctx.originalUrl);
-    //delete data of generic table
+    // deletes data of the generic table
     try {
       const entity = await strapi.query(table, "crm-plugin").delete({ id });
       return sanitizeEntity(entity, {
