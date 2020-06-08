@@ -5,7 +5,7 @@
  *
  * API: Contact
  *
- * @description: Contact stores contact details like address, email, phone, etc of an individual or an organization or a user in the system.
+ * @description: Contact stores contact details like address, email, phone, etc of an individual or an organization or of a user in the system.
  */
 const { sanitizeEntity } = require("strapi-utils");
 const vm = require("vm");
@@ -15,7 +15,7 @@ module.exports = {
    * Parameters:
    *    - Request object
    *      - Filters / Column attributes (Optional)
-   * @description: This method returns all the contact details by default or specific contact details with certain conditions based on the filters passed to the method.
+   * @description: This method returns all the contact details by default or specific contact details based on the filters passed to the method.
    */
   find: async (ctx) => {
     try {
@@ -41,7 +41,7 @@ module.exports = {
    * Parameters:
    *    - Request object
    *      - id - identifier of contact table
-   * @description: This method returns specific contact details by id.
+   * @description: This method returns specific contact details based on the id passed.
    */
   findOne: async (ctx) => {
     const findOneParams = ["id"];
@@ -76,7 +76,7 @@ module.exports = {
    *      - name - name of the individual or organization or user in the system
    *      - contact_type - type of contact (values : organization/individual)
    *      - Column attributes (Optional)
-   * @description: This method creates a contact with the attribute parameters passed to this method by default. It returns details of created contact.
+   * @description: This method creates a contact with the attribute parameters passed to this method by default. It returns details of the created contact.
    */
   create: async (ctx) => {
     let org;
@@ -116,7 +116,7 @@ module.exports = {
    *    - Request object
    *      - id - identifier of contact table
    *      - Column attributes
-   * @description: This method updates the specific contact by id with attribute parameters passed to it.It returns details of updated contact.
+   * @description: This method updates the specific contact based on the id with attribute parameters passed to it. It returns details of the updated contact.
    */
   update: async (ctx) => {
     let org;
@@ -124,11 +124,11 @@ module.exports = {
     try {
       let contactDetails = {};
       contactDetails["contact"] = ctx.params.id;
-      // updates organization details according to passed id
+      // updates organization details according to the passed id
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .update(contactDetails, ctx.request.body);
-      // updates contact details according to parameters passed for particular id
+      // updates contact details for particular id according to parameters passed
       contact = await strapi
         .query("contact", "crm-plugin")
         .update(ctx.params, ctx.request.body);
@@ -146,20 +146,20 @@ module.exports = {
    * Parameters:
    *    - Request object
    *      - id - identifier of contact table
-   * @description: This method deletes specific contact by id and returns details of deleted contact.
+   * @description: This method deletes specific contact based on the id passed and returns details of the deleted contact.
    */
   delete: async (ctx) => {
     try {
       const contact = await strapi
         .query("contact", "crm-plugin")
         .delete(ctx.params);
-      // get organization details
+      // gets organization details
       let orgId = contact.individual
         ? contact.individual.id
         : contact.organization
         ? contact.organization.id
         : "";
-      // delete contact details of passed id.
+      // delete contact details based on the passed id.
       if (orgId)
         await strapi
           .query(contact.contact_type, "crm-plugin")
