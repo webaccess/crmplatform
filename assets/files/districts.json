@@ -1,0 +1,52 @@
+{
+  "districts": [
+    {
+      "name": "Anantapur",
+      "abbreviation": "AN",
+      "identifier": "AN",
+      "isActive": true
+    },
+    {
+      "name": "Chittoor",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "East Godavari",
+      "abbreviation": "EG",
+      "identifier": "EG",
+      "isActive": true
+    },
+    {
+      "name": "Baksa",
+      "abbreviation": "BK",
+      "identifier": "BK",
+      "isActive": true
+    },
+    {
+      "name": "Barpeta",
+      "abbreviation": "BP",
+      "identifier": "BP",
+      "isActive": true
+    },
+    {
+      "name": "Ahmednagar",
+      "abbreviation": "AH",
+      "identifier": "AH",
+      "isActive": true
+    },
+    {
+      "name": "North Goa",
+      "abbreviation": "NG",
+      "identifier": "NG",
+      "isActive": true
+    },
+    {
+      "name": "South Goa",
+      "abbreviation": "SG",
+      "identifier": "SG",
+      "isActive": true
+    }
+  ]
+}
