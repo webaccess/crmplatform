@@ -4,8 +4,8 @@ const knex = require("knex")({
     host: "127.0.0.1",
     port: "5432",
     user: "postgres",
-    password: "root",
-    database: "crmplatform",
+    password: "", // add your db password
+    database: "", // add your db name
   },
 });
 
