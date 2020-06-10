@@ -6,19 +6,19 @@ let JWT;
 let dataId;
 
 describe("Country Module Endpoint", function () {
-  before(function (done) {
-    request(SERVER_URL)
-      .post("/auth/local")
-      .send(PAYLOAD)
-      .expect(200)
-      .expect("Content-Type", /json/)
-      .end(function (err, res) {
-        if (err) return done(err);
-        const response = res.body;
-        JWT = response["jwt"];
-        done();
-      });
-  });
+  // before(function (done) {
+  //   request(SERVER_URL)
+  //     .post("/auth/local")
+  //     .send(PAYLOAD)
+  //     .expect(200)
+  //     .expect("Content-Type", /json/)
+  //     .end(function (err, res) {
+  //       if (err) return done(err);
+  //       const response = res.body;
+  //       JWT = response["jwt"];
+  //       done();
+  //     });
+  // });
 
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
