@@ -2,7 +2,8 @@ const request = require("co-supertest");
 var assert = require("chai").assert;
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
-let JWT;
+const { JWT } = require("../config/JWT");
+// let JWT;
 let dataId;
 
 describe("Country Module Endpoint", function () {
