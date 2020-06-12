@@ -14,7 +14,6 @@ module.exports = {
    */
 
   generateRoutes: async (ctx) => {
-    // Add your own logic here.
     try {
       strapi.plugins["crm-plugin"].services.routes.generateRoutes(false);
       // Send 200 `ok`
