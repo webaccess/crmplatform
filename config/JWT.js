@@ -1,0 +1,3 @@
+const JWT =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxNzkyNzU3LCJleHAiOjE1OTQzODQ3NTd9.HhtPgPgC3RGYJu-sKVGIDtJa26TqTRvTOzVtZ57u6bA";
+module.exports = { JWT };
