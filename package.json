@@ -8,7 +8,7 @@
     "description": "CRM plugin for the basic contact management."
   },
   "scripts": {
-    "test": "mocha tests/**/*.test.js",
+    "test": "node tests/integration/generateJWT.js && mocha tests/**/*.test.js",
     "coverage": "nyc --all --reporter=lcov yarn test"
   },
   "author": {

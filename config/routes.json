@@ -48,7 +48,6 @@
       "handler": "activityassignee.findOne",
       "config": { "policies": ["plugins::users-permissions.isAuthenticated"] }
     },
-
     {
       "method": "POST",
       "path": "/activityassignees",
