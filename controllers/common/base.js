@@ -5,10 +5,13 @@
  *
  * API: country, state, district, village, activitytype, activityassignee, contacttag.
  *
+ * ctx: Context object contains request parameters
+ *
  * @description: Parent class for all generic models like country, state, district, village, activitytype, activityassignee, contacttag.
  */
-const { sanitizeEntity } = require("strapi-utils");
+const { sanitizeEntity } = require("strapi-utils"); // removes private fields and its relations from model
 
+// to get the model name
 function getTable(url) {
   let urlArr = url.split("/");
   let table = "";
@@ -28,9 +31,15 @@ function Base(requiredValues = []) {
    */
   this.find = async (ctx) => {
     let table = getTable(ctx.originalUrl);
+
     try {
       let entity;
 
+      /**
+       * ctx.query._q: filters passed in URL
+       * if filters are passed, get data based on a search
+       * otherwise get entire data for the table
+       */
       if (ctx.query._q) {
         entity = await strapi.query(table, "crm-plugin").search(ctx.query);
       } else {
@@ -52,14 +61,17 @@ function Base(requiredValues = []) {
    * Method: findOne
    * Parameters:
    *    - Request object
-   *      - id - identifier of contact table
+   *      - id: identifier of contact table
    * @description: This method returns specific generic table details based on the id passed.
    */
   this.findOne = async (ctx) => {
-    const { id } = ctx.params;
+    const { id } = ctx.params; // get id from context object
     let table = getTable(ctx.originalUrl);
+
     try {
+      // returns all data of the id passed
       const entity = await strapi.query(table, "crm-plugin").findOne({ id });
+
       return sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models[table],
       });
@@ -77,7 +89,9 @@ function Base(requiredValues = []) {
    */
   this.count = async (ctx) => {
     let table = getTable(ctx.originalUrl);
+
     try {
+      // returns total no. of data based on search
       if (ctx.query._q) {
         return strapi.query(table, "crm-plugin").countSearch(ctx.query);
       }
@@ -101,6 +115,7 @@ function Base(requiredValues = []) {
     let table = getTable(ctx.originalUrl);
 
     try {
+      // returns error message if required params not found/ empty params passed
       const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
         ctx.request.body,
         this.requiredValues
@@ -108,8 +123,11 @@ function Base(requiredValues = []) {
       if (result.error) {
         return ctx.send(result.message);
       }
+
       // creates data entry into the generic table
       entity = await strapi.query(table, "crm-plugin").create(ctx.request.body);
+
+      // returns created data obj
       return sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models[table],
       });
@@ -123,20 +141,23 @@ function Base(requiredValues = []) {
    * Method: update
    * Parameters:
    *    - Request object
-   *      - id - identifier of generic table
+   *      - id: identifier of generic table
    *      - Column attributes
    * @description: This method updates the specific data from the generic table based on the id with attribute parameters passed to it. It returns details of updated data.
    */
   this.update = async (ctx) => {
     let entity;
     let table = getTable(ctx.originalUrl);
-    // updates data of generic table
+
+    // updates data of generic table based on id passed
     try {
       if (ctx.params.id) {
         const { id } = ctx.params;
         entity = await strapi
           .query(table, "crm-plugin")
           .update({ id }, ctx.request.body);
+
+        // returns updated data obj
         return sanitizeEntity(entity, {
           model: strapi.plugins["crm-plugin"].models[table],
         });
@@ -151,15 +172,18 @@ function Base(requiredValues = []) {
    * Method: delete
    * Parameters:
    *    - Request object
-   *      - id - identifier of generic table
+   *      - id: identifier of generic table
    * @description: This method deletes specific generic table data based on the id passed and returns details of the deleted data.
    */
   this.delete = async (ctx) => {
-    const { id } = ctx.params;
+    const { id } = ctx.params; // get id from context object
     let table = getTable(ctx.originalUrl);
-    // deletes data of the generic table
+
+    // deletes data of the generic table based on the id passed
     try {
       const entity = await strapi.query(table, "crm-plugin").delete({ id });
+
+      // returns deleted data obj
       return sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models[table],
       });
