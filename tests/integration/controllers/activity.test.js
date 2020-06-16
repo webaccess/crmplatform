@@ -6,7 +6,6 @@ const { JWT } = require("../config/JWT");
 let dataId;
 
 describe("Activity Module Endpoint", function () {
-  console.log("JWT", JWT);
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/activities/", function () {

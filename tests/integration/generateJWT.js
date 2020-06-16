@@ -5,8 +5,8 @@ request.post(
   SERVER_URL + "/auth/local",
   {
     json: {
-      identifier: "tanvisalkar@yahoo.in",
-      password: "test123",
+      identifier: "demo",
+      password: "demo123",
     },
   },
   (err, res, body) => {
