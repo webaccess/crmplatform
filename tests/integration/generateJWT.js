@@ -17,7 +17,7 @@ request.post(
     var JWT = body.jwt;
 
     fs.writeFile(
-      "config/JWT.js",
+      "tests/integration/config/JWT.js",
       'const JWT="' + JWT + '"; module.exports = { JWT,};',
       function (err) {
         if (err) return console.log(err);

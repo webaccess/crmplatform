@@ -1,3 +1,1 @@
-const JWT =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkxNzkyNzU3LCJleHAiOjE1OTQzODQ3NTd9.HhtPgPgC3RGYJu-sKVGIDtJa26TqTRvTOzVtZ57u6bA";
-module.exports = { JWT };
+const JWT="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTkyMzA3ODE4LCJleHAiOjE1OTQ4OTk4MTh9.wegHrxL5bygvEI2iFjgRGT7yJYJiqtQkA2Xe6AuZqEA"; module.exports = { JWT,};
