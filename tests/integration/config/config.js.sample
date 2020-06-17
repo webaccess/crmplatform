@@ -2,34 +2,8 @@ const SERVER_URL = "http://localhost:1337";
 const USER_IDENTIFIER = "demo";
 const USER_PASSWORD = "demo123";
 
-const request = require("request");
-
-function getJWTToken() {
-  return new Promise(function (resolve, reject) {
-    request.post(
-      SERVER_URL + "/auth/local",
-      {
-        json: {
-          identifier: USER_IDENTIFIER,
-          password: USER_PASSWORD,
-        },
-      },
-      (err, res, body) => {
-        if (err) {
-          reject(err);
-        }
-        var JWT = body.jwt;
-        resolve({
-          SERVER_URL,
-          JWT,
-        });
-      }
-    );
-  });
-}
-
-// module.exports = getJWTToken();
-
 module.exports = {
   SERVER_URL,
+  USER_IDENTIFIER,
+  USER_PASSWORD,
 };
