@@ -10,7 +10,7 @@ function getJWTToken() {
       SERVER_URL + "/auth/local",
       {
         json: {
-          identifier: USER_IDENTIFIER",
+          identifier: USER_IDENTIFIER,
           password: USER_PASSWORD,
         },
       },
