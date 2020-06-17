@@ -16,11 +16,6 @@ jobs:
           command: cd ~/project/crm-project && yarn build && yarn start
           background: true
       - run:
-          shell: /bin/sh
-          command: |
-            wget http://localhost:1337/auth/local
-            :
-      - run:
           name: Load the demo DB
           command: cd ~/project/crm-project || cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
       - run:
