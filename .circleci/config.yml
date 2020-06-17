@@ -14,10 +14,11 @@ jobs:
       - run:
           name: Build Strapi project
           command: cd ~/project/crm-project && yarn build && yarn start
+          background: true
       - run:
           shell: /bin/sh
           command: |
-            wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:1337/auth/local
+            wget http://localhost:1337/auth/local
             :
       - run:
           name: Load the demo DB
