@@ -1,12 +1,16 @@
 const request = require("request");
 const fs = require("fs");
-const { SERVER_URL } = require("./config/config");
+const {
+  SERVER_URL,
+  USER_IDENTIFIER,
+  USER_PASSWORD,
+} = require("./config/config");
 request.post(
   SERVER_URL + "/auth/local",
   {
     json: {
-      identifier: "demo",
-      password: "demo123",
+      identifier: USER_IDENTIFIER,
+      password: USER_PASSWORD,
     },
   },
   (err, res, body) => {

@@ -7,6 +7,7 @@ let dataId;
 
 describe("Activity Module Endpoint", function () {
   describe("Create Method", function () {
+    console.log("JWT", JWT);
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/activities/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
