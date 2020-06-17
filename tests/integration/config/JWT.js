@@ -1,3 +1,0 @@
-const JWT =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNTkxODU4MDcxLCJleHAiOjE1OTQ0NTAwNzF9.uNqbYkwHAbcDS2DFHd9Znd0lyAlIUU9W2n4H8w4WERE";
-module.exports = { JWT };
