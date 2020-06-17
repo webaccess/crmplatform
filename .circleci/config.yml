@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Build Strapi project
           command: cd ~/project/crm-project && yarn build && yarn start
-                - run:
+      - run:
           shell: /bin/sh
           command: |
             wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:1337/auth/local
