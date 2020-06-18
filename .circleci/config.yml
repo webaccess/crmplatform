@@ -13,8 +13,7 @@ jobs:
           command: cd ~/project && yarn create strapi-app crm-project --quickstart --no-run
       - run:
           name: Build Strapi project
-          command: cd ~/project/crm-project && yarn build && yarn start
-          background: true
+          command: cd ~/project/crm-project && yarn build
       - run:
           name: Load the demo DB
           command: cd ~/project/crm-project || cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
@@ -24,6 +23,12 @@ jobs:
       - run:
           name: Configure the plugin for testing
           command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js
+      - run:
+          name: Start Strapi project
+          command: cd ~/project/crm-project && yarn start
+          background: true
+      # wait for the server to start responding. We expect Bad Request 400 once it starts listening.
+      # so override the shell and have the last command be the : { null } command to force exit code 0.
       - run:
           shell: /bin/sh
           command: |
