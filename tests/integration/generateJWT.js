@@ -19,13 +19,13 @@ request.post(
     }
 
     var JWT = body.jwt;
-
+    console.log("body---", body);
     fs.writeFile(
       "tests/integration/config/JWT.js",
       'const JWT="' + JWT + '"; module.exports = { JWT,};',
       function (err) {
         if (err) return console.log(err);
-        console.log("file updated successfully!!");
+        console.log("file updated successfully!!", JWT);
       }
     );
   }
