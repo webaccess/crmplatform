@@ -31,7 +31,6 @@
     "co-supertest": "^0.0.10",
     "mocha": "^7.1.2",
     "nyc": "^15.0.1",
-    "supertest": "^4.0.2",
-    "redux-logger":"^3.0.6"
+    "supertest": "^4.0.2"
   }
 }
