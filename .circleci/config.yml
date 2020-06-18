@@ -27,13 +27,13 @@ jobs:
       # wait for the server to start responding. We expect Bad Request 400 once it starts listening.
       # so override the shell and have the last command be the : { null } command to force exit code 0.
       - run:
+          name: Load the demo DB
+          command: cd ~/project/crm-project || cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
+      - run:
           shell: /bin/sh
           command: |
             wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:1337/auth/local
             :
-      - run:
-          name: Load the demo DB
-          command: cd ~/project/crm-project || cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
       - run:
           name: Install required packages and run the test
           command: cd ~/project/crm-project/plugins/crm-plugin/ && yarn install && yarn test
