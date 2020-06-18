@@ -14,9 +14,9 @@ jobs:
       - run:
           name: Build Strapi project
           command: cd ~/project/crm-project && yarn build
-      - run:
+      - run: circleci step skip-build
           name: Start Strapi project
-          command: cd ~/project/crm-project && set -e && yarn start
+          command: cd ~/project/crm-project && yarn start
           no_output_timeout: 20s
       - run:
           name: Load the demo DB
