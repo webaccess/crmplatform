@@ -13,7 +13,7 @@ jobs:
           command: cd ~/project && yarn create strapi-app crm-project --quickstart --no-run
       - run:
           name: Build Strapi project
-          command: cd ~/project/crm-project && yarn build && yarn start
+          command: timeout 15s cd ~/project/crm-project && yarn build && yarn start
       - run:
           name: Load the demo DB
           command: cd ~/project/crm-project || cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
