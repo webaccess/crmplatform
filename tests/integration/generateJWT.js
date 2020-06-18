@@ -25,7 +25,12 @@ request.post(
       'const JWT="' + JWT + '"; module.exports = { JWT,};',
       function (err) {
         if (err) return console.log(err);
-        console.log("file updated successfully!!", JWT);
+        console.log(
+          "file updated successfully!!",
+          JWT,
+          USER_IDENTIFIER,
+          USER_PASSWORD
+        );
       }
     );
   }
