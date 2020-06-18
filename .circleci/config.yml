@@ -12,11 +12,8 @@ jobs:
           name: Create Strapi project
           command: cd ~/project && yarn create strapi-app crm-project --quickstart --no-run
       - run:
-          name: Enter project directory
-          command: cd ~/project/crm-project
-      - run:
           name: Build Strapi project
-          command: yarn build
+          command: cd ~/project/crm-project && yarn build
       - run:
           name: Start Strapi project
           command: timeout 15s yarn start
