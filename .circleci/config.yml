@@ -16,7 +16,7 @@ jobs:
           command: cd ~/project/crm-project && yarn build
       - run:
           name: Load the demo DB
-          command: cp -r ~/project/crmplatform/tests/integration/testing_db/.tmp
+          command: cd ~/project/crm-project || cp -r ~/project/crm-plugin/tests/integration/testing_db/.tmp .
       - run:
           name: Install CRM plugin
           command: mkdir -p ~/project/crm-project/plugins && mv ~/project/crm-plugin ~/project/crm-project/plugins/
