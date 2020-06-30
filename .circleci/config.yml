@@ -31,8 +31,7 @@ jobs:
       # so override the shell and have the last command be the : { null } command to force exit code 0.
       - run:
           shell: /bin/sh
-          command: |
-            wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:1337/auth/local
+          command: wget --retry-connrefused --waitretry=1 --read-timeout=20 --timeout=15 -t 10 http://localhost:1337/auth/local
             :
       - run:
           name: Install required packages and run the test
