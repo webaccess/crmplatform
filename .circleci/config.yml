@@ -15,6 +15,9 @@ jobs:
           name: Build Strapi project
           command: cd ~/project/crm-project && yarn build
       - run:
+          name: Load the demo DB
+          command: cp -r ~/project/crm-plugin/tests/integration/testing_db/.tmp ~/project/crm-project
+      - run:
           name: Install CRM plugin
           command: mkdir -p ~/project/crm-project/plugins && mv ~/project/crm-plugin ~/project/crm-project/plugins/
       - run:
@@ -26,9 +29,6 @@ jobs:
           background: true
       # wait for the server to start responding. We expect Bad Request 400 once it starts listening.
       # so override the shell and have the last command be the : { null } command to force exit code 0.
-      - run:
-          name: Load the demo DB
-          command: cd ~/project/crm-project || cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
       - run:
           shell: /bin/sh
           command: |
