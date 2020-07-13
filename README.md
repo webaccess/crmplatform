@@ -85,7 +85,4 @@ You would need to add below settings to your strapi project if you are extending
 - Run test cases
 
   `yarn test`
-  
-- Run code coverage
 
-  `yarn coverage`
