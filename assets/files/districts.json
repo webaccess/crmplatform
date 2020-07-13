@@ -1,0 +1,4461 @@
+{
+  "districts": [
+    {
+      "name": "Nicobar",
+      "abbreviation": "NI",
+      "identifier": "NI",
+      "isActive": true
+    },
+    {
+      "name": "North and Middle Andaman",
+      "abbreviation": "NA",
+      "identifier": "NA",
+      "isActive": true
+    },
+    {
+      "name": "South Andaman",
+      "abbreviation": "SA",
+      "identifier": "SA",
+      "isActive": true
+    },
+
+    {
+      "name": "Anantapur",
+      "abbreviation": "AN",
+      "identifier": "AN",
+      "isActive": true
+    },
+    {
+      "name": "Chittoor",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "East Godavari",
+      "abbreviation": "EG",
+      "identifier": "EG",
+      "isActive": true
+    },
+    {
+      "name": "Guntur",
+      "abbreviation": "GU",
+      "identifier": "GU",
+      "isActive": true
+    },
+    {
+      "name": "Kadapa",
+      "abbreviation": "CU",
+      "identifier": "CU",
+      "isActive": true
+    },
+    {
+      "name": "Krishna",
+      "abbreviation": "KR",
+      "identifier": "KR",
+      "isActive": true
+    },
+    {
+      "name": "Kurnool",
+      "abbreviation": "KU",
+      "identifier": "KU",
+      "isActive": true
+    },
+    {
+      "name": "Prakasam",
+      "abbreviation": "PR",
+      "identifier": "PR",
+      "isActive": true
+    },
+    {
+      "name": "Sri Potti Sriramulu Nellore",
+      "abbreviation": "NE",
+      "identifier": "NE",
+      "isActive": true
+    },
+    {
+      "name": "Srikakulam",
+      "abbreviation": "SR",
+      "identifier": "SR",
+      "isActive": true
+    },
+    {
+      "name": "Visakhapatnam",
+      "abbreviation": "VS",
+      "identifier": "VS",
+      "isActive": true
+    },
+    {
+      "name": "Vizianagaram",
+      "abbreviation": "VZ",
+      "identifier": "VZ",
+      "isActive": true
+    },
+    {
+      "name": "West Godavari",
+      "abbreviation": "WG",
+      "identifier": "WG",
+      "isActive": true
+    },
+
+    {
+      "name": "Anjaw",
+      "abbreviation": "AJ",
+      "identifier": "AJ",
+      "isActive": true
+    },
+    {
+      "name": "Changlang",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "East Kameng",
+      "abbreviation": "EK",
+      "identifier": "EK",
+      "isActive": true
+    },
+    {
+      "name": "East Siang",
+      "abbreviation": "ES",
+      "identifier": "ES",
+      "isActive": true
+    },
+    {
+      "name": "Kamle",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Kra Daadi",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Kurung Kumey",
+      "abbreviation": "KK",
+      "identifier": "KK",
+      "isActive": true
+    },
+    {
+      "name": "Lepa Rada",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Lohit",
+      "abbreviation": "EL",
+      "identifier": "EL",
+      "isActive": true
+    },
+    {
+      "name": "Longding",
+      "abbreviation": "LD",
+      "identifier": "LD",
+      "isActive": true
+    },
+    {
+      "name": "Lower Dibang Valley",
+      "abbreviation": "DV",
+      "identifier": "DV",
+      "isActive": true
+    },
+    {
+      "name": "Lower Siang",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Lower Subansiri",
+      "abbreviation": "LB",
+      "identifier": "LB",
+      "isActive": true
+    },
+    {
+      "name": "Namsai",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Pakke-Kessang",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Papum Pare",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Shi Yomi",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Siang",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Tawang",
+      "abbreviation": "TA",
+      "identifier": "TA",
+      "isActive": true
+    },
+    {
+      "name": "Tirap",
+      "abbreviation": "TI",
+      "identifier": "TI",
+      "isActive": true
+    },
+    {
+      "name": "Upper Dibang Valley",
+      "abbreviation": "UD",
+      "identifier": "UD",
+      "isActive": true
+    },
+    {
+      "name": "Upper Siang",
+      "abbreviation": "US",
+      "identifier": "US",
+      "isActive": true
+    },
+    {
+      "name": "Upper Subansiri",
+      "abbreviation": "UB",
+      "identifier": "UB",
+      "isActive": true
+    },
+    {
+      "name": "West Kameng",
+      "abbreviation": "WK",
+      "identifier": "WK",
+      "isActive": true
+    },
+    {
+      "name": "West Siang",
+      "abbreviation": "WS",
+      "identifier": "WS",
+      "isActive": true
+    },
+
+    {
+      "name": "Baksa",
+      "abbreviation": "BK",
+      "identifier": "BK",
+      "isActive": true
+    },
+    {
+      "name": "Barpeta",
+      "abbreviation": "BP",
+      "identifier": "BP",
+      "isActive": true
+    },
+    {
+      "name": "Bishwanath",
+      "abbreviation": "BS",
+      "identifier": "BS",
+      "isActive": true
+    },
+    {
+      "name": "Bongaigaon",
+      "abbreviation": "BO",
+      "identifier": "BO",
+      "isActive": true
+    },
+    {
+      "name": "Cachar",
+      "abbreviation": "CA",
+      "identifier": "CA",
+      "isActive": true
+    },
+    {
+      "name": "Charaideo",
+      "abbreviation": "CD",
+      "identifier": "CD",
+      "isActive": true
+    },
+    {
+      "name": "Chirang",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "Darrang",
+      "abbreviation": "DR",
+      "identifier": "DR",
+      "isActive": true
+    },
+    {
+      "name": "Dhemaji",
+      "abbreviation": "DM",
+      "identifier": "DM",
+      "isActive": true
+    },
+    {
+      "name": "Dhubri",
+      "abbreviation": "DU",
+      "identifier": "DU",
+      "isActive": true
+    },
+    {
+      "name": "Dibrugarh",
+      "abbreviation": "DI",
+      "identifier": "DI",
+      "isActive": true
+    },
+    {
+      "name": "Dima Hasao",
+      "abbreviation": "NC",
+      "identifier": "NC",
+      "isActive": true
+    },
+    {
+      "name": "Goalpara",
+      "abbreviation": "GP",
+      "identifier": "GP",
+      "isActive": true
+    },
+    {
+      "name": "Golaghat",
+      "abbreviation": "GG",
+      "identifier": "GG",
+      "isActive": true
+    },
+    {
+      "name": "Hailakandi",
+      "abbreviation": "HA",
+      "identifier": "HA",
+      "isActive": true
+    },
+    {
+      "name": "Hojai",
+      "abbreviation": "HJ",
+      "identifier": "HJ",
+      "isActive": true
+    },
+    {
+      "name": "Jorhat",
+      "abbreviation": "JO",
+      "identifier": "JO",
+      "isActive": true
+    },
+    {
+      "name": "Kamrup",
+      "abbreviation": "KU",
+      "identifier": "KU",
+      "isActive": true
+    },
+    {
+      "name": "Kamrup Metropolitan",
+      "abbreviation": "KM",
+      "identifier": "KM",
+      "isActive": true
+    },
+    {
+      "name": "Karbi Anglong",
+      "abbreviation": "KG",
+      "identifier": "KG",
+      "isActive": true
+    },
+    {
+      "name": "Karimganj",
+      "abbreviation": "KR",
+      "identifier": "KR",
+      "isActive": true
+    },
+    {
+      "name": "Kokrajhar",
+      "abbreviation": "KJ",
+      "identifier": "KJ",
+      "isActive": true
+    },
+    {
+      "name": "Lakhimpur",
+      "abbreviation": "LA",
+      "identifier": "LA",
+      "isActive": true
+    },
+    {
+      "name": "Majuli",
+      "abbreviation": "MJ",
+      "identifier": "MJ",
+      "isActive": true
+    },
+    {
+      "name": "Morigaon",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Nagaon",
+      "abbreviation": "NA",
+      "identifier": "NA",
+      "isActive": true
+    },
+    {
+      "name": "Nalbari",
+      "abbreviation": "NB",
+      "identifier": "NB",
+      "isActive": true
+    },
+    {
+      "name": "Sivasagar",
+      "abbreviation": "ST",
+      "identifier": "ST",
+      "isActive": true
+    },
+    {
+      "name": "South Salmara",
+      "abbreviation": "SM",
+      "identifier": "SM",
+      "isActive": true
+    },
+    {
+      "name": "Sonitpur",
+      "abbreviation": "SO",
+      "identifier": "SO",
+      "isActive": true
+    },
+    {
+      "name": "Tinsukia",
+      "abbreviation": "TI",
+      "identifier": "TI",
+      "isActive": true
+    },
+    {
+      "name": "Udalguri",
+      "abbreviation": "UD",
+      "identifier": "UD",
+      "isActive": true
+    },
+    {
+      "name": "West Karbi Anglong",
+      "abbreviation": "WK",
+      "identifier": "WK",
+      "isActive": true
+    },
+
+    {
+      "name": "Araria",
+      "abbreviation": "AR",
+      "identifier": "AR",
+      "isActive": true
+    },
+    {
+      "name": "Arwal",
+      "abbreviation": "AR",
+      "identifier": "AR",
+      "isActive": true
+    },
+    {
+      "name": "Aurangabad",
+      "abbreviation": "AU",
+      "identifier": "AU",
+      "isActive": true
+    },
+    {
+      "name": "Banka",
+      "abbreviation": "BA",
+      "identifier": "BA",
+      "isActive": true
+    },
+    {
+      "name": "Begusarai",
+      "abbreviation": "BE",
+      "identifier": "BE",
+      "isActive": true
+    },
+    {
+      "name": "Bhagalpur",
+      "abbreviation": "BG",
+      "identifier": "BG",
+      "isActive": true
+    },
+    {
+      "name": "Bhojpur",
+      "abbreviation": "BJ",
+      "identifier": "BJ",
+      "isActive": true
+    },
+    {
+      "name": "Buxar",
+      "abbreviation": "BU",
+      "identifier": "BU",
+      "isActive": true
+    },
+    {
+      "name": "Darbhanga",
+      "abbreviation": "DA",
+      "identifier": "DA",
+      "isActive": true
+    },
+    {
+      "name": "East Champaran",
+      "abbreviation": "EC",
+      "identifier": "EC",
+      "isActive": true
+    },
+    {
+      "name": "Gaya",
+      "abbreviation": "GA",
+      "identifier": "GA",
+      "isActive": true
+    },
+    {
+      "name": "Gopalganj",
+      "abbreviation": "GO",
+      "identifier": "GO",
+      "isActive": true
+    },
+    {
+      "name": "Jamui",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Jehanabad",
+      "abbreviation": "JE",
+      "identifier": "JE",
+      "isActive": true
+    },
+    {
+      "name": "Kaimur",
+      "abbreviation": "KM",
+      "identifier": "KM",
+      "isActive": true
+    },
+    {
+      "name": "Katihar",
+      "abbreviation": "KT",
+      "identifier": "KT",
+      "isActive": true
+    },
+    {
+      "name": "Khagaria",
+      "abbreviation": "KH",
+      "identifier": "KH",
+      "isActive": true
+    },
+    {
+      "name": "Kishanganj",
+      "abbreviation": "KI",
+      "identifier": "KI",
+      "isActive": true
+    },
+    {
+      "name": "Lakhisarai",
+      "abbreviation": "LA",
+      "identifier": "LA",
+      "isActive": true
+    },
+    {
+      "name": "Madhepura",
+      "abbreviation": "MP",
+      "identifier": "MP",
+      "isActive": true
+    },
+    {
+      "name": "Madhubani",
+      "abbreviation": "MB",
+      "identifier": "MB",
+      "isActive": true
+    },
+    {
+      "name": "Munger",
+      "abbreviation": "MG",
+      "identifier": "MG",
+      "isActive": true
+    },
+    {
+      "name": "Muzaffarpur",
+      "abbreviation": "MZ",
+      "identifier": "MZ",
+      "isActive": true
+    },
+    {
+      "name": "Nalanda",
+      "abbreviation": "NL",
+      "identifier": "NL",
+      "isActive": true
+    },
+    {
+      "name": "Nawada",
+      "abbreviation": "NW",
+      "identifier": "NW",
+      "isActive": true
+    },
+    {
+      "name": "Patna",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Purnia",
+      "abbreviation": "PU",
+      "identifier": "PU",
+      "isActive": true
+    },
+    {
+      "name": "Rohtas",
+      "abbreviation": "RO",
+      "identifier": "RO",
+      "isActive": true
+    },
+    {
+      "name": "Saharsa",
+      "abbreviation": "SH",
+      "identifier": "SH",
+      "isActive": true
+    },
+    {
+      "name": "Samastipur",
+      "abbreviation": "SM",
+      "identifier": "SM",
+      "isActive": true
+    },
+    {
+      "name": "Saran",
+      "abbreviation": "SR",
+      "identifier": "SR",
+      "isActive": true
+    },
+    {
+      "name": "Sheikhpura",
+      "abbreviation": "SP",
+      "identifier": "SP",
+      "isActive": true
+    },
+    {
+      "name": "Sheohar",
+      "abbreviation": "SO",
+      "identifier": "SO",
+      "isActive": true
+    },
+    {
+      "name": "Sitamarhi",
+      "abbreviation": "ST",
+      "identifier": "ST",
+      "isActive": true
+    },
+    {
+      "name": "Siwan",
+      "abbreviation": "SW",
+      "identifier": "SW",
+      "isActive": true
+    },
+    {
+      "name": "Supaul",
+      "abbreviation": "SU",
+      "identifier": "SU",
+      "isActive": true
+    },
+    {
+      "name": "Vaishali",
+      "abbreviation": "VA",
+      "identifier": "VA",
+      "isActive": true
+    },
+    {
+      "name": "West Champaran",
+      "abbreviation": "WC",
+      "identifier": "WC",
+      "isActive": true
+    },
+
+    {
+      "name": "Chandigarh",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+
+    {
+      "name": "Balod",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Baloda Bazar",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Balrampur",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Bastar",
+      "abbreviation": "BA",
+      "identifier": "BA",
+      "isActive": true
+    },
+    {
+      "name": "Bemetara",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Bijapur",
+      "abbreviation": "BJ",
+      "identifier": "BJ",
+      "isActive": true
+    },
+    {
+      "name": "Bilaspur",
+      "abbreviation": "BI",
+      "identifier": "BI",
+      "isActive": true
+    },
+    {
+      "name": "Dantewada",
+      "abbreviation": "DA",
+      "identifier": "DA",
+      "isActive": true
+    },
+    {
+      "name": "Dhamtari",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Durg",
+      "abbreviation": "DU",
+      "identifier": "DU",
+      "isActive": true
+    },
+    {
+      "name": "Gariaband",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Gaurela-Pendra-Marwahi",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Janjgir-Champa",
+      "abbreviation": "JC",
+      "identifier": "JC",
+      "isActive": true
+    },
+    {
+      "name": "Jashpur",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Kabirdham",
+      "abbreviation": "KW",
+      "identifier": "KW",
+      "isActive": true
+    },
+    {
+      "name": "Kanker",
+      "abbreviation": "KK",
+      "identifier": "KK",
+      "isActive": true
+    },
+    {
+      "name": "Kondagaon",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Korba",
+      "abbreviation": "KB",
+      "identifier": "KB",
+      "isActive": true
+    },
+    {
+      "name": "Koriya",
+      "abbreviation": "KJ",
+      "identifier": "KJ",
+      "isActive": true
+    },
+    {
+      "name": "Mahasamund",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Mungeli",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Narayanpur",
+      "abbreviation": "NR",
+      "identifier": "NR",
+      "isActive": true
+    },
+    {
+      "name": "Raigarh",
+      "abbreviation": "RG",
+      "identifier": "RG",
+      "isActive": true
+    },
+    {
+      "name": "Raipur",
+      "abbreviation": "RP",
+      "identifier": "RP",
+      "isActive": true
+    },
+    {
+      "name": "Rajnandgaon",
+      "abbreviation": "RN",
+      "identifier": "RN",
+      "isActive": true
+    },
+    {
+      "name": "Sukma",
+      "abbreviation": "SK",
+      "identifier": "SK",
+      "isActive": true
+    },
+    {
+      "name": "Surajpur",
+      "abbreviation": "SJ",
+      "identifier": "SJ",
+      "isActive": true
+    },
+    {
+      "name": "Surguja",
+      "abbreviation": "SG",
+      "identifier": "SG",
+      "isActive": true
+    },
+
+    {
+      "name": "Daman",
+      "abbreviation": "DA",
+      "identifier": "DA",
+      "isActive": true
+    },
+    {
+      "name": "Diu",
+      "abbreviation": "DI",
+      "identifier": "DI",
+      "isActive": true
+    },
+    {
+      "name": "Dadra and Nagar Haveli",
+      "abbreviation": "DN",
+      "identifier": "DN",
+      "isActive": true
+    },
+
+    {
+      "name": "North Goa",
+      "abbreviation": "NG",
+      "identifier": "NG",
+      "isActive": true
+    },
+    {
+      "name": "South Goa",
+      "abbreviation": "SG",
+      "identifier": "SG",
+      "isActive": true
+    },
+
+    {
+      "name": "Ahmedabad",
+      "abbreviation": "AH",
+      "identifier": "AH",
+      "isActive": true
+    },
+    {
+      "name": "Amreli",
+      "abbreviation": "AM",
+      "identifier": "AM",
+      "isActive": true
+    },
+    {
+      "name": "Anand",
+      "abbreviation": "AN",
+      "identifier": "AN",
+      "isActive": true
+    },
+    {
+      "name": "Aravalli",
+      "abbreviation": "AR",
+      "identifier": "AR",
+      "isActive": true
+    },
+    {
+      "name": "Banaskantha",
+      "abbreviation": "BK",
+      "identifier": "BK",
+      "isActive": true
+    },
+    {
+      "name": "Bharuch",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Bhavnagar",
+      "abbreviation": "BV",
+      "identifier": "BV",
+      "isActive": true
+    },
+    {
+      "name": "Botad",
+      "abbreviation": "BT",
+      "identifier": "BT",
+      "isActive": true
+    },
+    {
+      "name": "Chhota Udepur",
+      "abbreviation": "CU",
+      "identifier": "CU",
+      "isActive": true
+    },
+    {
+      "name": "Dahod",
+      "abbreviation": "DA",
+      "identifier": "DA",
+      "isActive": true
+    },
+    {
+      "name": "Dang",
+      "abbreviation": "DG",
+      "identifier": "DG",
+      "isActive": true
+    },
+    {
+      "name": "Devbhoomi Dwarka",
+      "abbreviation": "DD",
+      "identifier": "DD",
+      "isActive": true
+    },
+    {
+      "name": "Gandhinagar",
+      "abbreviation": "GA",
+      "identifier": "GA",
+      "isActive": true
+    },
+    {
+      "name": "Gir Somnath",
+      "abbreviation": "GS",
+      "identifier": "GS",
+      "isActive": true
+    },
+    {
+      "name": "Jamnagar",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Junagadh",
+      "abbreviation": "JU",
+      "identifier": "JU",
+      "isActive": true
+    },
+    {
+      "name": "Kheda",
+      "abbreviation": "KH",
+      "identifier": "KH",
+      "isActive": true
+    },
+    {
+      "name": "Kutch",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Mahisagar",
+      "abbreviation": "MH",
+      "identifier": "MH",
+      "isActive": true
+    },
+    {
+      "name": "Mehsana",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Morbi",
+      "abbreviation": "MB",
+      "identifier": "MB",
+      "isActive": true
+    },
+    {
+      "name": "Narmada",
+      "abbreviation": "NR",
+      "identifier": "NR",
+      "isActive": true
+    },
+    {
+      "name": "Navsari",
+      "abbreviation": "NV",
+      "identifier": "NV",
+      "isActive": true
+    },
+    {
+      "name": "Panchmahal",
+      "abbreviation": "PM",
+      "identifier": "PM",
+      "isActive": true
+    },
+    {
+      "name": "Patan",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Porbandar",
+      "abbreviation": "PO",
+      "identifier": "PO",
+      "isActive": true
+    },
+    {
+      "name": "Rajkot",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Sabarkantha",
+      "abbreviation": "SK",
+      "identifier": "SK",
+      "isActive": true
+    },
+    {
+      "name": "Surat",
+      "abbreviation": "ST",
+      "identifier": "ST",
+      "isActive": true
+    },
+    {
+      "name": "Surendranagar",
+      "abbreviation": "SN",
+      "identifier": "SN",
+      "isActive": true
+    },
+    {
+      "name": "Tapi",
+      "abbreviation": "TA",
+      "identifier": "TA",
+      "isActive": true
+    },
+    {
+      "name": "Vadodara",
+      "abbreviation": "VD",
+      "identifier": "VD",
+      "isActive": true
+    },
+    {
+      "name": "Valsad",
+      "abbreviation": "VL",
+      "identifier": "VL",
+      "isActive": true
+    },
+
+    {
+      "name": "Ambala",
+      "abbreviation": "AM",
+      "identifier": "AM",
+      "isActive": true
+    },
+    {
+      "name": "Bhiwani",
+      "abbreviation": "BH",
+      "identifier": "BH",
+      "isActive": true
+    },
+    {
+      "name": "Charkhi Dadri",
+      "abbreviation": "CD",
+      "identifier": "CD",
+      "isActive": true
+    },
+    {
+      "name": "Faridabad",
+      "abbreviation": "FR",
+      "identifier": "FR",
+      "isActive": true
+    },
+    {
+      "name": "Fatehabad",
+      "abbreviation": "FT",
+      "identifier": "FT",
+      "isActive": true
+    },
+    {
+      "name": "Gurgaon",
+      "abbreviation": "GU",
+      "identifier": "GU",
+      "isActive": true
+    },
+    {
+      "name": "Hissar",
+      "abbreviation": "Hi",
+      "identifier": "HI",
+      "isActive": true
+    },
+    {
+      "name": "Jhajjar",
+      "abbreviation": "JH",
+      "identifier": "JH",
+      "isActive": true
+    },
+    {
+      "name": "Jind",
+      "abbreviation": "JI",
+      "identifier": "JI",
+      "isActive": true
+    },
+    {
+      "name": "Kaithal",
+      "abbreviation": "KT",
+      "identifier": "KT",
+      "isActive": true
+    },
+    {
+      "name": "Karnal",
+      "abbreviation": "KR",
+      "identifier": "KR",
+      "isActive": true
+    },
+    {
+      "name": "Kurukshetra",
+      "abbreviation": "KU",
+      "identifier": "KU",
+      "isActive": true
+    },
+    {
+      "name": "Mahendragarh",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Nuh",
+      "abbreviation": "MW",
+      "identifier": "MW",
+      "isActive": true
+    },
+    {
+      "name": "Palwal",
+      "abbreviation": "PW",
+      "identifier": "PW",
+      "isActive": true
+    },
+    {
+      "name": "Panchkula",
+      "abbreviation": "PK",
+      "identifier": "PK",
+      "isActive": true
+    },
+    {
+      "name": "Panipat",
+      "abbreviation": "PP",
+      "identifier": "PP",
+      "isActive": true
+    },
+    {
+      "name": "Rewari",
+      "abbreviation": "RE",
+      "identifier": "RE",
+      "isActive": true
+    },
+    {
+      "name": "Rohtak",
+      "abbreviation": "RO",
+      "identifier": "RO",
+      "isActive": true
+    },
+    {
+      "name": "Sirsa",
+      "abbreviation": "SI",
+      "identifier": "SI",
+      "isActive": true
+    },
+    {
+      "name": "Sonipat",
+      "abbreviation": "SNP",
+      "identifier": "SNP",
+      "isActive": true
+    },
+    {
+      "name": "Yamuna Nagar",
+      "abbreviation": "YN",
+      "identifier": "YN",
+      "isActive": true
+    },
+
+    {
+      "name": "Bilaspur",
+      "abbreviation": "BI",
+      "identifier": "BI",
+      "isActive": true
+    },
+    {
+      "name": "Chamba",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "Hamirpur",
+      "abbreviation": "HA",
+      "identifier": "HA",
+      "isActive": true
+    },
+    {
+      "name": "Kangra",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Kinnaur",
+      "abbreviation": "KI",
+      "identifier": "KI",
+      "isActive": true
+    },
+    {
+      "name": "Kullu",
+      "abbreviation": "KU",
+      "identifier": "KU",
+      "isActive": true
+    },
+    {
+      "name": "Lahaul and Spiti",
+      "abbreviation": "LS",
+      "identifier": "LS",
+      "isActive": true
+    },
+    {
+      "name": "Mandi",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Shimla",
+      "abbreviation": "SH",
+      "identifier": "SH",
+      "isActive": true
+    },
+    {
+      "name": "Sirmaur",
+      "abbreviation": "SI",
+      "identifier": "SI",
+      "isActive": true
+    },
+    {
+      "name": "Solan",
+      "abbreviation": "SO",
+      "identifier": "SO",
+      "isActive": true
+    },
+    {
+      "name": "Una",
+      "abbreviation": "UN",
+      "identifier": "UN",
+      "isActive": true
+    },
+
+    {
+      "name": "Anantnag",
+      "abbreviation": "AN",
+      "identifier": "AN",
+      "isActive": true
+    },
+    {
+      "name": "Bandipora",
+      "abbreviation": "BPR",
+      "identifier": "BPR",
+      "isActive": true
+    },
+    {
+      "name": "Baramulla",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Badgam",
+      "abbreviation": "BD",
+      "identifier": "BD",
+      "isActive": true
+    },
+    {
+      "name": "Doda",
+      "abbreviation": "DO",
+      "identifier": "DO",
+      "isActive": true
+    },
+    {
+      "name": "Ganderbal",
+      "abbreviation": "GB",
+      "identifier": "GB",
+      "isActive": true
+    },
+    {
+      "name": "Jammu",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Kathua",
+      "abbreviation": "KT",
+      "identifier": "KT",
+      "isActive": true
+    },
+    {
+      "name": "Kishtwar",
+      "abbreviation": "KW",
+      "identifier": "KW",
+      "isActive": true
+    },
+    {
+      "name": "Kulgam",
+      "abbreviation": "KG",
+      "identifier": "KG",
+      "isActive": true
+    },
+    {
+      "name": "Kupwara",
+      "abbreviation": "KU",
+      "identifier": "KU",
+      "isActive": true
+    },
+    {
+      "name": "Poonch",
+      "abbreviation": "PO",
+      "identifier": "PO",
+      "isActive": true
+    },
+    {
+      "name": "Pulwama",
+      "abbreviation": "PU",
+      "identifier": "PU",
+      "isActive": true
+    },
+    {
+      "name": "Rajouri",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Ramban",
+      "abbreviation": "RB",
+      "identifier": "RB",
+      "isActive": true
+    },
+    {
+      "name": "Reasi",
+      "abbreviation": "RS",
+      "identifier": "RS",
+      "isActive": true
+    },
+    {
+      "name": "Samba",
+      "abbreviation": "SB",
+      "identifier": "SB",
+      "isActive": true
+    },
+    {
+      "name": "Shopian",
+      "abbreviation": "SH",
+      "identifier": "SH",
+      "isActive": true
+    },
+    {
+      "name": "Srinagar",
+      "abbreviation": "SR",
+      "identifier": "SR",
+      "isActive": true
+    },
+    {
+      "name": "Udhampur",
+      "abbreviation": "UD",
+      "identifier": "UD",
+      "isActive": true
+    },
+
+    {
+      "name": "Bokaro",
+      "abbreviation": "BO",
+      "identifier": "BO",
+      "isActive": true
+    },
+    {
+      "name": "Chatra",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "Deoghar",
+      "abbreviation": "DE",
+      "identifier": "DE",
+      "isActive": true
+    },
+    {
+      "name": "Dhanbad",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Dumka",
+      "abbreviation": "DU",
+      "identifier": "DU",
+      "isActive": true
+    },
+    {
+      "name": "East Singhbhum",
+      "abbreviation": "ES",
+      "identifier": "ES",
+      "isActive": true
+    },
+    {
+      "name": "Garhwa",
+      "abbreviation": "GA",
+      "identifier": "GA",
+      "isActive": true
+    },
+    {
+      "name": "Giridih",
+      "abbreviation": "GI",
+      "identifier": "GI",
+      "isActive": true
+    },
+    {
+      "name": "Godda",
+      "abbreviation": "GO",
+      "identifier": "GO",
+      "isActive": true
+    },
+    {
+      "name": "Gumla",
+      "abbreviation": "GU",
+      "identifier": "GU",
+      "isActive": true
+    },
+    {
+      "name": "Hazaribag",
+      "abbreviation": "HA",
+      "identifier": "HA",
+      "isActive": true
+    },
+    {
+      "name": "Jamtara",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Khunti",
+      "abbreviation": "KH",
+      "identifier": "KH",
+      "isActive": true
+    },
+    {
+      "name": "Koderma",
+      "abbreviation": "KO",
+      "identifier": "KO",
+      "isActive": true
+    },
+    {
+      "name": "Latehar",
+      "abbreviation": "LA",
+      "identifier": "LA",
+      "isActive": true
+    },
+    {
+      "name": "Lohardaga",
+      "abbreviation": "LO",
+      "identifier": "LO",
+      "isActive": true
+    },
+    {
+      "name": "Pakur",
+      "abbreviation": "PK",
+      "identifier": "PK",
+      "isActive": true
+    },
+    {
+      "name": "Palamu",
+      "abbreviation": "PL",
+      "identifier": "PL",
+      "isActive": true
+    },
+    {
+      "name": "Ramgarh",
+      "abbreviation": "RM",
+      "identifier": "RM",
+      "isActive": true
+    },
+    {
+      "name": "Ranchi",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Sahibganj",
+      "abbreviation": "SA",
+      "identifier": "SA",
+      "isActive": true
+    },
+    {
+      "name": "Seraikela Kharsawan",
+      "abbreviation": "SK",
+      "identifier": "SK",
+      "isActive": true
+    },
+    {
+      "name": "Simdega",
+      "abbreviation": "SI",
+      "identifier": "SI",
+      "isActive": true
+    },
+    {
+      "name": "West Singhbhum",
+      "abbreviation": "WS",
+      "identifier": "WS",
+      "isActive": true
+    },
+
+    {
+      "name": "Bagalkot",
+      "abbreviation": "BK",
+      "identifier": "BK",
+      "isActive": true
+    },
+    {
+      "name": "Ballari",
+      "abbreviation": "BL",
+      "identifier": "BL",
+      "isActive": true
+    },
+    {
+      "name": "Belgaum",
+      "abbreviation": "BG",
+      "identifier": "BG",
+      "isActive": true
+    },
+    {
+      "name": "Bangalore Rural",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Bangalore Urban",
+      "abbreviation": "BN",
+      "identifier": "BN",
+      "isActive": true
+    },
+    {
+      "name": "Bidar",
+      "abbreviation": "BD",
+      "identifier": "BD",
+      "isActive": true
+    },
+    {
+      "name": "Chamarajnagar",
+      "abbreviation": "CJ",
+      "identifier": "CJ",
+      "isActive": true
+    },
+    {
+      "name": "Chikkaballapur",
+      "abbreviation": "CK",
+      "identifier": "CK",
+      "isActive": true
+    },
+    {
+      "name": "Chikkamagaluru",
+      "abbreviation": "CK",
+      "identifier": "CK",
+      "isActive": true
+    },
+    {
+      "name": "Chitradurga",
+      "abbreviation": "CT",
+      "identifier": "CT",
+      "isActive": true
+    },
+    {
+      "name": "Dakshina Kannada",
+      "abbreviation": "DK",
+      "identifier": "DK",
+      "isActive": true
+    },
+    {
+      "name": "Davanagere",
+      "abbreviation": "DA",
+      "identifier": "DA",
+      "isActive": true
+    },
+    {
+      "name": "Dharwad",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Gadag",
+      "abbreviation": "GA",
+      "identifier": "GA",
+      "isActive": true
+    },
+    {
+      "name": "Gulbarga",
+      "abbreviation": "GU",
+      "identifier": "GU",
+      "isActive": true
+    },
+    {
+      "name": "Hassan",
+      "abbreviation": "HS",
+      "identifier": "HS",
+      "isActive": true
+    },
+    {
+      "name": "Haveri",
+      "abbreviation": "HV",
+      "identifier": "HV",
+      "isActive": true
+    },
+    {
+      "name": "Kodagu",
+      "abbreviation": "KD",
+      "identifier": "KD",
+      "isActive": true
+    },
+    {
+      "name": "Kolar",
+      "abbreviation": "KL",
+      "identifier": "KL",
+      "isActive": true
+    },
+    {
+      "name": "Koppal",
+      "abbreviation": "KP",
+      "identifier": "KP",
+      "isActive": true
+    },
+    {
+      "name": "Mandya",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Mysuru",
+      "abbreviation": "MY",
+      "identifier": "MY",
+      "isActive": true
+    },
+    {
+      "name": "Raichur",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Ramanagara",
+      "abbreviation": "RM",
+      "identifier": "RM",
+      "isActive": true
+    },
+    {
+      "name": "Shimoga",
+      "abbreviation": "SH",
+      "identifier": "SH",
+      "isActive": true
+    },
+    {
+      "name": "Tumakuru",
+      "abbreviation": "TU",
+      "identifier": "TU",
+      "isActive": true
+    },
+    {
+      "name": "Udupi",
+      "abbreviation": "UD",
+      "identifier": "UD",
+      "isActive": true
+    },
+    {
+      "name": "Uttara Kannada",
+      "abbreviation": "UK",
+      "identifier": "UK",
+      "isActive": true
+    },
+    {
+      "name": "Vijayapura",
+      "abbreviation": "BJ",
+      "identifier": "BJ",
+      "isActive": true
+    },
+    {
+      "name": "Yadgir",
+      "abbreviation": "YG",
+      "identifier": "YG",
+      "isActive": true
+    },
+
+    {
+      "name": "Alappuzha",
+      "abbreviation": "AL",
+      "identifier": "AL",
+      "isActive": true
+    },
+    {
+      "name": "Ernakulam",
+      "abbreviation": "ER",
+      "identifier": "ER",
+      "isActive": true
+    },
+    {
+      "name": "Idukki",
+      "abbreviation": "ID",
+      "identifier": "ID",
+      "isActive": true
+    },
+    {
+      "name": "Kannur",
+      "abbreviation": "KN",
+      "identifier": "KN",
+      "isActive": true
+    },
+    {
+      "name": "Kasaragod",
+      "abbreviation": "KS",
+      "identifier": "KS",
+      "isActive": true
+    },
+    {
+      "name": "Kollam",
+      "abbreviation": "KL",
+      "identifier": "KL",
+      "isActive": true
+    },
+    {
+      "name": "Kottayam",
+      "abbreviation": "KT",
+      "identifier": "KT",
+      "isActive": true
+    },
+    {
+      "name": "Kozhikode",
+      "abbreviation": "KZ",
+      "identifier": "KZ",
+      "isActive": true
+    },
+    {
+      "name": "Malappuram",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Palakkad",
+      "abbreviation": "PL",
+      "identifier": "PL",
+      "isActive": true
+    },
+    {
+      "name": "Pathanamthitta",
+      "abbreviation": "PT",
+      "identifier": "PT",
+      "isActive": true
+    },
+    {
+      "name": "Thrissur",
+      "abbreviation": "TS",
+      "identifier": "TS",
+      "isActive": true
+    },
+    {
+      "name": "Thiruvananthapuram",
+      "abbreviation": "TV",
+      "identifier": "TV",
+      "isActive": true
+    },
+    {
+      "name": "Wayanad",
+      "abbreviation": "WA",
+      "identifier": "WA",
+      "isActive": true
+    },
+
+    {
+      "name": "Kargil",
+      "abbreviation": "KR",
+      "identifier": "KR",
+      "isActive": true
+    },
+    {
+      "name": "Leh",
+      "abbreviation": "LE",
+      "identifier": "LE",
+      "isActive": true
+    },
+
+    {
+      "name": "Lakshadweep",
+      "abbreviation": "LD",
+      "identifier": "LD",
+      "isActive": true
+    },
+
+    {
+      "name": "Agar Malwa",
+      "abbreviation": "AG",
+      "identifier": "AG",
+      "isActive": true
+    },
+    {
+      "name": "Alirajpur",
+      "abbreviation": "AL",
+      "identifier": "AL",
+      "isActive": true
+    },
+    {
+      "name": "Anuppur",
+      "abbreviation": "AP",
+      "identifier": "AP",
+      "isActive": true
+    },
+    {
+      "name": "Ashok Nagar",
+      "abbreviation": "AS",
+      "identifier": "AS",
+      "isActive": true
+    },
+    {
+      "name": "Balaghat",
+      "abbreviation": "BL",
+      "identifier": "BL",
+      "isActive": true
+    },
+    {
+      "name": "Barwani",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Betul",
+      "abbreviation": "BE",
+      "identifier": "BE",
+      "isActive": true
+    },
+    {
+      "name": "Bhind",
+      "abbreviation": "BD",
+      "identifier": "BE",
+      "isActive": true
+    },
+    {
+      "name": "Bhopal",
+      "abbreviation": "BP",
+      "identifier": "BP",
+      "isActive": true
+    },
+    {
+      "name": "Burhanpur",
+      "abbreviation": "BU",
+      "identifier": "BU",
+      "isActive": true
+    },
+    {
+      "name": "Chhatarpur",
+      "abbreviation": "CT",
+      "identifier": "CT",
+      "isActive": true
+    },
+    {
+      "name": "Chhindwara",
+      "abbreviation": "CN",
+      "identifier": "CN",
+      "isActive": true
+    },
+    {
+      "name": "Damoh",
+      "abbreviation": "DM",
+      "identifier": "DM",
+      "isActive": true
+    },
+    {
+      "name": "Datia",
+      "abbreviation": "DT",
+      "identifier": "DT",
+      "isActive": true
+    },
+    {
+      "name": "Dewas",
+      "abbreviation": "DE",
+      "identifier": "DE",
+      "isActive": true
+    },
+    {
+      "name": "Dhar",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Dindori",
+      "abbreviation": "DI",
+      "identifier": "DI",
+      "isActive": true
+    },
+    {
+      "name": "Guna",
+      "abbreviation": "GU",
+      "identifier": "GU",
+      "isActive": true
+    },
+    {
+      "name": "Gwalior",
+      "abbreviation": "GW",
+      "identifier": "GW",
+      "isActive": true
+    },
+    {
+      "name": "Harda",
+      "abbreviation": "HA",
+      "identifier": "HA",
+      "isActive": true
+    },
+    {
+      "name": "Hoshangabad",
+      "abbreviation": "HO",
+      "identifier": "HO",
+      "isActive": true
+    },
+    {
+      "name": "Indore",
+      "abbreviation": "IN",
+      "identifier": "IN",
+      "isActive": true
+    },
+    {
+      "name": "Jabalpur",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Jhabua",
+      "abbreviation": "JH",
+      "identifier": "JH",
+      "isActive": true
+    },
+    {
+      "name": "Katni",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Khandwa (East Nimar)",
+      "abbreviation": "EN",
+      "identifier": "EN",
+      "isActive": true
+    },
+    {
+      "name": "Khargone (West Nimar)",
+      "abbreviation": "WN",
+      "identifier": "WN",
+      "isActive": true
+    },
+    {
+      "name": "Mandla",
+      "abbreviation": "ML",
+      "identifier": "ML",
+      "isActive": true
+    },
+    {
+      "name": "Mandsaur",
+      "abbreviation": "MS",
+      "identifier": "MS",
+      "isActive": true
+    },
+    {
+      "name": "Morena",
+      "abbreviation": "MO",
+      "identifier": "MO",
+      "isActive": true
+    },
+    {
+      "name": "Narsinghpur",
+      "abbreviation": "NA",
+      "identifier": "NA",
+      "isActive": true
+    },
+    {
+      "name": "Nagda",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Neemuch",
+      "abbreviation": "NE",
+      "identifier": "NE",
+      "isActive": true
+    },
+    {
+      "name": "Niwari",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Panna",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Raisen",
+      "abbreviation": "RS",
+      "identifier": "RS",
+      "isActive": true
+    },
+    {
+      "name": "Rajgarh",
+      "abbreviation": "RG",
+      "identifier": "RG",
+      "isActive": true
+    },
+    {
+      "name": "Ratlam",
+      "abbreviation": "RL",
+      "identifier": "RL",
+      "isActive": true
+    },
+    {
+      "name": "Rewa",
+      "abbreviation": "RE",
+      "identifier": "RE",
+      "isActive": true
+    },
+    {
+      "name": "Sagar",
+      "abbreviation": "SG",
+      "identifier": "SG",
+      "isActive": true
+    },
+    {
+      "name": "Satna",
+      "abbreviation": "ST",
+      "identifier": "ST",
+      "isActive": true
+    },
+    {
+      "name": "Sehore",
+      "abbreviation": "SR",
+      "identifier": "SR",
+      "isActive": true
+    },
+    {
+      "name": "Seoni",
+      "abbreviation": "SO",
+      "identifier": "SO",
+      "isActive": true
+    },
+    {
+      "name": "Shahdol",
+      "abbreviation": "SH",
+      "identifier": "SH",
+      "isActive": true
+    },
+    {
+      "name": "Shajapur",
+      "abbreviation": "SJ",
+      "identifier": "SJ",
+      "isActive": true
+    },
+    {
+      "name": "Sheopur",
+      "abbreviation": "SP",
+      "identifier": "SP",
+      "isActive": true
+    },
+    {
+      "name": "Shivpuri",
+      "abbreviation": "SV",
+      "identifier": "SV",
+      "isActive": true
+    },
+    {
+      "name": "Sidhi",
+      "abbreviation": "SI",
+      "identifier": "SI",
+      "isActive": true
+    },
+    {
+      "name": "Singrauli",
+      "abbreviation": "SN",
+      "identifier": "SN",
+      "isActive": true
+    },
+    {
+      "name": "Tikamgarh",
+      "abbreviation": "TI",
+      "identifier": "TI",
+      "isActive": true
+    },
+    {
+      "name": "Ujjain",
+      "abbreviation": "UJ",
+      "identifier": "UJ",
+      "isActive": true
+    },
+    {
+      "name": "Umaria",
+      "abbreviation": "UM",
+      "identifier": "UM",
+      "isActive": true
+    },
+    {
+      "name": "Vidisha",
+      "abbreviation": "VI",
+      "identifier": "VI",
+      "isActive": true
+    },
+
+    {
+      "name": "Ahmednagar",
+      "abbreviation": "AH",
+      "identifier": "AH",
+      "isActive": true
+    },
+    {
+      "name": "Akola",
+      "abbreviation": "AK",
+      "identifier": "AK",
+      "isActive": true
+    },
+    {
+      "name": "Amravati",
+      "abbreviation": "AM",
+      "identifier": "AM",
+      "isActive": true
+    },
+    {
+      "name": "Aurangabad",
+      "abbreviation": "AU",
+      "identifier": "AU",
+      "isActive": true
+    },
+    {
+      "name": "Beed",
+      "abbreviation": "BI",
+      "identifier": "BI",
+      "isActive": true
+    },
+    {
+      "name": "Bhandara",
+      "abbreviation": "BH",
+      "identifier": "BH",
+      "isActive": true
+    },
+    {
+      "name": "Buldhana",
+      "abbreviation": "BU",
+      "identifier": "BU",
+      "isActive": true
+    },
+    {
+      "name": "Chandrapur",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "Dhule",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Gadchiroli",
+      "abbreviation": "GA",
+      "identifier": "GA",
+      "isActive": true
+    },
+    {
+      "name": "Gondia",
+      "abbreviation": "GO",
+      "identifier": "GO",
+      "isActive": true
+    },
+    {
+      "name": "Hingoli",
+      "abbreviation": "HI",
+      "identifier": "HI",
+      "isActive": true
+    },
+    {
+      "name": "Jalgaon",
+      "abbreviation": "JG",
+      "identifier": "JG",
+      "isActive": true
+    },
+    {
+      "name": "Jalna",
+      "abbreviation": "JN",
+      "identifier": "JN",
+      "isActive": true
+    },
+    {
+      "name": "Kolhapur",
+      "abbreviation": "KO",
+      "identifier": "KO",
+      "isActive": true
+    },
+    {
+      "name": "Latur",
+      "abbreviation": "LA",
+      "identifier": "LA",
+      "isActive": true
+    },
+    {
+      "name": "Mumbai City",
+      "abbreviation": "MC",
+      "identifier": "MC",
+      "isActive": true
+    },
+    {
+      "name": "Mumbai suburban",
+      "abbreviation": "MU",
+      "identifier": "MU",
+      "isActive": true
+    },
+    {
+      "name": "Nanded",
+      "abbreviation": "ND",
+      "identifier": "ND",
+      "isActive": true
+    },
+    {
+      "name": "Nandurbar",
+      "abbreviation": "NB",
+      "identifier": "NB",
+      "isActive": true
+    },
+    {
+      "name": "Nagpur",
+      "abbreviation": "NG",
+      "identifier": "NG",
+      "isActive": true
+    },
+    {
+      "name": "Nashik",
+      "abbreviation": "NS",
+      "identifier": "NS",
+      "isActive": true
+    },
+    {
+      "name": "Osmanabad",
+      "abbreviation": "OS",
+      "identifier": "OS",
+      "isActive": true
+    },
+    {
+      "name": "Palghar",
+      "abbreviation": "PL",
+      "identifier": "PL",
+      "isActive": true
+    },
+    {
+      "name": "Parbhani",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Pune",
+      "abbreviation": "PU",
+      "identifier": "PU",
+      "isActive": true
+    },
+    {
+      "name": "Raigad",
+      "abbreviation": "RG",
+      "identifier": "RG",
+      "isActive": true
+    },
+    {
+      "name": "Ratnagiri",
+      "abbreviation": "RT",
+      "identifier": "RT",
+      "isActive": true
+    },
+    {
+      "name": "Sangli",
+      "abbreviation": "SN",
+      "identifier": "SN",
+      "isActive": true
+    },
+    {
+      "name": "Satara",
+      "abbreviation": "ST",
+      "identifier": "ST",
+      "isActive": true
+    },
+    {
+      "name": "Sindhudurg",
+      "abbreviation": "SI",
+      "identifier": "SI",
+      "isActive": true
+    },
+    {
+      "name": "Solapur",
+      "abbreviation": "SO",
+      "identifier": "SO",
+      "isActive": true
+    },
+    {
+      "name": "Thane",
+      "abbreviation": "TH",
+      "identifier": "TH",
+      "isActive": true
+    },
+    {
+      "name": "Wardha",
+      "abbreviation": "WR",
+      "identifier": "WR",
+      "isActive": true
+    },
+    {
+      "name": "Washim",
+      "abbreviation": "WS",
+      "identifier": "WS",
+      "isActive": true
+    },
+    {
+      "name": "Yavatmal",
+      "abbreviation": "YA",
+      "identifier": "YA",
+      "isActive": true
+    },
+
+    {
+      "name": "Bishnupur",
+      "abbreviation": "BPR",
+      "identifier": "BPR",
+      "isActive": true
+    },
+    {
+      "name": "Chandel",
+      "abbreviation": "CDL",
+      "identifier": "CDL",
+      "isActive": true
+    },
+    {
+      "name": "Churachandpur",
+      "abbreviation": "CCpr",
+      "identifier": "CCpr",
+      "isActive": true
+    },
+    {
+      "name": "Imphal East",
+      "abbreviation": "IE",
+      "identifier": "IE",
+      "isActive": true
+    },
+    {
+      "name": "Imphal West",
+      "abbreviation": "IW",
+      "identifier": "IW",
+      "isActive": true
+    },
+    {
+      "name": "Jiribam",
+      "abbreviation": "JBM",
+      "identifier": "JBM",
+      "isActive": true
+    },
+    {
+      "name": "Kakching",
+      "abbreviation": "KAK",
+      "identifier": "KAK",
+      "isActive": true
+    },
+    {
+      "name": "Kamjong",
+      "abbreviation": "KJ",
+      "identifier": "KJ",
+      "isActive": true
+    },
+    {
+      "name": "Kangpokpi",
+      "abbreviation": "KPI",
+      "identifier": "KPI",
+      "isActive": true
+    },
+    {
+      "name": "Noney",
+      "abbreviation": "NL",
+      "identifier": "NL",
+      "isActive": true
+    },
+    {
+      "name": "Pherzawl",
+      "abbreviation": "PZ",
+      "identifier": "PZ",
+      "isActive": true
+    },
+    {
+      "name": "Senapati",
+      "abbreviation": "SE",
+      "identifier": "SE",
+      "isActive": true
+    },
+    {
+      "name": "Tamenglong",
+      "abbreviation": "TML",
+      "identifier": "TML",
+      "isActive": true
+    },
+    {
+      "name": "Tengnoupal",
+      "abbreviation": "TNL",
+      "identifier": "TNL",
+      "isActive": true
+    },
+    {
+      "name": "Thoubal",
+      "abbreviation": "TBL",
+      "identifier": "TBL",
+      "isActive": true
+    },
+    {
+      "name": "Ukhrul",
+      "abbreviation": "UKR",
+      "identifier": "UKR",
+      "isActive": true
+    },
+
+    {
+      "name": "East Garo Hills",
+      "abbreviation": "EG",
+      "identifier": "EG",
+      "isActive": true
+    },
+    {
+      "name": "East Khasi Hills",
+      "abbreviation": "EK",
+      "identifier": "EK",
+      "isActive": true
+    },
+    {
+      "name": "East Jaintia Hills",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "North Garo Hills",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Ri Bhoi",
+      "abbreviation": "RB",
+      "identifier": "RB",
+      "isActive": true
+    },
+    {
+      "name": "South Garo Hills",
+      "abbreviation": "SG",
+      "identifier": "SG",
+      "isActive": true
+    },
+    {
+      "name": "South West Garo Hills",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "South West Khasi Hills",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "West Jaintia Hills",
+      "abbreviation": "WJ",
+      "identifier": "WJ",
+      "isActive": true
+    },
+    {
+      "name": "West Garo Hills",
+      "abbreviation": "WG",
+      "identifier": "WG",
+      "isActive": true
+    },
+    {
+      "name": "West Khasi Hills",
+      "abbreviation": "WK",
+      "identifier": "WK",
+      "isActive": true
+    },
+
+    {
+      "name": "Aizawl",
+      "abbreviation": "AI",
+      "identifier": "AI",
+      "isActive": true
+    },
+    {
+      "name": "Champhai",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "Hnahthial",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Khawzawl",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Kolasib",
+      "abbreviation": "KO",
+      "identifier": "KO",
+      "isActive": true
+    },
+    {
+      "name": "Lawngtlai",
+      "abbreviation": "LA",
+      "identifier": "LA",
+      "isActive": true
+    },
+    {
+      "name": "Lunglei",
+      "abbreviation": "LU",
+      "identifier": "LU",
+      "isActive": true
+    },
+    {
+      "name": "Mamit",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Saiha",
+      "abbreviation": "SA",
+      "identifier": "SA",
+      "isActive": true
+    },
+    {
+      "name": "Saitual",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Serchhip",
+      "abbreviation": "SE",
+      "identifier": "SE",
+      "isActive": true
+    },
+
+    {
+      "name": "Dimapur",
+      "abbreviation": "DI",
+      "identifier": "DI",
+      "isActive": true
+    },
+    {
+      "name": "Kiphire",
+      "abbreviation": "KI",
+      "identifier": "KI",
+      "isActive": true
+    },
+    {
+      "name": "Kohima",
+      "abbreviation": "KO",
+      "identifier": "KO",
+      "isActive": true
+    },
+    {
+      "name": "Longleng",
+      "abbreviation": "LO",
+      "identifier": "LO",
+      "isActive": true
+    },
+    {
+      "name": "Mokokchung",
+      "abbreviation": "MK",
+      "identifier": "Mk",
+      "isActive": true
+    },
+    {
+      "name": "Mon",
+      "abbreviation": "MN",
+      "identifier": "MN",
+      "isActive": true
+    },
+    {
+      "name": "Noklak",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Peren",
+      "abbreviation": "PE",
+      "identifier": "PE",
+      "isActive": true
+    },
+    {
+      "name": "Phek",
+      "abbreviation": "PH",
+      "identifier": "PH",
+      "isActive": true
+    },
+    {
+      "name": "Tuensang",
+      "abbreviation": "TU",
+      "identifier": "TU",
+      "isActive": true
+    },
+    {
+      "name": "Wokha",
+      "abbreviation": "WO",
+      "identifier": "WO",
+      "isActive": true
+    },
+    {
+      "name": "Zunheboto",
+      "abbreviation": "ZU",
+      "identifier": "ZU",
+      "isActive": true
+    },
+
+    {
+      "name": "Central Delhi",
+      "abbreviation": "CD",
+      "identifier": "CD",
+      "isActive": true
+    },
+    {
+      "name": "East Delhi",
+      "abbreviation": "ED",
+      "identifier": "ED",
+      "isActive": true
+    },
+    {
+      "name": "New Delhi",
+      "abbreviation": "ND",
+      "identifier": "ND",
+      "isActive": true
+    },
+    {
+      "name": "North Delhi",
+      "abbreviation": "NO",
+      "identifier": "NO",
+      "isActive": true
+    },
+    {
+      "name": "North East Delhi",
+      "abbreviation": "NE",
+      "identifier": "NE",
+      "isActive": true
+    },
+    {
+      "name": "North West Delhi",
+      "abbreviation": "NW",
+      "identifier": "NW",
+      "isActive": true
+    },
+    {
+      "name": "Shahdara",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "South Delhi",
+      "abbreviation": "SD",
+      "identifier": "SD",
+      "isActive": true
+    },
+    {
+      "name": "South East Delhi",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "South West Delhi",
+      "abbreviation": "SW",
+      "identifier": "SW",
+      "isActive": true
+    },
+    {
+      "name": "West Delhi",
+      "abbreviation": "WD",
+      "identifier": "WD",
+      "isActive": true
+    },
+
+    {
+      "name": "Angul",
+      "abbreviation": "AN",
+      "identifier": "AN",
+      "isActive": true
+    },
+    {
+      "name": "Boudh (Bauda)",
+      "abbreviation": "BD",
+      "identifier": "BD",
+      "isActive": true
+    },
+    {
+      "name": "Bhadrak",
+      "abbreviation": "BH",
+      "identifier": "BH",
+      "isActive": true
+    },
+    {
+      "name": "Balangir",
+      "abbreviation": "BL",
+      "identifier": "BL",
+      "isActive": true
+    },
+    {
+      "name": "Bargarh (Baragarh)",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Balasore",
+      "abbreviation": "BW",
+      "identifier": "BW",
+      "isActive": true
+    },
+    {
+      "name": "Cuttack",
+      "abbreviation": "CU",
+      "identifier": "CU",
+      "isActive": true
+    },
+    {
+      "name": "Debagarh (Deogarh)",
+      "abbreviation": "DE",
+      "identifier": "DE",
+      "isActive": true
+    },
+    {
+      "name": "Dhenkanal",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Ganjam",
+      "abbreviation": "GN",
+      "identifier": "GN",
+      "isActive": true
+    },
+    {
+      "name": "Gajapati",
+      "abbreviation": "GP",
+      "identifier": "GP",
+      "isActive": true
+    },
+    {
+      "name": "Jharsuguda",
+      "abbreviation": "JH",
+      "identifier": "JH",
+      "isActive": true
+    },
+    {
+      "name": "Jajpur",
+      "abbreviation": "JP",
+      "identifier": "JP",
+      "isActive": true
+    },
+    {
+      "name": "Jagatsinghpur",
+      "abbreviation": "JS",
+      "identifier": "JS",
+      "isActive": true
+    },
+    {
+      "name": "Khordha",
+      "abbreviation": "KH",
+      "identifier": "KH",
+      "isActive": true
+    },
+    {
+      "name": "Kendujhar (Keonjhar)",
+      "abbreviation": "KJ",
+      "identifier": "KJ",
+      "isActive": true
+    },
+    {
+      "name": "Kalahandi",
+      "abbreviation": "KL",
+      "identifier": "KL",
+      "isActive": true
+    },
+    {
+      "name": "Kandhamal",
+      "abbreviation": "KN",
+      "identifier": "KN",
+      "isActive": true
+    },
+    {
+      "name": "Koraput",
+      "abbreviation": "KO",
+      "identifier": "KO",
+      "isActive": true
+    },
+    {
+      "name": "Kendrapara",
+      "abbreviation": "KP",
+      "identifier": "KP",
+      "isActive": true
+    },
+    {
+      "name": "Malkangiri",
+      "abbreviation": "ML",
+      "identifier": "ML",
+      "isActive": true
+    },
+    {
+      "name": "Mayurbhanj",
+      "abbreviation": "MY",
+      "identifier": "MY",
+      "isActive": true
+    },
+    {
+      "name": "Nabarangpur",
+      "abbreviation": "NB",
+      "identifier": "NB",
+      "isActive": true
+    },
+    {
+      "name": "Nuapada",
+      "abbreviation": "NU",
+      "identifier": "NU",
+      "isActive": true
+    },
+    {
+      "name": "Nayagarh",
+      "abbreviation": "NY",
+      "identifier": "NY",
+      "isActive": true
+    },
+    {
+      "name": "Puri",
+      "abbreviation": "PU",
+      "identifier": "PU",
+      "isActive": true
+    },
+    {
+      "name": "Rayagada",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Sambalpur",
+      "abbreviation": "SA",
+      "identifier": "SA",
+      "isActive": true
+    },
+    {
+      "name": "Subarnapur (Sonepur)",
+      "abbreviation": "SO",
+      "identifier": "SO",
+      "isActive": true
+    },
+    {
+      "name": "Sundargarh",
+      "abbreviation": "SU",
+      "identifier": "SU",
+      "isActive": true
+    },
+
+    {
+      "name": "Karaikal",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Mahé",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Pondicherry",
+      "abbreviation": "PO",
+      "identifier": "PO",
+      "isActive": true
+    },
+    {
+      "name": "Yanam",
+      "abbreviation": "YA",
+      "identifier": "YA",
+      "isActive": true
+    },
+
+    {
+      "name": "Amritsar",
+      "abbreviation": "AM",
+      "identifier": "AM",
+      "isActive": true
+    },
+    {
+      "name": "Barnala",
+      "abbreviation": "BNL",
+      "identifier": "BNL",
+      "isActive": true
+    },
+    {
+      "name": "Bathinda",
+      "abbreviation": "BA",
+      "identifier": "BA",
+      "isActive": true
+    },
+    {
+      "name": "Firozpur",
+      "abbreviation": "FI",
+      "identifier": "FI",
+      "isActive": true
+    },
+    {
+      "name": "Faridkot",
+      "abbreviation": "FR",
+      "identifier": "FR",
+      "isActive": true
+    },
+    {
+      "name": "Fatehgarh Sahib",
+      "abbreviation": "FT",
+      "identifier": "FT",
+      "isActive": true
+    },
+    {
+      "name": "Fazilka",
+      "abbreviation": "FA",
+      "identifier": "FA",
+      "isActive": true
+    },
+    {
+      "name": "Gurdaspur",
+      "abbreviation": "GU",
+      "identifier": "GU",
+      "isActive": true
+    },
+    {
+      "name": "Hoshiarpur",
+      "abbreviation": "HO",
+      "identifier": "HO",
+      "isActive": true
+    },
+    {
+      "name": "Jalandhar",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Kapurthala",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Ludhiana",
+      "abbreviation": "LU",
+      "identifier": "LU",
+      "isActive": true
+    },
+    {
+      "name": "Mansa",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Moga",
+      "abbreviation": "MO",
+      "identifier": "MO",
+      "isActive": true
+    },
+    {
+      "name": "Sri Muktsar Sahib",
+      "abbreviation": "MU",
+      "identifier": "MU",
+      "isActive": true
+    },
+    {
+      "name": "Pathankot",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Patiala",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Rupnagar",
+      "abbreviation": "RU",
+      "identifier": "RU",
+      "isActive": true
+    },
+    {
+      "name": "Sahibzada Ajit Singh Nagar",
+      "abbreviation": "SAS",
+      "identifier": "SAS",
+      "isActive": true
+    },
+    {
+      "name": "Sangrur",
+      "abbreviation": "SA",
+      "identifier": "SA",
+      "isActive": true
+    },
+    {
+      "name": "Shahid Bhagat Singh Nagar",
+      "abbreviation": "PB",
+      "identifier": "PB",
+      "isActive": true
+    },
+    {
+      "name": "Tarn Taran",
+      "abbreviation": "TT",
+      "identifier": "TT",
+      "isActive": true
+    },
+
+    {
+      "name": "Ajmer",
+      "abbreviation": "AJ",
+      "identifier": "AJ",
+      "isActive": true
+    },
+    {
+      "name": "Alwar",
+      "abbreviation": "AL",
+      "identifier": "AL",
+      "isActive": true
+    },
+    {
+      "name": "Bikaner",
+      "abbreviation": "BI",
+      "identifier": "BI",
+      "isActive": true
+    },
+    {
+      "name": "Barmer",
+      "abbreviation": "BM",
+      "identifier": "BM",
+      "isActive": true
+    },
+    {
+      "name": "Banswara",
+      "abbreviation": "BN",
+      "identifier": "BN",
+      "isActive": true
+    },
+    {
+      "name": "Bharatpur",
+      "abbreviation": "BP",
+      "identifier": "BP",
+      "isActive": true
+    },
+    {
+      "name": "Baran",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Bundi",
+      "abbreviation": "BU",
+      "identifier": "BU",
+      "isActive": true
+    },
+    {
+      "name": "Bhilwara",
+      "abbreviation": "BW",
+      "identifier": "BW",
+      "isActive": true
+    },
+    {
+      "name": "Churu",
+      "abbreviation": "CR",
+      "identifier": "CR",
+      "isActive": true
+    },
+    {
+      "name": "Chittorgarh",
+      "abbreviation": "CT",
+      "identifier": "CT",
+      "isActive": true
+    },
+    {
+      "name": "Dausa",
+      "abbreviation": "DA",
+      "identifier": "DA",
+      "isActive": true
+    },
+    {
+      "name": "Dholpur",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Dungarpur",
+      "abbreviation": "DU",
+      "identifier": "DU",
+      "isActive": true
+    },
+    {
+      "name": "Ganganagar",
+      "abbreviation": "GA",
+      "identifier": "GA",
+      "isActive": true
+    },
+    {
+      "name": "Hanumangarh",
+      "abbreviation": "HA",
+      "identifier": "HA",
+      "isActive": true
+    },
+    {
+      "name": "Jhunjhunu",
+      "abbreviation": "JJ",
+      "identifier": "JJ",
+      "isActive": true
+    },
+    {
+      "name": "Jalore",
+      "abbreviation": "JL",
+      "identifier": "JL",
+      "isActive": true
+    },
+    {
+      "name": "Jodhpur",
+      "abbreviation": "JO",
+      "identifier": "JO",
+      "isActive": true
+    },
+    {
+      "name": "Jaipur",
+      "abbreviation": "JP",
+      "identifier": "JP",
+      "isActive": true
+    },
+    {
+      "name": "Jaisalmer",
+      "abbreviation": "JS",
+      "identifier": "JS",
+      "isActive": true
+    },
+    {
+      "name": "Jhalawar",
+      "abbreviation": "JW",
+      "identifier": "JW",
+      "isActive": true
+    },
+    {
+      "name": "Karauli",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Kota",
+      "abbreviation": "KO",
+      "identifier": "KO",
+      "isActive": true
+    },
+    {
+      "name": "Nagaur",
+      "abbreviation": "NA",
+      "identifier": "NA",
+      "isActive": true
+    },
+    {
+      "name": "Pali",
+      "abbreviation": "PA",
+      "identifier": "PA",
+      "isActive": true
+    },
+    {
+      "name": "Pratapgarh",
+      "abbreviation": "PG",
+      "identifier": "PG",
+      "isActive": true
+    },
+    {
+      "name": "Rajsamand",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Sikar",
+      "abbreviation": "SK",
+      "identifier": "SK",
+      "isActive": true
+    },
+    {
+      "name": "Sawai Madhopur",
+      "abbreviation": "SM",
+      "identifier": "SM",
+      "isActive": true
+    },
+    {
+      "name": "Sirohi",
+      "abbreviation": "SR",
+      "identifier": "SR",
+      "isActive": true
+    },
+    {
+      "name": "Tonk",
+      "abbreviation": "TO",
+      "identifier": "TO",
+      "isActive": true
+    },
+    {
+      "name": "Udaipur",
+      "abbreviation": "UD",
+      "identifier": "UD",
+      "isActive": true
+    },
+
+    {
+      "name": "East Sikkim",
+      "abbreviation": "ES",
+      "identifier": "ES",
+      "isActive": true
+    },
+    {
+      "name": "North Sikkim",
+      "abbreviation": "NS",
+      "identifier": "NS",
+      "isActive": true
+    },
+    {
+      "name": "South Sikkim",
+      "abbreviation": "SS",
+      "identifier": "SS",
+      "isActive": true
+    },
+    {
+      "name": "West Sikkim",
+      "abbreviation": "WS",
+      "identifier": "WS",
+      "isActive": true
+    },
+
+    {
+      "name": "Ariyalur",
+      "abbreviation": "AY",
+      "identifier": "AY",
+      "isActive": true
+    },
+    {
+      "name": "Chengalpattu",
+      "abbreviation": "CGL",
+      "identifier": "CGL",
+      "isActive": true
+    },
+    {
+      "name": "Chennai",
+      "abbreviation": "CH",
+      "identifier": "CH",
+      "isActive": true
+    },
+    {
+      "name": "Coimbatore",
+      "abbreviation": "CO",
+      "identifier": "CO",
+      "isActive": true
+    },
+    {
+      "name": "Cuddalore",
+      "abbreviation": "CU",
+      "identifier": "CU",
+      "isActive": true
+    },
+    {
+      "name": "Dharmapuri",
+      "abbreviation": "DH",
+      "identifier": "AD",
+      "isActive": true
+    },
+    {
+      "name": "Dindigul",
+      "abbreviation": "DI",
+      "identifier": "DI",
+      "isActive": true
+    },
+    {
+      "name": "Erode",
+      "abbreviation": "ER",
+      "identifier": "ER",
+      "isActive": true
+    },
+    {
+      "name": "Kallakurichi",
+      "abbreviation": "KL",
+      "identifier": "KL",
+      "isActive": true
+    },
+    {
+      "name": "Kanchipuram",
+      "abbreviation": "KC",
+      "identifier": "KC",
+      "isActive": true
+    },
+    {
+      "name": "Kanyakumari",
+      "abbreviation": "KK",
+      "identifier": "KK",
+      "isActive": true
+    },
+    {
+      "name": "Karur",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Krishnagiri",
+      "abbreviation": "KR",
+      "identifier": "KR",
+      "isActive": true
+    },
+    {
+      "name": "Madurai",
+      "abbreviation": "MDU",
+      "identifier": "MDU",
+      "isActive": true
+    },
+    {
+      "name": "Mayiladuthurai",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Nagapattinam",
+      "abbreviation": "NG",
+      "identifier": "NG",
+      "isActive": true
+    },
+    {
+      "name": "Nilgiris",
+      "abbreviation": "NI",
+      "identifier": "NI",
+      "isActive": true
+    },
+    {
+      "name": "Namakkal",
+      "abbreviation": "NM",
+      "identifier": "NM",
+      "isActive": true
+    },
+    {
+      "name": "Perambalur",
+      "abbreviation": "PE",
+      "identifier": "PE",
+      "isActive": true
+    },
+    {
+      "name": "Pudukkottai",
+      "abbreviation": "PU",
+      "identifier": "PU",
+      "isActive": true
+    },
+    {
+      "name": "Ramanathapuram",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Ranipet",
+      "abbreviation": "RN",
+      "identifier": "RN",
+      "isActive": true
+    },
+    {
+      "name": "Salem",
+      "abbreviation": "SA",
+      "identifier": "SA",
+      "isActive": true
+    },
+    {
+      "name": "Sivaganga",
+      "abbreviation": "SI",
+      "identifier": "SI",
+      "isActive": true
+    },
+    {
+      "name": "Tenkasi",
+      "abbreviation": "TS",
+      "identifier": "TS",
+      "isActive": true
+    },
+    {
+      "name": "Tirupur",
+      "abbreviation": "TP",
+      "identifier": "TP",
+      "isActive": true
+    },
+    {
+      "name": "Tiruchirappalli",
+      "abbreviation": "AD",
+      "identifier": "AD",
+      "isActive": true
+    },
+    {
+      "name": "Theni",
+      "abbreviation": "TH",
+      "identifier": "TH",
+      "isActive": true
+    },
+    {
+      "name": "Tirunelveli",
+      "abbreviation": "TI",
+      "identifier": "TI",
+      "isActive": true
+    },
+    {
+      "name": "Thanjavur",
+      "abbreviation": "TJ",
+      "identifier": "TJ",
+      "isActive": true
+    },
+    {
+      "name": "Thoothukudi",
+      "abbreviation": "TK",
+      "identifier": "TK",
+      "isActive": true
+    },
+    {
+      "name": "Tirupattur",
+      "abbreviation": "TP",
+      "identifier": "TP",
+      "isActive": true
+    },
+    {
+      "name": "Tiruvallur",
+      "abbreviation": "TL",
+      "identifier": "TL",
+      "isActive": true
+    },
+    {
+      "name": "Tiruvarur",
+      "abbreviation": "TR",
+      "identifier": "TR",
+      "isActive": true
+    },
+    {
+      "name": "Tiruvannamalai",
+      "abbreviation": "TV",
+      "identifier": "TV",
+      "isActive": true
+    },
+    {
+      "name": "Vellore",
+      "abbreviation": "VE",
+      "identifier": "VE",
+      "isActive": true
+    },
+    {
+      "name": "Viluppuram",
+      "abbreviation": "VL",
+      "identifier": "VL",
+      "isActive": true
+    },
+    {
+      "name": "Virudhunagar",
+      "abbreviation": "VR",
+      "identifier": "VR",
+      "isActive": true
+    },
+
+    {
+      "name": "Adilabad",
+      "abbreviation": "AD",
+      "identifier": "AD",
+      "isActive": true
+    },
+    {
+      "name": "Komaram Bheem",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Bhadradri Kothagudem",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Hyderabad",
+      "abbreviation": "HY",
+      "identifier": "HY",
+      "isActive": true
+    },
+    {
+      "name": "Jagtial",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Jangaon",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Jayashankar Bhupalpally",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Jogulamba Gadwal",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Kamareddy",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Karimnagar",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Khammam",
+      "abbreviation": "KH",
+      "identifier": "KH",
+      "isActive": true
+    },
+    {
+      "name": "Mahabubabad",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Mahbubnagar",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Mancherial",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Medak",
+      "abbreviation": "ME",
+      "identifier": "ME",
+      "isActive": true
+    },
+    {
+      "name": "Medchal-Malkajgiri",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Mulugu",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Nalgonda",
+      "abbreviation": "NA",
+      "identifier": "NA",
+      "isActive": true
+    },
+    {
+      "name": "Narayanpet",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Nagarkurnool",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Nirmal",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Nizamabad",
+      "abbreviation": "NI",
+      "identifier": "NI",
+      "isActive": true
+    },
+    {
+      "name": "Peddapalli",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Rajanna Sircilla",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Ranga Reddy",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Sangareddy",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Siddipet",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Suryapet",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Vikarabad",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Wanaparthy",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Warangal Urban",
+      "abbreviation": "WL",
+      "identifier": "WL",
+      "isActive": true
+    },
+    {
+      "name": "Warangal Rural",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+    {
+      "name": "Yadadri Bhuvanagiri",
+      "abbreviation": "-",
+      "identifier": "-",
+      "isActive": true
+    },
+
+    {
+      "name": "Dhalai",
+      "abbreviation": "DH",
+      "identifier": "DH",
+      "isActive": true
+    },
+    {
+      "name": "Gomati",
+      "abbreviation": "GM",
+      "identifier": "GM",
+      "isActive": true
+    },
+    {
+      "name": "Khowai",
+      "abbreviation": "KH",
+      "identifier": "KH",
+      "isActive": true
+    },
+    {
+      "name": "North Tripura",
+      "abbreviation": "NT",
+      "identifier": "NT",
+      "isActive": true
+    },
+    {
+      "name": "Sepahijala",
+      "abbreviation": "SP",
+      "identifier": "SP",
+      "isActive": true
+    },
+    {
+      "name": "South Tripura",
+      "abbreviation": "ST",
+      "identifier": "ST",
+      "isActive": true
+    },
+    {
+      "name": "Unokoti",
+      "abbreviation": "UK",
+      "identifier": "UK",
+      "isActive": true
+    },
+    {
+      "name": "West Tripura",
+      "abbreviation": "WT",
+      "identifier": "WT",
+      "isActive": true
+    },
+
+    {
+      "name": "Agra",
+      "abbreviation": "AG",
+      "identifier": "AG",
+      "isActive": true
+    },
+    {
+      "name": "Aligarh",
+      "abbreviation": "AL",
+      "identifier": "AL",
+      "isActive": true
+    },
+    {
+      "name": "Prayagraj",
+      "abbreviation": "AH",
+      "identifier": "AH",
+      "isActive": true
+    },
+    {
+      "name": "Ambedkar Nagar",
+      "abbreviation": "AN",
+      "identifier": "AN",
+      "isActive": true
+    },
+    {
+      "name": "Amethi",
+      "abbreviation": "AM",
+      "identifier": "AM",
+      "isActive": true
+    },
+    {
+      "name": "Amroha",
+      "abbreviation": "JP",
+      "identifier": "JP",
+      "isActive": true
+    },
+    {
+      "name": "Auraiya",
+      "abbreviation": "AU",
+      "identifier": "AU",
+      "isActive": true
+    },
+    {
+      "name": "Azamgarh",
+      "abbreviation": "AZ",
+      "identifier": "AZ",
+      "isActive": true
+    },
+    {
+      "name": "Bagpat",
+      "abbreviation": "BG",
+      "identifier": "BG",
+      "isActive": true
+    },
+    {
+      "name": "Bahraich",
+      "abbreviation": "BH",
+      "identifier": "BH",
+      "isActive": true
+    },
+    {
+      "name": "Ballia",
+      "abbreviation": "BL",
+      "identifier": "BL",
+      "isActive": true
+    },
+    {
+      "name": "Balrampur",
+      "abbreviation": "BP",
+      "identifier": "BP",
+      "isActive": true
+    },
+    {
+      "name": "Banda",
+      "abbreviation": "BN",
+      "identifier": "BN",
+      "isActive": true
+    },
+    {
+      "name": "Barabanki",
+      "abbreviation": "BB",
+      "identifier": "BB",
+      "isActive": true
+    },
+    {
+      "name": "Bareilly",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Basti",
+      "abbreviation": "BS",
+      "identifier": "BS",
+      "isActive": true
+    },
+    {
+      "name": "Bhadohi",
+      "abbreviation": "BH",
+      "identifier": "BH",
+      "isActive": true
+    },
+    {
+      "name": "Bijnor",
+      "abbreviation": "BI",
+      "identifier": "BI",
+      "isActive": true
+    },
+    {
+      "name": "Budaun",
+      "abbreviation": "BD",
+      "identifier": "BD",
+      "isActive": true
+    },
+    {
+      "name": "Bulandshahr",
+      "abbreviation": "BU",
+      "identifier": "BU",
+      "isActive": true
+    },
+    {
+      "name": "Chandauli",
+      "abbreviation": "CD",
+      "identifier": "CD",
+      "isActive": true
+    },
+    {
+      "name": "Chitrakoot",
+      "abbreviation": "CT",
+      "identifier": "CT",
+      "isActive": true
+    },
+    {
+      "name": "Deoria",
+      "abbreviation": "DE",
+      "identifier": "DE",
+      "isActive": true
+    },
+    {
+      "name": "Etah",
+      "abbreviation": "ET",
+      "identifier": "ET",
+      "isActive": true
+    },
+    {
+      "name": "Etawah",
+      "abbreviation": "EW",
+      "identifier": "EW",
+      "isActive": true
+    },
+    {
+      "name": "Ayodhya",
+      "abbreviation": "FZ",
+      "identifier": "FZ",
+      "isActive": true
+    },
+    {
+      "name": "Farrukhabad",
+      "abbreviation": "FR",
+      "identifier": "FR",
+      "isActive": true
+    },
+    {
+      "name": "Fatehpur",
+      "abbreviation": "FT",
+      "identifier": "FT",
+      "isActive": true
+    },
+    {
+      "name": "Firozabad",
+      "abbreviation": "FI",
+      "identifier": "FI",
+      "isActive": true
+    },
+    {
+      "name": "Gautam Buddh Nagar",
+      "abbreviation": "GB",
+      "identifier": "GB",
+      "isActive": true
+    },
+    {
+      "name": "Ghaziabad",
+      "abbreviation": "GZ",
+      "identifier": "GZ",
+      "isActive": true
+    },
+    {
+      "name": "Ghazipur",
+      "abbreviation": "GP",
+      "identifier": "GP",
+      "isActive": true
+    },
+    {
+      "name": "Gonda",
+      "abbreviation": "GN",
+      "identifier": "GN",
+      "isActive": true
+    },
+    {
+      "name": "Gorakhpur",
+      "abbreviation": "GR",
+      "identifier": "GR",
+      "isActive": true
+    },
+    {
+      "name": "Hamirpur",
+      "abbreviation": "HM",
+      "identifier": "HM",
+      "isActive": true
+    },
+    {
+      "name": "Hapur",
+      "abbreviation": "PN",
+      "identifier": "PN",
+      "isActive": true
+    },
+    {
+      "name": "Hardoi",
+      "abbreviation": "HR",
+      "identifier": "HR",
+      "isActive": true
+    },
+    {
+      "name": "Hathras",
+      "abbreviation": "HT",
+      "identifier": "HT",
+      "isActive": true
+    },
+    {
+      "name": "Jalaun",
+      "abbreviation": "JL",
+      "identifier": "JL",
+      "isActive": true
+    },
+    {
+      "name": "Jaunpur",
+      "abbreviation": "JU",
+      "identifier": "JU",
+      "isActive": true
+    },
+    {
+      "name": "Jhansi",
+      "abbreviation": "JH",
+      "identifier": "JH",
+      "isActive": true
+    },
+    {
+      "name": "Kannauj",
+      "abbreviation": "KJ",
+      "identifier": "KJ",
+      "isActive": true
+    },
+    {
+      "name": "Kanpur Dehat",
+      "abbreviation": "KD",
+      "identifier": "KD",
+      "isActive": true
+    },
+    {
+      "name": "Kanpur Nagar",
+      "abbreviation": "KN",
+      "identifier": "KN",
+      "isActive": true
+    },
+    {
+      "name": "Kasganj",
+      "abbreviation": "KR",
+      "identifier": "KR",
+      "isActive": true
+    },
+    {
+      "name": "Kaushambi",
+      "abbreviation": "KS",
+      "identifier": "KS",
+      "isActive": true
+    },
+    {
+      "name": "Kushinagar",
+      "abbreviation": "KU",
+      "identifier": "KU",
+      "isActive": true
+    },
+    {
+      "name": "Lakhimpur Kheri",
+      "abbreviation": "LK",
+      "identifier": "LK",
+      "isActive": true
+    },
+    {
+      "name": "Lalitpur",
+      "abbreviation": "LA",
+      "identifier": "LA",
+      "isActive": true
+    },
+    {
+      "name": "Lucknow",
+      "abbreviation": "LU",
+      "identifier": "LU",
+      "isActive": true
+    },
+    {
+      "name": "Maharajganj",
+      "abbreviation": "MG",
+      "identifier": "MG",
+      "isActive": true
+    },
+    {
+      "name": "Mahoba",
+      "abbreviation": "MH",
+      "identifier": "MH",
+      "isActive": true
+    },
+    {
+      "name": "Mainpuri",
+      "abbreviation": "MP",
+      "identifier": "MP",
+      "isActive": true
+    },
+    {
+      "name": "Mathura",
+      "abbreviation": "MT",
+      "identifier": "MT",
+      "isActive": true
+    },
+    {
+      "name": "Mau",
+      "abbreviation": "MB",
+      "identifier": "MB",
+      "isActive": true
+    },
+    {
+      "name": "Meerut",
+      "abbreviation": "ME",
+      "identifier": "ME",
+      "isActive": true
+    },
+    {
+      "name": "Mirzapur",
+      "abbreviation": "MI",
+      "identifier": "MI",
+      "isActive": true
+    },
+    {
+      "name": "Moradabad",
+      "abbreviation": "MO",
+      "identifier": "MO",
+      "isActive": true
+    },
+    {
+      "name": "Muzaffarnagar",
+      "abbreviation": "MU",
+      "identifier": "MU",
+      "isActive": true
+    },
+    {
+      "name": "Pilibhit",
+      "abbreviation": "PI",
+      "identifier": "PI",
+      "isActive": true
+    },
+    {
+      "name": "Pratapgarh",
+      "abbreviation": "PR",
+      "identifier": "PR",
+      "isActive": true
+    },
+    {
+      "name": "Raebareli",
+      "abbreviation": "RB",
+      "identifier": "RB",
+      "isActive": true
+    },
+    {
+      "name": "Rampur",
+      "abbreviation": "RA",
+      "identifier": "RA",
+      "isActive": true
+    },
+    {
+      "name": "Saharanpur",
+      "abbreviation": "SA",
+      "identifier": "SA",
+      "isActive": true
+    },
+    {
+      "name": "Sambhal",
+      "abbreviation": "SM",
+      "identifier": "SM",
+      "isActive": true
+    },
+    {
+      "name": "Sant Kabir Nagar",
+      "abbreviation": "SK",
+      "identifier": "SK",
+      "isActive": true
+    },
+    {
+      "name": "Shahjahanpur",
+      "abbreviation": "SJ",
+      "identifier": "SJ",
+      "isActive": true
+    },
+    {
+      "name": "Shamali",
+      "abbreviation": "SH",
+      "identifier": "SH",
+      "isActive": true
+    },
+    {
+      "name": "Shravasti",
+      "abbreviation": "SV",
+      "identifier": "SV",
+      "isActive": true
+    },
+    {
+      "name": "Siddharthnagar",
+      "abbreviation": "SN",
+      "identifier": "SN",
+      "isActive": true
+    },
+    {
+      "name": "Sitapur",
+      "abbreviation": "SI",
+      "identifier": "SI",
+      "isActive": true
+    },
+    {
+      "name": "Sonbhadra",
+      "abbreviation": "SO",
+      "identifier": "SO",
+      "isActive": true
+    },
+    {
+      "name": "Sultanpur",
+      "abbreviation": "SU",
+      "identifier": "SU",
+      "isActive": true
+    },
+    {
+      "name": "Unnao",
+      "abbreviation": "UN",
+      "identifier": "UN",
+      "isActive": true
+    },
+    {
+      "name": "Varanasi",
+      "abbreviation": "VA",
+      "identifier": "VA",
+      "isActive": true
+    },
+
+    {
+      "name": "Almora",
+      "abbreviation": "AL",
+      "identifier": "AL",
+      "isActive": true
+    },
+    {
+      "name": "Bageshwar",
+      "abbreviation": "BA",
+      "identifier": "BA",
+      "isActive": true
+    },
+    {
+      "name": "Chamoli",
+      "abbreviation": "CL",
+      "identifier": "CL",
+      "isActive": true
+    },
+    {
+      "name": "Champawat",
+      "abbreviation": "CP",
+      "identifier": "CP",
+      "isActive": true
+    },
+    {
+      "name": "Dehradun",
+      "abbreviation": "DD",
+      "identifier": "DD",
+      "isActive": true
+    },
+    {
+      "name": "Haridwar",
+      "abbreviation": "HA",
+      "identifier": "HA",
+      "isActive": true
+    },
+    {
+      "name": "Nainital",
+      "abbreviation": "NA",
+      "identifier": "NA",
+      "isActive": true
+    },
+    {
+      "name": "Pauri Garhwal",
+      "abbreviation": "PG",
+      "identifier": "PG",
+      "isActive": true
+    },
+    {
+      "name": "Pithoragarh",
+      "abbreviation": "PI",
+      "identifier": "PI",
+      "isActive": true
+    },
+    {
+      "name": "Rudraprayag",
+      "abbreviation": "RP",
+      "identifier": "RP",
+      "isActive": true
+    },
+    {
+      "name": "Tehri Garhwal",
+      "abbreviation": "TG",
+      "identifier": "TG",
+      "isActive": true
+    },
+    {
+      "name": "Udham Singh Nagar",
+      "abbreviation": "US",
+      "identifier": "US",
+      "isActive": true
+    },
+    {
+      "name": "Uttarkashi",
+      "abbreviation": "UT",
+      "identifier": "UT",
+      "isActive": true
+    },
+
+    {
+      "name": "Alipurduar",
+      "abbreviation": "AD",
+      "identifier": "AD",
+      "isActive": true
+    },
+    {
+      "name": "Bankura",
+      "abbreviation": "BN",
+      "identifier": "BN",
+      "isActive": true
+    },
+    {
+      "name": "Paschim Bardhaman",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Purba Bardhaman",
+      "abbreviation": "BR",
+      "identifier": "BR",
+      "isActive": true
+    },
+    {
+      "name": "Birbhum",
+      "abbreviation": "BI",
+      "identifier": "BI",
+      "isActive": true
+    },
+    {
+      "name": "Cooch Behar",
+      "abbreviation": "KB",
+      "identifier": "KB",
+      "isActive": true
+    },
+    {
+      "name": "Dakshin Dinajpur",
+      "abbreviation": "DD",
+      "identifier": "DD",
+      "isActive": true
+    },
+    {
+      "name": "Darjeeling",
+      "abbreviation": "DA",
+      "identifier": "DA",
+      "isActive": true
+    },
+    {
+      "name": "Hooghly",
+      "abbreviation": "HG",
+      "identifier": "HG",
+      "isActive": true
+    },
+    {
+      "name": "Howrah",
+      "abbreviation": "HR",
+      "identifier": "HR",
+      "isActive": true
+    },
+    {
+      "name": "Jalpaiguri",
+      "abbreviation": "JA",
+      "identifier": "JA",
+      "isActive": true
+    },
+    {
+      "name": "Jhargram",
+      "abbreviation": "JH",
+      "identifier": "JH",
+      "isActive": true
+    },
+    {
+      "name": "Kalimpong",
+      "abbreviation": "KA",
+      "identifier": "KA",
+      "isActive": true
+    },
+    {
+      "name": "Kolkata",
+      "abbreviation": "KO",
+      "identifier": "KO",
+      "isActive": true
+    },
+    {
+      "name": "Maldah",
+      "abbreviation": "MA",
+      "identifier": "MA",
+      "isActive": true
+    },
+    {
+      "name": "Murshidabad",
+      "abbreviation": "MSD",
+      "identifier": "MSD",
+      "isActive": true
+    },
+    {
+      "name": "Nadia",
+      "abbreviation": "NA",
+      "identifier": "NA",
+      "isActive": true
+    },
+    {
+      "name": "North 24 Parganas",
+      "abbreviation": "PN",
+      "identifier": "PN",
+      "isActive": true
+    },
+    {
+      "name": "Paschim Medinipur",
+      "abbreviation": "PM",
+      "identifier": "PM",
+      "isActive": true
+    },
+    {
+      "name": "Purba Medinipur",
+      "abbreviation": "PR",
+      "identifier": "PR",
+      "isActive": true
+    },
+    {
+      "name": "Purulia",
+      "abbreviation": "PU",
+      "identifier": "PU",
+      "isActive": true
+    },
+    {
+      "name": "South 24 Parganas",
+      "abbreviation": "PS",
+      "identifier": "PS",
+      "isActive": true
+    },
+    {
+      "name": "Uttar Dinajpur",
+      "abbreviation": "UD",
+      "identifier": "UD",
+      "isActive": true
+    }
+  ]
+}
