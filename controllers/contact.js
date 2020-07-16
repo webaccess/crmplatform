@@ -81,6 +81,7 @@ module.exports = {
   create: async (ctx) => {
     let org;
     let contact;
+    let idDetails = {};
     try {
       const requiredValues = ["name", "contact_type"];
       const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
@@ -90,17 +91,23 @@ module.exports = {
       if (result.error == true) {
         return ctx.send(result.message);
       }
+      // creates an entry in address table
+      if (ctx.request.body.address) {
+        let add = await strapi
+          .query("address", "crm-plugin")
+          .create(ctx.request.body.address);
+        delete ctx.request.body.address;
+        idDetails["address"] = add.id;
+      }
       // store organization details into a variable
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .create(ctx.request.body);
-
-      let orgOtherDetails = {};
-      orgOtherDetails[ctx.request.body.contact_type] = org.id;
+      idDetails[ctx.request.body.contact_type] = org.id;
       // creates an entry into organization table with organization details
-      let orgDetails = Object.assign(orgOtherDetails, ctx.request.body);
+      let allDetails = Object.assign(idDetails, ctx.request.body);
       // creates an entry in contact table when required parameters are passed
-      contact = await strapi.query("contact", "crm-plugin").create(orgDetails);
+      contact = await strapi.query("contact", "crm-plugin").create(allDetails);
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
       });
@@ -124,6 +131,28 @@ module.exports = {
     try {
       let contactDetails = {};
       contactDetails["contact"] = ctx.params.id;
+      // checking whether address param passed in request object
+      if (ctx.request.body.address) {
+        // checking if resp. contact has address
+        let contactData = await strapi
+          .query("contact", "crm-plugin")
+          .find({ id: ctx.params.id });
+        if (contactData[0].address) {
+          // Update query fired if address already present
+          let address = await strapi
+            .query("address", "crm-plugin")
+            .update(contactDetails, ctx.request.body.address);
+          delete ctx.request.body.address;
+        } else {
+          // Create query fired if address not present
+          let add = await strapi
+            .query("address", "crm-plugin")
+            .create(ctx.request.body.address);
+          // deleting originl address obj and adding ID of address obj created
+          delete ctx.request.body.address;
+          ctx.request.body["address"] = add.id;
+        }
+      }
       // updates organization details according to the passed id
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
@@ -159,11 +188,15 @@ module.exports = {
         : contact.organization
         ? contact.organization.id
         : "";
+      // gets address details
+      let addId = contact.address ? contact.address.id : "";
       // delete contact details based on the passed id.
       if (orgId)
         await strapi
           .query(contact.contact_type, "crm-plugin")
           .delete({ id: orgId });
+      if (addId)
+        await strapi.query("address", "crm-plugin").delete({ id: addId });
       await strapi
         .query("contacttag", "crm-plugin")
         .delete({ contact: ctx.params.id });
