@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run:
           name: Create Strapi project
-          command: cd ~/project && yarn create strapi-app crm-project --quickstart --no-run
+          command: cd ~/project && strapi new crm-project --quickstart --no-run
       - run:
           name: Build Strapi project
           command: cd ~/project/crm-project && yarn build
@@ -25,7 +25,7 @@ jobs:
           command: cp ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js.sample ~/project/crm-project/plugins/crm-plugin/tests/integration/config/config.js
       - run:
           name: Start Strapi project
-          command: cd ~/project/crm-project && npm install pg --save && yarn start
+          command: cd ~/project/crm-project && yarn start
           background: true
       # wait for the server to start responding. We expect Bad Request 400 once it starts listening.
       # so override the shell and have the last command be the : { null } command to force exit code 0.
