@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "addresses",
+  "info": {
+    "name": "Address"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "address_line_1": {
+      "type": "text"
+    },
+    "address_line_2": {
+      "type": "text"
+    },
+    "address_type": {
+      "type": "enumeration",
+      "enum": ["Permanent", "Temporary", "Billing"]
+    },
+    "city": {
+      "type": "string"
+    },
+    "pincode": {
+      "type": "string"
+    },
+    "country": {
+      "plugin": "crm-plugin",
+      "model": "country"
+    },
+    "district": {
+      "plugin": "crm-plugin",
+      "model": "district"
+    },
+    "state": {
+      "plugin": "crm-plugin",
+      "model": "state"
+    },
+    "contact": {
+      "via": "address",
+      "plugin": "crm-plugin",
+      "model": "contact"
+    }
+  }
+}

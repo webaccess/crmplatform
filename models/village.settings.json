@@ -35,11 +35,6 @@
       "via": "villages",
       "plugin": "crm-plugin",
       "model": "district"
-    },
-    "contacts": {
-      "via": "villages",
-      "plugin": "crm-plugin",
-      "collection": "contact"
     }
   }
 }
