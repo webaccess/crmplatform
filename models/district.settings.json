@@ -21,11 +21,11 @@
     },
     "abbreviation": {
       "type": "string",
-      "unique": true
+      "unique": false
     },
     "identifier": {
       "type": "string",
-      "unique": true
+      "unique": false
     },
     "state": {
       "plugin": "crm-plugin",
