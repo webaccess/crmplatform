@@ -1,26 +1,13 @@
 const request = require("co-supertest");
 var assert = require("chai").assert;
-
+const fs = require("fs");
 const { SERVER_URL, PAYLOAD } = require("../config/config");
-let JWT;
+const { JWT } = require("../config/JWT");
 let dataId;
 
 describe("Activity Module Endpoint", function () {
-  before(function (done) {
-    request(SERVER_URL)
-      .post("/auth/local")
-      .send(PAYLOAD)
-      .expect(200)
-      .expect("Content-Type", /json/)
-      .end(function (err, res) {
-        if (err) return done(err);
-        const response = res.body;
-        JWT = response["jwt"];
-        done();
-      });
-  });
-
   describe("Create Method", function () {
+    console.log("JWT", JWT);
     // case for empty,required and correct params for Create method done here
     describe("POST /crm-plugin/activities/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {

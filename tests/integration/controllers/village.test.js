@@ -2,23 +2,23 @@ const request = require("co-supertest");
 var assert = require("chai").assert;
 
 const { SERVER_URL, PAYLOAD } = require("../config/config");
-let JWT;
+const { JWT } = require("../config/JWT");
 let dataId;
 
 describe("Village Module Endpoint", function () {
-  before(function (done) {
-    request(SERVER_URL)
-      .post("/auth/local")
-      .send(PAYLOAD)
-      .expect(200)
-      .expect("Content-Type", /json/)
-      .end(function (err, res) {
-        if (err) return done(err);
-        const response = res.body;
-        JWT = response["jwt"];
-        done();
-      });
-  });
+  // before(function (done) {
+  //   request(SERVER_URL)
+  //     .post("/auth/local")
+  //     .send(PAYLOAD)
+  //     .expect(200)
+  //     .expect("Content-Type", /json/)
+  //     .end(function (err, res) {
+  //       if (err) return done(err);
+  //       const response = res.body;
+  //       JWT = response["jwt"];
+  //       done();
+  //     });
+  // });
 
   describe("Create Method", function () {
     // case for empty,required and correct params for Create method done

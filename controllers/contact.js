@@ -5,9 +5,11 @@
  *
  * API: Contact
  *
+ * ctx: Context object contains request parameters
+ *
  * @description: Contact stores contact details like address, email, phone, etc of an individual or an organization or of a user in the system.
  */
-const { sanitizeEntity } = require("strapi-utils");
+const { sanitizeEntity } = require("strapi-utils"); // removes private fields and its relations from model
 const vm = require("vm");
 module.exports = {
   /**
@@ -19,10 +21,13 @@ module.exports = {
    */
   find: async (ctx) => {
     try {
+      // ctx.query._q: filter parameters in context object
       let contact;
       if (ctx.query._q) {
+        // checks if any filter parameter is present
         contact = await strapi.query("contact", "crm-plugin").search(ctx.query);
       } else {
+        // returns all data if no filter parameter is passed
         contact = await strapi.query("contact", "crm-plugin").find(ctx.query);
       }
       return contact.map((entity) =>
@@ -31,7 +36,6 @@ module.exports = {
         })
       );
     } catch (error) {
-      console.error(error);
       return ctx.badRequest(null, error.message);
     }
   },
@@ -44,27 +48,16 @@ module.exports = {
    * @description: This method returns specific contact details based on the id passed.
    */
   findOne: async (ctx) => {
-    const findOneParams = ["id"];
-    const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
-      ctx.params,
-      findOneParams
-    );
+    const { id } = ctx.params; // get id from context object
     try {
-      if (!result.error) {
-        const { id } = ctx.params;
-        const entity = await strapi
-          .query("contact", "crm-plugin")
-          .findOne({ id });
-        return sanitizeEntity(entity, {
-          model: strapi.plugins["crm-plugin"].models["contact"],
-        });
-      } else {
-        if (result.error) {
-          return ctx.badRequest(null, result.message);
-        }
-      }
+      const entity = await strapi
+        .query("contact", "crm-plugin")
+        .findOne({ id });
+      // returns contact obj
+      return sanitizeEntity(entity, {
+        model: strapi.plugins["crm-plugin"].models["contact"],
+      });
     } catch (error) {
-      console.error(error);
       return ctx.badRequest(null, error.message);
     }
   },
@@ -88,6 +81,7 @@ module.exports = {
         ctx.request.body,
         requiredValues
       );
+      // returns error message if required params not found/ empty params passed
       if (result.error == true) {
         return ctx.send(result.message);
       }
@@ -99,7 +93,7 @@ module.exports = {
         delete ctx.request.body.address;
         idDetails["address"] = add.id;
       }
-      // store organization details into a variable
+      // creates an entry in organization/individual table
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .create(ctx.request.body);
@@ -108,11 +102,12 @@ module.exports = {
       let allDetails = Object.assign(idDetails, ctx.request.body);
       // creates an entry in contact table when required parameters are passed
       contact = await strapi.query("contact", "crm-plugin").create(allDetails);
+
+      // returns created contact obj
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
       });
     } catch (error) {
-      console.error(error);
       return ctx.badRequest(null, error.message);
     }
   },
@@ -148,12 +143,12 @@ module.exports = {
           let add = await strapi
             .query("address", "crm-plugin")
             .create(ctx.request.body.address);
-          // deleting originl address obj and adding ID of address obj created
+          // deleting original address obj and adding ID of address obj created
           delete ctx.request.body.address;
           ctx.request.body["address"] = add.id;
         }
       }
-      // updates organization details according to the passed id
+      // updates organization/individual details according to the passed id
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .update(contactDetails, ctx.request.body);
@@ -161,11 +156,11 @@ module.exports = {
       contact = await strapi
         .query("contact", "crm-plugin")
         .update(ctx.params, ctx.request.body);
+      // return updated contact obj
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
       });
     } catch (error) {
-      console.error(error);
       return ctx.badRequest(null, error.message);
     }
   },
@@ -182,7 +177,7 @@ module.exports = {
       const contact = await strapi
         .query("contact", "crm-plugin")
         .delete(ctx.params);
-      // gets organization details
+      // gets contact type id of respective contact
       let orgId = contact.individual
         ? contact.individual.id
         : contact.organization
@@ -195,19 +190,21 @@ module.exports = {
         await strapi
           .query(contact.contact_type, "crm-plugin")
           .delete({ id: orgId });
+      // deletes address obj on id passes
       if (addId)
         await strapi.query("address", "crm-plugin").delete({ id: addId });
       await strapi
         .query("contacttag", "crm-plugin")
         .delete({ contact: ctx.params.id });
+      // deletes contact obj based on id passed
       await strapi
         .query("activityassignee", "crm-plugin")
         .delete({ contact: ctx.params.id });
+      // returns deleted contact obj
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
       });
     } catch (error) {
-      console.error(error);
       return ctx.badRequest(null, error.message);
     }
   },

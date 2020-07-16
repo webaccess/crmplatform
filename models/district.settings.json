@@ -20,12 +20,10 @@
       "default": true
     },
     "abbreviation": {
-      "type": "string",
-      "unique": false
+      "type": "string"
     },
     "identifier": {
-      "type": "string",
-      "unique": false
+      "type": "string"
     },
     "state": {
       "plugin": "crm-plugin",

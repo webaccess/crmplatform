@@ -1,10 +1,9 @@
 const SERVER_URL = "http://localhost:1337";
-const PAYLOAD = {
-  identifier: "demo",
-  password: "demo123",
-};
+const USER_IDENTIFIER = "demo";
+const USER_PASSWORD = "demo123";
 
 module.exports = {
   SERVER_URL,
-  PAYLOAD,
+  USER_IDENTIFIER,
+  USER_PASSWORD,
 };
