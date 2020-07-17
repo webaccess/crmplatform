@@ -74,6 +74,7 @@ module.exports = {
   create: async (ctx) => {
     let org;
     let contact;
+    let idDetails = {};
     try {
       const requiredValues = ["name", "contact_type"];
       const result = strapi.plugins["crm-plugin"].services.utils.checkParams(
@@ -84,18 +85,24 @@ module.exports = {
       if (result.error == true) {
         return ctx.send(result.message);
       }
-      // creates an entry in respective contact type(individual or organization) table
+      // creates an entry in address table
+      if (ctx.request.body.address) {
+        let add = await strapi
+          .query("address", "crm-plugin")
+          .create(ctx.request.body.address);
+        delete ctx.request.body.address;
+        idDetails["address"] = add.id;
+      }
+      // creates an entry in organization/individual table
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .create(ctx.request.body);
+      idDetails[ctx.request.body.contact_type] = org.id;
+      // creates an entry into organization table with organization details
+      let allDetails = Object.assign(idDetails, ctx.request.body);
+      // creates an entry in contact table when required parameters are passed
+      contact = await strapi.query("contact", "crm-plugin").create(allDetails);
 
-      // gets contact type id from resp. table
-      let orgOtherDetails = {};
-      orgOtherDetails[ctx.request.body.contact_type] = org.id;
-      // links contact type with the contact
-      let orgDetails = Object.assign(orgOtherDetails, ctx.request.body);
-      // creates an entry in contact table
-      contact = await strapi.query("contact", "crm-plugin").create(orgDetails);
       // returns created contact obj
       return sanitizeEntity(contact, {
         model: strapi.plugins["crm-plugin"].models.contact,
@@ -119,7 +126,29 @@ module.exports = {
     try {
       let contactDetails = {};
       contactDetails["contact"] = ctx.params.id;
-      // updates organization/individual record corresponding to the passed id
+      // checking whether address param passed in request object
+      if (ctx.request.body.address) {
+        // checking if resp. contact has address
+        let contactData = await strapi
+          .query("contact", "crm-plugin")
+          .find({ id: ctx.params.id });
+        if (contactData[0].address) {
+          // Update query fired if address already present
+          let address = await strapi
+            .query("address", "crm-plugin")
+            .update(contactDetails, ctx.request.body.address);
+          delete ctx.request.body.address;
+        } else {
+          // Create query fired if address not present
+          let add = await strapi
+            .query("address", "crm-plugin")
+            .create(ctx.request.body.address);
+          // deleting original address obj and adding ID of address obj created
+          delete ctx.request.body.address;
+          ctx.request.body["address"] = add.id;
+        }
+      }
+      // updates organization/individual details according to the passed id
       org = await strapi
         .query(ctx.request.body.contact_type, "crm-plugin")
         .update(contactDetails, ctx.request.body);
@@ -148,17 +177,22 @@ module.exports = {
       const contact = await strapi
         .query("contact", "crm-plugin")
         .delete(ctx.params);
-      // gets contact type id of respetcive contact
+      // gets contact type id of respective contact
       let orgId = contact.individual
         ? contact.individual.id
         : contact.organization
         ? contact.organization.id
         : "";
-      // if contact type exists, it is deleted
+      // gets address details
+      let addId = contact.address ? contact.address.id : "";
+      // delete contact details based on the passed id.
       if (orgId)
         await strapi
           .query(contact.contact_type, "crm-plugin")
           .delete({ id: orgId });
+      // deletes address obj on id passes
+      if (addId)
+        await strapi.query("address", "crm-plugin").delete({ id: addId });
       await strapi
         .query("contacttag", "crm-plugin")
         .delete({ contact: ctx.params.id });

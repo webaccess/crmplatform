@@ -26,18 +26,6 @@
     "email_other": {
       "type": "email"
     },
-    "address_1": {
-      "type": "text"
-    },
-    "address_2": {
-      "type": "text"
-    },
-    "city": {
-      "type": "string"
-    },
-    "pincode": {
-      "type": "string"
-    },
     "contact_type": {
       "type": "string",
       "required": true
@@ -46,24 +34,6 @@
       "plugin": "crm-plugin",
       "model": "organization",
       "via": "contact"
-    },
-    "country": {
-      "plugin": "crm-plugin",
-      "model": "country"
-    },
-    "villages": {
-      "plugin": "crm-plugin",
-      "collection": "village",
-      "via": "contacts",
-      "dominant": true
-    },
-    "state": {
-      "plugin": "crm-plugin",
-      "model": "state"
-    },
-    "district": {
-      "plugin": "crm-plugin",
-      "model": "district"
     },
     "individual": {
       "plugin": "crm-plugin",
@@ -76,13 +46,18 @@
     },
     "activityassignees": {
       "plugin": "crm-plugin",
-      "via": "contact",
-      "collection": "activityassignee"
+      "collection": "activityassignee",
+      "via": "contact"
     },
     "contacttags": {
-      "via": "contact",
       "plugin": "crm-plugin",
-      "collection": "contacttag"
+      "collection": "contacttag",
+      "via": "contact"
+    },
+    "address": {
+      "plugin": "crm-plugin",
+      "model": "address",
+      "via": "contact"
     }
   }
 }
