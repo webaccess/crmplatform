@@ -38,9 +38,9 @@
       "model": "state"
     },
     "contact": {
-      "via": "address",
       "plugin": "crm-plugin",
-      "model": "contact"
+      "model": "contact",
+      "via": "addresses"
     }
   }
 }
