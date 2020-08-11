@@ -10,7 +10,7 @@ jobs:
       - checkout
       - run:
           name: Create Strapi project
-          command: cd ~/project && yarn create strapi-app crm-project --quickstart
+          command: cd ~/project && yarn create strapi-app crm-project --quickstart --no-run
       - run:
           name: Load the demo DB
           command: cd ~/project/crm-project && cp -R ~/project/crm-plugin/tests/integration/testing_db/.tmp .
@@ -19,7 +19,7 @@ jobs:
           command: mkdir -p ~/project/crm-project/plugins && mv ~/project/crm-plugin ~/project/crm-project/plugins/
       - run:
           name: Start Strapi project
-          command: cd ~/project/crm-project && yarn install && yarn start
+          command: cd ~/project/crm-project && yarn start
           background: true
       - run:
           shell: /bin/sh
