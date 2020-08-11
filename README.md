@@ -23,10 +23,6 @@ CRM platform backend is the Strapi plugin that provides a basic model for contac
 
 The primary aim of this project is to have a simple and extendable base for the contact management CRM projects.
 
-## Prerequisites
-
-Strapi version 3.0.0-beta.x
-
 ## Installation
 
 1. Create new strapi project using the below command
@@ -36,9 +32,9 @@ Strapi version 3.0.0-beta.x
 2. Install the plugin
 
    `cd <your-project-name>`
-   
+
    `mkdir plugins`
-   
+
    `cd plugins`
 
 - Clone project using below command
@@ -85,4 +81,3 @@ You would need to add below settings to your strapi project if you are extending
 - Run test cases
 
   `yarn test`
-
