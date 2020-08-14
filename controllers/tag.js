@@ -20,6 +20,7 @@ module.exports = {
    * @description: This method returns all the tag details by default or specific tag details based on the filters passed to the method.
    */
   find: async (ctx) => {
+    console.log("ctx", ctx.query);
     try {
       let tag;
       // ctx.query._q: filter parameters in context object

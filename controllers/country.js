@@ -12,5 +12,5 @@ var Base = require("./common/base");
 
 const requiredParams = ["name", "abbreviation", "is_active"];
 
-var country = new Base(requiredParams);
+var country = new Base(requiredParams, "country");
 module.exports = country;

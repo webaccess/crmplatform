@@ -34,27 +34,6 @@ module.exports = {
         activity = await strapi.query("activity", "crm-plugin").find(ctx.query);
       }
 
-      await Promise.all(
-        activity.map(async (entity) => {
-          let contacts = [];
-          // checks whether the activity obj has activity assignee
-          if (entity.activityassignees.length) {
-            let activityAssignees = [];
-            activityAssignees = entity.activityassignees.map(
-              (activityAssignee) => {
-                return activityAssignee.id;
-              }
-            );
-            // finds corresponding contacts for each activity assignee
-            if (activityAssignees.length)
-              contacts = await strapi
-                .query("contact", "crm-plugin")
-                .find({ activityassignees: activityAssignees });
-            entity.contacts = contacts;
-          }
-        })
-      );
-
       // returns final activity obj
       return activity.map((entity) =>
         sanitizeEntity(entity, {
@@ -83,21 +62,6 @@ module.exports = {
 
       let contacts = [];
 
-      // checks whether the activity obj has activity assignee
-      if (entity.activityassignees.length) {
-        let activityAssignees = [];
-        activityAssignees = entity.activityassignees.map((activityAssignee) => {
-          return activityAssignee.id;
-        });
-
-        // finds corresponding contacts for each activity assignee
-        if (activityAssignees.length)
-          contacts = await strapi
-            .query("contact", "crm-plugin")
-            .find({ activityassignees: activityAssignees });
-        entity.contacts = contacts;
-      }
-
       // returns final activity obj
       return sanitizeEntity(entity, {
         model: strapi.plugins["crm-plugin"].models["activity"],
@@ -119,7 +83,6 @@ module.exports = {
   create: async (ctx) => {
     let activityAssignee;
     let activity;
-
     try {
       const reqVal = ["title"];
 
@@ -137,7 +100,6 @@ module.exports = {
       activity = await strapi
         .query("activity", "crm-plugin")
         .create(ctx.request.body);
-
       if (ctx.request.body.contacts) {
         let activityAssignees = [];
         // links activity assignee with the activity
@@ -158,22 +120,23 @@ module.exports = {
       }
 
       // checks whether the activity obj has activity assignee
-      if (activity.activityassignees.length) {
-        let activityAssignees = [];
-        let contacts = [];
-        activityAssignees = activity.activityassignees.map(
-          (activityAssignee) => {
-            return activityAssignee.id;
-          }
-        );
+      if (activity.activityassignees)
+        if (activity.activityassignees.length) {
+          let activityAssignees = [];
+          let contacts = [];
+          activityAssignees = activity.activityassignees.map(
+            (activityAssignee) => {
+              return activityAssignee.id;
+            }
+          );
 
-        // finds corresponding contacts for each activity assignee
-        if (activityAssignees.length)
-          contacts = await strapi
-            .query("contact", "crm-plugin")
-            .find({ activityassignees: activityAssignees });
-        activity.contacts = contacts;
-      }
+          // finds corresponding contacts for each activity assignee
+          if (activityAssignees.length)
+            contacts = await strapi
+              .query("contact", "crm-plugin")
+              .find({ activityassignees: activityAssignees });
+          activity.contacts = contacts;
+        }
 
       // returns created activity obj
       return sanitizeEntity(activity, {
@@ -195,6 +158,7 @@ module.exports = {
   update: async (ctx) => {
     let activityAssignee;
     let activity;
+
     try {
       if (ctx.request.body.contacts) {
         // updates respective activity assignee if exists, otherwise create new entry
@@ -219,26 +183,28 @@ module.exports = {
           })
         );
       }
+
       // updates activity details for particular id according to parameters passed
       const { id } = ctx.params;
       activity = await strapi
         .query("activity", "crm-plugin")
         .update({ id }, ctx.request.body);
 
-      if (activity.activityassignees.length) {
-        let activityAssignees = [];
-        let contacts = [];
-        activityAssignees = activity.activityassignees.map(
-          (activityAssignee) => {
-            return activityAssignee.id;
-          }
-        );
-        if (activityAssignees.length)
-          contacts = await strapi
-            .query("contact", "crm-plugin")
-            .find({ activityassignees: activityAssignees });
-        activity.contacts = contacts;
-      }
+      if (activity.activityassignees)
+        if (activity.activityassignees.length) {
+          let activityAssignees = [];
+          let contacts = [];
+          activityAssignees = activity.activityassignees.map(
+            (activityAssignee) => {
+              return activityAssignee.id;
+            }
+          );
+          if (activityAssignees.length)
+            contacts = await strapi
+              .query("contact", "crm-plugin")
+              .find({ activityassignees: activityAssignees });
+          activity.contacts = contacts;
+        }
 
       // return updated activity obj
       return sanitizeEntity(activity, {
