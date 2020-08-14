@@ -224,11 +224,6 @@ module.exports = {
    */
   delete: async (ctx) => {
     try {
-      // deletes activity assignee of respective activity id
-      const activityAssignee = await strapi
-        .query("activityassignee", "crm-plugin")
-        .delete({ activity: ctx.params.id });
-
       // deletes entire activity obj
       const activity = await strapi
         .query("activity", "crm-plugin")
