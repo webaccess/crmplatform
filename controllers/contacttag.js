@@ -10,5 +10,5 @@
  */
 var Base = require("./common/base");
 
-var contacttag = new Base();
+var contacttag = new Base([], "contacttag");
 module.exports = contacttag;

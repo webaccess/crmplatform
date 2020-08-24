@@ -25,8 +25,11 @@ describe("Tags Module Endpoint", function () {
     describe("POST /crm-plugin/tags/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/tags")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createTag(input: { data: { } }) { tag { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
@@ -41,9 +44,10 @@ describe("Tags Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/tags")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              "mutation { createTag(input: { data: { is_active : true} }) { tag { id name } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -59,21 +63,21 @@ describe("Tags Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/tags")
+          .post("/graphql")
           .send({
-            name: "Tag 1",
-            contacts: [6],
+            query:
+              'mutation{ createTag(input: { data: { name: "Tag 1", is_active:true} }) { tag { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.createTag.tag.name,
               "Tag 1",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createTag.tag.id;
             done();
           });
       });
@@ -85,16 +89,19 @@ describe("Tags Module Endpoint", function () {
     describe("PUT /crm-plugin/tags/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/tags/" + dataId)
+          .post("/graphql")
           .send({
-            name: "Tag 2",
+            query:
+              "mutation{ updateTag(input: { where: {id : " +
+              dataId +
+              '} , data: { name: "Tag 2", is_active: true} }) { tag { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.updateTag.tag.name,
               "Tag 2",
               "Object in response should not differ"
             );
@@ -109,13 +116,16 @@ describe("Tags Module Endpoint", function () {
     describe("GET /crm-plugin/tags", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/tags")
+          .post("/graphql")
+          .send({
+            query: "{ tags{ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.tags.length,
               1,
               "Find method should return atleast one response."
             );
@@ -130,13 +140,16 @@ describe("Tags Module Endpoint", function () {
     describe("GET /crm-plugin/tags/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/tags/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ tag(id:" + dataId + "){ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.tag.name,
               "Tag 2",
               "FindOne Method should return response with same name"
             );
@@ -151,13 +164,19 @@ describe("Tags Module Endpoint", function () {
     describe("DELETE /crm-plugin/tags/:id", function () {
       it("Correct params test case", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/tags/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteTag(input: { where: {id : " +
+              dataId +
+              "} }) { tag { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.deleteTag.tag.name,
               "Tag 2",
               "Object in response should not differ"
             );

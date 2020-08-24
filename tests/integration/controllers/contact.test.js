@@ -25,8 +25,11 @@ describe("Contact Module Endpoint", function () {
     describe("POST /crm-plugin/contact/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/contact")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createContact(input: { data: { } }) { contact { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
@@ -41,9 +44,10 @@ describe("Contact Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/contact")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              'mutation { createContact(input: { data: { email : "test@test.com"} }) { contact { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -59,21 +63,21 @@ describe("Contact Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/contact")
+          .post("/graphql")
           .send({
-            name: "Tech Providers",
-            contact_type: "organization",
+            query:
+              'mutation{ createContact(input: { data: { name: "Tech Providers", contact_type:"organization"} }) { contact { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.createContact.contact.name,
               "Tech Providers",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createContact.contact.id;
             done();
           });
       });
@@ -85,17 +89,19 @@ describe("Contact Module Endpoint", function () {
     describe("PUT /crm-plugin/contact/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/contact/" + dataId)
+          .post("/graphql")
           .send({
-            name: "NewTech",
-            contact_type: "organization",
+            query:
+              "mutation{ updateContact(input: { where: {id : " +
+              dataId +
+              '} , data: { name: "NewTech", contact_type: "organization"} }) { contact { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.updateContact.contact.name,
               "NewTech",
               "Object in response should not differ"
             );
@@ -110,13 +116,16 @@ describe("Contact Module Endpoint", function () {
     describe("GET /crm-plugin/contact", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/contact")
+          .post("/graphql")
+          .send({
+            query: "{ contacts{ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.contacts.length,
               1,
               "Find method should return atleast one response"
             );
@@ -131,13 +140,16 @@ describe("Contact Module Endpoint", function () {
     describe("GET /crm-plugin/contact/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/contact/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ contact(id:" + dataId + "){ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.contact.name,
               "NewTech",
               "FindOne Method should return response with same name"
             );
@@ -152,13 +164,19 @@ describe("Contact Module Endpoint", function () {
     describe("DELETE /crm-plugin/contact/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/contact/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteContact(input: { where: {id : " +
+              dataId +
+              "} }) { contact { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.deleteContact.contact.name,
               "NewTech",
               "Object in response should not differ"
             );

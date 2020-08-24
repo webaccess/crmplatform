@@ -25,8 +25,11 @@ describe("States Module Endpoint", function () {
     describe("POST /crm-plugin/states/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/states")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createState(input: { data: { } }) { state { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
@@ -41,9 +44,10 @@ describe("States Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/states")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              "mutation { createState(input: { data: { is_active : true} }) { state { id name } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -59,21 +63,22 @@ describe("States Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/states")
+          .post("/graphql")
           .send({
-            name: "Gujarat",
+            query:
+              'mutation{ createState(input: { data: { name: "Gujarat", is_active:false} }) { state { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
-            dataId = res.body.id;
+            dataId = res.body.data.createState.state.id;
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.createState.state.name,
               "Gujarat",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createState.state.id;
             done();
           });
       });
@@ -85,16 +90,19 @@ describe("States Module Endpoint", function () {
     describe("PUT /crm-plugin/states/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/states/" + dataId)
+          .post("/graphql")
           .send({
-            name: "Goa",
+            query:
+              "mutation{ updateState(input: { where: {id : " +
+              dataId +
+              '} , data: { name: "Goa", is_active: true} }) { state { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.updateState.state.name,
               "Goa",
               "Object in response should not differ"
             );
@@ -109,13 +117,16 @@ describe("States Module Endpoint", function () {
     describe("GET /crm-plugin/states", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/states")
-          .set("Authorization", "Bearer " + JWT)
+          .post("/graphql")
+          .send({
+            query: "{ states{ id, name} }",
+          })
+          // .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.states.length,
               1,
               "Find method should return atleast one response."
             );
@@ -130,13 +141,16 @@ describe("States Module Endpoint", function () {
     describe("GET /crm-plugin/states/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/states/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ state(id:" + dataId + "){ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.state.name,
               "Goa",
               "FindOne Method should return response with same name"
             );
@@ -168,13 +182,19 @@ describe("States Module Endpoint", function () {
     describe("DELETE /crm-plugin/states/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/states/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteState(input: { where: {id : " +
+              dataId +
+              "} }) { state { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.deleteState.state.name,
               "Goa",
               "Object in response should not differ"
             );

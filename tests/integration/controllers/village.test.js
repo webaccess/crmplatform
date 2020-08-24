@@ -25,8 +25,11 @@ describe("Village Module Endpoint", function () {
     describe("POST /crm-plugin/villages/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/villages")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createVillage(input: { data: { } }) { village { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
@@ -42,9 +45,10 @@ describe("Village Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/villages")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              "mutation { createVillage(input: { data: { is_active : true} }) { village { id name } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -61,20 +65,21 @@ describe("Village Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/villages")
+          .post("/graphql")
           .send({
-            name: "Hivre",
+            query:
+              'mutation{ createVillage(input: { data: { name: "Hivre", is_active:false} }) { village { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.createVillage.village.name,
               "Hivre",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createVillage.village.id;
             done();
           });
       });
@@ -86,16 +91,19 @@ describe("Village Module Endpoint", function () {
     describe("PUT /crm-plugin/villages/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/villages/" + dataId)
+          .post("/graphql")
           .send({
-            name: "Narodi",
+            query:
+              "mutation{ updateVillage(input: { where: {id : " +
+              dataId +
+              '} , data: { name: "Narodi", is_active: true} }) { village { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.updateVillage.village.name,
               "Narodi",
               "Object in response should not differ"
             );
@@ -110,13 +118,16 @@ describe("Village Module Endpoint", function () {
     describe("GET /crm-plugin/villages", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/villages")
+          .post("/graphql")
+          .send({
+            query: "{ villages{ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.villages.length,
               1,
               "Find method should return atleast one response."
             );
@@ -131,13 +142,16 @@ describe("Village Module Endpoint", function () {
     describe("GET /crm-plugin/villages/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/villages/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ village(id:" + dataId + "){ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.village.name,
               "Narodi",
               "FindOne Method should return response with same name"
             );
@@ -169,13 +183,19 @@ describe("Village Module Endpoint", function () {
     describe("DELETE /crm-plugin/villages/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/villages/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteVillage(input: { where: {id : " +
+              dataId +
+              "} }) { village { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.deleteVillage.village.name,
               "Narodi",
               "Object in response should not differ"
             );

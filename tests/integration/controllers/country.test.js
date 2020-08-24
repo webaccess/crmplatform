@@ -26,8 +26,11 @@ describe("Country Module Endpoint", function () {
     describe("POST /crm-plugin/countries/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/countries")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createCountry(input: { data: { } }) { country { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
@@ -42,9 +45,10 @@ describe("Country Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/countries")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              "mutation { createCountry(input: { data: { is_active : true} }) { country { id name } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -60,22 +64,21 @@ describe("Country Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/countries")
+          .post("/graphql")
           .send({
-            name: "Algeria",
-            is_active: true,
-            abbreviation: "DZ",
+            query:
+              'mutation{ createCountry(input: { data: { name: "Algeria", is_active: true, abbreviation: "DZ"} }) { country { id name } } }',
           })
-          .set("Authorization", "Bearer " + JWT)
+          // .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.createCountry.country.name,
               "Algeria",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createCountry.country.id;
             done();
           });
       });
@@ -87,18 +90,19 @@ describe("Country Module Endpoint", function () {
     describe("PUT /crm-plugin/countries/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/countries/" + dataId)
+          .post("/graphql")
           .send({
-            name: "United States",
-            abbreviation: "US",
-            is_active: false,
+            query:
+              "mutation{ updateCountry(input: { where: {id : " +
+              dataId +
+              '} , data: { name: "United States", is_active: false, abbreviation: "US"} }) { country { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.updateCountry.country.name,
               "United States",
               "Object in response should not differ"
             );
@@ -113,13 +117,16 @@ describe("Country Module Endpoint", function () {
     describe("GET /crm-plugin/countries", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         let result = request(SERVER_URL)
-          .get("/crm-plugin/countries")
+          .post("/graphql")
+          .send({
+            query: "{ countries{ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.countries.length,
               1,
               "Find method should return atleast one response."
             );
@@ -134,13 +141,16 @@ describe("Country Module Endpoint", function () {
     describe("GET /crm-plugin/countries/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/countries/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ country(id:" + dataId + "){ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.country.name,
               "United States",
               "FindOne Method should return response with same name"
             );
@@ -172,13 +182,19 @@ describe("Country Module Endpoint", function () {
     describe("DELETE /crm-plugin/countries/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/countries/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteCountry(input: { where: {id : " +
+              dataId +
+              "} }) { country { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.deleteCountry.country.name,
               "United States",
               "Object in response should not differ"
             );

@@ -158,7 +158,7 @@ module.exports = {
   update: async (ctx) => {
     let activityAssignee;
     let activity;
-
+    console.log("updated", ctx);
     try {
       if (ctx.request.body.contacts) {
         // updates respective activity assignee if exists, otherwise create new entry
