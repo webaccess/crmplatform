@@ -148,12 +148,19 @@ describe("Activityassignee Module Endpoint", function () {
     describe("GET /crm-plugin/activityassignees/count", function () {
       it("should return data count when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activityassignees/count")
+          .post("/graphql")
+          .send({
+            query: "{ activityassigneesCount }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
-            assert.isAtLeast(res.body, 1, "Count expected to be atleast 1");
+            assert.isAtLeast(
+              res.body.data.activityassigneesCount,
+              1,
+              "Count expected to be atleast 1"
+            );
             done();
           });
       });

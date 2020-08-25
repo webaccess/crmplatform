@@ -91,12 +91,9 @@ function Base(requiredValues = [], table = "") {
    */
   this.count = async (ctx) => {
     // let table = getTable(ctx.originalUrl);
-
     try {
       // returns total no. of data based on search
-      if (ctx.query._q) {
-        return strapi.query(this.table, "crm-plugin").countSearch(ctx.query);
-      }
+
       return strapi.query(this.table, "crm-plugin").count(ctx.query);
     } catch (error) {
       console.error(error);

@@ -165,12 +165,20 @@ describe("States Module Endpoint", function () {
     describe("GET /crm-plugin/states/count", function () {
       it("should return data count when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/states/count")
+          .post("/graphql")
+          .send({
+            query: "{ statesCount }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
+            console.log("res", res.body);
             if (err) return done(err);
-            assert.isAtLeast(res.body, 1, "Count expected to be atleast 1");
+            assert.isAtLeast(
+              res.body.data.statesCount,
+              1,
+              "Count expected to be atleast 1"
+            );
             done();
           });
       });
