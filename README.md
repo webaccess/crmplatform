@@ -3,7 +3,7 @@
 CRM platform backend is the Strapi plugin that provides a basic model for contact management along with the API's.
 
 [![webaccess](https://circleci.com/gh/webaccess/crmplatform.svg?style=shield)](https://circleci.com/gh/webaccess/crmplatform)
-[![Strapi Version](https://img.shields.io/badge/strapi-v3.0.0--beta.20.2-blue.svg)](https://github.com/strapi/strapi)
+[![Strapi Version](https://img.shields.io/badge/strapi-v3.x-blue.svg)](https://github.com/strapi/strapi)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 ## Primary Models include
