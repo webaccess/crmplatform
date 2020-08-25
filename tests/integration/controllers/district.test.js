@@ -25,8 +25,11 @@ describe("District Module Endpoint", function () {
     describe("POST /crm-plugin/districts/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/districts")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createDistrict(input: { data: { } }) { state { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .expect("Content-Type", "text/plain; charset=utf-8")
@@ -42,9 +45,10 @@ describe("District Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/districts")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              "mutation { createDistrict(input: { data: { is_active : true} }) { state { id name } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -61,20 +65,21 @@ describe("District Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/districts")
+          .post("/graphql")
           .send({
-            name: "Thane",
+            query:
+              'mutation{ createDistrict(input: { data: { name: "Thane", is_active:false} }) { district { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.createDistrict.district.name,
               "Thane",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createDistrict.district.id;
             done();
           });
       });
@@ -86,16 +91,19 @@ describe("District Module Endpoint", function () {
     describe("PUT /crm-plugin/districts/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/districts/" + dataId)
+          .post("/graphql")
           .send({
-            name: "Sangli",
+            query:
+              "mutation{ updateDistrict(input: { where: {id : " +
+              dataId +
+              '} , data: { name: "Sangli", is_active: true} }) { district { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.updateDistrict.district.name,
               "Sangli",
               "Object in response should not differ"
             );
@@ -110,13 +118,16 @@ describe("District Module Endpoint", function () {
     describe("GET /crm-plugin/districts", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/districts")
+          .post("/graphql")
+          .send({
+            query: "{ districts{ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.districts.length,
               1,
               "Find method should return atleast one response."
             );
@@ -131,13 +142,16 @@ describe("District Module Endpoint", function () {
     describe("GET /crm-plugin/districts/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/districts/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ district(id:" + dataId + "){ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.district.name,
               "Sangli",
               "FindOne Method should return response with same name"
             );
@@ -152,12 +166,19 @@ describe("District Module Endpoint", function () {
     describe("GET /crm-plugin/districts/count", function () {
       it("should return data count when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/districts/count")
+          .post("/graphql")
+          .send({
+            query: "{ districtsCount }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
-            assert.isAtLeast(res.body, 1, "Count expected to be atleast 1");
+            assert.isAtLeast(
+              res.body.data.districtsCount,
+              1,
+              "Count expected to be atleast 1"
+            );
             done();
           });
       });
@@ -169,13 +190,19 @@ describe("District Module Endpoint", function () {
     describe("DELETE /crm-plugin/districts/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/districts/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteDistrict(input: { where: {id : " +
+              dataId +
+              "} }) { district { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.deleteDistrict.district.name,
               "Sangli",
               "Object in response should not differ"
             );

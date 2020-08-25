@@ -11,5 +11,5 @@
 var Base = require("./common/base");
 
 const requiredParams = ["name"];
-var district = new Base(requiredParams);
+var district = new Base(requiredParams, "district");
 module.exports = district;

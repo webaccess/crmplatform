@@ -11,5 +11,5 @@
 var Base = require("./common/base");
 
 const requiredParams = ["name"];
-var village = new Base(requiredParams);
+var village = new Base(requiredParams, "village");
 module.exports = village;

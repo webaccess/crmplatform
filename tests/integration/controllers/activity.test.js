@@ -12,8 +12,11 @@ describe("Activity Module Endpoint", function () {
     describe("POST /crm-plugin/activities/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activities")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createActivity(input: { data: { } }) { activity { id title } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
@@ -28,9 +31,10 @@ describe("Activity Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activities")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              "mutation { createActivity(input: { data: { is_active : true } }) { activity { id title } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -47,21 +51,21 @@ describe("Activity Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activities")
+          .post("/graphql")
           .send({
-            title: "Activity 1",
-            activitytype: 5,
+            query:
+              'mutation { createActivity(input: { data: { title : "activity 1" } }) { activity { id title } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.title,
-              "Activity 1",
+              res.body.data.createActivity.activity.title,
+              "activity 1",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createActivity.activity.id;
             done();
           });
       });
@@ -73,16 +77,19 @@ describe("Activity Module Endpoint", function () {
     describe("PUT /crm-plugin/activities/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/activities/" + dataId)
+          .post("/graphql")
           .send({
-            title: "Activity 2",
+            query:
+              "mutation { updateActivity(input: { where: { id : " +
+              dataId +
+              '} , data: { title : "Activity 2" } }) { activity { id title } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.title,
+              res.body.data.updateActivity.activity.title,
               "Activity 2",
               "Object in response should not differ"
             );
@@ -97,13 +104,16 @@ describe("Activity Module Endpoint", function () {
     describe("GET /crm-plugin/activities", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activities")
+          .post("/graphql")
+          .send({
+            query: "{ activities{ id, title} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.activities.length,
               1,
               "Find method should return atleast one response"
             );
@@ -118,13 +128,17 @@ describe("Activity Module Endpoint", function () {
     describe("GET /crm-plugin/activities/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activities/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ activity(id:" + dataId + ") { id title } }",
+          })
+
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.title,
+              res.body.data.activity.title,
               "Activity 2",
               "FindOne Method should return response with same name"
             );
@@ -139,13 +153,19 @@ describe("Activity Module Endpoint", function () {
     describe("DELETE /crm-plugin/activities/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/activities/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { deleteActivity(input: { where: { id : " +
+              dataId +
+              "} }) { activity { id title } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.title,
+              res.body.data.deleteActivity.activity.title,
               "Activity 2",
               "Object in response should not differ"
             );

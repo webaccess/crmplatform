@@ -25,8 +25,11 @@ describe("Activitytype Module Endpoint", function () {
     describe("POST /crm-plugin/activitytypes/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activitytypes")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createActivitytype(input: { data: { } }) { activitytype { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
@@ -41,9 +44,10 @@ describe("Activitytype Module Endpoint", function () {
 
       it("should not create an entry when required params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activitytypes")
+          .post("/graphql")
           .send({
-            is_active: true,
+            query:
+              "mutation { createActivitytype(input: { data: { is_active : true} }) { activitytype { id name } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
@@ -59,20 +63,21 @@ describe("Activitytype Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activitytypes")
+          .post("/graphql")
           .send({
-            name: "Fishery",
+            query:
+              'mutation{ createActivitytype(input: { data: { name: "Fishery", is_active:false} }) { activitytype { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.createActivitytype.activitytype.name,
               "Fishery",
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createActivitytype.activitytype.id;
             done();
           });
       });
@@ -84,16 +89,19 @@ describe("Activitytype Module Endpoint", function () {
     describe("PUT /crm-plugin/activitytypes/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/activitytypes/" + dataId)
+          .post("/graphql")
           .send({
-            name: "Agriculture",
+            query:
+              "mutation{ updateActivitytype(input: { where: {id : " +
+              dataId +
+              '} , data: { name: "Agriculture", is_active: false} }) { activitytype { id name } } }',
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.updateActivitytype.activitytype.name,
               "Agriculture",
               "Object in response should not differ"
             );
@@ -108,13 +116,16 @@ describe("Activitytype Module Endpoint", function () {
     describe("GET /crm-plugin/activitytypes", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activitytypes")
+          .post("/graphql")
+          .send({
+            query: "{ activitytypes{ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.activitytypes.length,
               1,
               "Find method should return atleast one response"
             );
@@ -129,13 +140,16 @@ describe("Activitytype Module Endpoint", function () {
     describe("GET /crm-plugin/activitytypes/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activitytypes/" + dataId)
+          .post("/graphql")
+          .send({
+            query: "{ activitytype(id:" + dataId + "){ id, name} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.activitytype.name,
               "Agriculture",
               "FindOne Method should return response with same name"
             );
@@ -150,12 +164,19 @@ describe("Activitytype Module Endpoint", function () {
     describe("GET /crm-plugin/activitytypes/count", function () {
       it("should return data count when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activitytypes/count")
+          .post("/graphql")
+          .send({
+            query: "{ activitytypesCount }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
-            assert.isAtLeast(res.body, 1, "Count expected to be atleast 1");
+            assert.isAtLeast(
+              res.body.data.activitytypesCount,
+              1,
+              "Count expected to be atleast 1"
+            );
             done();
           });
       });
@@ -167,13 +188,19 @@ describe("Activitytype Module Endpoint", function () {
     describe("DELETE /crm-plugin/activitytypes/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/activitytypes/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteActivitytype(input: { where: {id : " +
+              dataId +
+              "} }) { activitytype { id name } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.name,
+              res.body.data.deleteActivitytype.activitytype.name,
               "Agriculture",
               "Object in response should not differ"
             );

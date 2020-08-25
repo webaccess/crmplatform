@@ -25,8 +25,11 @@ describe("Activityassignee Module Endpoint", function () {
     describe("POST /crm-plugin/activityassignees/", function () {
       it("should not create an entry when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activityassignees")
-          .send({})
+          .post("/graphql")
+          .send({
+            query:
+              "mutation { createActivityassignee(input: { data: { } }) { activityassignee { activity{ id title } } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
@@ -41,22 +44,21 @@ describe("Activityassignee Module Endpoint", function () {
 
       it("should create an entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .post("/crm-plugin/activityassignees")
+          .post("/graphql")
           .send({
-            contact: {
-              id: 6,
-            },
+            query:
+              "mutation { createActivityassignee(input: { data: { contact : 6 , activities:[5]} }) { activityassignee { activity{ id title } } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.contact.id,
+              res.body.data.createActivityassignee.activityassignee.contact.id,
               6,
               "Object in response should not differ"
             );
-            dataId = res.body.id;
+            dataId = res.body.data.createActivityassignee.activityassignee.id;
             done();
           });
       });
@@ -68,18 +70,19 @@ describe("Activityassignee Module Endpoint", function () {
     describe("PUT /crm-plugin/activityassignees/:id", function () {
       it("should update the data when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .put("/crm-plugin/activityassignees/" + dataId)
+          .post("/graphql")
           .send({
-            contact: {
-              id: 7,
-            },
+            query:
+              "mutation{ updateActivityassignee(input: { where: {id : " +
+              dataId +
+              "} , data: { contact : 7} }) { activityassignee { activity{ id title } } } }",
           })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.contact.id,
+              res.body.data.updateActivityassignee.activityassignee.contact.id,
               7,
               "Object in response should not differ"
             );
@@ -94,13 +97,16 @@ describe("Activityassignee Module Endpoint", function () {
     describe("GET /crm-plugin/activityassignees", function () {
       it("responds with all records when empty params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activityassignees")
+          .post("/graphql")
+          .send({
+            query: "{ activityassignees{ id, activity{ id title } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.isAtLeast(
-              res.body.length,
+              res.body.data.activityassignees.length,
               1,
               "Find method should return atleast one response"
             );
@@ -115,13 +121,19 @@ describe("Activityassignee Module Endpoint", function () {
     describe("GET /crm-plugin/activityassignees/:id", function () {
       it("responds with matching records when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activityassignees/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "{ activityassignee(id:" +
+              dataId +
+              "){ id, activity{ id title }} }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.contact.id,
+              res.body.data.activityassignee.contact.id,
               7,
               "FindOne Method should return response with same name"
             );
@@ -136,12 +148,19 @@ describe("Activityassignee Module Endpoint", function () {
     describe("GET /crm-plugin/activityassignees/count", function () {
       it("should return data count when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .get("/crm-plugin/activityassignees/count")
+          .post("/graphql")
+          .send({
+            query: "{ activityassigneesCount }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
-            assert.isAtLeast(res.body, 1, "Count expected to be atleast 1");
+            assert.isAtLeast(
+              res.body.data.activityassigneesCount,
+              1,
+              "Count expected to be atleast 1"
+            );
             done();
           });
       });
@@ -153,13 +172,19 @@ describe("Activityassignee Module Endpoint", function () {
     describe("DELETE /crm-plugin/activityassignees/:id", function () {
       it("should delete entry when correct params test case is executed", function (done) {
         request(SERVER_URL)
-          .delete("/crm-plugin/activityassignees/" + dataId)
+          .post("/graphql")
+          .send({
+            query:
+              "mutation{ deleteActivityassignee(input: { where: {id : " +
+              dataId +
+              "} }) { activityassignee { id activity{ id title } } } }",
+          })
           .set("Authorization", "Bearer " + JWT)
           .expect(200)
           .end(function (err, res) {
             if (err) return done(err);
             assert.strictEqual(
-              res.body.contact.id,
+              res.body.data.deleteActivityassignee.activityassignee.contact.id,
               7,
               "Object in response should not differ"
             );

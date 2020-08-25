@@ -10,5 +10,5 @@
  */
 var Base = require("./common/base");
 
-var activityassignee = new Base();
+var activityassignee = new Base([], "activityassignee");
 module.exports = activityassignee;
